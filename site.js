@@ -1,0 +1,111 @@
+const root=document.documentElement;
+const savedTheme=localStorage.getItem('metinlerarasi-theme');
+if(savedTheme)root.dataset.theme=savedTheme;
+
+const nav=document.querySelector('.nav');
+document.querySelector('.menu')?.addEventListener('click',()=>nav?.classList.toggle('open'));
+
+const tools=document.createElement('div');
+tools.className='live-tools';
+tools.innerHTML='<button class="ticket-launch" aria-label="Açık Bilet — kulübe mesaj gönder"><b>✦</b><span>Açık Bilet</span></button><button class="theme-toggle" aria-label="Aydınlık ve karanlık tema arasında geçiş yap" title="Aydınlık / karanlık mod"><span>☯</span></button>';
+const toolDock=document.querySelector('.home-tools');
+if(toolDock)toolDock.appendChild(tools);else document.querySelector('.topbar')?.insertBefore(tools,document.querySelector('.menu'));
+tools.querySelector('.theme-toggle').addEventListener('click',()=>{const button=tools.querySelector('.theme-toggle'),next=root.dataset.theme==='dark'?'light':'dark',applyTheme=()=>{root.dataset.theme=next;localStorage.setItem('metinlerarasi-theme',next)};button.classList.add('switching');root.classList.add('theme-changing');if(document.startViewTransition)document.startViewTransition(applyTheme);else requestAnimationFrame(applyTheme);setTimeout(()=>{button.classList.remove('switching');root.classList.remove('theme-changing')},1100)});
+
+const countdown=document.createElement('div');
+countdown.className='countdown-strip';
+countdown.innerHTML='SIRADAKİ BULUŞMA <b>hesaplanıyor…</b>';
+if(!document.querySelector('.home-countdown'))document.body.appendChild(countdown);
+const target=new Date('2026-08-23T19:30:00+03:00');
+function tick(){const diff=target-Date.now(),out=document.querySelector('.home-countdown b')||countdown.querySelector('b');if(diff<=0){out.textContent='Buluşma başladı';return}const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);out.textContent=`${d} gün · ${h} sa · ${m} dk · ${s} sn`}
+tick();setInterval(tick,1000);
+
+const ticket=document.createElement('div');
+ticket.className='ticket-backdrop';
+ticket.setAttribute('aria-hidden','true');
+ticket.innerHTML='<section class="ticket-sheet" role="dialog" aria-modal="true" aria-labelledby="ticket-title"><button class="ticket-close" aria-label="Kapat">×</button><div class="eyebrow">Masanın açık bileti</div><h2 id="ticket-title">Bize bir not bırak</h2><p>Bir kitap önerisi, toplantı sorusu ya da yalnızca kısa bir merhaba…</p><textarea maxlength="400" placeholder="Notunu buraya yaz…" aria-label="Mesajınız"></textarea><button class="btn wine ticket-send">Bileti masaya bırak →</button><div class="ticket-status" aria-live="polite"></div></section>';
+document.body.appendChild(ticket);
+const openTicket=()=>{ticket.classList.add('open');ticket.setAttribute('aria-hidden','false');setTimeout(()=>ticket.querySelector('textarea').focus(),250)};
+const closeTicket=()=>{ticket.classList.remove('open');ticket.setAttribute('aria-hidden','true')};
+tools.querySelector('.ticket-launch').addEventListener('click',openTicket);ticket.querySelector('.ticket-close').addEventListener('click',closeTicket);ticket.addEventListener('click',e=>{if(e.target===ticket)closeTicket()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTicket()});
+ticket.querySelector('.ticket-send').addEventListener('click',()=>{const text=ticket.querySelector('textarea').value.trim(),status=ticket.querySelector('.ticket-status');if(!text){status.textContent='Önce kısa bir not yazmalısın.';return}localStorage.setItem('metinlerarasi-ticket',text);status.textContent='Biletin bu cihazda saklandı. Teşekkür ederiz.';ticket.querySelector('textarea').value=''});
+
+const tragedyBooks=[
+  {id:'oedipus',title:'Kral Oidipus',author:'Sophokles',image:'assets/tragedy-oedipus.jpg',text:'Thebai’yi saran salgının kaynağını araştıran Oidipus, aradığı suçlunun kendi geçmişinde saklandığını keşfeder. Kader, hakikat ve körlük üzerine kurucu tragedya.'},
+  {id:'antigone',title:'Antigone',author:'Sophokles',image:'assets/tragedy-antigone.jpg',text:'Antigone, kralın buyruğuna rağmen kardeşini gömmeyi seçer. Devlet yasası ile vicdan arasındaki çatışma geri dönülmez bir yıkıma dönüşür.'},
+  {id:'medea',title:'Medea',author:'Euripides',image:'assets/tragedy-medea.webp',text:'İason tarafından terk edilen Medea’nın öfkesi, ihanetin sınırlarını aşan korkunç bir intikama dönüşür. Aşk, yabancılık ve iktidar iç içe geçer.'},
+  {id:'bakkhalar',title:'Bakkhalar',author:'Euripides',image:'assets/tragedy-bakkhalar.png',text:'Tanrı Dionysos’u tanımayan Pentheus, akıl ile taşkınlık arasındaki savaşta kendi sonunu hazırlar. Bastırılanın şiddetle dönüşünün hikâyesi.'},
+  {id:'hamlet',title:'Hamlet',author:'William Shakespeare',image:'assets/tragedy-hamlet.webp',text:'Babasının hayaletinden cinayet gerçeğini öğrenen Hamlet, intikam ile kuşku arasında sıkışır. Düşüncenin eylemi felce uğrattığı karanlık bir saray.'},
+  {id:'macbeth',title:'Macbeth',author:'William Shakespeare',image:'assets/tragedy-macbeth.jpg',text:'Bir kehanetin kışkırttığı Macbeth, iktidar uğruna cinayete yönelir. Hırs, suçluluk ve korku büyüdükçe krallık da zihni de çözülür.'},
+  {id:'romeo',title:'Romeo ve Juliet',author:'William Shakespeare',image:'assets/tragedy-romeo-juliet.jpg',text:'Düşman iki ailenin çocukları olan Romeo ve Juliet’in aşkı, nefretin mirası altında trajik sona yürür. Aşk ile toplumsal yazgının çatışması.'},
+  {id:'lear',title:'Kral Lear',author:'William Shakespeare',image:'assets/tragedy-kral-lear.jpg',text:'Krallığını sevgilerini ilan eden kızları arasında paylaştıran Lear, sadakat ile dalkavukluğu ayıramaz. İktidar kaybı onu delilik ve hakikate götürür.'},
+  {id:'persler',title:'Persler',author:'Aiskhylos',image:'assets/tragedy-oedipus.jpg',text:'Salamis yenilgisinin haberi Pers sarayına ulaşır; savaşın görkemi yerini yas ve kibir sorgusuna bırakır.'},
+  {id:'thebai-yedi',title:'Thebai’ye Karşı Yediler',author:'Aiskhylos',image:'assets/tragedy-antigone.jpg',text:'Oidipus’un oğulları kentin kapılarında karşı karşıya gelir; kardeş savaşı bir soyun lanetini tamamlar.'},
+  {id:'yakaricilar-a',title:'Yalvarıcılar',author:'Aiskhylos',image:'assets/tragedy-oedipus.jpg',text:'Zorla evlilikten kaçan Danaos kızları Argos’a sığınır; kent, adalet ile savaş tehlikesi arasında karar verir.'},
+  {id:'prometheus',title:'Zincire Vurulmuş Prometheus',author:'Aiskhylos',image:'assets/tragedy-oedipus.jpg',text:'Ateşi insanlara veren Prometheus, Zeus’un buyruğuyla kayaya zincirlenir; bilgi ile iktidar çatışır.'},
+  {id:'agamemnon',title:'Agamemnon',author:'Aiskhylos',image:'assets/tragedy-oedipus.jpg',text:'Troya’dan zaferle dönen Agamemnon, kurban ettiği kızının intikamını bekleyen Klytaimnestra’nın sarayına girer.'},
+  {id:'sunak',title:'Sunak Taşıyıcılar',author:'Aiskhylos',image:'assets/tragedy-oedipus.jpg',text:'Orestes sürgünden dönerek babasının intikamını alır; adalet yeni bir kan borcuna dönüşür.'},
+  {id:'eumenides',title:'Eumenidler',author:'Aiskhylos',image:'assets/tragedy-oedipus.jpg',text:'Erinyeler Orestes’i kovalar; kan davası, Atina’daki ilk yargılamayla hukuk düzenine evrilir.'},
+  {id:'aias',title:'Aias',author:'Sophokles',image:'assets/tragedy-antigone.jpg',text:'Akhilleus’un silahlarını kaybeden Aias’ın kırılan onuru delilik, utanç ve ölümle sonuçlanır.'},
+  {id:'trakhis',title:'Trakhisli Kadınlar',author:'Sophokles',image:'assets/tragedy-antigone.jpg',text:'Deianeira, Herakles’in sevgisini geri kazanmak isterken bilmeden ölümcül bir armağan gönderir.'},
+  {id:'elektra',title:'Elektra',author:'Sophokles',image:'assets/tragedy-antigone.jpg',text:'Elektra babasının cinayetini unutmamayı seçer ve Orestes’in dönüşüyle intikam planı harekete geçer.'},
+  {id:'philoktetes',title:'Philoktetes',author:'Sophokles',image:'assets/tragedy-antigone.jpg',text:'Issız adaya terk edilen yaralı savaşçı, Troya’nın düşmesi için yeniden kandırılmak istenir.'},
+  {id:'kolonos',title:'Oidipus Kolonos’ta',author:'Sophokles',image:'assets/tragedy-oedipus.jpg',text:'Yaşlı ve sürgün Oidipus son durağında ölümüne anlam, kentlere ise kutsal bir miras arar.'},
+  {id:'alkestis',title:'Alkestis',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Alkestis kocası yerine ölmeyi kabul eder; fedakârlık, evlilik ve geri dönüşün bedeli sorgulanır.'},
+  {id:'hippolytos',title:'Hippolytos',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Phaidra’nın yasak arzusu ve Hippolytos’un katı saflığı, tanrıların müdahalesiyle felakete dönüşür.'},
+  {id:'troyali',title:'Troyalı Kadınlar',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Troya’nın düşüşünden sonra kadınlar galipler arasında paylaştırılmayı bekler; savaşın bedeli mağdurların gözünden anlatılır.'},
+  {id:'hekabe',title:'Hekabe',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Troya kraliçesi çocuklarının ölümünü öğrendikçe yas, onu acımasız bir intikama sürükler.'},
+  {id:'herakles',title:'Herakles',author:'Euripides',image:'assets/tragedy-bakkhalar.png',text:'Kahraman evine döner; Hera’nın gönderdiği delilik onu kurtardığı ailesinin katiline çevirir.'},
+  {id:'iphigenia-aulis',title:'İphigenia Aulis’te',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Yunan donanmasının yola çıkması için Agamemnon’dan kızı İphigenia’yı kurban etmesi istenir.'},
+  {id:'orestes',title:'Orestes',author:'Euripides',image:'assets/tragedy-bakkhalar.png',text:'Anne katili Orestes yargılanmayı beklerken Elektra ve Pylades’le umutsuz bir kaçış tasarlar.'},
+  {id:'othello',title:'Othello',author:'William Shakespeare',image:'assets/tragedy-hamlet.webp',text:'Iago’nun kurduğu kuşku ağı, Othello’nun sevgisini kıskançlık ve cinayete dönüştürür.'},
+  {id:'julius',title:'Julius Caesar',author:'William Shakespeare',image:'assets/tragedy-macbeth.jpg',text:'Cumhuriyeti koruma iddiasıyla işlenen suikast, Roma’yı iç savaşa ve yeni bir iktidara sürükler.'},
+  {id:'antonius',title:'Antonius ve Kleopatra',author:'William Shakespeare',image:'assets/tragedy-romeo-juliet.jpg',text:'Roma siyaseti ile Mısır’daki tutkulu aşk arasında kalan iki hükümdar, imparatorlukla birlikte çöker.'},
+  {id:'coriolanus',title:'Coriolanus',author:'William Shakespeare',image:'assets/tragedy-kral-lear.jpg',text:'Roma’nın savaş kahramanı halka duyduğu küçümseme yüzünden sürülür ve öfkesini kentine yöneltir.'},
+  {id:'titus',title:'Titus Andronicus',author:'William Shakespeare',image:'assets/tragedy-macbeth.jpg',text:'Roma’ya dönen komutanın intikam kararı, iki ailenin birbirini yok ettiği vahşi bir döngü başlatır.'},
+  {id:'timon',title:'Atinalı Timon',author:'William Shakespeare',image:'assets/tragedy-kral-lear.jpg',text:'Servetini dostlarına dağıtan Timon terk edilince insanlığa düşman kesilir; para dostluğun maskesini düşürür.'},
+  {id:'andromakhe',title:'Andromakhe',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Troya’nın dul kraliçesi köle olarak yaşarken çocuğunu kıskançlık ve hanedan siyasetinden korumaya çalışır.'},
+  {id:'heraklesogullari',title:'Heraklesoğulları',author:'Euripides',image:'assets/tragedy-bakkhalar.png',text:'Herakles’in çocukları düşmanlarından kaçarak Atina’ya sığınır; kent, sığınmacıları korumak için savaş riskini üstlenir.'},
+  {id:'helena',title:'Helena',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Troya’ya giden Helena’nın yalnızca bir görüntü olduğu ortaya çıkar; gerçek Helena Mısır’da kimliğini korumaktadır.'},
+  {id:'ion',title:'İon',author:'Euripides',image:'assets/tragedy-bakkhalar.png',text:'Delphoi tapınağında büyüyen İon, annesi Kreusa’yla bilmeden karşılaşır; terk edilme ve soy sırrı açığa çıkar.'},
+  {id:'iphigenia-tauris',title:'İphigenia Tauris’te',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Kurban edilmekten kurtulan İphigenia, yabancıları kurban eden rahibe olarak kardeşi Orestes’le karşılaşır.'},
+  {id:'elektra-e',title:'Elektra',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Köylüyle evlendirilen Elektra, Orestes’le birleşip annelerinden intikam alır; zafer yerini vicdan azabına bırakır.'},
+  {id:'fenikeli',title:'Fenikeli Kadınlar',author:'Euripides',image:'assets/tragedy-bakkhalar.png',text:'Oidipus’un oğulları Thebai için savaşırken anneleri İokaste aileyi ve kenti parçalanmaktan kurtarmaya çalışır.'},
+  {id:'yakaricilar-e',title:'Yakarıcılar',author:'Euripides',image:'assets/tragedy-medea.webp',text:'Savaşta ölenlerin anneleri cesetlerini geri ister; Theseus savaş hukukunu savunmak için harekete geçer.'},
+  {id:'rhesos',title:'Rhesos',author:'Euripides',image:'assets/tragedy-bakkhalar.png',text:'Troya kampına gelen Trakya kralı Rhesos, savaşa katılamadan gece baskınında öldürülür; kahramanlık fırsata yenilir.'},
+  {id:'troilus',title:'Troilus ve Cressida',author:'William Shakespeare',image:'assets/tragedy-romeo-juliet.jpg',text:'Troya Savaşı’nın ortasındaki aşk, siyasal pazarlık ve ihanetle aşınır; kahramanlık ideali acı bir alaya dönüşür.'}
+];
+const tragedyLaunch=document.querySelector('.tragedy-launch');
+if(tragedyLaunch){
+  const verifiedCoverIds=new Set(['oedipus','antigone','medea','bakkhalar','hamlet','macbeth','romeo','lear']);
+  const tragedyModal=document.createElement('div');tragedyModal.className='tragedy-modal';tragedyModal.setAttribute('aria-hidden','true');
+  tragedyModal.innerHTML=`<section class="tragedy-panel" role="dialog" aria-modal="true" aria-labelledby="tragedy-title"><header><div><div class="eyebrow">Eylül 2026 · Okur oylaması</div><h2 id="tragedy-title">Tragedya Kütüphanesi</h2><p>${tragedyBooks.length} eserden dördünü seç. Fotoğraflı kapaklar doğrulanmış Türkçe baskılardır.</p><div class="tragedy-filters"><button class="active" data-filter="all">Tümü</button><button data-filter="Aiskhylos">Aiskhylos</button><button data-filter="Sophokles">Sophokles</button><button data-filter="Euripides">Euripides</button><button data-filter="William Shakespeare">Shakespeare</button></div></div><div class="vote-meter"><b>0</b><span>/ 4 SEÇİLDİ</span></div><button class="tragedy-close" aria-label="Kapat">×</button></header><div class="tragedy-grid">${tragedyBooks.map((book,i)=>`<article class="tragedy-book" data-id="${book.id}" data-author="${book.author}" style="--delay:${Math.min(i*35,500)}ms"><button class="book-vote" aria-pressed="false"><span class="vote-mark">SEÇ</span>${verifiedCoverIds.has(book.id)?`<img src="${book.image}" alt="${book.title} Türkçe kitap kapağı">`:`<div class="type-cover author-${book.author.split(' ')[0].toLowerCase()}"><small>METİNLERARASI · EYLÜL SEÇKİSİ</small><strong>${book.title}</strong><em>${book.author}</em><i>TRAGEDYA</i></div>`}<div><small>${book.author}</small><h3>${book.title}</h3><p>${book.text}</p></div></button></article>`).join('')}</div><footer><span class="vote-message" aria-live="polite">Dört eser seçebilirsin.</span><button class="btn wine vote-save" disabled>4 seçimi kaydet</button></footer></section>`;
+  document.body.appendChild(tragedyModal);const selected=new Set(JSON.parse(localStorage.getItem('metinlerarasi-tragedy-votes')||'[]'));
+  const syncVotes=()=>{tragedyModal.querySelectorAll('.tragedy-book').forEach(card=>{const on=selected.has(card.dataset.id);card.classList.toggle('selected',on);card.querySelector('.book-vote').setAttribute('aria-pressed',String(on));card.querySelector('.vote-mark').textContent=on?'SEÇİLDİ':'SEÇ'});tragedyModal.querySelector('.vote-meter b').textContent=selected.size;tragedyModal.querySelector('.vote-save').disabled=selected.size!==4};syncVotes();
+  tragedyModal.querySelectorAll('.tragedy-filters button').forEach(filter=>filter.addEventListener('click',()=>{tragedyModal.querySelectorAll('.tragedy-filters button').forEach(b=>b.classList.toggle('active',b===filter));tragedyModal.querySelectorAll('.tragedy-book').forEach(card=>card.hidden=filter.dataset.filter!=='all'&&card.dataset.author!==filter.dataset.filter)}));
+  tragedyModal.querySelectorAll('.book-vote').forEach(button=>button.addEventListener('click',()=>{const id=button.closest('.tragedy-book').dataset.id,msg=tragedyModal.querySelector('.vote-message');if(selected.has(id)){selected.delete(id);msg.textContent='Seçim kaldırıldı.'}else if(selected.size<4){selected.add(id);msg.textContent=selected.size===4?'Dört seçimin hazır.':'Bir eser daha seçildi.'}else{msg.textContent='En fazla dört eser seçebilirsin.';tragedyModal.querySelector('.vote-meter').classList.add('shake');setTimeout(()=>tragedyModal.querySelector('.vote-meter').classList.remove('shake'),500)}syncVotes()}));
+  const shelfButton=document.createElement('button');shelfButton.className='show-selection';shelfButton.textContent='Seçimi Göster · 4';document.body.appendChild(shelfButton);const shelf=document.createElement('div');shelf.className='selection-shelf';shelf.innerHTML='<section><button class="shelf-close">×</button><div class="eyebrow">Eylül 2026 · Senin seçkin</div><h2>Seçtiğin dört tragedya</h2><div class="shelf-books"></div><button class="btn shelf-edit">Seçimi düzenle</button></section>';document.body.appendChild(shelf);const renderShelf=()=>{const saved=JSON.parse(localStorage.getItem('metinlerarasi-tragedy-votes')||'[]');shelfButton.classList.toggle('visible',saved.length===4);shelf.querySelector('.shelf-books').innerHTML=saved.map((id,i)=>{const book=tragedyBooks.find(b=>b.id===id);return book?`<article style="--i:${i}"><span>0${i+1}</span><div><small>${book.author}</small><h3>${book.title}</h3><p>${book.text}</p></div></article>`:''}).join('')};renderShelf();
+  const closeTragedies=()=>{tragedyModal.classList.remove('open');tragedyModal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open')};tragedyLaunch.addEventListener('click',()=>{tragedyModal.classList.add('open');tragedyModal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open')});tragedyModal.querySelector('.tragedy-close').addEventListener('click',closeTragedies);tragedyModal.addEventListener('click',e=>{if(e.target===tragedyModal)closeTragedies()});tragedyModal.querySelector('.vote-save').addEventListener('click',()=>{localStorage.setItem('metinlerarasi-tragedy-votes',JSON.stringify([...selected]));tragedyModal.querySelector('.vote-message').textContent='Oyların kaydedildi. Eylül masasında görüşürüz.';tragedyModal.querySelector('.vote-save').textContent='Seçimler kaydedildi ✓';renderShelf()});shelfButton.addEventListener('click',()=>shelf.classList.add('open'));shelf.querySelector('.shelf-close').addEventListener('click',()=>shelf.classList.remove('open'));shelf.querySelector('.shelf-edit').addEventListener('click',()=>{shelf.classList.remove('open');tragedyLaunch.click()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(tragedyModal.classList.contains('open'))closeTragedies();shelf.classList.remove('open')}});
+}
+
+const navigationEntry=performance.getEntriesByType('navigation')[0];
+const cameFromInternalLink=window.name==='metinlerarasi-internal';
+const firstSiteVisit=window.name!=='metinlerarasi-visited'&&!cameFromInternalLink;
+const pageWasReloaded=navigationEntry?.type==='reload';
+window.name='metinlerarasi-visited';
+document.querySelectorAll('a[href]').forEach(link=>link.addEventListener('click',()=>{const href=link.getAttribute('href');if(href&&!href.startsWith('#')&&!href.startsWith('http')&&!href.startsWith('mailto:'))window.name='metinlerarasi-internal'}));
+if(!cameFromInternalLink&&(firstSiteVisit||pageWasReloaded)){
+  const intro=document.createElement('div');
+  intro.className='book-intro cosmic-intro';
+  intro.innerHTML='<div class="intro-stars" aria-hidden="true"></div><div class="intro-aperture" aria-hidden="true"><i></i><i></i><i></i></div><div class="intro-file"><span>AĞUSTOS · DOSYA 001</span><img src="assets/evreni-anlayan-maymun-kapak.jpg" alt=""><b>Seçilen kitap bulundu</b><small>EVRENİ ANLAYAN MAYMUN</small></div><div class="intro-word iw1">İNSAN</div><div class="intro-word iw2">EVRİM</div><div class="intro-word iw3">EVREN</div><button class="intro-skip" aria-label="Açılışı geç">GEÇ →</button>';
+  document.body.appendChild(intro);
+  const finishIntro=()=>{intro.classList.add('done');setTimeout(()=>intro.remove(),900)};
+  intro.querySelector('.intro-skip').addEventListener('click',finishIntro);
+  setTimeout(()=>intro.classList.add('reveal-book'),650);
+  setTimeout(finishIntro,3200);
+}
+
+const parallax=document.querySelector('.parallax-zone');
+if(parallax&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.addEventListener('pointermove',e=>{const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);const object=parallax.querySelector('.book-face')||parallax.querySelector('.logo-system');const copy=document.querySelector('.august-copy')||parallax.querySelector('.intro-copy');if(object)object.style.transform=`rotateY(${x*8}deg) rotateX(${y*-6}deg) translate3d(${x*10}px,${y*10}px,0)`;if(copy)copy.style.transform=`translate3d(${x*-7}px,${y*-7}px,0)`})}
+
+if(document.body.classList.contains('film-page')){const scenes=document.querySelectorAll('.scene');const observer=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('in-view',entry.isIntersecting)),{threshold:.28});scenes.forEach(scene=>observer.observe(scene));const tunnel=document.querySelector('.time-tunnel'),frames=[...document.querySelectorAll('.tunnel-frame')];let lastFrame=-1;const updateFilmProgress=()=>{const max=document.documentElement.scrollHeight-innerHeight;document.documentElement.style.setProperty('--scroll-progress',`${max?scrollY/max*100:0}%`);if(tunnel){const rect=tunnel.getBoundingClientRect(),travel=tunnel.offsetHeight-innerHeight,progress=Math.max(0,Math.min(1,-rect.top/travel)),index=Math.min(frames.length-1,Math.floor(progress*frames.length));document.body.classList.toggle('tunnel-active',rect.top<=0&&rect.bottom>=innerHeight);if(index!==lastFrame&&rect.top<=0&&rect.bottom>=innerHeight){frames.forEach((f,i)=>{f.classList.toggle('active',i===index);f.classList.toggle('leaving',i<index)});lastFrame=index}}};updateFilmProgress();addEventListener('scroll',updateFilmProgress,{passive:true})}
