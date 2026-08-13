@@ -24,3 +24,6 @@
   .film-page .topbar,.calendar-page .topbar{position:sticky;top:0;z-index:50}.page-hero h1,.calendar-intro h1{font-size:clamp(48px,15vw,74px)}
 }
 @media(max-width:370px){.topbar .brand span{display:none}.back-home{padding:0 10px;font-size:8px}.feature-stage,.feature-stage:has(.chosen-book[data-spotlight="film"]){height:570px;min-height:570px}.feature-stage .august-copy{height:195px}}
+/* Mobile Safari image rendering safeguards for the Interstellar feature. */
+.interstellar-page .is-hero>img,.interstellar-page .is-gallery img{display:block;background:#080b13;-webkit-transform:translateZ(0);backface-visibility:hidden}
+@media(max-width:700px){.interstellar-page .is-hero>img,.interstellar-page .is-gallery img{animation:none!important;transform:none!important;-webkit-transform:translateZ(0)}.interstellar-page .is-hero:before,.interstellar-page .is-gallery figure:before{content:"";position:absolute;inset:0;background:#101827;z-index:0}.interstellar-page .is-hero>img,.interstellar-page .is-gallery img{z-index:1}.interstellar-page .is-gallery figure:after{z-index:1}.interstellar-page .is-gallery figcaption{z-index:2}}
