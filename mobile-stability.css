@@ -83,36 +83,67 @@ body[data-month-id] .feature-stage:before {
 }
 body[data-month-id="08"] {
   --month-symbol: "◷";
-  --wine: #d39a22;
-  --sage: #142a52;
-  --paper: #fff4cf;
-  --paper2: #ecd58d;
-  --ink: #101d38;
-  --sepia: #785c20;
-  --line: rgba(16, 29, 56, 0.2);
+  --wine: #c7a66a;
+  --sage: #123d3a;
+  --paper: #f4eee3;
+  --paper2: #ddcbaa;
+  --ink: #172a28;
+  --sepia: #80633b;
+  --line: rgba(23, 42, 40, 0.2);
 }
 body[data-month-id="08"] .cosmos {
   background:
     repeating-radial-gradient(
       circle at 18% 48%,
       transparent 0 42px,
-      rgba(211, 154, 34, 0.24) 43px 46px
+      rgba(199, 166, 106, 0.23) 43px 45px
     ),
     linear-gradient(
       115deg,
       transparent 0 63%,
-      rgba(20, 42, 82, 0.14) 63% 64%,
+      rgba(18, 61, 58, 0.14) 63% 64%,
       transparent 64%
     ),
-    linear-gradient(135deg, #fff4cf, #ecd58d);
+    radial-gradient(circle at 78% 22%, rgba(199, 166, 106, 0.2), transparent 28%),
+    linear-gradient(135deg, #f4eee3, #ddcbaa);
 }
 body[data-month-id="08"] .feature-stage:before {
-  color: rgba(20, 42, 82, 0.15);
+  color: rgba(18, 61, 58, 0.15);
   transform: rotate(-12deg);
 }
 body[data-month-id="08"] .global-month-status {
-  background: #142a52;
-  color: #fff4cf;
+  background: linear-gradient(90deg, #102e2c, #1b4944);
+  color: #f3dfb7;
+}
+body[data-month-id="08"] .web-months button.selected {
+  background: linear-gradient(145deg, #102e2c, #1b4944);
+  border-color: #c7a66a;
+  color: #f8edda;
+  box-shadow:
+    inset 0 0 0 1px rgba(199, 166, 106, 0.34),
+    0 9px 22px rgba(18, 61, 58, 0.24);
+}
+body[data-month-id="08"] .web-months button.selected small,
+body[data-month-id="08"] .web-months button.selected span {
+  color: #d9bf8e;
+}
+body[data-month-id="08"] .chosen-stamp {
+  border-color: #c7a66a;
+  color: #9a763f;
+  background: color-mix(in srgb, #f4eee3 78%, transparent);
+  box-shadow: 0 12px 34px rgba(18, 61, 58, 0.12);
+}
+body[data-month-id="08"] .feature-stage {
+  border-color: rgba(199, 166, 106, 0.42);
+  box-shadow: 0 28px 72px rgba(18, 61, 58, 0.13);
+}
+html[data-theme="dark"] body[data-month-id="08"] {
+  --paper: #111a19;
+  --paper2: #1d2b29;
+  --ink: #f4ead8;
+  --sage: #3f6a63;
+  --sepia: #c7aa77;
+  --line: rgba(199, 166, 106, 0.2);
 }
 body[data-month-id="09"] {
   --month-symbol: "Θ";
@@ -487,7 +518,7 @@ body[data-month-id="12"] .cosmos:after {
 body[data-month-id="08"] .cosmos:after {
   background: conic-gradient(
     from 0deg at 18% 48%,
-    rgba(20, 42, 82, 0.22) 0 1deg,
+    rgba(18, 61, 58, 0.22) 0 1deg,
     transparent 1deg 30deg
   );
   mask: radial-gradient(
@@ -550,7 +581,7 @@ body[data-month-id="12"] .cosmos:after {
   display: grid;
 }
 body[data-month-id="08"] .cosmos-word {
-  color: rgba(20, 42, 82, 0.15);
+  color: rgba(18, 61, 58, 0.16);
 }
 body[data-month-id="09"] .cosmos-word {
   color: rgba(211, 31, 50, 0.16);
@@ -1186,4 +1217,76 @@ body[data-month-id="09"] .four-book-selection figure.tragedy-cover img {
     transform: none;
     box-shadow: 0 5px 12px color-mix(in srgb, var(--wine) 28%, transparent);
   }
+}
+
+/* Preserve the August palette when Brave forces its native dark theme. */
+html[native-dark-active] body[data-month-id="08"] {
+  --paper: #111a19 !important;
+  --paper2: #1d2b29 !important;
+  --ink: #f4ead8 !important;
+  --wine: #c7a66a !important;
+  --sage: #456f68 !important;
+  --sepia: #c7aa77 !important;
+  --line: rgba(199, 166, 106, 0.22) !important;
+  background: #111a19 !important;
+}
+
+html[native-dark-active] body[data-month-id="08"] .cosmos {
+  background:
+    repeating-radial-gradient(
+      circle at 18% 48%,
+      transparent 0 42px,
+      rgba(199, 166, 106, 0.16) 43px 45px
+    ),
+    linear-gradient(
+      115deg,
+      transparent 0 63%,
+      rgba(69, 111, 104, 0.17) 63% 64%,
+      transparent 64%
+    ),
+    radial-gradient(circle at 78% 22%, rgba(199, 166, 106, 0.11), transparent 30%),
+    linear-gradient(135deg, #111a19, #1d2b29) !important;
+}
+
+html[native-dark-active]
+  body[data-month-id="08"]
+  .web-months
+  button.selected {
+  position: relative;
+  isolation: isolate;
+  background: transparent !important;
+  border-color: #c7a66a !important;
+  color: #fff4df !important;
+  outline: 1px solid rgba(199, 166, 106, 0.78);
+  outline-offset: -2px;
+  box-shadow:
+    inset 0 0 0 1px rgba(199, 166, 106, 0.42),
+    0 9px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+html[native-dark-active]
+  body[data-month-id="08"]
+  .web-months
+  button.selected:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(145deg, #123d3a, #1f5a53);
+}
+
+html[native-dark-active] body[data-month-id="08"] .web-months {
+  background: rgba(29, 43, 41, 0.9) !important;
+  border-color: rgba(199, 166, 106, 0.28) !important;
+}
+
+html[native-dark-active] body[data-month-id="08"] .chosen-stamp {
+  color: #e0c28b !important;
+  border-color: #c7a66a !important;
+  background: rgba(17, 26, 25, 0.7) !important;
+}
+
+html[native-dark-active] body[data-month-id="08"] .brand span {
+  color: #d8bd8b !important;
 }

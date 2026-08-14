@@ -1,4 +1,4 @@
-const stabilitySheet=document.createElement('link');stabilitySheet.rel='stylesheet';stabilitySheet.href='mobile-stability.css?v=12';document.head.appendChild(stabilitySheet);
+const stabilitySheet=document.createElement('link');stabilitySheet.rel='stylesheet';stabilitySheet.href='mobile-stability.css?v=13';document.head.appendChild(stabilitySheet);
 const root=document.documentElement;
 document.querySelectorAll('.web-months button:disabled').forEach(button=>button.remove());
 root.removeAttribute('data-theme');localStorage.removeItem('metinlerarasi-theme');
