@@ -1074,13 +1074,14 @@ body[data-month-id="09"] .four-book-selection figure.tragedy-cover img {
   }
 }
 
-/* Mobile month navigation lives in the page flow instead of covering it. */
-@media (max-width: 580px) {
+/* Narrow-screen month navigation lives in the page flow instead of covering it. */
+@media (max-width: 900px) {
   .global-month-status {
     display: none;
   }
 
   .home .august-stage {
+    display: block;
     padding-top: 8px;
   }
 
@@ -1094,6 +1095,17 @@ body[data-month-id="09"] .four-book-selection figure.tragedy-cover img {
     grid-template-rows: auto auto auto;
     column-gap: 12px;
     align-items: center;
+  }
+
+  .home .feature-stage .chosen-book,
+  .home .feature-stage:has(.chosen-book[data-spotlight="film"]) .chosen-book {
+    grid-column: 1;
+    width: 100%;
+  }
+
+  .home .feature-stage .august-copy {
+    grid-column: 1;
+    width: 100%;
   }
 
   .home .month-no {
