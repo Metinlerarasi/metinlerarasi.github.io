@@ -2,6 +2,9 @@
   --display-heavy: Arial Black, Helvetica Neue, Arial, sans-serif;
   --month-number: "08";
 }
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
 .book-face:after,
 .month:after {
   content: var(--month-number) !important;
@@ -144,6 +147,36 @@ html[data-theme="dark"] body[data-month-id="08"] {
   --sage: #3f6a63;
   --sepia: #c7aa77;
   --line: rgba(199, 166, 106, 0.2);
+}
+html[data-theme="dark"] body[data-month-id] .cosmos {
+  background:
+    radial-gradient(
+      circle at 18% 24%,
+      color-mix(in srgb, var(--wine) 19%, transparent),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 82% 68%,
+      color-mix(in srgb, var(--sage) 16%, transparent),
+      transparent 38%
+    ),
+    linear-gradient(145deg, #111312, #1d1b19) !important;
+}
+html[data-theme="dark"] body[data-month-id="08"] .cosmos {
+  background:
+    repeating-radial-gradient(
+      circle at 18% 48%,
+      transparent 0 42px,
+      rgba(199, 166, 106, 0.16) 43px 45px
+    ),
+    linear-gradient(
+      115deg,
+      transparent 0 63%,
+      rgba(69, 111, 104, 0.17) 63% 64%,
+      transparent 64%
+    ),
+    radial-gradient(circle at 78% 22%, rgba(199, 166, 106, 0.11), transparent 30%),
+    linear-gradient(135deg, #111a19, #1d2b29) !important;
 }
 body[data-month-id="09"] {
   --month-symbol: "Θ";
