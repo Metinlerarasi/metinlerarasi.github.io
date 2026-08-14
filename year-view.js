@@ -1,27 +1,260 @@
-(()=>{
-document.querySelectorAll('.web-months button').forEach(button=>button.replaceWith(button.cloneNode(true)));
-const currentMonth=8;
-const months={
-'01':{name:'OCAK',title:'Yeni Başlangıçlar',theme:'Başlangıç · Niyet · Dönüşüm',cover:'YENİ BİR SAYFA',sub:'YILIN İLK DOSYASI',description:'Yeni bir yılın eşiğinde değişim, niyet ve yeniden başlama fikrini taşıyan metinlere bakıyoruz.'},
-'02':{name:'ŞUBAT',title:'Aşkın Halleri',theme:'Aşk · Yakınlık · Yalnızlık',cover:'AŞKIN HALLERİ',sub:'İKİ KİŞİLİK METİNLER',description:'Aşkın romantik anlatının ötesindeki yüzlerini; bağlılık, mesafe ve yalnızlık üzerinden konuşuyoruz.'},
-'03':{name:'MART',title:'Kadınların Sesi',theme:'Hafıza · Direniş · Kimlik',cover:'KENDİ SESİ',sub:'HAFIZA VE DİRENİŞ',description:'Kadın yazarların ve karakterlerin hafıza, kimlik ve direnme biçimlerine odaklanıyoruz.'},
-'04':{name:'NİSAN',title:'Doğa Uyanırken',theme:'Doğa · İnsan · Değişim',cover:'YEŞİL DOSYA',sub:'DOĞAYA YENİDEN BAKMAK',description:'İnsan ile doğa arasındaki ilişkiyi, dönüşümü ve yeryüzünde birlikte yaşama fikrini araştırıyoruz.'},
-'05':{name:'MAYIS',title:'Kent ve İnsan',theme:'Şehir · Kalabalık · Yalnızlık',cover:'KENTİN İÇİNDE',sub:'SOKAKLAR VE HİKÂYELER',description:'Şehrin ritmini, kalabalık içindeki yalnızlığı ve mekânların karakterler üzerindeki izini okuyoruz.'},
-'06':{name:'HAZİRAN',title:'Yolculuklar',theme:'Yol · Arayış · Karşılaşma',cover:'YOLDA',sub:'BİR YERDEN DİĞERİNE',description:'Fiziksel ve zihinsel yolculukların insanı nasıl değiştirdiğini, karşılaşmalar üzerinden tartışıyoruz.'},
-'07':{name:'TEMMUZ',title:'İlk Masa',theme:'Başlangıç · Merak · Diyalog',cover:'İLK MASA',sub:'NEDEN OKUYORUZ?',description:'Kulübün başlangıç ayında neden okuduğumuzu ve bir metni birlikte konuşmanın neyi değiştirdiğini düşündük.'},
-'08':{name:'AĞUSTOS',title:'Evreni Anlayan Maymun',theme:'Merak · Saat · Keşif',words:['MERAK','SAAT','SORU','KEŞİF'],image:'assets/evreni-anlayan-maymun-kapak.jpg',film:'Zamana Karşı',filmImage:'assets/in-time-01.jpg',description:'Merakın zamanı nasıl genişlettiğini konuşuyoruz: insanı, evreni ve kendi doğamızı anlamaya çalışırken her soru yeni bir saati başlatıyor.'},
-'09':{name:'EYLÜL',title:'Tragedyalar Ayı',theme:'Tiyatro · Antik Yunan · Uzaklık',words:['SAHNE','KORO','KADER','UZAK'],cover:'DÖRT TRAGEDYA',sub:'SEÇKİ TAMAMLANDI',books:[['Zincire Vurulmuş Prometheus','Aiskhylos','assets/tragedy-prometheus.jpg'],['Elektra','Sophokles','assets/tragedy-elektra.jpg'],['Helena','Euripides','assets/tragedy-helena.jpg'],['Hamlet','William Shakespeare','assets/tragedy-hamlet.webp']],film:'Yıldızlararası',filmImage:'assets/interstellar-01.jpg',filmDescription:'İnsanlığın geleceğini kurtarmak için yıldızların ötesine uzanan; zaman, sevgi ve fedakârlık üzerine kozmik bir yolculuk.',description:'Antik Yunan sahnesinden yıldızların uzağına uzanan Eylül dosyası; kaderi, mesafeyi ve eve dönme arzusunu dört tragedya ile birlikte düşünüyor.'},
-'10':{name:'EKİM',title:'Karanlık Anlatılar',theme:'Korku · Tekinsizlik · Gölge',cover:'KARANLIK',sub:'TEKİNSİZ HİKÂYELER',description:'Korkunun görünmeyen kaynaklarını, tekinsiz mekânları ve insanın kendi gölgesiyle karşılaşmasını inceliyoruz.'},
-'11':{name:'KASIM',title:'Hafıza Odaları',theme:'Geçmiş · Hatırlama · Kayıp',cover:'HAFIZA',sub:'UNUTULMAYANLAR',description:'Bireysel ve toplumsal hafızanın kayıp, yas ve hatırlama biçimleriyle nasıl kurulduğuna bakıyoruz.'},
-'12':{name:'ARALIK',title:'Yılın Son Cümlesi',theme:'Zaman · Bitiş · Yenilenme',cover:'SON CÜMLE',sub:'2026 KAPANIŞ DOSYASI',description:'Yıl boyunca biriktirdiğimiz soruları, kitapları ve karşılaşmaları son bir masada yan yana getiriyoruz.'}
-};
-const stateFor=number=>number<currentMonth?'past':number===currentMonth?'current':'future';
-const stateText={past:['GEÇMİŞ AY','Bu ayın dosyası arşivlendi'],current:['BU AY','Güncel programı görüntülüyorsun'],future:['GELECEK AY','Bu ayın programı henüz başlamadı']};
-const status=document.querySelector('.global-month-status');
-function render(id){const data=months[id],number=Number(id),state=stateFor(number),home=document.querySelector('.august-stage');if(!data||!home)return;document.body.dataset.month=state;document.body.dataset.monthId=id;document.body.style.setProperty('--month-number',`"${id}"`);home.classList.add('month-changing');document.querySelectorAll('.web-months button').forEach(button=>{const selected=button.dataset.month===id;button.classList.toggle('selected',selected);button.querySelector('small').textContent=selected?stateText[state][0]:'YAKINDA'});if(status){status.className=`global-month-status ${state}`;status.innerHTML=`<b>${stateText[state][0]} · ${data.name} 2026</b><span>${stateText[state][1]}</span>`}setTimeout(()=>{document.querySelector('.month-no').textContent=id;document.querySelector('.august-index div b').textContent=data.name;document.querySelector('.august-index div small').textContent=state==='current'?'2026 · GÜNCEL DOSYA':'2026 · PLANLANIYOR';document.querySelector('.august-index>em').textContent=state==='current'?'Bu ay buradayız':'Henüz başlamadı';document.querySelector('.chosen-stamp').innerHTML=state==='current'?'BU AY<br>SEÇİLDİ':'GELECEK<br>AY';document.querySelector('.august-copy .eyebrow').textContent=`${data.name.charAt(0)+data.name.slice(1).toLowerCase()} 2026 dosyası`;document.querySelector('.august-copy h2').textContent=data.title;document.querySelector('.august-copy>p').textContent=data.description;document.querySelector('.theme-line b').textContent=data.theme;document.querySelector('.home-actions>a').textContent=state==='current'?'Ağustos programı →':'Planlanan aya göz at →';const face=document.querySelector('.book-face');face.classList.toggle('real-cover',Boolean(data.image));face.classList.toggle('four-book-face',Boolean(data.books));face.innerHTML=data.image?`<img src="${data.image}" alt="${data.title} kitap kapağı">`:data.books?`<div class="four-book-selection" aria-label="Seçilen dört tragedya"><small>EYLÜL · SEÇİLEN 4 TRAGEDYA</small><div>${data.books.map((book,i)=>`<figure class="tragedy-cover tc-${i+1}"><span>0${i+1}</span><img src="${book[2]}" alt="${book[0]} kitap kapağı"><figcaption><strong>${book[0]}</strong><em>${book[1]}</em></figcaption></figure>`).join('')}</div></div>`:`<div class="month-type-cover"><small>METİNLERARASI · ${data.name}</small><strong>${data.cover}</strong><span>${data.sub}</span></div>`;document.querySelector('.book-slide>small').textContent=data.image?'SEÇİLEN KİTAP':data.books?'SEÇİLEN DÖRT TRAGEDYA':'KİTAP SEÇİMİ BEKLENİYOR';const film=document.querySelector('.film-slide');film.classList.toggle('waiting',!data.film);film.toggleAttribute('aria-disabled',!data.film);film.tabIndex=data.film?0:-1;film.href=data.film?(id==='08'?'ayin-filmi.html':id==='09'?'yildizlararasi.html':'#'):'#';film.querySelector('img').hidden=!data.film;if(data.film)film.querySelector('img').src=data.filmImage;film.querySelector('small').textContent=data.film?'SEÇİLEN FİLM':'AYIN FİLMİ';film.querySelector('b').textContent=data.film?data.film:'Film henüz seçilmedi';film.querySelector('p').textContent=data.film?(data.filmDescription||'Zamanın para olduğu bir gelecekte, yaşamın gerçek bedelini sorgulayan bir bilimkurgu.'):data.name+' ayının filmi henüz seçilmedi.';film.querySelector('time').textContent=data.film?'Film buluşması · Tarih yakında':'Film seçimi daha sonra açıklanacak';film.querySelector('em').textContent=data.film?'Film dosyasını aç →':'Seçim daha sonra açıklanacak';home.classList.remove('month-changing')},220);sessionStorage.setItem('metinlerarasi-view-month',state)}
-document.querySelectorAll('.web-months button').forEach(button=>button.addEventListener('click',event=>{event.stopImmediatePropagation();render(button.dataset.month);renderThemeWords(button.dataset.month)}));
-document.querySelector('.film-slide')?.addEventListener('click',event=>{if(event.currentTarget.classList.contains('waiting'))event.preventDefault()});
-const renderThemeWords=id=>{const words=months[id]?.words;if(!words)return;document.querySelectorAll('.cosmos-word').forEach((word,i)=>word.textContent=words[i]||words[0])};
-document.querySelectorAll('.web-months button').forEach(button=>button.addEventListener('click',()=>renderThemeWords(button.dataset.month)));
-render('08');renderThemeWords('08');
+(() => {
+  document
+    .querySelectorAll(".web-months button")
+    .forEach((button) => button.replaceWith(button.cloneNode(true)));
+  const currentMonth = 8;
+  const months = {
+    "01": {
+      name: "OCAK",
+      title: "Yeni Başlangıçlar",
+      theme: "Başlangıç · Niyet · Dönüşüm",
+      cover: "YENİ BİR SAYFA",
+      sub: "YILIN İLK DOSYASI",
+      description:
+        "Yeni bir yılın eşiğinde değişim, niyet ve yeniden başlama fikrini taşıyan metinlere bakıyoruz.",
+    },
+    "02": {
+      name: "ŞUBAT",
+      title: "Aşkın Halleri",
+      theme: "Aşk · Yakınlık · Yalnızlık",
+      cover: "AŞKIN HALLERİ",
+      sub: "İKİ KİŞİLİK METİNLER",
+      description:
+        "Aşkın romantik anlatının ötesindeki yüzlerini; bağlılık, mesafe ve yalnızlık üzerinden konuşuyoruz.",
+    },
+    "03": {
+      name: "MART",
+      title: "Kadınların Sesi",
+      theme: "Hafıza · Direniş · Kimlik",
+      cover: "KENDİ SESİ",
+      sub: "HAFIZA VE DİRENİŞ",
+      description:
+        "Kadın yazarların ve karakterlerin hafıza, kimlik ve direnme biçimlerine odaklanıyoruz.",
+    },
+    "04": {
+      name: "NİSAN",
+      title: "Doğa Uyanırken",
+      theme: "Doğa · İnsan · Değişim",
+      cover: "YEŞİL DOSYA",
+      sub: "DOĞAYA YENİDEN BAKMAK",
+      description:
+        "İnsan ile doğa arasındaki ilişkiyi, dönüşümü ve yeryüzünde birlikte yaşama fikrini araştırıyoruz.",
+    },
+    "05": {
+      name: "MAYIS",
+      title: "Kent ve İnsan",
+      theme: "Şehir · Kalabalık · Yalnızlık",
+      cover: "KENTİN İÇİNDE",
+      sub: "SOKAKLAR VE HİKÂYELER",
+      description:
+        "Şehrin ritmini, kalabalık içindeki yalnızlığı ve mekânların karakterler üzerindeki izini okuyoruz.",
+    },
+    "06": {
+      name: "HAZİRAN",
+      title: "Yolculuklar",
+      theme: "Yol · Arayış · Karşılaşma",
+      cover: "YOLDA",
+      sub: "BİR YERDEN DİĞERİNE",
+      description:
+        "Fiziksel ve zihinsel yolculukların insanı nasıl değiştirdiğini, karşılaşmalar üzerinden tartışıyoruz.",
+    },
+    "07": {
+      name: "TEMMUZ",
+      title: "İlk Masa",
+      theme: "Başlangıç · Merak · Diyalog",
+      cover: "İLK MASA",
+      sub: "NEDEN OKUYORUZ?",
+      description:
+        "Kulübün başlangıç ayında neden okuduğumuzu ve bir metni birlikte konuşmanın neyi değiştirdiğini düşündük.",
+    },
+    "08": {
+      name: "AĞUSTOS",
+      title: "Evreni Anlayan Maymun",
+      theme: "Merak · Saat · Keşif",
+      words: ["MERAK", "SAAT", "SORU", "KEŞİF"],
+      image: "assets/evreni-anlayan-maymun-kapak.jpg",
+      film: "Zamana Karşı",
+      filmImage: "assets/in-time-horizontal-poster.jpg",
+      description:
+        "Merakın zamanı nasıl genişlettiğini konuşuyoruz: insanı, evreni ve kendi doğamızı anlamaya çalışırken her soru yeni bir saati başlatıyor.",
+    },
+    "09": {
+      name: "EYLÜL",
+      title: "Tragedyalar Ayı",
+      theme: "Tiyatro · Antik Yunan · Uzaklık",
+      words: ["SAHNE", "KORO", "KADER", "UZAK"],
+      cover: "DÖRT TRAGEDYA",
+      sub: "SEÇKİ TAMAMLANDI",
+      books: [
+        [
+          "Zincire Vurulmuş Prometheus",
+          "Aiskhylos",
+          "assets/tragedy-prometheus.jpg",
+        ],
+        ["Elektra", "Sophokles", "assets/tragedy-elektra.jpg"],
+        ["Helena", "Euripides", "assets/tragedy-helena.jpg"],
+        ["Hamlet", "William Shakespeare", "assets/tragedy-hamlet.webp"],
+      ],
+      film: "Yıldızlar Arasında",
+      filmImage: "assets/interstellar-horizontal-poster.jpg",
+      filmDescription:
+        "İnsanlığın geleceğini kurtarmak için yıldızların ötesine uzanan; zaman, sevgi ve fedakârlık üzerine kozmik bir yolculuk.",
+      description:
+        "Antik Yunan sahnesinden yıldızların uzağına uzanan Eylül dosyası; kaderi, mesafeyi ve eve dönme arzusunu dört tragedya ile birlikte düşünüyor.",
+    },
+    10: {
+      name: "EKİM",
+      title: "Karanlık Anlatılar",
+      theme: "Korku · Tekinsizlik · Gölge",
+      bookPending: true,
+      description:
+        "Korkunun görünmeyen kaynaklarını, tekinsiz mekânları ve insanın kendi gölgesiyle karşılaşmasını inceliyoruz.",
+    },
+    11: {
+      name: "KASIM",
+      title: "Hafıza Odaları",
+      theme: "Geçmiş · Hatırlama · Kayıp",
+      bookPending: true,
+      description:
+        "Bireysel ve toplumsal hafızanın kayıp, yas ve hatırlama biçimleriyle nasıl kurulduğuna bakıyoruz.",
+    },
+    12: {
+      name: "ARALIK",
+      title: "Yılın Son Cümlesi",
+      theme: "Zaman · Bitiş · Yenilenme",
+      bookPending: true,
+      description:
+        "Yıl boyunca biriktirdiğimiz soruları, kitapları ve karşılaşmaları son bir masada yan yana getiriyoruz.",
+    },
+  };
+  const stateFor = (number) =>
+    number < currentMonth
+      ? "past"
+      : number === currentMonth
+        ? "current"
+        : "future";
+  const stateText = {
+    past: ["GEÇMİŞ AY", "Bu ayın dosyası arşivlendi"],
+    current: ["BU AY", "Güncel programı görüntülüyorsun"],
+    future: ["GELECEK AY", "Bu ayın programı henüz başlamadı"],
+  };
+  const status = document.querySelector(".global-month-status");
+  function render(id) {
+    const data = months[id],
+      number = Number(id),
+      state = stateFor(number),
+      home = document.querySelector(".august-stage");
+    if (!data || !home) return;
+    document.body.dataset.month = state;
+    document.body.dataset.monthId = id;
+    document.body.style.setProperty("--month-number", `"${id}"`);
+    home.classList.add("month-changing");
+    document.querySelectorAll(".web-months button").forEach((button) => {
+      const selected = button.dataset.month === id;
+      button.classList.toggle("selected", selected);
+      button.querySelector("small").textContent = selected
+        ? stateText[state][0]
+        : "YAKINDA";
+    });
+    if (status) {
+      status.className = `global-month-status ${state}`;
+      status.innerHTML = `<b>${stateText[state][0]} · ${data.name} 2026</b><span>${stateText[state][1]}</span>`;
+    }
+    setTimeout(() => {
+      document.querySelector(".month-no").textContent = id;
+      document.querySelector(".august-index div b").textContent = data.name;
+      document.querySelector(".august-index div small").textContent =
+        state === "current" ? "2026 · GÜNCEL DOSYA" : "2026 · PLANLANIYOR";
+      document.querySelector(".august-index>em").textContent =
+        state === "current" ? "Bu ay buradayız" : "Henüz başlamadı";
+      document.querySelector(".chosen-stamp").innerHTML =
+        data.bookPending
+          ? "KİTAP<br>BEKLENİYOR"
+          : state === "current"
+            ? "BU AY<br>SEÇİLDİ"
+            : "GELECEK<br>AY";
+      document.querySelector(".august-copy .eyebrow").textContent =
+        `${data.name.charAt(0) + data.name.slice(1).toLocaleLowerCase("tr-TR")} 2026 dosyası`;
+      document.querySelector(".august-copy h2").textContent = data.title;
+      document.querySelector(".august-copy>p").textContent = data.description;
+      document.querySelector(".theme-line b").textContent = data.theme;
+      document.querySelector(".home-actions>a").textContent =
+        state === "current" ? "Ağustos programı →" : "Planlanan aya göz at →";
+      const face = document.querySelector(".book-face");
+      face.classList.toggle("real-cover", Boolean(data.image));
+      face.classList.toggle("four-book-face", Boolean(data.books));
+      face.classList.toggle("pending-book-face", Boolean(data.bookPending));
+      face.innerHTML = data.image
+        ? `<img src="${data.image}" alt="${data.title} kitap kapağı">`
+        : data.books
+          ? `<div class="four-book-selection" aria-label="Seçilen dört tragedya"><small>EYLÜL · SEÇİLEN 4 TRAGEDYA</small><div>${data.books.map((book, i) => `<figure class="tragedy-cover tc-${i + 1}"><span>0${i + 1}</span><img src="${book[2]}" alt="${book[0]} kitap kapağı"><figcaption><strong>${book[0]}</strong><em>${book[1]}</em></figcaption></figure>`).join("")}</div></div>`
+          : `<div class="month-type-cover pending-month-cover"><small>METİNLERARASI · ${data.name}</small><strong>HENÜZ<br>SEÇİLMEDİ</strong><span>${data.name.charAt(0) + data.name.slice(1).toLocaleLowerCase("tr-TR")} ayının kitapları daha sonra açıklanacak.</span></div>`;
+      document.querySelector(".book-slide>small").textContent = data.image
+        ? "SEÇİLEN KİTAP"
+        : data.books
+          ? "SEÇİLEN DÖRT TRAGEDYA"
+          : "KİTAP SEÇİMİ BEKLENİYOR";
+      const film = document.querySelector(".film-slide");
+      film.classList.toggle("waiting", !data.film);
+      film.toggleAttribute("aria-disabled", !data.film);
+      film.tabIndex = data.film ? 0 : -1;
+      film.href = data.film
+        ? id === "08"
+          ? "ayin-filmi.html"
+          : id === "09"
+            ? "yildizlararasi.html"
+            : "#"
+        : "#";
+      film.querySelector("img").hidden = !data.film;
+      if (data.film) film.querySelector("img").src = data.filmImage;
+      if (data.film)
+        film.style.setProperty("--film-poster", `url("${data.filmImage}")`);
+      else film.style.removeProperty("--film-poster");
+      film.querySelector("small").textContent = data.film
+        ? "SEÇİLEN FİLM"
+        : "AYIN FİLMİ";
+      film.querySelector("b").textContent = data.film
+        ? data.film
+        : "Film henüz seçilmedi";
+      film.querySelector("p").textContent = data.film
+        ? data.filmDescription ||
+          "Zamanın para olduğu bir gelecekte, yaşamın gerçek bedelini sorgulayan bir bilimkurgu."
+        : data.name + " ayının filmi henüz seçilmedi.";
+      film.querySelector("time").textContent = data.film
+        ? "Film buluşması · Tarih yakında"
+        : "Film seçimi daha sonra açıklanacak";
+      film.querySelector("em").textContent = data.film
+        ? "Film dosyasını aç →"
+        : "Seçim daha sonra açıklanacak";
+      home.classList.remove("month-changing");
+    }, 220);
+    sessionStorage.setItem("metinlerarasi-view-month", state);
+  }
+  document.querySelectorAll(".web-months button").forEach((button) =>
+    button.addEventListener("click", (event) => {
+      event.stopImmediatePropagation();
+      render(button.dataset.month);
+      renderThemeWords(button.dataset.month);
+    }),
+  );
+  document.querySelector(".film-slide")?.addEventListener("click", (event) => {
+    if (event.currentTarget.classList.contains("waiting"))
+      event.preventDefault();
+  });
+  const renderThemeWords = (id) => {
+    const words = months[id]?.words;
+    if (!words) return;
+    document
+      .querySelectorAll(".cosmos-word")
+      .forEach((word, i) => (word.textContent = words[i] || words[0]));
+  };
+  document
+    .querySelectorAll(".web-months button")
+    .forEach((button) =>
+      button.addEventListener("click", () =>
+        renderThemeWords(button.dataset.month),
+      ),
+    );
+  render("08");
+  renderThemeWords("08");
 })();
