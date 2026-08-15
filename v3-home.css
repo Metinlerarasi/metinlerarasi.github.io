@@ -1195,6 +1195,11 @@ body.v3-home {
     margin-top: 10px;
   }
 
+  .v3-home .content-tabs {
+    position: relative;
+    top: auto;
+  }
+
   .v3-home .august-stage {
     padding-top: 18px;
   }
