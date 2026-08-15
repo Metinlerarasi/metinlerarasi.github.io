@@ -1,5 +1,76 @@
 (() => {
+  const pendingBook = (theme) => ({
+    pending: true,
+    title: "Kitaplar henüz seçilmedi",
+    theme,
+  });
+  const pendingFilms = () =>
+    Array.from({ length: 4 }, (_, index) => ({
+      pending: true,
+      title: `${index + 1}. film henüz seçilmedi`,
+    }));
+
+  const inTime = {
+    title: "Zamana Karşı",
+    original: "In Time · 2011",
+    image: "assets/in-time-horizontal-poster.jpg",
+    summary:
+      "Zamanın para birimine dönüştüğü bir gelecekte Will Salas, herkesin yaşam süresini belirleyen düzene karşı koşmaya başlar.",
+    idea: "Yaşamın değeri, sınıf eşitsizliği ve zaman üzerindeki iktidar.",
+    theme: "Zaman · Eşitsizlik · Özgürlük",
+    imdb: "6.7 / 10",
+    director: "Andrew Niccol",
+    cast: "Justin Timberlake · Amanda Seyfried · Cillian Murphy",
+    scenes: [
+      ["assets/in-time-04.jpg", "ZAMANI RİSKE ATMAK", "Will masaya para değil, doğrudan yaşamını koyar."],
+      ["assets/in-time-05.jpg", "ÖLÜMSÜZLERİN BÖLGESİ", "Zenginlik burada gösteriş değil; tükenmeyen yarınlardır."],
+      ["assets/in-time-06.jpg", "KONFORUN DIŞINA BAKMAK", "Sylvia, sahip olduğu zamanın başkalarının kaybı olduğunu görür."],
+      ["assets/in-time-07.jpg", "İKİ AYRI DÜNYA", "Yakınlaşmaları sınıf sınırlarını silmez; görünür kılar."],
+      ["assets/in-time-08.jpg", "HER SANİYE BİR KARAR", "Hareket etmek yalnızca kaçmak değil, sistemi reddetmektir."],
+      ["assets/in-time-09.jpg", "GÜVENİN BEDELİ", "Zamanın satıldığı düzende güven, ölçülemeyen son değer olarak kalır."],
+    ],
+  };
+
+  const interstellar = {
+    title: "Yıldızlar Arasında",
+    original: "Interstellar · 2014",
+    image: "assets/interstellar-horizontal-poster.jpg",
+    summary:
+      "Dünya yaşanamaz hâle gelirken Cooper, insanlık için yeni bir yuva bulmak üzere yıldızların ötesine geçer.",
+    idea: "Zamanın göreliliği, sevginin mesafeyi aşması ve insanlığın devamı için fedakârlık.",
+    theme: "Uzay · Zaman · Sevgi · Fedakârlık",
+    imdb: "8.7 / 10",
+    director: "Christopher Nolan",
+    cast: "Matthew McConaughey · Anne Hathaway · Jessica Chastain",
+    scenes: [
+      ["assets/interstellar-earth.jpg", "EV", "Her yolculuk bir vedayla başlar."],
+      ["assets/interstellar-water.png", "BİR SAAT, YEDİ YIL", "Yerçekimi zamanı büker; kısa bir keşif geri alınamayacak yıllara dönüşür."],
+      ["assets/interstellar-gargantua.jpg", "GARGANTUA", "Işığın bile kaçamadığı eşikte zaman ve mekân yeniden yazılır."],
+      ["assets/interstellar-tesseract.jpg", "GEÇMİŞE DOKUNMAK", "Cooper için en güçlü koordinat, Murph’e ulaşma iradesidir."],
+      ["assets/interstellar-07.jpg", "KENETLENME", "Bir anlık uyum, bütün görevin kaderini değiştirir."],
+      ["assets/interstellar-09.jpg", "BAŞLANGIÇ", "Bütün kozmik hikâyenin merkezinde bir baba ve kızı vardır."],
+    ],
+  };
+
+  const month = (id, name, short, state, words, theme) => ({
+    id,
+    name,
+    short,
+    year: 2026,
+    state,
+    words,
+    book: pendingBook(theme),
+    films: pendingFilms(),
+  });
+
   const months = [
+    month("01", "OCAK", "Oca", "past", ["BAŞLANGIÇ", "NİYET", "SAYFA", "YOL"], "Yeni başlangıçlar"),
+    month("02", "ŞUBAT", "Şub", "past", ["YAKINLIK", "AŞK", "MESAFE", "SES"], "Aşkın halleri"),
+    month("03", "MART", "Mar", "past", ["SES", "HAFIZA", "KİMLİK", "DİRENİŞ"], "Kadınların sesi"),
+    month("04", "NİSAN", "Nis", "past", ["DOĞA", "YEŞİL", "UYANIŞ", "İZ"], "Doğa uyanırken"),
+    month("05", "MAYIS", "May", "past", ["KENT", "SOKAK", "İNSAN", "RİTİM"], "Kent ve insan"),
+    month("06", "HAZİRAN", "Haz", "past", ["YOL", "ARAYIŞ", "HARİTA", "UFUK"], "Yolculuklar"),
+    month("07", "TEMMUZ", "Tem", "past", ["MASA", "DİYALOG", "SORU", "BİRLİKTE"], "Birlikte okuma"),
     {
       id: "08",
       name: "AĞUSTOS",
@@ -17,18 +88,7 @@
           "İnsan davranışının, zihnin ve kültürün biyolojik evrimle birlikte nasıl biçimlendiğine dışarıdan bir gözle bakıyor.",
         theme: "Merak · İnsan · Evrim · Anlam",
       },
-      film: {
-        title: "Zamana Karşı",
-        original: "In Time · 2011",
-        image: "assets/in-time-horizontal-poster.jpg",
-        summary:
-          "Zamanın para birimine dönüştüğü bir gelecekte Will Salas, herkesin yaşam süresini belirleyen düzene karşı koşmaya başlar.",
-        idea: "Yaşamın değeri, sınıf eşitsizliği ve zaman üzerindeki iktidar.",
-        theme: "Zaman · Eşitsizlik · Özgürlük",
-        imdb: "6.7 / 10",
-        director: "Andrew Niccol",
-        cast: "Justin Timberlake · Amanda Seyfried · Cillian Murphy",
-      },
+      films: [inTime, ...pendingFilms().slice(1)],
     },
     {
       id: "09",
@@ -42,15 +102,11 @@
         author: "Aiskhylos · Sophokles · Euripides",
         collection: [
           ["Kral Oidipus", "Sophokles", "assets/tragedy-oedipus.jpg"],
-          [
-            "Oidipus Kolonos'ta",
-            "Sophokles",
-            "assets/tragedy-kolonos.svg",
-          ],
+          ["Oidipus Kolonos'ta", "Sophokles", "assets/tragedy-kolonos-original.jpg"],
           ["Antigone", "Sophokles", "assets/tragedy-antigone.jpg"],
-          ["Agamemnon", "Aiskhylos", "assets/tragedy-agamemnon.svg"],
+          ["Agamemnon", "Aiskhylos", "assets/tragedy-agamemnon-original.jpg"],
           ["Elektra", "Sophokles", "assets/tragedy-elektra.jpg"],
-          ["Orestes", "Euripides", "assets/tragedy-orestes.svg"],
+          ["Orestes", "Euripides", "assets/tragedy-orestes-original.jpg"],
         ],
         backCover:
           "Bir hanedanın suçları, kehanetleri ve susmayan vicdanı altı ayrı sahnede birbirine bağlanıyor.",
@@ -58,123 +114,15 @@
           "Oidipus ailesinden Atreus hanedanına uzanan seçki; kader, iktidar, yas, adalet ve intikamın kuşaklar boyunca nasıl tekrarlandığını izliyor.",
         theme: "Antik Yunan · Tiyatro · Kader · Uzaklık",
       },
-      film: {
-        title: "Yıldızlar Arasında",
-        original: "Interstellar · 2014",
-        image: "assets/interstellar-horizontal-poster.jpg",
-        summary:
-          "Dünya yaşanamaz hâle gelirken Cooper, insanlık için yeni bir yuva bulmak üzere yıldızların ötesine geçer.",
-        idea: "Zamanın göreliliği, sevginin mesafeyi aşması ve insanlığın devamı için fedakârlık.",
-        theme: "Uzay · Zaman · Sevgi · Fedakârlık",
-        imdb: "8.7 / 10",
-        director: "Christopher Nolan",
-        cast: "Matthew McConaughey · Anne Hathaway · Jessica Chastain",
-      },
+      films: [interstellar, ...pendingFilms().slice(1)],
     },
-    {
-      id: "10",
-      name: "EKİM",
-      short: "Eki",
-      year: 2026,
-      state: "future",
-      words: ["GÖLGE", "GECE", "SES", "EŞİK"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Karanlık anlatılar" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
-    {
-      id: "11",
-      name: "KASIM",
-      short: "Kas",
-      year: 2026,
-      state: "future",
-      words: ["HAFIZA", "ODA", "İZ", "KAYIP"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Hafıza odaları" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
-    {
-      id: "12",
-      name: "ARALIK",
-      short: "Ara",
-      year: 2026,
-      state: "future",
-      words: ["BİTİŞ", "ZAMAN", "KIŞ", "CÜMLE"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Yılın son cümlesi" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
-    {
-      id: "01",
-      name: "OCAK",
-      short: "Oca",
-      year: 2027,
-      state: "future",
-      words: ["BAŞLANGIÇ", "NİYET", "SAYFA", "YOL"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Yeni başlangıçlar" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
-    {
-      id: "02",
-      name: "ŞUBAT",
-      short: "Şub",
-      year: 2027,
-      state: "future",
-      words: ["YAKINLIK", "AŞK", "MESAFE", "SES"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Aşkın halleri" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
-    {
-      id: "03",
-      name: "MART",
-      short: "Mar",
-      year: 2027,
-      state: "future",
-      words: ["SES", "HAFIZA", "KİMLİK", "DİRENİŞ"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Kadınların sesi" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
-    {
-      id: "04",
-      name: "NİSAN",
-      short: "Nis",
-      year: 2027,
-      state: "future",
-      words: ["DOĞA", "YEŞİL", "UYANIŞ", "İZ"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Doğa uyanırken" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
-    {
-      id: "05",
-      name: "MAYIS",
-      short: "May",
-      year: 2027,
-      state: "future",
-      words: ["KENT", "SOKAK", "İNSAN", "RİTİM"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Kent ve insan" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
-    {
-      id: "06",
-      name: "HAZİRAN",
-      short: "Haz",
-      year: 2027,
-      state: "future",
-      words: ["YOL", "ARAYIŞ", "HARİTA", "UFKUN"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Yolculuklar" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
-    {
-      id: "07",
-      name: "TEMMUZ",
-      short: "Tem",
-      year: 2027,
-      state: "future",
-      words: ["MASA", "DİYALOG", "SORU", "BİRLİKTE"],
-      book: { pending: true, title: "Kitaplar henüz seçilmedi", theme: "Birlikte okuma" },
-      film: { pending: true, title: "Film henüz seçilmedi" },
-    },
+    month("10", "EKİM", "Eki", "future", ["GÖLGE", "GECE", "SES", "EŞİK"], "Karanlık anlatılar"),
+    month("11", "KASIM", "Kas", "future", ["HAFIZA", "ODA", "İZ", "KAYIP"], "Hafıza odaları"),
+    month("12", "ARALIK", "Ara", "future", ["BİTİŞ", "ZAMAN", "KIŞ", "CÜMLE"], "Yılın son cümlesi"),
   ];
 
   const periodSize = 6;
-  const periodLabels = ["AĞU 2026 — OCA 2027", "ŞUB 2027 — TEM 2027"];
+  const periodLabels = ["OCAK — HAZİRAN 2026", "TEMMUZ — ARALIK 2026"];
   const monthRail = document.querySelector(".web-months");
   const periodLabel = document.querySelector(".period-label");
   const previousPeriod = document.querySelector(".period-prev");
@@ -183,9 +131,10 @@
   const visual = document.querySelector(".feature-visual");
   const copy = document.querySelector(".feature-copy");
   const status = document.querySelector(".global-month-status");
-  let activePeriod = 0;
-  let activeMonth = months[0];
+  let activePeriod = 1;
+  let activeMonth = months[7];
   let activeContent = "book";
+  let sceneObserver;
 
   const escapeText = (value = "") =>
     String(value)
@@ -194,6 +143,9 @@
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;");
 
+  const stateLabel = (state) =>
+    state === "current" ? "BU AY" : state === "past" ? "GEÇMİŞ" : "YAKINDA";
+
   function renderPeriod(selectFirst = false) {
     const visibleMonths = months.slice(
       activePeriod * periodSize,
@@ -201,6 +153,7 @@
     );
     if (selectFirst && !visibleMonths.includes(activeMonth)) {
       activeMonth = visibleMonths[0];
+      activeContent = "book";
       renderMonth(activeMonth);
     }
     periodLabel.textContent = periodLabels[activePeriod];
@@ -208,25 +161,26 @@
     nextPeriod.disabled = activePeriod === periodLabels.length - 1;
     monthRail.innerHTML = visibleMonths
       .map(
-        (month) => `<button class="${month === activeMonth ? "selected" : ""}" data-month-key="${month.year}-${month.id}" aria-pressed="${month === activeMonth}">
-          <small>${month.state === "current" ? "BU AY" : "YAKINDA"}</small>
-          <b>${month.id}</b><span>${month.short}</span>
+        (item) => `<button class="${item === activeMonth ? "selected" : ""}" data-month-key="${item.id}" aria-pressed="${item === activeMonth}">
+          <small>${stateLabel(item.state)}</small><b>${item.id}</b><span>${item.short}</span>
         </button>`,
       )
       .join("");
     monthRail.querySelectorAll("button").forEach((button) =>
       button.addEventListener("click", () => {
-        const [year, id] = button.dataset.monthKey.split("-");
-        const month = months.find(
-          (item) => item.id === id && item.year === Number(year),
-        );
-        if (month) {
-          activeMonth = month;
+        const item = months.find((candidate) => candidate.id === button.dataset.monthKey);
+        if (item) {
+          activeMonth = item;
+          activeContent = "book";
           renderPeriod();
-          renderMonth(month);
+          renderMonth(item);
         }
       }),
     );
+  }
+
+  function pendingVisual(type, title) {
+    return `<div class="pending-visual"><small>${type} DOSYASI</small><b>HENÜZ<br>SEÇİLMEDİ</b><p>${escapeText(title)}</p></div>`;
   }
 
   function bookVisual(book) {
@@ -238,7 +192,7 @@
           .map(
             (item, index) => `<figure style="--order:${index}">
               <span>${String(index + 1).padStart(2, "0")}</span>
-              <img src="${item[2]}" alt="${escapeText(item[0])} kitap kapağı">
+              <img src="${item[2]}" alt="${escapeText(item[0])} orijinal kitap kapağı">
               <figcaption><b>${escapeText(item[0])}</b><small>${escapeText(item[1])}</small></figcaption>
             </figure>`,
           )
@@ -252,30 +206,65 @@
     </div>`;
   }
 
-  function filmVisual(film) {
-    if (film.pending) return pendingVisual("FİLM", film.title);
-    return `<div class="same-page-film">
-      <img src="${film.image}" alt="${escapeText(film.title)} yatay film afişi">
-      <div><small>${escapeText(film.original)}</small><b>${escapeText(film.title)}</b><span>AYIN FİLMİ</span></div>
-    </div>`;
-  }
-
-  function pendingVisual(type, title) {
-    return `<div class="pending-visual"><small>${type} DOSYASI</small><b>HENÜZ<br>SEÇİLMEDİ</b><p>${escapeText(title)}</p></div>`;
+  function filmExperience(film, slot) {
+    if (film.pending) {
+      return `<div class="pending-film-experience">${pendingVisual(`${slot + 1}. FİLM`, film.title)}<p>Bu ayın ${slot + 1}. film seçimi açıklandığında afişi, bilgileri ve sahne akışı burada gösterilecek.</p></div>`;
+    }
+    return `<article class="film-experience">
+      <section class="film-cinema-hero">
+        <img src="${film.image}" alt="${escapeText(film.title)} yatay film afişi">
+        <div class="film-cinema-copy">
+          <small>${slot + 1}. FİLM · ${activeMonth.name} ${activeMonth.year} · ${escapeText(film.original)}</small>
+          <h2>${escapeText(film.title)}</h2>
+          <p>${escapeText(film.summary)}</p>
+          <div class="film-facts">
+            <span><b>IMDb</b>${escapeText(film.imdb)}</span>
+            <span><b>YÖNETMEN</b>${escapeText(film.director)}</span>
+            <span><b>OYUNCULAR</b>${escapeText(film.cast)}</span>
+          </div>
+          <blockquote><b>ANA FİKRİ</b>${escapeText(film.idea)}</blockquote>
+          <em>${escapeText(film.theme)}</em>
+        </div>
+        <div class="film-scroll-cue">SAHNELER İÇİN KAYDIR ↓</div>
+      </section>
+      <section class="film-scene-stack" aria-label="${escapeText(film.title)} filminden sahneler">
+        ${film.scenes
+          .map(
+            (scene, index) => `<figure class="film-scene" style="--scene-index:${index}">
+              <img src="${scene[0]}" alt="${escapeText(film.title)} filminden ${index + 1}. sahne">
+              <figcaption><small>SAHNE ${String(index + 1).padStart(2, "0")}</small><h3>${escapeText(scene[1])}</h3><p>${escapeText(scene[2])}</p></figcaption>
+            </figure>`,
+          )
+          .join("")}
+      </section>
+    </article>`;
   }
 
   function detail(title, value, wide = false) {
     return `<div class="${wide ? "wide" : ""}"><dt>${title}</dt><dd>${escapeText(value)}</dd></div>`;
   }
 
+  function bindSceneMotion() {
+    sceneObserver?.disconnect();
+    const scenes = document.querySelectorAll(".film-scene");
+    sceneObserver = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((entry) => entry.target.classList.toggle("in-view", entry.isIntersecting)),
+      { threshold: 0.28 },
+    );
+    scenes.forEach((scene) => sceneObserver.observe(scene));
+  }
+
   function renderContent() {
-    const item = activeMonth[activeContent];
     const isBook = activeContent === "book";
+    const filmSlot = isBook ? -1 : Number(activeContent.split("-")[1]);
+    const item = isBook ? activeMonth.book : activeMonth.films[filmSlot];
     const pending = item.pending;
-    stage.dataset.content = activeContent;
-    stage.classList.toggle("is-collection", Boolean(item.collection));
+    stage.dataset.content = isBook ? "book" : "film";
+    stage.classList.toggle("film-mode", !isBook);
+    stage.classList.toggle("is-collection", Boolean(isBook && item.collection));
     stage.classList.toggle("is-pending", Boolean(pending));
-    visual.innerHTML = isBook ? bookVisual(item) : filmVisual(item);
+    visual.innerHTML = isBook ? bookVisual(item) : filmExperience(item, filmSlot);
 
     document.querySelectorAll("[data-content-tab]").forEach((button) => {
       const selected = button.dataset.contentTab === activeContent;
@@ -283,61 +272,49 @@
       button.setAttribute("aria-pressed", String(selected));
     });
 
-    const label = isBook ? "Ayın kitabı" : "Ayın filmi";
-    copy.querySelector(".eyebrow").textContent = `${activeMonth.name.charAt(0)}${activeMonth.name.slice(1).toLocaleLowerCase("tr-TR")} ${activeMonth.year} · ${label}`;
+    if (!isBook) {
+      document.querySelector(".chosen-stamp").style.display = "none";
+      bindSceneMotion();
+      return;
+    }
+
+    sceneObserver?.disconnect();
+    document.querySelector(".chosen-stamp").style.display = "grid";
+    copy.querySelector(".eyebrow").textContent = `${activeMonth.name.charAt(0)}${activeMonth.name.slice(1).toLocaleLowerCase("tr-TR")} ${activeMonth.year} · Ayın kitabı`;
     copy.querySelector("h2").textContent = item.title;
     copy.querySelector(".feature-summary").textContent = pending
-      ? `${activeMonth.name.charAt(0)}${activeMonth.name.slice(1).toLocaleLowerCase("tr-TR")} ayının ${isBook ? "kitapları" : "filmi"} henüz seçilmedi. Açıklandığında bütün ayrıntılar burada yer alacak.`
-      : isBook
-        ? item.backCover
-        : item.summary;
-
-    const details = copy.querySelector(".feature-details");
-    details.innerHTML = pending
-      ? detail("DURUM", "Seçim bekleniyor", true) +
-        detail("AYIN TEMASI", item.theme || "Daha sonra açıklanacak", true)
-      : isBook
-        ? detail("ARKA KAPAKTAN", item.backCover, true) +
-          detail("KONUSU", item.subject, true) +
-          detail("TEMASI", item.theme, true)
-        : detail("KONUSU", item.summary, true) +
-          detail("ANA FİKRİ", item.idea, true) +
-          detail("TEMASI", item.theme, true) +
-          detail("IMDB", item.imdb) +
-          detail("YÖNETMEN", item.director) +
-          detail("OYUNCULAR", item.cast, true);
-
+      ? `${activeMonth.name.charAt(0)}${activeMonth.name.slice(1).toLocaleLowerCase("tr-TR")} ayının kitapları henüz seçilmedi.`
+      : item.backCover;
+    copy.querySelector(".feature-details").innerHTML = pending
+      ? detail("DURUM", "Seçim bekleniyor", true) + detail("AYIN TEMASI", item.theme, true)
+      : detail("ARKA KAPAKTAN", item.backCover, true) +
+        detail("KONUSU", item.subject, true) +
+        detail("TEMASI", item.theme, true);
     document.querySelector(".chosen-stamp").innerHTML = pending
-      ? `${isBook ? "KİTAP" : "FİLM"}<br>BEKLENİYOR`
+      ? "KİTAP<br>BEKLENİYOR"
       : activeMonth.state === "current"
         ? "BU AY<br>SEÇİLDİ"
         : "SEÇİM<br>TAMAMLANDI";
   }
 
-  function renderMonth(month) {
-    document.body.dataset.month = month.state;
-    document.body.dataset.monthId = month.id;
-    document.body.style.setProperty("--month-number", `"${month.id}"`);
-    document.querySelector(".month-no").textContent = month.id;
-    document.querySelector(".august-index div b").textContent = month.name;
+  function renderMonth(item) {
+    document.body.dataset.month = item.state;
+    document.body.dataset.monthId = item.id;
+    document.body.style.setProperty("--month-number", `"${item.id}"`);
+    document.querySelector(".month-no").textContent = item.id;
+    document.querySelector(".august-index div b").textContent = item.name;
     document.querySelector(".august-index div small").textContent =
-      `${month.year} · ${month.state === "current" ? "GÜNCEL DOSYA" : "PLANLANIYOR"}`;
+      `${item.year} · ${item.state === "current" ? "GÜNCEL DOSYA" : item.state === "past" ? "ARŞİV" : "PLANLANIYOR"}`;
     document.querySelector(".august-index>em").textContent =
-      month.state === "current" ? "Bu ay buradayız" : "Yaklaşan program";
-    document.querySelector(".august-index").setAttribute(
-      "aria-label",
-      `${month.name} ${month.year}`,
-    );
+      item.state === "current" ? "Bu ay buradayız" : item.state === "past" ? "Geçmiş program" : "Yaklaşan program";
+    document.querySelector(".august-index").setAttribute("aria-label", `${item.name} ${item.year}`);
     if (status) {
-      status.className = `global-month-status ${month.state}`;
-      status.innerHTML = `<b>${month.state === "current" ? "BU AY" : "YAKINDA"} · ${month.name} ${month.year}</b><span>${month.state === "current" ? "Güncel programı görüntülüyorsun" : "Bu program henüz başlamadı"}</span>`;
+      status.className = `global-month-status ${item.state}`;
+      status.innerHTML = `<b>${stateLabel(item.state)} · ${item.name} ${item.year}</b><span>${item.state === "current" ? "Güncel programı görüntülüyorsun" : item.state === "past" ? "Arşivlenmiş programı görüntülüyorsun" : "Bu program henüz başlamadı"}</span>`;
     }
-    document
-      .querySelectorAll(".cosmos-word")
-      .forEach((word, index) => (word.textContent = month.words[index]));
+    document.querySelectorAll(".cosmos-word").forEach((word, index) => (word.textContent = item.words[index]));
     document.querySelectorAll(".vertical-marquee span").forEach(
-      (line) =>
-        (line.textContent = `${month.book.title.toLocaleUpperCase("tr-TR")} · ${month.name} ${month.year} · `),
+      (line) => (line.textContent = `${item.book.title.toLocaleUpperCase("tr-TR")} · ${item.name} ${item.year} · `),
     );
     renderContent();
   }
