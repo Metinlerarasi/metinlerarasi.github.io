@@ -21,6 +21,7 @@
     imdb: "6.7 / 10",
     director: "Andrew Niccol",
     cast: "Justin Timberlake · Amanda Seyfried · Cillian Murphy",
+    trailer: "s9wiOtYFZwk",
     scenes: [
       ["assets/in-time-04.jpg", "ZAMANI RİSKE ATMAK", "Will masaya para değil, doğrudan yaşamını koyar."],
       ["assets/in-time-05.jpg", "ÖLÜMSÜZLERİN BÖLGESİ", "Zenginlik burada gösteriş değil; tükenmeyen yarınlardır."],
@@ -42,6 +43,7 @@
     imdb: "8.7 / 10",
     director: "Christopher Nolan",
     cast: "Matthew McConaughey · Anne Hathaway · Jessica Chastain",
+    trailer: "ePbKGoIGAXY",
     scenes: [
       ["assets/interstellar-earth.jpg", "EV", "Her yolculuk bir vedayla başlar."],
       ["assets/interstellar-water.png", "BİR SAAT, YEDİ YIL", "Yerçekimi zamanı büker; kısa bir keşif geri alınamayacak yıllara dönüşür."],
@@ -49,6 +51,94 @@
       ["assets/interstellar-tesseract.jpg", "GEÇMİŞE DOKUNMAK", "Cooper için en güçlü koordinat, Murph’e ulaşma iradesidir."],
       ["assets/interstellar-07.jpg", "KENETLENME", "Bir anlık uyum, bütün görevin kaderini değiştirir."],
       ["assets/interstellar-09.jpg", "BAŞLANGIÇ", "Bütün kozmik hikâyenin merkezinde bir baba ve kızı vardır."],
+    ],
+  };
+
+  const trumanShow = {
+    title: "Truman Show",
+    original: "The Truman Show · 1998",
+    image: "assets/truman-hero.jpg",
+    summary:
+      "Truman Burbank, kusursuz görünen kasabasındaki hayatının aslında milyonlarca kişinin izlediği dev bir televizyon yapımı olduğunu fark etmeye başlar.",
+    idea: "Konforlu bir yanılsama ile özgür ve belirsiz bir hayat arasındaki seçimin insanı nasıl tanımladığı.",
+    theme: "Gerçeklik · Gözetim · Özgür İrade · Medya",
+    imdb: "8.2 / 10",
+    director: "Peter Weir",
+    cast: "Jim Carrey · Ed Harris · Laura Linney",
+    trailer: "dlnmQbPGuls",
+    scenes: [
+      ["assets/truman-01.jpg", "KUSURSUZ SABAH", "Seahaven'da her şey olması gerektiği kadar düzenlidir; belki de gereğinden fazla."],
+      ["assets/truman-02.jpg", "GÖKYÜZÜNDEKİ ÇATLAK", "Küçük bir aksaklık, Truman'ın bütün gerçekliğini sorgulamasına yeter."],
+      ["assets/truman-03.jpg", "KORKUNUN ÖTESİ", "Özgürlük, kendisi için hazırlanmış en büyük korkunun içinden geçmeyi gerektirir."],
+      ["assets/truman-04.jpg", "GÖRÜNMEYEN YÖNETMEN", "Christof yalnızca bir programı değil, başka bir insanın ufkunu da yönetmektedir."],
+      ["assets/truman-05.jpg", "AYNADAKİ SEYİRCİ", "Truman ilk kez kendisine bakan gözlerin gerçekten kime ait olduğunu sezer."],
+      ["assets/truman-06.jpg", "ÇIKIŞ", "Bildiği dünyanın sonundaki kapı, bilinmeyen ama gerçek bir hayata açılır."],
+    ],
+  };
+
+  const martySupreme = {
+    title: "Marty Supreme",
+    original: "Marty Supreme · 2025",
+    image: "assets/marty-hero.jpg",
+    summary:
+      "Kimsenin ciddiye almadığı bir hayalin peşindeki Marty Mauser, masa tenisi dünyasında büyüklüğe ulaşmak için sınırlarını ve çevresindeki herkesi zorlar.",
+    idea: "Büyüklük arzusu insanı ileri taşıyabilir; fakat başarı tutkusu kimliğin ve ilişkilerin önüne geçtiğinde zaferin bedeli değişir.",
+    theme: "Hırs · Rekabet · Şöhret · Amerikan Rüyası",
+    imdb: "7.5 / 10",
+    director: "Josh Safdie",
+    cast: "Timothée Chalamet · Gwyneth Paltrow · Odessa A'zion",
+    trailer: "s9gSuKaKcqM",
+    scenes: [
+      ["assets/marty-01.jpg", "BÜYÜK KONUŞMAK", "Marty'nin sesi, henüz kimsenin göremediği gelecekteki ününü çoktan anlatır."],
+      ["assets/marty-02.jpg", "SAHNENİN ORTASI", "Kalabalığın içinde duruşu bile kazanmanın onun için bir inanç meselesi olduğunu söyler."],
+      ["assets/marty-03.jpg", "BİR SAYI DAHA", "Masa küçüktür; Marty'nin ona yüklediği anlam ise bütün dünyayı kaplar."],
+      ["assets/marty-04.jpg", "BAŞKA BİR OYUN", "Kay Stone'un dünyası, Marty'nin spor kadar insanları da kazanmak istediğini gösterir."],
+      ["assets/marty-05.jpg", "YERALTI RİTMİ", "Dar bir salonda her vuruş, daha büyük bir hayata açılan kapı gibi yankılanır."],
+      ["assets/marty-06.png", "SINIRDA", "Kazanma isteği ile tükenme arasındaki çizgi giderek görünmez olur."],
+    ],
+  };
+
+  const theFather = {
+    title: "The Father",
+    original: "The Father · 2020",
+    image: "assets/father-hero.jpg",
+    summary:
+      "Yardımı reddeden Anthony, değişen odalar, yüzler ve anılar arasında kendi gerçekliğine tutunmaya çalışırken kızı Anne de babasını yavaşça kaybetmenin acısıyla yüzleşir.",
+    idea: "Hafıza çözülürken kimliğin, ev duygusunun ve sevginin hangi parçalarının insanda kalabildiği.",
+    theme: "Hafıza · Kimlik · Yaşlılık · Sevgi",
+    imdb: "8.2 / 10",
+    director: "Florian Zeller",
+    cast: "Anthony Hopkins · Olivia Colman · Mark Gatiss",
+    trailer: "4TZb7YfK-JI",
+    scenes: [
+      ["assets/father-01.jpg", "YOLCULUK", "Tanıdık bir şehir bile anılar yer değiştirdiğinde yabancı bir manzaraya dönüşür."],
+      ["assets/father-02.jpg", "PENCERENİN ÖTESİ", "Anthony, değişmeyen bir dış dünya ararken kendi zihnindeki odalar sessizce dönüşür."],
+      ["assets/father-03.jpg", "EV Mİ, DEĞİL Mİ?", "Eşyalar aynı görünür; fakat onlara ait hikâyeler artık güvenilir değildir."],
+      ["assets/father-04.jpg", "KIZI", "Anne'nin sevgisi sabittir, babasının onu tanıdığı gerçeklik ise sürekli değişir."],
+      ["assets/father-05.jpg", "TEKRAR", "Aynı konuşma başka bir yüzle döndüğünde zaman düz bir çizgi olmaktan çıkar."],
+      ["assets/father-06.jpg", "KIRILGAN GERÇEK", "Bir odadaki herkes aynı anı yaşamaz; film bizi Anthony'nin belirsizliğinde bırakır."],
+    ],
+  };
+
+  const banshees = {
+    title: "The Banshees of Inisherin",
+    original: "The Banshees of Inisherin · 2022",
+    image: "assets/banshees-hero.jpg",
+    summary:
+      "Uzak bir İrlanda adasında Colm'un yıllardır süren dostluklarını aniden bitirmesi, Pádraic'in anlamlandıramadığı ve giderek sertleşen bir çatışmayı başlatır.",
+    idea: "Bir dostluğun bitişi üzerinden yalnızlık, gurur, sanatla iz bırakma arzusu ve anlamsız çatışmaların büyümesi.",
+    theme: "Dostluk · Yalnızlık · Gurur · Absürtlük",
+    imdb: "7.7 / 10",
+    director: "Martin McDonagh",
+    cast: "Colin Farrell · Brendan Gleeson · Kerry Condon",
+    trailer: "uRu3zLOJN2c",
+    scenes: [
+      ["assets/banshees-01.jpg", "AYNI YOL", "Bir zamanlar yan yana gidilen yollar, tek bir kararla iki ayrı yöne ayrılır."],
+      ["assets/banshees-02.jpg", "SON BİR EZGİ", "Colm, dostluktan vazgeçerek geride kalacak bir müziğe tutunmak ister."],
+      ["assets/banshees-03.jpg", "SIOBHÁN'IN UFUK ÇİZGİSİ", "Ada Pádraic için bütün dünya, Siobhán içinse geride bırakılması gereken bir sınırdır."],
+      ["assets/banshees-04.jpg", "PUBDAKİ SESSİZLİK", "Konuşmanın alışkanlık olduğu yerde susmak, en ağır reddedişe dönüşür."],
+      ["assets/banshees-05.jpg", "JENNY", "İnsanların sertliğine karşı küçük bir dostluk, hikâyenin en saf yakınlığını taşır."],
+      ["assets/banshees-06.jpg", "DOMINIC", "Adanın kenarında kalanlar, başkalarının çatışmalarından çok daha derin yalnızlıklar taşır."],
     ],
   };
 
@@ -88,7 +178,7 @@
           "İnsan davranışının, zihnin ve kültürün biyolojik evrimle birlikte nasıl biçimlendiğine dışarıdan bir gözle bakıyor.",
         theme: "Merak · İnsan · Evrim · Anlam",
       },
-      films: [inTime, ...pendingFilms().slice(1)],
+      films: [inTime, interstellar],
     },
     {
       id: "09",
@@ -114,7 +204,7 @@
           "Oidipus ailesinden Atreus hanedanına uzanan seçki; kader, iktidar, yas, adalet ve intikamın kuşaklar boyunca nasıl tekrarlandığını izliyor.",
         theme: "Antik Yunan · Tiyatro · Kader · Uzaklık",
       },
-      films: [interstellar, ...pendingFilms().slice(1)],
+      films: [trumanShow, martySupreme, theFather, banshees],
     },
     month("10", "EKİM", "Eki", "future", ["GÖLGE", "GECE", "SES", "EŞİK"], "Karanlık anlatılar"),
     month("11", "KASIM", "Kas", "future", ["HAFIZA", "ODA", "İZ", "KAYIP"], "Hafıza odaları"),
@@ -237,6 +327,22 @@
           )
           .join("")}
       </section>
+      <section class="film-trailer" aria-label="${escapeText(film.title)} fragmanı">
+        <div class="film-trailer-copy">
+          <small>YOUTUBE · RESMÎ FRAGMAN</small>
+          <h3>Hikâyeye<br>sesini aç.</h3>
+          <p>${escapeText(film.title)} fragmanını sayfadan ayrılmadan izleyebilir veya YouTube'da açabilirsin.</p>
+          <a href="https://www.youtube.com/watch?v=${film.trailer}" target="_blank" rel="noopener noreferrer">YouTube'da izle ↗</a>
+        </div>
+        <div class="film-trailer-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/${film.trailer}?rel=0"
+            title="${escapeText(film.title)} resmî fragmanı"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </section>
     </article>`;
   }
 
@@ -256,8 +362,20 @@
   }
 
   function renderContent() {
-    const isBook = activeContent === "book";
-    const filmSlot = isBook ? -1 : Number(activeContent.split("-")[1]);
+    let isBook = activeContent === "book";
+    let filmSlot = isBook ? -1 : Number(activeContent.split("-")[1]);
+    if (!isBook && (!Number.isInteger(filmSlot) || filmSlot >= activeMonth.films.length)) {
+      activeContent = "book";
+      isBook = true;
+      filmSlot = -1;
+    }
+    const contentTabs = document.querySelector(".content-tabs");
+    contentTabs.style.setProperty("--content-count", activeMonth.films.length + 1);
+    contentTabs.querySelectorAll("[data-content-tab^='film-']").forEach((button, index) => {
+      const available = index < activeMonth.films.length;
+      button.hidden = !available;
+      button.disabled = !available;
+    });
     const item = isBook ? activeMonth.book : activeMonth.films[filmSlot];
     const pending = item.pending;
     stage.dataset.content = isBook ? "book" : "film";
