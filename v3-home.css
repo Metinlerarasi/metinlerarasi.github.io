@@ -1175,3 +1175,27 @@ body.v3-home {
     font-size: clamp(42px, 14vw, 66px);
   }
 }
+
+/* Ay seçici sayfanın doğal akışında kalır; kaydırırken ekranı takip etmez. */
+.v3-home .period-browser {
+  position: relative;
+  top: auto;
+  left: auto;
+  margin: 18px auto 0;
+  transform: none;
+}
+
+.v3-home .august-stage {
+  padding-top: 20px;
+}
+
+@media (max-width: 760px) {
+  .v3-home .period-browser {
+    top: auto;
+    margin-top: 10px;
+  }
+
+  .v3-home .august-stage {
+    padding-top: 18px;
+  }
+}
