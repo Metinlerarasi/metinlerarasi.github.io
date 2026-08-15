@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="feature-stage.css" />
     <link rel="stylesheet" href="rectangle-wide.css" />
     <link rel="stylesheet" href="mobile-stability.css?v=20260814-7" />
+    <link rel="stylesheet" href="v3-home.css?v=20260815-1" />
   </head>
-  <body class="home">
+  <body class="home v3-home">
     <header class="shell topbar">
       <a class="brand" href="index.html"
         ><img class="logo" src="metinlerarasi-logo.png" alt="" /><span
@@ -28,161 +29,87 @@
         ></a
       >
     </header>
+
     <div class="cosmos" aria-hidden="true">
       <i></i><i></i><i></i><i></i><span class="orbit o1"></span
-      ><span class="orbit o2"></span><b class="cosmos-word w1">EVRİM</b
-      ><b class="cosmos-word w2">MERAK</b><b class="cosmos-word w3">İNSAN</b
-      ><b class="cosmos-word w4">EVREN</b><em class="comet c1"></em
+      ><span class="orbit o2"></span><b class="cosmos-word w1">MERAK</b
+      ><b class="cosmos-word w2">SAAT</b><b class="cosmos-word w3">SORU</b
+      ><b class="cosmos-word w4">KEŞİF</b><em class="comet c1"></em
       ><em class="comet c2"></em><em class="comet c3"></em>
     </div>
+
     <div class="vertical-marquee" aria-hidden="true">
       <span>EVRENİ ANLAYAN MAYMUN · AĞUSTOS 2026 · </span
       ><span>EVRENİ ANLAYAN MAYMUN · AĞUSTOS 2026 · </span>
     </div>
+
+    <nav class="period-browser" aria-label="Aylık program dönemleri">
+      <button class="period-arrow period-prev" aria-label="Önceki altı ay">
+        ←
+      </button>
+      <div class="period-center">
+        <span class="period-label">AĞU 2026 — OCA 2027</span>
+        <div class="web-months" aria-label="Gösterilen altı ay"></div>
+      </div>
+      <button class="period-arrow period-next" aria-label="Sonraki altı ay">
+        →
+      </button>
+    </nav>
+
     <main class="shell august-stage">
       <aside class="august-index" aria-label="Ağustos 2026">
         <span class="month-no">08</span>
-        <div><b>AĞUSTOS</b><small>2026 · DOSYA 001</small></div>
+        <div><b>AĞUSTOS</b><small>2026 · GÜNCEL DOSYA</small></div>
         <em>Bu ay buradayız</em>
-        <nav class="web-months" aria-label="2026 aylarına göz at">
-          <button
-            data-month="01"
-            disabled
-            aria-disabled="true"
-            title="Geçmiş aylar görüntülenemez"
-          >
-            <small>GEÇMİŞ</small><b>01</b><span>Oca</span></button
-          ><button
-            data-month="02"
-            disabled
-            aria-disabled="true"
-            title="Geçmiş aylar görüntülenemez"
-          >
-            <small>GEÇMİŞ</small><b>02</b><span>Şub</span></button
-          ><button
-            data-month="03"
-            disabled
-            aria-disabled="true"
-            title="Geçmiş aylar görüntülenemez"
-          >
-            <small>GEÇMİŞ</small><b>03</b><span>Mar</span></button
-          ><button
-            data-month="04"
-            disabled
-            aria-disabled="true"
-            title="Geçmiş aylar görüntülenemez"
-          >
-            <small>GEÇMİŞ</small><b>04</b><span>Nis</span></button
-          ><button
-            data-month="05"
-            disabled
-            aria-disabled="true"
-            title="Geçmiş aylar görüntülenemez"
-          >
-            <small>GEÇMİŞ</small><b>05</b><span>May</span></button
-          ><button
-            data-month="06"
-            disabled
-            aria-disabled="true"
-            title="Geçmiş aylar görüntülenemez"
-          >
-            <small>GEÇMİŞ</small><b>06</b><span>Haz</span></button
-          ><button
-            data-month="07"
-            disabled
-            aria-disabled="true"
-            title="Geçmiş aylar görüntülenemez"
-          >
-            <small>GEÇMİŞ</small><b>07</b><span>Tem</span></button
-          ><button class="selected" data-month="08">
-            <small>BU AY</small><b>08</b><span>Ağu</span></button
-          ><button data-month="09">
-            <small>YAKINDA</small><b>09</b><span>Eyl</span></button
-          ><button data-month="10">
-            <small>YAKINDA</small><b>10</b><span>Eki</span></button
-          ><button data-month="11">
-            <small>YAKINDA</small><b>11</b><span>Kas</span></button
-          ><button data-month="12">
-            <small>YAKINDA</small><b>12</b><span>Ara</span>
-          </button>
-        </nav>
       </aside>
-      <section class="feature-stage">
-        <section class="chosen-book parallax-zone">
+
+      <nav class="content-tabs" aria-label="Ayın içeriğini seç">
+        <button class="active" data-content-tab="book" aria-pressed="true">
+          <span>01</span><b>Kitap</b><small>Ayın okuma dosyası</small>
+        </button>
+        <button data-content-tab="film" aria-pressed="false">
+          <span>02</span><b>Film</b><small>Ayın sinema dosyası</small>
+        </button>
+      </nav>
+
+      <section class="feature-stage" data-content="book">
+        <section class="chosen-book" aria-live="polite">
           <div class="chosen-stamp">BU AY<br />SEÇİLDİ</div>
-          <span class="legacy-orbit" aria-hidden="true"
-            ><i></i><b></b><em></em
-          ></span>
-          <div class="spotlight-slide book-slide active">
-            <div
-              class="book-object"
-              aria-label="Evreni Anlayan Maymun, Ağustos ayının seçilen kitabı"
-            >
-              <div class="book-spine">METİNLERARASI · 001</div>
-              <div class="book-face real-cover">
-                <img
-                  src="assets/evreni-anlayan-maymun-kapak.jpg"
-                  alt="Steve Stewart-Williams — Evreni Anlayan Maymun kitap kapağı"
-                />
-              </div>
-            </div>
-            <small>SEÇİLEN KİTAP</small>
-          </div>
-          <a
-            class="spotlight-slide film-slide"
-            style="
-              --film-poster: url(&quot;assets/in-time-horizontal-poster.jpg&quot;);
-            "
-            href="ayin-filmi.html"
-            aria-label="Zamana Karşı film dosyasını aç"
-            ><img
-              src="assets/in-time-horizontal-poster.jpg"
-              alt="Zamana Karşı filminin yatay afişi"
-            /><span
-              ><small>SEÇİLEN FİLM · AĞUSTOS 2026</small><b>Zamana Karşı</b>
-              <p>
-                Zamanın para olduğu bir gelecekte, yaşamın gerçek bedelini
-                sorgulayan bir bilimkurgu.
-              </p>
-              <time>Film buluşması · Tarih yakında</time
-              ><em>Film dosyasını aç →</em></span
-            ></a
-          >
+          <div class="feature-visual"></div>
           <div class="book-shadow"></div>
         </section>
-        <section class="august-copy">
-          <div class="eyebrow">Ağustos ayının seçilmiş kitabı</div>
+
+        <section class="august-copy feature-copy" aria-live="polite">
+          <div class="eyebrow">Ağustos 2026 · Ayın kitabı</div>
           <h2>Evreni Anlayan Maymun</h2>
-          <p>
-            Bu ay insanı dışarıdan görmeye çalışıyoruz: evrim, davranış ve
-            kültürün kesişiminde, evreni anlayan bir maymunun kendi doğasını ne
-            kadar anlayabildiğini konuşacağız.
-          </p>
-          <div class="theme-line">
-            <span>AYIN TEMASI</span><b>İnsan · Evrim · Anlam</b>
-          </div>
+          <p class="feature-summary"></p>
+          <dl class="feature-details"></dl>
           <div class="home-actions">
-            <a class="btn wine" href="etkinlikler.html">Ağustos programı →</a>
+            <a class="btn wine" href="etkinlikler.html"
+              >Etkinlikleri görüntüle →</a
+            >
             <div class="home-tools" aria-label="Site araçları"></div>
           </div>
           <div class="home-countdown">
-            <small>SIRADAKİ BULUŞMA · 23 AĞUSTOS</small><b>hesaplanıyor…</b>
+            <small>SIRADAKİ BULUŞMA · 23 AĞUSTOS</small><b
+              >hesaplanıyor…</b
+            >
           </div>
         </section>
       </section>
-      <section class="august-news" aria-label="Ağustos haberleri">
+
+      <section class="august-news" aria-label="Kulüp seçenekleri">
         <a href="etkinlikler.html"
-          ><span>23 AĞUSTOS</span><b>İlk Kitap Buluşması</b
+          ><span>PROGRAM VE TAKVİM</span><b>Etkinlikleri Görüntüle</b
           ><em>Takvime git →</em></a
-        ><button class="tragedy-launch">
-          <span>EYLÜL 2026 · OYLAMA AÇIK</span><b>Tragedyanı Seç</b
-          ><em>İstediğin kadar seç →</em>
+        ><button class="archive-launch" disabled aria-disabled="true">
+          <span>ARŞİV · YAKINDA</span><b>Film ve Kitaplar</b
+          ><em>Henüz kullanılamıyor</em>
         </button>
       </section>
     </main>
+
     <script src="site.js?v=20260815-1"></script>
-    <script src="year-view.js?v=20260814-2"></script>
-    <script src="home-carousel.js"></script>
-    <script src="selection-capture.js?v=20260814-2"></script>
+    <script src="year-view.js?v=20260815-3"></script>
   </body>
 </html>
