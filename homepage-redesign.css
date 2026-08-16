@@ -78,6 +78,20 @@ body.home {
   will-change: transform;
 }
 
+.home-opening-video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 54%;
+  transform: scale(1.015);
+  filter: saturate(0.88) contrast(1.04) brightness(0.84);
+  pointer-events: none;
+}
+
 .home-opening-media::before {
   content: "";
   z-index: 1;
@@ -106,6 +120,102 @@ body.home {
   background: rgba(214, 171, 93, 0.2);
   filter: blur(90px);
   animation: homeGlow 8s ease-in-out infinite alternate;
+}
+
+/* A slow cinemagraph: the photograph stays quiet while time passes around it. */
+.home-sky-cycle {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(7, 13, 28, .88), rgba(17, 23, 31, .62) 48%, rgba(12, 15, 17, .44));
+  mix-blend-mode: multiply;
+  opacity: 0;
+  animation: homeDayCycle 36s ease-in-out infinite;
+}
+
+.home-birds {
+  position: absolute;
+  z-index: 4;
+  left: -12vw;
+  top: 18%;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  opacity: 0;
+  animation: birdsCross 20s linear infinite .5s;
+  pointer-events: none;
+}
+
+.home-birds-two { top: 28%; transform: scale(.7); animation-delay: 10s; animation-duration: 24s; }
+.home-birds b { position: relative; display: block; width: 22px; height: 9px; }
+.home-birds b:nth-child(2) { margin-top: 13px; }
+.home-birds b:nth-child(3) { margin-top: 4px; }
+.home-birds b::before,
+.home-birds b::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  width: 12px;
+  height: 5px;
+  border-top: 2px solid rgba(16, 18, 17, .78);
+  border-radius: 50%;
+  animation: birdWing .7s ease-in-out infinite alternate;
+}
+.home-birds b::before { left: 0; transform: rotate(15deg); transform-origin: right center; }
+.home-birds b::after { right: 0; transform: rotate(-15deg); transform-origin: left center; }
+
+.home-page-turn {
+  position: absolute;
+  z-index: 4;
+  left: 46.7%;
+  top: 66.1%;
+  width: 2%;
+  height: 3.6%;
+  border-radius: 2px 80% 12% 2px;
+  background: linear-gradient(100deg, #75664e, #c9b98f 55%, #665b48);
+  opacity: 0;
+  transform-origin: left bottom;
+  animation: pageTurn 11s ease-in-out infinite 1s;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.28));
+}
+
+.home-lantern {
+  position: absolute;
+  z-index: 3;
+  left: 43.5%;
+  top: 62%;
+  width: 26vw;
+  height: 20vw;
+  opacity: 0;
+  transform: rotate(-13deg);
+  transform-origin: left top;
+  background: conic-gradient(from 255deg at 0 0, rgba(255, 210, 116, .5), transparent 27%);
+  filter: blur(10px);
+  mix-blend-mode: screen;
+  animation: lanternCycle 36s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes homeDayCycle {
+  0%, 28%, 100% { opacity: 0; }
+  43% { opacity: .34; }
+  56%, 73% { opacity: .92; }
+  88% { opacity: .18; }
+}
+@keyframes lanternCycle { 0%, 48%, 84%, 100% { opacity: 0; } 57%, 74% { opacity: .72; } }
+@keyframes birdsCross { 0%, 5% { opacity: 0; transform: translate3d(0,0,0) scale(.86); } 10%, 82% { opacity: .72; } 100% { opacity: 0; transform: translate3d(126vw,-8vh,0) scale(1); } }
+@keyframes birdWing { to { transform: rotate(0deg) translateY(3px); } }
+@keyframes pageTurn { 0%, 36%, 58%, 100% { opacity: 0; transform: perspective(120px) rotateY(0deg); } 40% { opacity: .72; } 48% { opacity: .58; transform: perspective(120px) rotateY(-155deg) skewY(-5deg); } 54% { opacity: 0; } }
+
+@media (max-width: 760px) {
+  .home-page-turn { left: 48%; top: 66%; width: 4%; }
+  .home-lantern { left: 45%; top: 61%; width: 52vw; height: 42vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-sky-cycle, .home-birds, .home-page-turn, .home-lantern { display: none; }
 }
 
 .home-opening-meta {
@@ -279,6 +389,11 @@ body.home {
     filter: saturate(0.88) contrast(1.05) brightness(0.75);
   }
 
+  .home-opening-video {
+    object-position: 47% center;
+    filter: saturate(0.88) contrast(1.05) brightness(0.75);
+  }
+
   .home-opening-media::before {
     background:
       linear-gradient(0deg, rgba(3, 6, 5, 0.96) 0%, rgba(3, 6, 5, 0.26) 62%, rgba(3, 6, 5, 0.42) 100%),
@@ -378,5 +493,9 @@ body.home {
   .home-opening-media img,
   .home-opening-glow {
     animation: none;
+  }
+
+  .home-opening-video {
+    display: none;
   }
 }
