@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="mobile-stability.css?v=20260814-7" />
     <link rel="stylesheet" href="v3-home.css?v=20260815-5" />
     <link rel="stylesheet" href="icon-nav.css?v=20260816-1" />
+    <link rel="stylesheet" href="homepage-redesign.css?v=20260816-1" />
   </head>
   <body class="home v3-home">
     <header class="shell topbar">
@@ -44,82 +45,39 @@
       ><span>EVRENİ ANLAYAN MAYMUN · AĞUSTOS 2026 · </span>
     </div>
 
-    <nav class="period-browser" aria-label="Aylık program dönemleri">
-      <button class="period-arrow period-prev" aria-label="Önceki altı ay">
-        ←
-      </button>
-      <div class="period-center">
-        <span class="period-label">TEMMUZ — ARALIK 2026</span>
-        <div class="web-months" aria-label="Gösterilen altı ay"></div>
+    <section class="home-opening" aria-labelledby="home-opening-title">
+      <div class="home-opening-media" aria-hidden="true">
+        <img
+          src="assets/home-hero-august-v1.png"
+          alt=""
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+        />
+        <i class="home-opening-glow"></i>
       </div>
-      <button class="period-arrow period-next" aria-label="Sonraki altı ay">
-        →
-      </button>
-    </nav>
 
-    <main class="shell august-stage">
-      <aside class="august-index" aria-label="Ağustos 2026">
-        <span class="month-no">08</span>
-        <div><b>AĞUSTOS</b><small>2026 · GÜNCEL DOSYA</small></div>
-        <em>Bu ay buradayız</em>
-      </aside>
+      <div class="home-opening-meta">
+        <span>AĞUSTOS 2026</span>
+        <span>İSTANBUL · KİTAP VE FİLM KULÜBÜ</span>
+      </div>
 
-      <nav class="content-tabs" aria-label="Ayın içeriğini seç">
-        <button class="active" data-content-tab="book" aria-pressed="true">
-          <span>K</span><b>Kitap</b><small>Ayın okuma dosyası</small>
-        </button>
-        <button data-content-tab="film-0" aria-pressed="false">
-          <span>01</span><b>1. Film</b><small>Birinci film dosyası</small>
-        </button>
-        <button data-content-tab="film-1" aria-pressed="false">
-          <span>02</span><b>2. Film</b><small>İkinci film dosyası</small>
-        </button>
-        <button data-content-tab="film-2" aria-pressed="false">
-          <span>03</span><b>3. Film</b><small>Üçüncü film dosyası</small>
-        </button>
-        <button data-content-tab="film-3" aria-pressed="false">
-          <span>04</span><b>4. Film</b><small>Dördüncü film dosyası</small>
-        </button>
-      </nav>
+      <div class="home-opening-copy">
+        <p class="home-opening-kicker">THE READING CLUB ©</p>
+        <h1 id="home-opening-title">Metinler<span>arası</span></h1>
+        <p class="home-opening-description">
+          Bir kitap açılır, bir film başlar. Merakın, hikâyelerin ve
+          konuşmanın aynı masada buluştuğu yer.
+        </p>
+      </div>
 
-      <section class="feature-stage" data-content="book">
-        <section class="chosen-book" aria-live="polite">
-          <div class="chosen-stamp">BU AY<br />SEÇİLDİ</div>
-          <div class="feature-visual"></div>
-          <div class="book-shadow"></div>
-        </section>
+      <div class="home-opening-actions">
+        <span class="home-opening-actions-label">KULÜBÜ KEŞFET</span>
+        <div class="home-opening-nav" aria-label="Ana sayfa kısayolları"></div>
+      </div>
 
-        <section class="august-copy feature-copy" aria-live="polite">
-          <div class="eyebrow">Ağustos 2026 · Ayın kitabı</div>
-          <h2>Evreni Anlayan Maymun</h2>
-          <p class="feature-summary"></p>
-          <dl class="feature-details"></dl>
-          <div class="home-actions">
-            <a class="btn wine" href="etkinlikler.html"
-              >Etkinlikleri görüntüle →</a
-            >
-            <div class="home-tools" aria-label="Site araçları"></div>
-          </div>
-          <div class="home-countdown">
-            <small>SIRADAKİ BULUŞMA · 23 AĞUSTOS</small><b
-              >hesaplanıyor…</b
-            >
-          </div>
-        </section>
-      </section>
+    </section>
 
-      <section class="august-news" aria-label="Kulüp seçenekleri">
-        <a href="etkinlikler.html"
-          ><span>PROGRAM VE TAKVİM</span><b>Etkinlikleri Görüntüle</b
-          ><em>Takvime git →</em></a
-        ><button class="archive-launch" disabled aria-disabled="true">
-          <span>ARŞİV · YAKINDA</span><b>Film ve Kitaplar</b
-          ><em>Henüz kullanılamıyor</em>
-        </button>
-      </section>
-    </main>
-
-    <script src="site.js?v=20260816-1"></script>
-    <script src="year-view.js?v=20260816-1"></script>
+    <script src="site.js?v=20260816-5"></script>
   </body>
 </html>

@@ -3,195 +3,105 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Ayın Filmi: Zamana Karşı — Metinlerarası</title>
+    <meta name="theme-color" content="#090909" />
+    <title>Filmler — Metinlerarası</title>
     <link rel="stylesheet" href="site.css?v=20260814-3" />
-    <link rel="stylesheet" href="web-update.css" />
-    <link rel="stylesheet" href="final-polish.css" />
-    <link rel="stylesheet" href="flow-update.css" />
     <link rel="stylesheet" href="icon-nav.css?v=20260816-1" />
+    <link rel="stylesheet" href="film-page-v3.css?v=20260816-1" />
   </head>
-  <body class="film-page">
-    <div class="film-progress" aria-hidden="true"></div>
-    <div class="time-rain" aria-hidden="true">
-      <span>00:00:59</span><span>0000:12:04</span><span>25:00:00</span
-      ><span>00:01:13</span>
-    </div>
-    <header class="shell topbar">
-      <a class="brand" href="index.html"
-        ><img class="logo" src="metinlerarasi-logo.png" alt="" /><span
-          >METİNLERARASI</span
-        ></a
-      ><a class="back-home" href="index.html">← Ana sayfaya dön</a>
+  <body class="film-cinema-page">
+    <header class="topbar film-cinema-header">
+      <a class="brand" href="index.html" aria-label="Metinlerarası ana sayfa">
+        <img class="logo" src="metinlerarasi-logo.png" alt="" />
+        <span>METİNLERARASI</span>
+      </a>
     </header>
+
+    <nav class="film-week-picker" aria-label="Haftanın filmini seç">
+      <div class="film-week-track">
+        <button class="film-week active" type="button" data-film="in-time" aria-pressed="true">
+          <small>17–23 AĞUSTOS</small><strong>Zamana Karşı</strong>
+        </button>
+        <button class="film-week" type="button" data-film="interstellar" aria-pressed="false">
+          <small>24–30 AĞUSTOS</small><strong>Yıldızlar Arasında</strong>
+        </button>
+        <button class="film-week" type="button" data-film="truman" aria-pressed="false">
+          <small>31 AĞU–6 EYL</small><strong>Truman Show</strong>
+        </button>
+        <button class="film-week" type="button" data-film="marty" aria-pressed="false">
+          <small>7–13 EYLÜL</small><strong>Marty Supreme</strong>
+        </button>
+        <button class="film-week" type="button" data-film="father" aria-pressed="false">
+          <small>14–20 EYLÜL</small><strong>The Father</strong>
+        </button>
+        <button class="film-week" type="button" data-film="banshees" aria-pressed="false">
+          <small>21–27 EYLÜL</small><strong>The Banshees of Inisherin</strong>
+        </button>
+      </div>
+    </nav>
+
     <main>
-      <header class="page-hero film-page-hero">
-        <div class="clock-face" aria-hidden="true"><i></i><b>00:00:01</b></div>
-        <div class="shell">
-          <div class="eyebrow">Ağustos 2026 · Ayın filmi</div>
-          <h1 data-text="Zamana Karşı">Zamana Karşı</h1>
-          <p>
-            Yaşamak için çalıştığımız değil, çalışmak için yaşadığımız bir
-            dünyada zaman kime aittir?
-          </p>
-        </div>
-      </header>
-      <section class="section">
-        <div class="shell film-lead">
-          <div class="film-poster">
-            <div class="film-title">
-              <div class="eyebrow" style="color: #d9c8b3">In Time · 2011</div>
-              <h2>Zamana Karşı</h2>
+      <section class="film-cinema-hero" aria-labelledby="film-title">
+        <img class="film-cinema-hero-image" data-film-hero src="assets/in-time-01.jpg" alt="Zamana Karşı filminden bir sahne" />
+        <div class="film-cinema-shade" aria-hidden="true"></div>
+        <div class="film-cinema-grain" aria-hidden="true"></div>
+        <div class="film-cinema-index" aria-hidden="true"><span data-film-index>01</span><i>/06</i></div>
+        <div class="film-cinema-copy">
+          <div class="film-cinema-kicker"><span data-film-date>17–23 Ağustos 2026</span><i></i><span data-film-genre>Bilimkurgu · Gerilim</span></div>
+          <h1 id="film-title" data-film-title>Zamana Karşı</h1>
+          <p class="film-cinema-logline" data-film-logline>Yaşam süresinin para olduğu bir dünyada, bir gün daha yaşamak bile sınıfsal bir ayrıcalıktır.</p>
+          <div class="film-cinema-actions">
+            <a class="film-trailer-button" data-film-trailer href="https://www.youtube.com/watch?v=xhYUaR5QiUs" target="_blank" rel="noreferrer">
+              <span>Resmî fragmanı izle</span><b aria-hidden="true">▶</b>
+            </a>
+            <div class="film-cinema-facts">
+              <span><small>YÖNETMEN</small><b data-film-director>Andrew Niccol</b></span>
+              <span><small>YIL</small><b data-film-year>2011</b></span>
+              <span><small>KULÜP TEMASI</small><b data-film-theme>Zaman ve eşitsizlik</b></span>
             </div>
           </div>
-          <aside class="score">
-            <div class="eyebrow">İzleyici puanı</div>
-            <strong>6.7</strong><span>/10</span>
-            <p>
-              IMDb’de yaklaşık 487 bin değerlendirme. Puan zamanla değişebilir.
-            </p>
-            <a
-              href="https://www.imdb.com/title/tt1637688/"
-              target="_blank"
-              rel="noreferrer"
-              >IMDb sayfasını aç ↗</a
-            >
-            <div class="facts">
-              <div class="fact"><b>YÖNETMEN</b>Andrew Niccol</div>
-              <div class="fact"><b>SÜRE</b>109 dakika</div>
-              <div class="fact"><b>TÜR</b>Bilimkurgu · Gerilim</div>
-              <div class="fact">
-                <b>OYUNCULAR</b>J. Timberlake · A. Seyfried
-              </div>
-            </div>
-          </aside>
+        </div>
+        <div class="film-scroll-cue" aria-hidden="true"><span>SAHNELERE İN</span><i></i></div>
+      </section>
+
+      <section class="film-reading" aria-label="Kulübün film okuması">
+        <div>
+          <span>KULÜBÜN OKUMASI</span>
+          <p data-film-reading>Film, zamanı bir metafor olmaktan çıkarıp doğrudan ekonomik güce dönüştürür. Birinin sonsuzluğu başkasının yarınından çalındığında özgürlük mümkün müdür?</p>
         </div>
       </section>
-      <section class="section alt">
-        <div class="shell">
-          <div class="eyebrow">Kulübün okuması</div>
-          <p class="idea">
-            Filmin ana fikri yalnızca “zaman paradır” değildir: yaşam süresinin
-            ekonomik güce dönüşmesi, eşitsizliğin nasıl doğal ve kaçınılmaz
-            gösterildiğini açığa çıkarır. Film bize asıl olarak şunu sorar:
-            Birinin sonsuzluğu, başkasının yarınından çalındığında özgürlük
-            mümkün müdür?
-          </p>
-        </div>
+
+      <section class="film-scenes" aria-label="Filmden sahneler">
+        <figure class="film-scene is-visible" data-scene="0">
+          <img src="assets/in-time-04.jpg" alt="Zamana Karşı filminden sahne" />
+          <div class="film-scene-shade"></div>
+          <figcaption><small data-scene-number>SAHNE 01</small><h2 data-scene-title>Zamanı riske atmak</h2><p data-scene-copy>Will masaya para değil, doğrudan yaşamını koyar.</p></figcaption>
+        </figure>
+        <figure class="film-scene" data-scene="1">
+          <img src="assets/in-time-05.jpg" alt="Zamana Karşı filminden sahne" />
+          <div class="film-scene-shade"></div>
+          <figcaption><small data-scene-number>SAHNE 02</small><h2 data-scene-title>Ölümsüzlerin bölgesi</h2><p data-scene-copy>Zenginlik burada gösteriş değil, tükenmeyen yarınlardır.</p></figcaption>
+        </figure>
+        <figure class="film-scene" data-scene="2">
+          <img src="assets/in-time-06.jpg" alt="Zamana Karşı filminden sahne" />
+          <div class="film-scene-shade"></div>
+          <figcaption><small data-scene-number>SAHNE 03</small><h2 data-scene-title>Konforun dışına bakmak</h2><p data-scene-copy>Sylvia, sahip olduğu zamanın başkalarının kaybı olduğunu görür.</p></figcaption>
+        </figure>
       </section>
-      <section class="section">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">Eleştirmen masası</div>
-              <h2>Üç farklı bakış</h2>
-            </div>
-          </div>
-          <div class="reviews">
-            <article class="review">
-              <blockquote>
-                “Fikir son derece ilgi çekici; fakat film, pek çok tanıdık
-                aksiyon unsuruna yaslanıyor.”
-              </blockquote>
-              <cite>Roger Ebert · 3/4 yıldız · serbest çeviri</cite>
-            </article>
-            <article class="review">
-              <blockquote>
-                “Çarpıcı öncül ve oyuncu kadrosu, anlatının fazla doğrudan
-                oluşunun gölgesinde kalıyor.”
-              </blockquote>
-              <cite>Rotten Tomatoes eleştirmen uzlaşısı · serbest çeviri</cite>
-            </article>
-            <article class="review">
-              <blockquote>
-                “Film, eşitsizlik fikrini güçlü biçimde kuruyor; ancak ikinci
-                yarıda bu fikrin derinliğini aksiyona bırakıyor.”
-              </blockquote>
-              <cite>Metinlerarası editör notu · eleştiri derlemesi</cite>
-            </article>
-          </div>
+
+      <section class="film-trailer-finale">
+        <div class="film-trailer-card">
+          <small>HAFTANIN FİLMİ · RESMÎ FRAGMAN</small>
+          <h2 data-film-finale-title>Zamana Karşı</h2>
+          <p>Film gecesinden önce dünyasına kısa bir giriş yap.</p>
+          <a data-film-trailer href="https://www.youtube.com/watch?v=xhYUaR5QiUs" target="_blank" rel="noreferrer"><span>YouTube’da fragmanı aç</span><b>↗</b></a>
         </div>
-      </section>
-      <section class="visual-essay" aria-label="Zamana Karşı görsel denemesi">
-        <div class="film-reel">
-          <span>ZAMAN PARADIR · YAŞAM BORÇTUR · HER SANİYE BİR SEÇİMDİR · </span
-          ><span
-            >ZAMAN PARADIR · YAŞAM BORÇTUR · HER SANİYE BİR SEÇİMDİR ·
-          </span>
-        </div>
-        <div class="visual-grid">
-          <figure class="visual v1">
-            <img src="assets/in-time-04.jpg" alt="Will Salas kumar masasında" />
-            <figcaption>
-              <b>01</b>
-              <h3>Zamanı riske atmak</h3>
-              <p>Will masaya para değil, doğrudan yaşamını koyar.</p>
-            </figcaption>
-          </figure>
-          <figure class="visual v2">
-            <img src="assets/in-time-05.jpg" alt="Sylvia Weis şehirde" />
-            <figcaption>
-              <b>02</b>
-              <h3>Ölümsüzlerin bölgesi</h3>
-              <p>Zenginlik burada gösteriş değil; tükenmeyen yarınlardır.</p>
-            </figcaption>
-          </figure>
-          <figure class="visual v3">
-            <img src="assets/in-time-06.jpg" alt="Sylvia Weis yakın plan" />
-            <figcaption>
-              <b>03</b>
-              <h3>Konforun dışına bakmak</h3>
-              <p>
-                Sylvia, sahip olduğu zamanın başkalarının kaybı olduğunu görür.
-              </p>
-            </figcaption>
-          </figure>
-          <figure class="visual v4">
-            <img src="assets/in-time-07.jpg" alt="Will ve Sylvia birlikte" />
-            <figcaption>
-              <b>04</b>
-              <h3>İki ayrı dünya</h3>
-              <p>Yakınlaşmaları sınıf sınırlarını silmez; görünür kılar.</p>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-      <section aria-label="Filmden sahneler">
-        <article class="scene scene-1">
-          <div class="scene-copy">
-            <span>SAHNE 01 · SINIR</span>
-            <h3>Zaman bölgeleri</h3>
-            <p>
-              Aynı şehirde iki ayrı yaşam süresi: görünmez sınırlar, görünür
-              eşitsizlikler.
-            </p>
-          </div>
-        </article>
-        <article class="scene scene-2">
-          <div class="scene-copy">
-            <span>SAHNE 02 · KAÇIŞ</span>
-            <h3>Her saniye bir karar</h3>
-            <p>
-              Will ve Sylvia için hareket etmek, yalnızca kaçmak değil sistemi
-              reddetmektir.
-            </p>
-          </div>
-        </article>
-        <article class="scene scene-3">
-          <div class="scene-copy">
-            <span>SAHNE 03 · ORTAKLIK</span>
-            <h3>Güvenin bedeli</h3>
-            <p>
-              Zamanın satıldığı bir düzende güven, ölçülemeyen son değer olarak
-              kalır.
-            </p>
-          </div>
-        </article>
       </section>
     </main>
-    <footer class="shell footer">
-      <span>© 2026 Metinlerarası</span
-      ><span>Film görselleri tanıtım amaçlı sahnelerdir.</span>
-    </footer>
-<script src="site.js?v=20260816-1"></script>
+
+    <footer class="film-cinema-footer"><span>© 2026 METİNLERARASI</span><span>FİLM PROGRAMI · AĞUSTOS / EYLÜL</span></footer>
+
+    <script src="site.js?v=20260816-7"></script>
+    <script src="film-page-v3.js?v=20260816-1"></script>
   </body>
 </html>

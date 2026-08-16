@@ -16,15 +16,18 @@ if(topbar&&!topbar.querySelector('.icon-nav')){
   iconNav.className='icon-nav';
   iconNav.setAttribute('aria-label','Ana gezinme');
   iconNav.innerHTML=`
-    <a data-nav-key="home" href="index.html" aria-label="Ana sayfa" title="Ana sayfa">${navigationIcons.home}<span>Ev</span></a>
+    <a data-nav-key="home" href="index.html" aria-label="Ana sayfa" title="Ana sayfa">${navigationIcons.home}<span>Anasayfa</span></a>
     <a data-nav-key="calendar" href="etkinlikler.html" aria-label="Etkinlik takvimi" title="Etkinlik takvimi">${navigationIcons.calendar}<span>Takvim</span></a>
-    <a data-nav-key="film" href="index.html#film" aria-label="Filmler" title="Filmler">${navigationIcons.film}<span>Film</span></a>
-    <a data-nav-key="book" href="index.html#book" aria-label="Kitaplar" title="Kitaplar">${navigationIcons.book}<span>Kitap</span></a>
+    <a data-nav-key="film" href="ayin-filmi.html" aria-label="Filmler" title="Filmler">${navigationIcons.film}<span>Film</span></a>
+    <a data-nav-key="book" href="kitap.html" aria-label="Kitaplar" title="Kitaplar">${navigationIcons.book}<span>Kitap</span></a>
     <button data-nav-key="profile" type="button" disabled aria-disabled="true" aria-label="Profil, yakında" title="Profil · Yakında">${navigationIcons.profile}<span>Profil</span></button>`;
   topbar.appendChild(iconNav);
   const mobileNavigation=matchMedia('(max-width: 760px)');
+  const homeNavigationSlot=document.querySelector('.home-opening-nav');
   const placeIconNavigation=()=>{
-    if(mobileNavigation.matches){
+    if(document.body.classList.contains('home')&&homeNavigationSlot){
+      if(iconNav.parentElement!==homeNavigationSlot)homeNavigationSlot.appendChild(iconNav);
+    }else if(mobileNavigation.matches){
       if(iconNav.parentElement!==document.body)document.body.appendChild(iconNav);
     }else if(iconNav.parentElement!==topbar){
       topbar.appendChild(iconNav);
@@ -34,7 +37,7 @@ if(topbar&&!topbar.querySelector('.icon-nav')){
   mobileNavigation.addEventListener?.('change',placeIconNavigation);
   const syncIconNavigation=()=>{
     const file=location.pathname.split('/').pop()||'index.html';
-    const key=file==='etkinlikler.html'?'calendar':file==='ayin-filmi.html'||file==='yildizlararasi.html'?'film':location.hash==='#film'?'film':location.hash==='#book'?'book':'home';
+    const key=file==='etkinlikler.html'?'calendar':file==='kitap.html'?'book':file==='ayin-filmi.html'||file==='yildizlararasi.html'?'film':location.hash==='#film'?'film':location.hash==='#book'?'book':'home';
     iconNav.querySelectorAll('[data-nav-key]').forEach(item=>{
       const active=item.dataset.navKey===key;
       item.classList.toggle('active',active);
@@ -55,7 +58,7 @@ if(!document.body.classList.contains('home'))showMonthState('current');
 const countdown=document.createElement('div');
 countdown.className='countdown-strip';
 countdown.innerHTML='SIRADAKİ BULUŞMA <b>hesaplanıyor…</b>';
-if(!document.querySelector('.home-countdown'))document.body.appendChild(countdown);
+if(!document.querySelector('.home-opening')&&!document.querySelector('.home-countdown')&&!document.body.classList.contains('book-detail-page'))document.body.appendChild(countdown);
 const target=new Date('2026-08-23T19:30:00+03:00');
 function tick(){const diff=target-Date.now(),out=document.querySelector('.home-countdown b')||countdown.querySelector('b');if(diff<=0){out.textContent='Buluşma başladı';return}const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);out.textContent=`${d} gün · ${h} sa · ${m} dk · ${s} sn`}
 tick();setInterval(tick,1000);
@@ -124,7 +127,7 @@ const firstSiteVisit=window.name!=='metinlerarasi-visited'&&!cameFromInternalLin
 const pageWasReloaded=navigationEntry?.type==='reload';
 window.name='metinlerarasi-visited';
 document.querySelectorAll('a[href]').forEach(link=>link.addEventListener('click',()=>{const href=link.getAttribute('href');if(href&&!href.startsWith('#')&&!href.startsWith('http')&&!href.startsWith('mailto:'))window.name='metinlerarasi-internal'}));
-if(!cameFromInternalLink&&(firstSiteVisit||pageWasReloaded)){
+if(!document.body.classList.contains('home')&&!document.body.classList.contains('film-cinema-page')&&!cameFromInternalLink&&(firstSiteVisit||pageWasReloaded)){
   const intro=document.createElement('div');
   intro.className='book-intro cosmic-intro';
   intro.innerHTML='<div class="intro-stars" aria-hidden="true"></div><div class="intro-aperture" aria-hidden="true"><i></i><i></i><i></i></div><div class="intro-file"><span>AĞUSTOS · DOSYA 001</span><img src="assets/evreni-anlayan-maymun-kapak.jpg" alt=""><b>Seçilen kitap bulundu</b><small>EVRENİ ANLAYAN MAYMUN</small></div><div class="intro-word iw1">İNSAN</div><div class="intro-word iw2">EVRİM</div><div class="intro-word iw3">EVREN</div><button class="intro-skip" aria-label="Açılışı geç">GEÇ →</button>';
