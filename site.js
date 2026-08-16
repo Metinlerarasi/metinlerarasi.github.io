@@ -3,6 +3,48 @@ const root=document.documentElement;
 document.querySelectorAll('.web-months button:disabled').forEach(button=>button.remove());
 root.setAttribute('data-theme','dark');localStorage.setItem('metinlerarasi-theme','dark');
 
+const navigationIcons={
+  home:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.6 8.5-7 8.5 7v9.2a.7.7 0 0 1-.7.7H4.2a.7.7 0 0 1-.7-.7z"/><path d="M9 20.5v-6.2h6v6.2"/></svg>',
+  calendar:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7.5 3v4M16.5 3v4M3 9.5h18M7 13h2M11 13h2M15 13h2M7 17h2M11 17h2"/></svg>',
+  film:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3.5 7 6 3h4L7.5 7M12 7l2.5-4h4L16 7M9.5 11.5l6 3.5-6 3.5z"/></svg>',
+  book:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h4.2A3.8 3.8 0 0 1 12 8.3V21a4.2 4.2 0 0 0-4.2-4.2H4z"/><path d="M20 4.5h-4.2A3.8 3.8 0 0 0 12 8.3V21a4.2 4.2 0 0 1 4.2-4.2H20z"/></svg>',
+  profile:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 21v-2.2a7 7 0 0 1 14 0V21"/></svg>'
+};
+const topbar=document.querySelector('.topbar');
+if(topbar&&!topbar.querySelector('.icon-nav')){
+  const iconNav=document.createElement('nav');
+  iconNav.className='icon-nav';
+  iconNav.setAttribute('aria-label','Ana gezinme');
+  iconNav.innerHTML=`
+    <a data-nav-key="home" href="index.html" aria-label="Ana sayfa" title="Ana sayfa">${navigationIcons.home}<span>Ev</span></a>
+    <a data-nav-key="calendar" href="etkinlikler.html" aria-label="Etkinlik takvimi" title="Etkinlik takvimi">${navigationIcons.calendar}<span>Takvim</span></a>
+    <a data-nav-key="film" href="index.html#film" aria-label="Filmler" title="Filmler">${navigationIcons.film}<span>Film</span></a>
+    <a data-nav-key="book" href="index.html#book" aria-label="Kitaplar" title="Kitaplar">${navigationIcons.book}<span>Kitap</span></a>
+    <button data-nav-key="profile" type="button" disabled aria-disabled="true" aria-label="Profil, yakında" title="Profil · Yakında">${navigationIcons.profile}<span>Profil</span></button>`;
+  topbar.appendChild(iconNav);
+  const mobileNavigation=matchMedia('(max-width: 760px)');
+  const placeIconNavigation=()=>{
+    if(mobileNavigation.matches){
+      if(iconNav.parentElement!==document.body)document.body.appendChild(iconNav);
+    }else if(iconNav.parentElement!==topbar){
+      topbar.appendChild(iconNav);
+    }
+  };
+  placeIconNavigation();
+  mobileNavigation.addEventListener?.('change',placeIconNavigation);
+  const syncIconNavigation=()=>{
+    const file=location.pathname.split('/').pop()||'index.html';
+    const key=file==='etkinlikler.html'?'calendar':file==='ayin-filmi.html'||file==='yildizlararasi.html'?'film':location.hash==='#film'?'film':location.hash==='#book'?'book':'home';
+    iconNav.querySelectorAll('[data-nav-key]').forEach(item=>{
+      const active=item.dataset.navKey===key;
+      item.classList.toggle('active',active);
+      if(active)item.setAttribute('aria-current','page');else item.removeAttribute('aria-current');
+    });
+  };
+  syncIconNavigation();
+  addEventListener('hashchange',syncIconNavigation);
+}
+
 const nav=document.querySelector('.nav');
 document.querySelector('.menu')?.addEventListener('click',()=>nav?.classList.toggle('open'));
 

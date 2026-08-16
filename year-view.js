@@ -456,6 +456,21 @@
     }),
   );
 
+  function renderHashContent() {
+    if (location.hash === "#film") {
+      activeContent = "film-0";
+      renderContent();
+      document.querySelector(".feature-stage")?.scrollIntoView({ block: "start" });
+    } else if (location.hash === "#book") {
+      activeContent = "book";
+      renderContent();
+      document.querySelector(".feature-stage")?.scrollIntoView({ block: "start" });
+    }
+  }
+
+  addEventListener("hashchange", renderHashContent);
+
   renderPeriod();
   renderMonth(activeMonth);
+  renderHashContent();
 })();
