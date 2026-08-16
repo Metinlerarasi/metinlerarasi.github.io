@@ -111,7 +111,7 @@ body.home {
 .home-opening-meta {
   position: absolute;
   z-index: 5;
-  top: 34px;
+  top: 104px;
   right: clamp(24px, 4vw, 64px);
   display: flex;
   align-items: center;
@@ -166,33 +166,14 @@ body.home {
   text-wrap: balance;
 }
 
-.home-opening-actions {
-  position: absolute;
-  z-index: 6;
-  right: clamp(24px, 4vw, 64px);
-  bottom: clamp(42px, 7vh, 72px);
-  display: flex;
-  align-items: center;
-  gap: 13px;
-}
-
-.home-opening-actions-label {
-  font: 600 8px/1 "DM Sans", sans-serif;
-  letter-spacing: 0.16em;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  color: rgba(248, 241, 223, 0.58);
-}
-
-.home-opening-nav .icon-nav,
-body.home .icon-nav {
+.home .topbar .icon-nav {
   --nav-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.23), rgba(255, 255, 255, 0.08));
   position: relative;
   z-index: 6;
   inset: auto;
   width: auto;
   height: auto;
-  margin: 0;
+  margin: 0 0 0 20px;
   padding: 7px 9px;
   gap: 5px;
   justify-content: flex-start;
@@ -208,22 +189,18 @@ body.home .icon-nav {
   -webkit-backdrop-filter: blur(28px) saturate(145%);
 }
 
-.home-opening .icon-nav a,
-.home-opening .icon-nav button {
-  width: auto;
-  height: 48px;
-  flex-basis: auto;
-  display: inline-flex;
-  grid-template-columns: none;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 14px;
+.home .topbar .icon-nav a,
+.home .topbar .icon-nav button {
+  width: 62px;
+  height: 54px;
+  flex-basis: 62px;
+  gap: 5px;
+  padding: 0 8px;
   color: rgba(255, 255, 255, 0.82);
   border-radius: 16px;
 }
 
-.home-opening .icon-nav span {
+.home .topbar .icon-nav span {
   position: static;
   width: auto;
   height: auto;
@@ -231,24 +208,24 @@ body.home .icon-nav {
   overflow: visible;
   clip: auto;
   white-space: nowrap;
-  font: 400 11px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: -0.015em;
+  font: 600 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0;
 }
 
-.home-opening .icon-nav svg {
+.home .topbar .icon-nav svg {
   width: 20px;
   height: 20px;
   flex: 0 0 20px;
 }
 
-.home-opening .icon-nav a:hover,
-.home-opening .icon-nav a:focus-visible {
+.home .topbar .icon-nav a:hover,
+.home .topbar .icon-nav a:focus-visible {
   color: #fff;
   background: rgba(255, 255, 255, 0.14);
   transform: translateY(-2px);
 }
 
-.home-opening .icon-nav a.active {
+.home .topbar .icon-nav a.active {
   color: #111713;
   background: rgba(255, 250, 237, 0.94);
   box-shadow:
@@ -256,7 +233,7 @@ body.home .icon-nav {
     0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-.home-opening .icon-nav button:disabled {
+.home .topbar .icon-nav button:disabled {
   color: rgba(255, 255, 255, 0.62);
   opacity: 0.46;
 }
@@ -350,45 +327,35 @@ body.home .icon-nav {
     line-height: 1.42;
   }
 
-  .home-opening-actions-label {
-    display: none;
-  }
-
-  .home-opening-actions {
-    right: 18px;
-    left: 18px;
-    bottom: max(34px, env(safe-area-inset-bottom));
-  }
-
-  .home-opening-nav .icon-nav,
-  body.home .icon-nav {
+  .home .topbar .icon-nav {
     width: min(354px, calc(100vw - 24px));
-    height: 64px;
+    height: 72px;
     padding: 7px 6px;
     gap: 2px;
     justify-content: space-around;
     border-radius: 22px;
   }
 
-  .home-opening .icon-nav a,
-  .home-opening .icon-nav button {
-    width: auto;
-    height: 46px;
-    flex: 0 1 auto;
+  .home .topbar .icon-nav a,
+  .home .topbar .icon-nav button {
+    width: 58px;
+    height: 58px;
+    flex: 0 1 58px;
+    flex-direction: column;
     gap: 4px;
-    padding: 0 6px;
+    padding: 0 4px;
     border-radius: 15px;
   }
 
-  .home-opening .icon-nav svg {
-    width: 17px;
-    height: 17px;
-    flex-basis: 17px;
+  .home .topbar .icon-nav svg {
+    width: 21px;
+    height: 21px;
+    flex-basis: 21px;
   }
 
-  .home-opening .icon-nav span {
-    font-size: 8px;
-    letter-spacing: -0.02em;
+  .home .topbar .icon-nav span {
+    font-size: 7.5px;
+    letter-spacing: 0;
   }
 
 }
@@ -402,8 +369,7 @@ body.home .icon-nav {
     max-width: 100%;
   }
 
-  .home-opening-nav .icon-nav,
-  body.home .icon-nav {
+  .home .topbar .icon-nav {
     width: 100%;
   }
 }

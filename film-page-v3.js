@@ -69,7 +69,6 @@ function selectFilm(id, updateHistory = true) {
     setFilmText('[data-film-year]', film.year);
     setFilmText('[data-film-theme]', film.theme);
     setFilmText('[data-film-reading]', film.reading);
-    setFilmText('[data-film-finale-title]', film.title);
     document.querySelectorAll('[data-film-trailer]').forEach(link => { link.href = film.trailer; link.setAttribute('aria-label', `${film.title} resmî fragmanını aç`); });
     filmSceneElements.forEach((scene, index) => {
       const sceneData = film.scenes[index];

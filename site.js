@@ -17,24 +17,16 @@ if(topbar&&!topbar.querySelector('.icon-nav')){
   iconNav.setAttribute('aria-label','Ana gezinme');
   iconNav.innerHTML=`
     <a data-nav-key="home" href="index.html" aria-label="Ana sayfa" title="Ana sayfa">${navigationIcons.home}<span>Anasayfa</span></a>
+    <a data-nav-key="book" href="kitap.html" aria-label="Kitaplar" title="Kitaplar">${navigationIcons.book}<span>Kitap</span></a>
     <a data-nav-key="calendar" href="etkinlikler.html" aria-label="Etkinlik takvimi" title="Etkinlik takvimi">${navigationIcons.calendar}<span>Takvim</span></a>
     <a data-nav-key="film" href="ayin-filmi.html" aria-label="Filmler" title="Filmler">${navigationIcons.film}<span>Film</span></a>
-    <a data-nav-key="book" href="kitap.html" aria-label="Kitaplar" title="Kitaplar">${navigationIcons.book}<span>Kitap</span></a>
     <button data-nav-key="profile" type="button" disabled aria-disabled="true" aria-label="Profil, yakında" title="Profil · Yakında">${navigationIcons.profile}<span>Profil</span></button>`;
   topbar.appendChild(iconNav);
-  const mobileNavigation=matchMedia('(max-width: 760px)');
-  const homeNavigationSlot=document.querySelector('.home-opening-nav');
+  document.body.classList.add('has-icon-navigation');
   const placeIconNavigation=()=>{
-    if(document.body.classList.contains('home')&&homeNavigationSlot){
-      if(iconNav.parentElement!==homeNavigationSlot)homeNavigationSlot.appendChild(iconNav);
-    }else if(mobileNavigation.matches){
-      if(iconNav.parentElement!==document.body)document.body.appendChild(iconNav);
-    }else if(iconNav.parentElement!==topbar){
-      topbar.appendChild(iconNav);
-    }
+    if(iconNav.parentElement!==document.body)document.body.appendChild(iconNav);
   };
   placeIconNavigation();
-  mobileNavigation.addEventListener?.('change',placeIconNavigation);
   const syncIconNavigation=()=>{
     const file=location.pathname.split('/').pop()||'index.html';
     const key=file==='etkinlikler.html'?'calendar':file==='kitap.html'?'book':file==='ayin-filmi.html'||file==='yildizlararasi.html'?'film':location.hash==='#film'?'film':location.hash==='#book'?'book':'home';
