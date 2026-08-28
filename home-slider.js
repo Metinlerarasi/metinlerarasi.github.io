@@ -9,6 +9,17 @@ const detailPages = [...document.querySelectorAll("[data-detail-page]")];
 const detailButtons = [...document.querySelectorAll("[data-detail]")];
 const backToCards = document.querySelector(".back-to-cards");
 
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => entry.target.classList.toggle("is-visible", entry.isIntersecting));
+  },
+  { root: detailShell, threshold: 0.18 }
+);
+
+function observeReveals(root) {
+  root.querySelectorAll(".reveal-on-scroll").forEach((element) => revealObserver.observe(element));
+}
+
 let activeIndex = 1;
 let pointerStartX = null;
 let detailCard = null;
@@ -46,49 +57,49 @@ const filmPrograms = {
   "in-time": {
     month: "august", badge: "AYIN FİLMİ · 01", date: "17–23 AĞUSTOS 2026",
     title: "Zamana<br><em>Karşı</em>", plainTitle: "Zamana Karşı",
-    author: "Andrew Niccol · 2011", image: "assets/in-time-home-poster.jpg", trailer: "xhYUaR5QiUs",
+    author: "Andrew Niccol · 2011", image: "assets/in-time-official-poster.jpg", trailer: "xhYUaR5QiUs",
     summary: "Yaşam süresinin para olduğu bir gelecekte, bir gün daha yaşamak bile sınıfsal bir ayrıcalığa dönüşüyor.",
     tags: ["Zaman", "Eşitsizlik", "Özgürlük"], question: "Bir saatin<br>gerçek bedeli nedir?"
   },
   interstellar: {
     month: "august", badge: "AYIN FİLMİ · 02", date: "24–30 AĞUSTOS 2026",
     title: "Yıldızlar<br><em>Arasında</em>", plainTitle: "Yıldızlar Arasında",
-    author: "Christopher Nolan · 2014", image: "assets/interstellar-home-poster.jpg", trailer: "R8teZZ-loaI",
+    author: "Christopher Nolan · 2014", image: "assets/interstellar-official-poster.jpg", trailer: "R8teZZ-loaI",
     summary: "Zamanın büküldüğü, sevginin mesafeleri aştığı ve insanın bilinmeyene doğru yürüdüğü büyük bir yolculuk.",
     tags: ["Zaman", "Uzay", "İnsan"], question: "Zaman geçer mi,<br>yoksa biz mi geçeriz?"
   },
   truman: {
     month: "september", badge: "EYLÜL FİLMİ · 03", date: "31 AĞUSTOS–6 EYLÜL",
     title: "Truman<br><em>Show</em>", plainTitle: "Truman Show",
-    author: "Peter Weir · 1998", image: "assets/truman-hero.jpg", trailer: "NkZM2oWcleM",
+    author: "Peter Weir · 1998", image: "assets/truman-official-poster.jpg", trailer: "NkZM2oWcleM",
     summary: "Kusursuz görünen hayatının başkaları tarafından yazıldığını fark eden bir adamın gerçekliğe doğru yürüyüşü.",
     tags: ["Gerçeklik", "Gözetim", "Özgürlük"], question: "Gerçek olanı<br>kim belirler?"
   },
   marty: {
     month: "september", badge: "EYLÜL FİLMİ · 04", date: "7–13 EYLÜL 2026",
     title: "Marty<br><em>Supreme</em>", plainTitle: "Marty Supreme",
-    author: "Josh Safdie · 2025", image: "assets/marty-hero.jpg", trailer: "s9gSuKaKcqM",
+    author: "Josh Safdie · 2025", image: "assets/marty-official-poster.jpg", trailer: "s9gSuKaKcqM",
     summary: "Görünür olma arzusu ile kendini kanıtlama hırsı arasında giderek hızlanan bir karakter yolculuğu.",
     tags: ["Hırs", "Oyun", "Görünürlük"], question: "Kazanmak için<br>ne kaybedilir?"
   },
   father: {
     month: "september", badge: "EYLÜL FİLMİ · 05", date: "14–20 EYLÜL 2026",
     title: "The<br><em>Father</em>", plainTitle: "The Father",
-    author: "Florian Zeller · 2020", image: "assets/father-hero.jpg", trailer: "4TZb7YfK-JI",
+    author: "Florian Zeller · 2020", image: "assets/father-official-poster.jpg", trailer: "4TZb7YfK-JI",
     summary: "Mekânların, yüzlerin ve zamanın yer değiştirdiği; hafızanın içinden anlatılan sarsıcı bir kimlik hikâyesi.",
     tags: ["Hafıza", "Kimlik", "Aile"], question: "Hatırlamak bizi<br>biz yapar mı?"
   },
   banshees: {
     month: "september", badge: "EYLÜL FİLMİ · 06", date: "21–27 EYLÜL 2026",
     title: "The Banshees of<br><em>Inisherin</em>", plainTitle: "The Banshees of Inisherin",
-    author: "Martin McDonagh · 2022", image: "assets/banshees-hero.jpg", trailer: "uRu3zLOJN2c",
+    author: "Martin McDonagh · 2022", image: "assets/banshees-official-poster.jpg", trailer: "uRu3zLOJN2c",
     summary: "Uzak bir adada ansızın biten dostluğun sessiz bir kırgınlıktan geri dönüşsüz bir çatışmaya dönüşmesi.",
     tags: ["Dostluk", "Yalnızlık", "İnat"], question: "Bir dostluk<br>nasıl biter?"
   },
   duvar: {
     month: "september", badge: "EYLÜL–EKİM · 07", date: "28 EYLÜL–4 EKİM 2026",
     title: "<em>Duvar</em>", plainTitle: "Duvar",
-    author: "Yılmaz Güney · 1983", image: "https://img.youtube.com/vi/upCZb3xLUl4/hqdefault.jpg", trailer: "upCZb3xLUl4",
+    author: "Yılmaz Güney · 1983", image: "assets/duvar-official-poster.png", trailer: "upCZb3xLUl4",
     summary: "Bir cezaevinin çocuklar koğuşunda büyüyen baskının, dayanışmanın ve özgürlük arzusunun sert hikâyesi.",
     tags: ["İsyan", "Adalet", "Özgürlük"], question: "Bir duvar yalnızca<br>neyi içeride tutar?"
   }
@@ -97,7 +108,7 @@ const filmPrograms = {
 const filmProgramDetails = {
   "in-time": {
     start: "2026-08-17T00:00:00+03:00", end: "2026-08-23T23:59:59+03:00",
-    imdb: "6.7", runtime: "1 sa 49 dk", cast: "Justin Timberlake · Amanda Seyfried · Cillian Murphy", director: "Andrew Niccol", directorInitials: "AN",
+    imdb: "6.7", runtime: "1 sa 49 dk", cast: "Justin Timberlake · Amanda Seyfried · Cillian Murphy", director: "Andrew Niccol", directorInitials: "AN", directorPhoto: "assets/director-niccol.jpg",
     storyTitle: "Zaman para olduğunda,<br><em>hayat kimin olur?</em>",
     story: "İnsanların 25 yaşından sonra yaşlanmadığı, fakat kalan ömürlerini çalışarak kazanmak zorunda olduğu bir gelecekte Will Salas, kendisine bırakılan büyük zaman mirasıyla sistemin hedefi olur. Film; zamanı sınıf, emek ve iktidar üzerinden kuran hızlı bir distopyadır.",
     directorCopy: "Gattaca ve The Truman Show’un senaristi Andrew Niccol, yüksek kavramlı bilimkurguyu gündelik eşitsizliklerle buluşturur. Zamana Karşı’da görünmez ekonomik sınırları, insanların kollarında geri sayan somut bir saate dönüştürür.",
@@ -112,7 +123,7 @@ const filmProgramDetails = {
   },
   interstellar: {
     start: "2026-08-24T00:00:00+03:00", end: "2026-08-30T23:59:59+03:00",
-    imdb: "8.7", runtime: "2 sa 49 dk", cast: "Matthew McConaughey · Anne Hathaway · Jessica Chastain", director: "Christopher Nolan", directorInitials: "CN",
+    imdb: "8.7", runtime: "2 sa 49 dk", cast: "Matthew McConaughey · Anne Hathaway · Jessica Chastain", director: "Christopher Nolan", directorInitials: "CN", directorPhoto: "assets/director-nolan.jpg",
     storyTitle: "Zaman bir ölçü değil,<br><em>bir bağdır.</em>",
     story: "Dünya yaşanamaz hâle gelirken eski pilot Cooper, insanlık için yeni bir yuva arayan göreve katılır. Solucan deliğinin ötesindeki yolculukta her karar, Dünya’da yıllara dönüşen bir zaman kaybı ve geride bıraktığı ailesiyle arasındaki bağ anlamına gelir.",
     directorCopy: "Christopher Nolan, bilimsel ölçeği kişisel bir ayrılık hikâyesinin kalbine yerleştirir. Görelilik, kara delikler ve gezegenler arası keşif; Cooper ile Murph arasındaki yarım kalmış konuşmanın duygusal yörüngesinde birleşir.",
@@ -127,7 +138,7 @@ const filmProgramDetails = {
   },
   truman: {
     start: "2026-08-31T00:00:00+03:00", end: "2026-09-06T23:59:59+03:00",
-    imdb: "8.2", runtime: "1 sa 43 dk", cast: "Jim Carrey · Ed Harris · Laura Linney", director: "Peter Weir", directorInitials: "PW",
+    imdb: "8.2", runtime: "1 sa 43 dk", cast: "Jim Carrey · Ed Harris · Laura Linney", director: "Peter Weir", directorInitials: "PW", directorPhoto: "assets/director-weir.jpg",
     storyTitle: "Kusursuz hayatın<br><em>duvarları çatlıyor.</em>",
     story: "Truman Burbank, doğumundan beri dev bir televizyon stüdyosunda yaşadığını bilmez. Çevresindeki küçük hatalar çoğaldıkça güvenli görünen hayatıyla gerçek özgürlük arasında seçim yapmak zorunda kalır.",
     directorCopy: "Peter Weir, hiciv ile duygusal dramı dengelerken seyircinin bakışını da hikâyenin parçası yapar. Film, gözetlenmenin yalnızca kameralarla değil, güvenli ve tanıdık olana duyulan bağımlılıkla da kurulduğunu gösterir.",
@@ -135,7 +146,7 @@ const filmProgramDetails = {
   },
   marty: {
     start: "2026-09-07T00:00:00+03:00", end: "2026-09-13T23:59:59+03:00",
-    imdb: "7.6", runtime: "2 sa 29 dk", cast: "Timothée Chalamet · Gwyneth Paltrow · Odessa A’zion", director: "Josh Safdie", directorInitials: "JS",
+    imdb: "7.6", runtime: "2 sa 29 dk", cast: "Timothée Chalamet · Gwyneth Paltrow · Odessa A’zion", director: "Josh Safdie", directorInitials: "JS", directorPhoto: "assets/director-safdie.png",
     storyTitle: "Hayalini kimse ciddiye<br><em>almıyorsa ne yaparsın?</em>",
     story: "Marty Mauser, kimsenin önemsemediği masa tenisi tutkusunu büyüklük arzusuna dönüştürür. Başarıya giden yolda enerjisi, zekâsı ve gözü karalığı kadar geride bıraktığı ilişkiler de belirleyici olur.",
     directorCopy: "Josh Safdie, durmaksızın ileri fırlayan karakterleri ve baskı altında sıkışan şehir enerjisiyle tanınır. Burada spor filminin yükseliş anlatısını hırs, görünürlük ve kendini icat etme hikâyesiyle karıştırır.",
@@ -143,7 +154,7 @@ const filmProgramDetails = {
   },
   father: {
     start: "2026-09-14T00:00:00+03:00", end: "2026-09-20T23:59:59+03:00",
-    imdb: "8.2", runtime: "1 sa 37 dk", cast: "Anthony Hopkins · Olivia Colman · Mark Gatiss", director: "Florian Zeller", directorInitials: "FZ",
+    imdb: "8.2", runtime: "1 sa 37 dk", cast: "Anthony Hopkins · Olivia Colman · Mark Gatiss", director: "Florian Zeller", directorInitials: "FZ", directorPhoto: "assets/director-zeller.jpg",
     storyTitle: "Bir oda değişince<br><em>gerçeklik de değişir.</em>",
     story: "Anthony yaşlandıkça tanıdığı yüzler, yaşadığı ev ve güvendiği anılar yer değiştirir. Film seyirciyi dışarıdan gözlemleyen konumdan çıkarıp parçalanan hafızanın içine yerleştirir.",
     directorCopy: "Florian Zeller kendi oyununu sinemaya uyarlarken dekoru ve oyuncu değişimlerini anlatının dili hâline getirir. Böylece bellek kaybını açıklamak yerine, seyirciye mekânsal ve duygusal olarak yaşatır.",
@@ -151,7 +162,7 @@ const filmProgramDetails = {
   },
   banshees: {
     start: "2026-09-21T00:00:00+03:00", end: "2026-09-27T23:59:59+03:00",
-    imdb: "7.6", runtime: "1 sa 54 dk", cast: "Colin Farrell · Brendan Gleeson · Kerry Condon", director: "Martin McDonagh", directorInitials: "MM",
+    imdb: "7.6", runtime: "1 sa 54 dk", cast: "Colin Farrell · Brendan Gleeson · Kerry Condon", director: "Martin McDonagh", directorInitials: "MM", directorPhoto: "assets/director-mcdonagh.jpg",
     storyTitle: "Bir dostluk biterse<br><em>adada ne kalır?</em>",
     story: "Pádraic’in en yakın dostu Colm hiçbir açıklama yapmadan arkadaşlıklarını bitirir. Küçük bir adada başlayan kişisel kırgınlık, inat ve yalnızlığın beslediği geri dönüşsüz bir çatışmaya dönüşür.",
     directorCopy: "Martin McDonagh kara mizahı, keskin diyalogları ve trajediye yaklaşan gündelik çatışmalarıyla kurar. Inisherin’in dar dünyası, anlamlı bir hayat bırakma arzusu ile iyi bir insan olma isteğini karşı karşıya getirir.",
@@ -159,7 +170,7 @@ const filmProgramDetails = {
   },
   duvar: {
     start: "2026-09-28T00:00:00+03:00", end: "2026-10-04T23:59:59+03:00",
-    imdb: "7.9", runtime: "1 sa 57 dk", cast: "Tuncel Kurtiz · Ayşe Emel Mesçi · Malik Berrichi", director: "Yılmaz Güney", directorInitials: "YG",
+    imdb: "7.9", runtime: "1 sa 57 dk", cast: "Tuncel Kurtiz · Ayşe Emel Mesçi · Malik Berrichi", director: "Yılmaz Güney", directorInitials: "YG", directorPhoto: "assets/director-guney.jpg",
     storyTitle: "Duvar yalnızca<br><em>neyi içeride tutar?</em>",
     story: "Bir cezaevinin çocuklar koğuşundaki ağır koşullar, şiddet ve baskı karşısında genç mahkûmların dayanışması giderek açık bir başkaldırıya dönüşür.",
     directorCopy: "Yılmaz Güney, sürgünde çektiği Duvar’da kapatılmayı yalnızca fiziksel mekânla değil, kurumların ve korkunun kurduğu bir düzen olarak anlatır. Film sert gerçekçiliğini dayanışma ve özgürlük arzusuyla yan yana taşır.",
@@ -265,6 +276,8 @@ function setDetailFilm(programId) {
   view.querySelector("[data-program-title]").innerHTML = data.title;
   view.querySelector("[data-program-copy]").textContent = data.summary;
   replaceTags(view.querySelector("[data-program-tags]"), data.tags);
+  const questionSticker = view.querySelector("[data-program-question]");
+  if (questionSticker) questionSticker.querySelector("b").innerHTML = data.question;
 
   let facts = view.querySelector(".film-detail-facts");
   if (!facts) {
@@ -289,12 +302,18 @@ function setDetailFilm(programId) {
   if (!authorSection) {
     authorSection = document.createElement("section");
     authorSection.className = "detail-scroll-section detail-author-section";
-    authorSection.innerHTML = `<div class="author-orbit reveal-on-scroll"><span></span><i>sinema</i><i>anlatı</i><i>tema</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YÖNETMEN</p><h3></h3><p></p></div>`;
+    authorSection.innerHTML = `<div class="author-orbit reveal-on-scroll"><img alt="" /><i>sinema</i><i>anlatı</i><i>tema</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YÖNETMEN</p><h3></h3><p></p></div>`;
     storySection.after(authorSection);
+    observeReveals(authorSection);
   }
-  authorSection.querySelector(".author-orbit span").textContent = data.directorInitials;
+  const directorPhoto = authorSection.querySelector(".author-orbit img");
+  directorPhoto.src = data.directorPhoto;
+  directorPhoto.alt = `${data.director} portresi`;
   authorSection.querySelector("h3").innerHTML = data.director.replace(/\s+(?=[^\s]+$)/, "<br><em>") + "</em>";
   authorSection.querySelector(".detail-section-copy > p:last-child").textContent = data.directorCopy;
+  authorSection.querySelectorAll(".author-orbit i").forEach((chip, index) => {
+    if (data.tags[index]) chip.textContent = data.tags[index].toLocaleLowerCase("tr-TR");
+  });
 
   const sceneSection = view.querySelector(".detail-scenes-section");
   const sceneRail = sceneSection?.querySelector(".film-scene-rail");
@@ -627,14 +646,7 @@ setFilmCard(automaticFilmProgram);
 setDetailMonth("film", filmPrograms[automaticFilmProgram].month, false);
 setDetailFilm(automaticFilmProgram);
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => entry.target.classList.toggle("is-visible", entry.isIntersecting));
-  },
-  { root: detailShell, threshold: 0.18 }
-);
-
-document.querySelectorAll(".reveal-on-scroll").forEach((element) => revealObserver.observe(element));
+observeReveals(document);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && detailShell.classList.contains("is-open")) {

@@ -130,7 +130,7 @@
   .calendar-visual,
   .home-visual,
   .film-visual {
-    height: min(420px, 56vh);
+    height: clamp(390px, 47.5vw, 470px);
   }
 
   .book-copy {
