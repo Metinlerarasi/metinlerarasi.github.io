@@ -1801,22 +1801,6 @@ a.nav-link:focus-visible {
 }
 
 /* 2026 program details, rotating selections and narrow-screen stability */
-.book-visual .tragedy-stack img {
-  top: 8%;
-  left: 29%;
-  width: 42%;
-  height: 78%;
-  animation: tragedyOrbit 12s cubic-bezier(.45,.05,.55,.95) infinite;
-  will-change: transform, opacity;
-}
-
-.book-visual .tragedy-stack img:nth-child(1) { animation-delay: 0s; }
-.book-visual .tragedy-stack img:nth-child(2) { animation-delay: -2s; }
-.book-visual .tragedy-stack img:nth-child(3) { animation-delay: -4s; }
-.book-visual .tragedy-stack img:nth-child(4) { animation-delay: -6s; }
-.book-visual .tragedy-stack img:nth-child(5) { animation-delay: -8s; }
-.book-visual .tragedy-stack img:nth-child(6) { animation-delay: -10s; }
-
 .detail-tragedy-collection img {
   left: 31%;
   width: 38%;
@@ -1830,24 +1814,6 @@ a.nav-link:focus-visible {
 .detail-tragedy-collection img:nth-child(4) { animation-delay: -7.5s; }
 .detail-tragedy-collection img:nth-child(5) { animation-delay: -10s; }
 .detail-tragedy-collection img:nth-child(6) { animation-delay: -12.5s; }
-
-@keyframes tragedyOrbit {
-  0%, 100% { z-index: 2; opacity: .55; transform: translate(-72%, 12%) rotate(-17deg) scale(.76); }
-  16.66% { z-index: 4; opacity: .85; transform: translate(-40%, 1%) rotate(-8deg) scale(.9); }
-  33.33% { z-index: 8; opacity: 1; transform: translate(0, -7%) rotate(0) scale(1.08); }
-  50% { z-index: 5; opacity: .9; transform: translate(40%, 2%) rotate(8deg) scale(.92); }
-  66.66% { z-index: 3; opacity: .62; transform: translate(72%, 13%) rotate(17deg) scale(.76); }
-  83.33% { z-index: 1; opacity: .18; transform: translate(0, 24%) rotate(2deg) scale(.65); }
-}
-
-@keyframes detailBookOrbit {
-  0%, 100% { z-index: 2; opacity: .5; transform: translate(-78%, 12%) rotate(-16deg) scale(.78); }
-  16.66% { z-index: 4; opacity: .85; transform: translate(-42%, 1%) rotate(-8deg) scale(.9); }
-  33.33% { z-index: 8; opacity: 1; transform: translate(0, -6%) rotate(0) scale(1.08); }
-  50% { z-index: 5; opacity: .88; transform: translate(42%, 2%) rotate(8deg) scale(.92); }
-  66.66% { z-index: 3; opacity: .58; transform: translate(78%, 13%) rotate(16deg) scale(.78); }
-  83.33% { z-index: 1; opacity: .15; transform: translate(0, 22%) rotate(0) scale(.68); }
-}
 
 .book-selection-section {
   align-content: center;
@@ -1984,27 +1950,6 @@ a.nav-link:focus-visible {
 
 @media (max-width: 420px) {
   .page-stage { padding: 10px; justify-content: flex-start; }
-  .card-slider { border-radius: 23px; }
-  .book-card {
-    min-height: 720px;
-    padding: 58px 18px 66px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 245px auto;
-    align-content: start;
-    border-radius: 23px;
-  }
-  .book-visual,
-  .calendar-visual,
-  .home-visual,
-  .film-visual { height: 225px; }
-  .book-copy { max-width: none; padding: 8px 2px 0; text-align: center; }
-  .book-copy h1 { font-size: clamp(39px, 12vw, 52px); }
-  .book-summary { max-width: 310px; margin-inline: auto; font-size: 11px; }
-  .book-tags { justify-content: center; }
-  .question-sticker { right: 14px; bottom: 14px; }
-  .card-corner-symbol, .home-chat-symbol { left: 14px; bottom: 14px; }
-  .card-month-switcher { top: 19px; right: 13px; }
-  .book-visual .tragedy-stack img { left: 31%; width: 38%; height: 82%; }
   .detail-scroll-section { padding-inline: 15px; }
   .detail-month-switcher { max-width: calc(100vw - 24px); }
   .detail-month-switcher button { min-width: 84px; padding-inline: 8px; }
@@ -2024,18 +1969,7 @@ a.nav-link:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .book-visual .tragedy-stack img,
   .detail-tragedy-collection img { animation: none; }
-}
-
-/* Kapakların arkaya geçerken kısalıp uyumsuz görünmesini engeller. */
-@keyframes tragedyOrbit {
-  0%, 100% { z-index: 2; opacity: .52; transform: translate(-68%, 3%) rotate(-12deg) scale(.96); }
-  16.66% { z-index: 5; opacity: .82; transform: translate(-38%, 0) rotate(-6deg) scale(1); }
-  33.33% { z-index: 9; opacity: 1; transform: translate(0, -2%) rotate(0) scale(1.04); }
-  50% { z-index: 6; opacity: .86; transform: translate(38%, 0) rotate(6deg) scale(1); }
-  66.66% { z-index: 3; opacity: .58; transform: translate(68%, 3%) rotate(12deg) scale(.96); }
-  83.33% { z-index: 1; opacity: .22; transform: translate(0, 5%) rotate(0) scale(.96); }
 }
 
 @keyframes detailBookOrbit {
@@ -2045,20 +1979,6 @@ a.nav-link:focus-visible {
   50% { z-index: 5; opacity: .86; transform: translate(36%, 1%) rotate(7deg) scale(.96); }
   66.66% { z-index: 3; opacity: .62; transform: translate(62%, 5%) rotate(13deg) scale(.9); }
   83.33% { z-index: 1; opacity: .32; transform: translate(0, 8%) rotate(0) scale(.88); }
-}
-
-@media (min-width: 421px) and (max-width: 900px) {
-  .book-card {
-    min-height: min(620px, calc(100svh - 94px));
-    padding: 48px 34px 42px;
-    grid-template-columns: 44% 56%;
-  }
-  .book-visual { height: min(410px, 56vh); }
-  .book-visual .tragedy-stack { width: 96%; height: 88%; }
-  .book-visual .tragedy-stack img { left: 30%; width: 40%; height: 82%; }
-  .book-copy { padding-left: 30px; }
-  .book-copy h1 { font-size: clamp(46px, 7.4vw, 68px); }
-  .book-summary { margin-block: 18px; font-size: 13px; }
 }
 
 /* Ağustos 27 — aylık arşiv ve uzun keşfet sayfaları */
@@ -2211,10 +2131,12 @@ a.nav-link:focus-visible,
   animation: none;
 }
 
-.book-visual .tragedy-stack img:nth-child(1) { transform: translate(-36%, 4%) rotate(-12deg); }
-.book-visual .tragedy-stack img:nth-child(2) { transform: translate(-10%, -2%) rotate(-4deg); }
-.book-visual .tragedy-stack img:nth-child(3) { transform: translate(17%, 1%) rotate(5deg); }
-.book-visual .tragedy-stack img:nth-child(4) { transform: translate(40%, 7%) rotate(12deg); }
+.book-visual .tragedy-stack img:nth-child(1) { transform: translate(-50%, 7%) rotate(-15deg); }
+.book-visual .tragedy-stack img:nth-child(2) { transform: translate(-30%, 2%) rotate(-9deg); }
+.book-visual .tragedy-stack img:nth-child(3) { transform: translate(-10%, -2%) rotate(-3deg); }
+.book-visual .tragedy-stack img:nth-child(4) { transform: translate(10%, -1%) rotate(3deg); }
+.book-visual .tragedy-stack img:nth-child(5) { transform: translate(30%, 3%) rotate(9deg); }
+.book-visual .tragedy-stack img:nth-child(6) { transform: translate(50%, 8%) rotate(15deg); }
 
 .detail-shell {
   scroll-behavior: smooth;
@@ -2774,12 +2696,6 @@ a.nav-link:focus-visible,
     width: 49px;
   }
 
-  .book-visual .tragedy-stack img {
-    width: 48%;
-    height: 70%;
-    left: 25%;
-  }
-
   .detail-scroll-section {
     min-height: calc(100svh - 50px);
     padding: 74px 22px 54px;
@@ -2919,23 +2835,6 @@ a.nav-link:focus-visible,
   overflow: hidden;
 }
 
-.book-visual .tragedy-stack img {
-  top: 5%;
-  left: 17%;
-  width: auto;
-  height: 80%;
-  max-width: none;
-  object-fit: contain;
-  background: transparent;
-  animation: tragedyOrbit 12s cubic-bezier(.45,.05,.55,.95) infinite;
-}
-.book-visual .tragedy-stack img:nth-child(1) { animation-delay: 0s; }
-.book-visual .tragedy-stack img:nth-child(2) { animation-delay: -2s; }
-.book-visual .tragedy-stack img:nth-child(3) { animation-delay: -4s; }
-.book-visual .tragedy-stack img:nth-child(4) { animation-delay: -6s; }
-.book-visual .tragedy-stack img:nth-child(5) { animation-delay: -8s; }
-.book-visual .tragedy-stack img:nth-child(6) { animation-delay: -10s; }
-
 .detail-tragedy-collection img {
   left: 31%;
   width: 38%;
@@ -2948,49 +2847,6 @@ a.nav-link:focus-visible,
 .detail-tragedy-collection img:nth-child(5) { animation-delay: -10s; }
 .detail-tragedy-collection img:nth-child(6) { animation-delay: -12.5s; }
 
-@media (max-width: 420px) {
-  .page-stage { padding: 10px; justify-content: flex-start; }
-  .card-slider { border-radius: 23px; }
-  .book-card {
-    min-height: 720px;
-    padding: 58px 18px 66px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 245px auto;
-    align-content: start;
-    border-radius: 23px;
-  }
-  .book-visual,
-  .calendar-visual,
-  .home-visual,
-  .film-visual { height: 225px; }
-  .book-visual > .book-month-cover { width: auto; height: 190px; max-width: 76%; max-height: 190px; }
-  .book-copy { max-width: none; padding: 8px 2px 0; text-align: center; }
-  .book-copy h1 { font-size: clamp(39px, 12vw, 52px); }
-  .book-summary { max-width: 310px; margin-inline: auto; font-size: 11px; }
-  .book-tags { justify-content: center; }
-  .question-sticker { right: 14px; bottom: 14px; }
-  .card-corner-symbol, .home-chat-symbol { left: 14px; bottom: 14px; }
-  .card-month-switcher { top: 19px; right: 13px; }
-  .book-visual .tragedy-stack img { left: 29%; width: auto; height: 90%; }
-  .detail-scroll-section { padding-inline: 15px; }
-  .detail-month-switcher { max-width: calc(100vw - 24px); }
-  .detail-month-switcher button { min-width: 84px; padding-inline: 8px; }
-  .book-selection-tabs { width: calc(100vw - 30px); }
-  .book-selection-tabs button { flex-basis: 148px; }
-  .book-selection-profile { padding: 22px 16px; }
-  .book-profile-copy > p:not(.detail-kicker):not(.book-profile-theme) { font-size: 12px; }
-  .book-profile-copy blockquote { font-size: 18px; }
-  .film-detail-facts { grid-template-columns: 1fr; }
-  .film-detail-facts span:last-child { grid-column: auto; }
-  .film-program-tabs { width: calc(100% - 16px); }
-  .film-program-tabs button { padding-inline: 10px; }
-  .calendar-route article { grid-template-columns: 1fr; text-align: center; }
-  .calendar-route article > div { text-align: center; }
-  .calendar-route time { grid-row: auto; }
-  .event-countdown strong { font-size: 21px; line-height: 1.2; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .book-visual .tragedy-stack img,
   .detail-tragedy-collection img { animation: none; }
 }
