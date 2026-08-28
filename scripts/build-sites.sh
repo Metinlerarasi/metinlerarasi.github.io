@@ -11,6 +11,7 @@ find "$project_dir" -mindepth 1 -maxdepth 1 \
   ! -name '.git' \
   ! -name '.gitignore' \
   ! -name '.openai' \
+  ! -name '.sites-build' \
   ! -name 'dist' \
   ! -name 'scripts' \
   ! -name 'sites-worker.js' \
