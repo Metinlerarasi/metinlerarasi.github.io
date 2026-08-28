@@ -1,2 +1,5 @@
 dist/
 .sites-build/
+
+# Local Netlify folder
+.netlify
