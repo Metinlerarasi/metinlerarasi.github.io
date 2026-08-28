@@ -191,7 +191,7 @@ a.nav-link:focus-visible {
   height: 88%;
   width: auto;
   max-width: 82%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 2px 7px 7px 2px;
   box-shadow: -12px 24px 42px rgba(0, 0, 0, 0.48);
   transform: rotate(-4deg);
@@ -1773,6 +1773,7 @@ a.nav-link:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .book-visual img,
+  .tragedy-track,
   .mini-calendar,
   .club-photo,
   .home-icon,
@@ -2108,7 +2109,9 @@ a.nav-link:focus-visible,
   z-index: 3;
   width: 92%;
   height: 84%;
-  animation: bookFloat 5.4s ease-in-out infinite;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
 .book-card.is-month-changing .book-visual,
@@ -2117,26 +2120,33 @@ a.nav-link:focus-visible,
   animation: cardMonthSwap 430ms cubic-bezier(.2,.8,.2,1) both;
 }
 
+.tragedy-track {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.4vw, 22px);
+  width: max-content;
+  animation: tragedySlide 26s linear infinite;
+}
+
 .book-visual .tragedy-stack img {
-  position: absolute;
-  top: 8%;
-  left: 31%;
-  width: 39%;
-  height: 80%;
+  position: static;
+  flex: 0 0 auto;
+  height: 100%;
+  width: auto;
   max-width: none;
-  object-fit: cover;
+  object-fit: contain;
   border: 3px solid #f8f1e4;
   border-radius: 3px 7px 7px 3px;
   box-shadow: -9px 17px 28px rgba(0, 0, 0, 0.38);
   animation: none;
+  transform: none;
 }
 
-.book-visual .tragedy-stack img:nth-child(1) { transform: translate(-50%, 7%) rotate(-15deg); }
-.book-visual .tragedy-stack img:nth-child(2) { transform: translate(-30%, 2%) rotate(-9deg); }
-.book-visual .tragedy-stack img:nth-child(3) { transform: translate(-10%, -2%) rotate(-3deg); }
-.book-visual .tragedy-stack img:nth-child(4) { transform: translate(10%, -1%) rotate(3deg); }
-.book-visual .tragedy-stack img:nth-child(5) { transform: translate(30%, 3%) rotate(9deg); }
-.book-visual .tragedy-stack img:nth-child(6) { transform: translate(50%, 8%) rotate(15deg); }
+@keyframes tragedySlide {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
 
 .detail-shell {
   scroll-behavior: smooth;

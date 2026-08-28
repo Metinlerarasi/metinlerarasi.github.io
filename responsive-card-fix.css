@@ -54,12 +54,6 @@
     height: 90%;
   }
 
-  .book-visual .tragedy-stack img {
-    left: 25%;
-    width: auto;
-    height: 88%;
-  }
-
   .book-copy {
     width: min(610px, 100%);
     max-width: none;
