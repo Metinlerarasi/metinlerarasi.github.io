@@ -49,10 +49,10 @@ if(!document.body.classList.contains('home'))showMonthState('current');
 
 const countdown=document.createElement('div');
 countdown.className='countdown-strip';
-countdown.innerHTML='SIRADAKİ BULUŞMA <b>hesaplanıyor…</b>';
+countdown.innerHTML='EVRENİ ANLAYAN MAYMUN · 3 EYLÜL 20.30 <b>hesaplanıyor…</b>';
 if(!document.querySelector('.home-opening')&&!document.querySelector('.home-countdown')&&!document.body.classList.contains('book-detail-page'))document.body.appendChild(countdown);
-const target=new Date('2026-08-23T19:30:00+03:00');
-function tick(){const diff=target-Date.now(),out=document.querySelector('.home-countdown b')||countdown.querySelector('b');if(diff<=0){out.textContent='Buluşma başladı';return}const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);out.textContent=`${d} gün · ${h} sa · ${m} dk · ${s} sn`}
+const target=new Date('2026-09-03T20:30:00+03:00');
+function tick(){const diff=target-Date.now(),out=document.querySelector('.home-countdown b')||countdown.querySelector('b');if(diff<=0){out.textContent=diff>-144e5?'Buluşma başladı':'Buluşma tamamlandı';return}const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);out.textContent=`${d} gün · ${h} sa · ${m} dk · ${s} sn`}
 tick();setInterval(tick,1000);
 
 const tragedyBooks=[

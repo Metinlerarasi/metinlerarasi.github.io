@@ -94,6 +94,89 @@ const filmPrograms = {
   }
 };
 
+const filmProgramDetails = {
+  "in-time": {
+    start: "2026-08-17T00:00:00+03:00", end: "2026-08-23T23:59:59+03:00",
+    imdb: "6.7", runtime: "1 sa 49 dk", cast: "Justin Timberlake · Amanda Seyfried · Cillian Murphy", director: "Andrew Niccol", directorInitials: "AN",
+    storyTitle: "Zaman para olduğunda,<br><em>hayat kimin olur?</em>",
+    story: "İnsanların 25 yaşından sonra yaşlanmadığı, fakat kalan ömürlerini çalışarak kazanmak zorunda olduğu bir gelecekte Will Salas, kendisine bırakılan büyük zaman mirasıyla sistemin hedefi olur. Film; zamanı sınıf, emek ve iktidar üzerinden kuran hızlı bir distopyadır.",
+    directorCopy: "Gattaca ve The Truman Show’un senaristi Andrew Niccol, yüksek kavramlı bilimkurguyu gündelik eşitsizliklerle buluşturur. Zamana Karşı’da görünmez ekonomik sınırları, insanların kollarında geri sayan somut bir saate dönüştürür.",
+    scenes: [
+      ["assets/in-time-01.jpg", "Geri sayan hayat", "Will’in dünyasında herkes ne kadar yaşayacağını kolunda taşır."],
+      ["assets/in-time-04.jpg", "Zamanı riske atmak", "Masaya konan para değil, doğrudan yaşam süresidir."],
+      ["assets/in-time-05.jpg", "Ölümsüzlerin bölgesi", "Zenginlik, tükenmeyen yarınlar biçiminde görünür."],
+      ["assets/in-time-06.jpg", "Konforun dışı", "Sylvia ilk kez zamanın gerçek bedeliyle yüzleşir."],
+      ["assets/in-time-08.jpg", "Sistemin peşinde", "Zaman muhafızları düzenin değişmesine izin vermek istemez."],
+      ["assets/in-time-10.jpg", "Birlikte kaçmak", "Will ve Sylvia için özgürlük, zamanı yeniden paylaşmaktır."]
+    ]
+  },
+  interstellar: {
+    start: "2026-08-24T00:00:00+03:00", end: "2026-08-30T23:59:59+03:00",
+    imdb: "8.7", runtime: "2 sa 49 dk", cast: "Matthew McConaughey · Anne Hathaway · Jessica Chastain", director: "Christopher Nolan", directorInitials: "CN",
+    storyTitle: "Zaman bir ölçü değil,<br><em>bir bağdır.</em>",
+    story: "Dünya yaşanamaz hâle gelirken eski pilot Cooper, insanlık için yeni bir yuva arayan göreve katılır. Solucan deliğinin ötesindeki yolculukta her karar, Dünya’da yıllara dönüşen bir zaman kaybı ve geride bıraktığı ailesiyle arasındaki bağ anlamına gelir.",
+    directorCopy: "Christopher Nolan, bilimsel ölçeği kişisel bir ayrılık hikâyesinin kalbine yerleştirir. Görelilik, kara delikler ve gezegenler arası keşif; Cooper ile Murph arasındaki yarım kalmış konuşmanın duygusal yörüngesinde birleşir.",
+    scenes: [
+      ["assets/interstellar-earth.jpg", "Geride kalan dünya", "Toz ve kıtlık insanlığı gökyüzüne bakmaya zorlar."],
+      ["assets/interstellar-water.jpg", "Bir saat, yıllar", "Miller gezegenindeki dakikalar Dünya’da yıllara dönüşür."],
+      ["assets/interstellar-gargantua.jpg", "Gargantua", "Bilinmeyenin eşiği aynı anda bilimsel ve insani bir karardır."],
+      ["assets/interstellar-tesseract.jpg", "Mesafenin ötesi", "Cooper zamanın içinde Murph’e ulaşmanın yolunu arar."],
+      ["assets/interstellar-06.jpg", "Endurance", "Kırılgan bir araç insanlığın son umudunu taşır."],
+      ["assets/interstellar-09.jpg", "Eve dönme arzusu", "Her keşfin merkezinde geride bırakılan bir ev vardır."]
+    ]
+  },
+  truman: {
+    start: "2026-08-31T00:00:00+03:00", end: "2026-09-06T23:59:59+03:00",
+    imdb: "8.2", runtime: "1 sa 43 dk", cast: "Jim Carrey · Ed Harris · Laura Linney", director: "Peter Weir", directorInitials: "PW",
+    storyTitle: "Kusursuz hayatın<br><em>duvarları çatlıyor.</em>",
+    story: "Truman Burbank, doğumundan beri dev bir televizyon stüdyosunda yaşadığını bilmez. Çevresindeki küçük hatalar çoğaldıkça güvenli görünen hayatıyla gerçek özgürlük arasında seçim yapmak zorunda kalır.",
+    directorCopy: "Peter Weir, hiciv ile duygusal dramı dengelerken seyircinin bakışını da hikâyenin parçası yapar. Film, gözetlenmenin yalnızca kameralarla değil, güvenli ve tanıdık olana duyulan bağımlılıkla da kurulduğunu gösterir.",
+    scenes: [1,2,3,4,5,6].map((n) => [`assets/truman-0${n}.jpg`, `Seahaven · 0${n}`, "Kusursuz görünen dünyanın içindeki küçük çatlaklar büyüyor."])
+  },
+  marty: {
+    start: "2026-09-07T00:00:00+03:00", end: "2026-09-13T23:59:59+03:00",
+    imdb: "7.6", runtime: "2 sa 29 dk", cast: "Timothée Chalamet · Gwyneth Paltrow · Odessa A’zion", director: "Josh Safdie", directorInitials: "JS",
+    storyTitle: "Hayalini kimse ciddiye<br><em>almıyorsa ne yaparsın?</em>",
+    story: "Marty Mauser, kimsenin önemsemediği masa tenisi tutkusunu büyüklük arzusuna dönüştürür. Başarıya giden yolda enerjisi, zekâsı ve gözü karalığı kadar geride bıraktığı ilişkiler de belirleyici olur.",
+    directorCopy: "Josh Safdie, durmaksızın ileri fırlayan karakterleri ve baskı altında sıkışan şehir enerjisiyle tanınır. Burada spor filminin yükseliş anlatısını hırs, görünürlük ve kendini icat etme hikâyesiyle karıştırır.",
+    scenes: [1,2,3,4,5,6].map((n) => [`assets/marty-0${n}.${n === 6 ? "png" : "jpg"}`, `Marty · 0${n}`, "Oyunun hızıyla hayatın bedeli aynı karede buluşuyor."])
+  },
+  father: {
+    start: "2026-09-14T00:00:00+03:00", end: "2026-09-20T23:59:59+03:00",
+    imdb: "8.2", runtime: "1 sa 37 dk", cast: "Anthony Hopkins · Olivia Colman · Mark Gatiss", director: "Florian Zeller", directorInitials: "FZ",
+    storyTitle: "Bir oda değişince<br><em>gerçeklik de değişir.</em>",
+    story: "Anthony yaşlandıkça tanıdığı yüzler, yaşadığı ev ve güvendiği anılar yer değiştirir. Film seyirciyi dışarıdan gözlemleyen konumdan çıkarıp parçalanan hafızanın içine yerleştirir.",
+    directorCopy: "Florian Zeller kendi oyununu sinemaya uyarlarken dekoru ve oyuncu değişimlerini anlatının dili hâline getirir. Böylece bellek kaybını açıklamak yerine, seyirciye mekânsal ve duygusal olarak yaşatır.",
+    scenes: [1,2,3,4,5,6].map((n) => [`assets/father-0${n}.jpg`, `Hafıza · 0${n}`, "Tanıdık ayrıntılar değiştikçe Anthony’nin dayandığı zemin çözülüyor."])
+  },
+  banshees: {
+    start: "2026-09-21T00:00:00+03:00", end: "2026-09-27T23:59:59+03:00",
+    imdb: "7.6", runtime: "1 sa 54 dk", cast: "Colin Farrell · Brendan Gleeson · Kerry Condon", director: "Martin McDonagh", directorInitials: "MM",
+    storyTitle: "Bir dostluk biterse<br><em>adada ne kalır?</em>",
+    story: "Pádraic’in en yakın dostu Colm hiçbir açıklama yapmadan arkadaşlıklarını bitirir. Küçük bir adada başlayan kişisel kırgınlık, inat ve yalnızlığın beslediği geri dönüşsüz bir çatışmaya dönüşür.",
+    directorCopy: "Martin McDonagh kara mizahı, keskin diyalogları ve trajediye yaklaşan gündelik çatışmalarıyla kurar. Inisherin’in dar dünyası, anlamlı bir hayat bırakma arzusu ile iyi bir insan olma isteğini karşı karşıya getirir.",
+    scenes: [1,2,3,4,5,6].map((n) => [`assets/banshees-0${n}.jpg`, `Inisherin · 0${n}`, "Adanın sessizliği, dostluğun içindeki kırılmayı daha görünür kılıyor."])
+  },
+  duvar: {
+    start: "2026-09-28T00:00:00+03:00", end: "2026-10-04T23:59:59+03:00",
+    imdb: "7.9", runtime: "1 sa 57 dk", cast: "Tuncel Kurtiz · Ayşe Emel Mesçi · Malik Berrichi", director: "Yılmaz Güney", directorInitials: "YG",
+    storyTitle: "Duvar yalnızca<br><em>neyi içeride tutar?</em>",
+    story: "Bir cezaevinin çocuklar koğuşundaki ağır koşullar, şiddet ve baskı karşısında genç mahkûmların dayanışması giderek açık bir başkaldırıya dönüşür.",
+    directorCopy: "Yılmaz Güney, sürgünde çektiği Duvar’da kapatılmayı yalnızca fiziksel mekânla değil, kurumların ve korkunun kurduğu bir düzen olarak anlatır. Film sert gerçekçiliğini dayanışma ve özgürlük arzusuyla yan yana taşır.",
+    scenes: ["maxresdefault","0","1","2","3","hqdefault"].map((frame, index) => [`https://img.youtube.com/vi/upCZb3xLUl4/${frame}.jpg`, `Duvar · 0${index + 1}`, "Baskının içindeki dayanışma ve özgürlük arzusu büyüyor."])
+  }
+};
+
+Object.entries(filmProgramDetails).forEach(([id, details]) => Object.assign(filmPrograms[id], details));
+
+function currentScheduledFilm(now = Date.now()) {
+  const schedule = Object.entries(filmPrograms).sort((a, b) => Date.parse(a[1].start) - Date.parse(b[1].start));
+  const active = schedule.find(([, film]) => now >= Date.parse(film.start) && now <= Date.parse(film.end));
+  if (active) return active[0];
+  const past = schedule.filter(([, film]) => now > Date.parse(film.end));
+  return past.at(-1)?.[0] || schedule[0][0];
+}
+
 function replaceTags(container, tags) {
   const existing = [...container.querySelectorAll("span")];
   tags.forEach((tag, index) => {
@@ -182,6 +265,47 @@ function setDetailFilm(programId) {
   view.querySelector("[data-program-title]").innerHTML = data.title;
   view.querySelector("[data-program-copy]").textContent = data.summary;
   replaceTags(view.querySelector("[data-program-tags]"), data.tags);
+
+  let facts = view.querySelector(".film-detail-facts");
+  if (!facts) {
+    facts = document.createElement("div");
+    facts.className = "film-detail-facts";
+    view.querySelector("[data-program-tags]").after(facts);
+  }
+  facts.innerHTML = `
+    <span><small>IMDb</small><b>${data.imdb}<i>/10</i></b></span>
+    <span><small>SÜRE</small><b>${data.runtime}</b></span>
+    <span><small>YÖNETMEN</small><b>${data.director}</b></span>
+    <span><small>OYUNCULAR</small><b>${data.cast}</b></span>`;
+
+  const storySection = view.querySelector(".detail-story-section");
+  if (storySection) {
+    storySection.querySelector(".detail-kicker").textContent = "FİLMİN KONUSU";
+    storySection.querySelector("h3").innerHTML = data.storyTitle;
+    storySection.querySelector(".detail-section-copy > p:last-child").textContent = data.story;
+  }
+
+  let authorSection = view.querySelector(".detail-author-section");
+  if (!authorSection) {
+    authorSection = document.createElement("section");
+    authorSection.className = "detail-scroll-section detail-author-section";
+    authorSection.innerHTML = `<div class="author-orbit reveal-on-scroll"><span></span><i>sinema</i><i>anlatı</i><i>tema</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YÖNETMEN</p><h3></h3><p></p></div>`;
+    storySection.after(authorSection);
+  }
+  authorSection.querySelector(".author-orbit span").textContent = data.directorInitials;
+  authorSection.querySelector("h3").innerHTML = data.director.replace(/\s+(?=[^\s]+$)/, "<br><em>") + "</em>";
+  authorSection.querySelector(".detail-section-copy > p:last-child").textContent = data.directorCopy;
+
+  const sceneSection = view.querySelector(".detail-scenes-section");
+  const sceneRail = sceneSection?.querySelector(".film-scene-rail");
+  if (sceneSection && sceneRail) {
+    sceneSection.querySelector(".detail-kicker").textContent = `${data.plainTitle.toLocaleUpperCase("tr-TR")} KARELERİ`;
+    sceneSection.querySelector("h3").innerHTML = `Yalnızca bu filmin<br><em>içinde kal</em>`;
+    sceneRail.classList.remove("film-program-rail");
+    sceneRail.innerHTML = data.scenes.map(([image, title, copy]) => `
+      <figure><img src="${image}" alt="${data.plainTitle}: ${title}" loading="lazy"><figcaption><b>${title}</b><span>${copy}</span></figcaption></figure>`).join("");
+  }
+
   view.querySelectorAll("[data-film-program]").forEach((button) => {
     button.classList.toggle("active", button.dataset.filmProgram === programId);
   });
@@ -190,6 +314,123 @@ function setDetailFilm(programId) {
     [{ opacity: 0.35, transform: "translateY(12px)" }, { opacity: 1, transform: "none" }],
     { duration: 520, easing: "ease-out" }
   );
+}
+
+const septemberBooks = [
+  {
+    id: "oedipus", title: "Kral Oidipus", author: "Sophokles", image: "assets/tragedy-oedipus.jpg", period: "MÖ 429 civarı", theme: "Hakikat · Kehanet · Körlük",
+    synopsis: "Thebai’yi saran salgının nedenini araştıran Kral Oidipus, şehrin eski kralının katilini bulmaya çalışırken kendi geçmişine yaklaşır. Hakikati öğrenme kararlılığı, onu kaçtığı kehanetin tam merkezine götürür.",
+    authorBio: "Sophokles, karakterlerin ahlaki seçimlerini ve bilginin bedelini tragedyanın merkezine taşır. Oidipus anlatısında kahramanın düşüşünü yalnızca kaderle değil, hakikati sonuna kadar arama iradesiyle kurar.",
+    question: "Hakikati bilmek her zaman özgürleştirir mi?"
+  },
+  {
+    id: "kolonos", title: "Oidipus Kolonos’ta", author: "Sophokles", image: "assets/tragedy-kolonos-original.jpg", period: "MÖ 401", theme: "Sürgün · Bağışlanma · Son durak",
+    synopsis: "Yaşlı ve sürgündeki Oidipus, kızı Antigone’yle Kolonos’a ulaşır. Bir zamanların lanetli kralı artık ölümünün gömüldüğü yere güç kazandıracağı düşünülen kutsal bir figürdür.",
+    authorBio: "Sophokles’in yaşamının sonunda yazdığı oyun, Kral Oidipus’un yıkımını daha dingin ama siyasal bir kapanışa bağlar. Şair, suç, sorumluluk ve huzura kavuşma ihtimalini birlikte düşünür.",
+    question: "Bir insan geçmişinin hükmünden kurtulabilir mi?"
+  },
+  {
+    id: "antigone", title: "Antigone", author: "Sophokles", image: "assets/tragedy-antigone.jpg", period: "MÖ 441 civarı", theme: "Vicdan · Yasa · Yas",
+    synopsis: "Kreon’un yasağına rağmen kardeşini gömmek isteyen Antigone, devletin buyruğuyla kişisel vicdanı karşı karşıya getirir. İki tarafın da geri çekilmemesi, bütün haneyi sarsan bir felakete dönüşür.",
+    authorBio: "Sophokles, çatışmayı haklı ile haksız arasında değil, iki güçlü haklılık iddiası arasında kurar. Böylece Antigone yüzyıllardır hukuk, itaatsizlik ve vicdan tartışmalarının temel metinlerinden biridir.",
+    question: "Yasa ile vicdan çatıştığında hangisine uyarız?"
+  },
+  {
+    id: "agamemnon", title: "Agamemnon", author: "Aiskhylos", image: "assets/tragedy-agamemnon-original.jpg", period: "MÖ 458", theme: "İktidar · İntikam · Adalet",
+    synopsis: "Troya’dan zaferle dönen Agamemnon, sarayında Klytaimnestra’nın yıllardır büyüttüğü intikamla karşılaşır. Geçmişte dökülen kan, yeni bir suçun gerekçesi hâline gelir.",
+    authorBio: "Aiskhylos, Oresteia üçlemesinin ilk oyununda aile içi intikamı toplumsal adalet sorununa doğru genişletir. Koro, geçmiş suçların sesini sahnede sürekli canlı tutar.",
+    question: "Adalet ile intikam arasındaki sınır nerede başlar?"
+  },
+  {
+    id: "elektra", title: "Elektra", author: "Sophokles", image: "assets/tragedy-elektra.jpg", period: "MÖ 5. yüzyıl", theme: "Yas · Hafıza · İntikam",
+    synopsis: "Elektra, babası Agamemnon’un öldürülmesini unutmayı reddeder ve kardeşi Orestes’in dönüşünü bekler. Yas, zamanla onun kimliğini ve adalet anlayışını bütünüyle kuşatır.",
+    authorBio: "Sophokles, Elektra’nın bitmeyen yasını güçlü bir psikolojik gerilime dönüştürür. Kahramanın kararlılığı hem direnmenin gücü hem de intikamın insanı daraltan yüzü olarak okunabilir.",
+    question: "Bir kaybı unutmamak ne zaman insanı esir alır?"
+  },
+  {
+    id: "orestes", title: "Orestes", author: "Euripides", image: "assets/tragedy-orestes-original.jpg", period: "MÖ 408", theme: "Suç · Çözülme · Toplum",
+    synopsis: "Annesini öldürdükten sonra suçluluk ve delilik nöbetleri yaşayan Orestes, Argos halkının vereceği ölüm kararını bekler. Kurtuluş arayışı giderek yeni bir şiddet planına dönüşür.",
+    authorBio: "Euripides, mitolojik kahramanları kırılgan, çelişkili ve siyasal baskı altındaki insanlar olarak gösterir. Orestes’te kahramanlık dili çözülür; geriye korku, pazarlık ve çıkışsızlık kalır.",
+    question: "Şiddetle kurulan bir adalet şiddeti sona erdirebilir mi?"
+  }
+];
+
+function setupSeptemberBookProfiles() {
+  const view = document.querySelector("[data-detail-month-view='book-september']");
+  if (!view || view.querySelector(".book-selection-section")) return;
+  const section = document.createElement("section");
+  section.className = "detail-scroll-section book-selection-section";
+  section.innerHTML = `
+    <header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">ALTI KİTAP · ALTI AYRI DOSYA</p><h3>Bir kitabı seç,<br><em>ayrıntısına gir.</em></h3><p>Kapaklar arasında gezerek her oyunun konusunu, yazarını ve masaya getirdiği soruyu ayrı ayrı görebilirsin.</p></header>
+    <nav class="book-selection-tabs" aria-label="Eylül kitapları"></nav>
+    <article class="book-selection-profile reveal-on-scroll" aria-live="polite">
+      <div class="book-profile-cover"><img data-selected-book-image alt=""></div>
+      <div class="book-profile-copy"><p class="detail-kicker" data-selected-book-meta></p><h4 data-selected-book-title></h4><p class="book-profile-theme" data-selected-book-theme></p><h5>KİTABIN KONUSU</h5><p data-selected-book-synopsis></p><h5>YAZAR HAKKINDA</h5><p data-selected-book-author></p><blockquote data-selected-book-question></blockquote></div>
+    </article>`;
+  const notes = view.querySelector(".detail-notes-section");
+  notes.before(section);
+  const tabs = section.querySelector(".book-selection-tabs");
+  tabs.innerHTML = septemberBooks.map((book, index) => `<button type="button" data-selected-book="${book.id}" class="${index === 0 ? "active" : ""}"><img src="${book.image}" alt=""><span><small>${book.author}</small>${book.title}</span></button>`).join("");
+  let activeBookIndex = 0;
+  let rotationTimer;
+  const renderBook = (index, animate = true) => {
+    activeBookIndex = (index + septemberBooks.length) % septemberBooks.length;
+    const book = septemberBooks[activeBookIndex];
+    section.querySelector("[data-selected-book-image]").src = book.image;
+    section.querySelector("[data-selected-book-image]").alt = `${book.title} kapağı`;
+    section.querySelector("[data-selected-book-meta]").textContent = `${book.author.toLocaleUpperCase("tr-TR")} · ${book.period}`;
+    section.querySelector("[data-selected-book-title]").textContent = book.title;
+    section.querySelector("[data-selected-book-theme]").textContent = book.theme;
+    section.querySelector("[data-selected-book-synopsis]").textContent = book.synopsis;
+    section.querySelector("[data-selected-book-author]").textContent = book.authorBio;
+    section.querySelector("[data-selected-book-question]").textContent = `“${book.question}”`;
+    tabs.querySelectorAll("button").forEach((button) => button.classList.toggle("active", button.dataset.selectedBook === book.id));
+    if (animate) section.querySelector(".book-selection-profile").animate([{opacity:.25, transform:"translateY(18px) scale(.985)"},{opacity:1, transform:"none"}], {duration:520, easing:"cubic-bezier(.2,.8,.2,1)"});
+  };
+  const startRotation = () => {
+    clearInterval(rotationTimer);
+    rotationTimer = setInterval(() => renderBook(activeBookIndex + 1), 6500);
+  };
+  tabs.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-selected-book]");
+    if (!button) return;
+    renderBook(septemberBooks.findIndex((book) => book.id === button.dataset.selectedBook));
+    startRotation();
+  });
+  section.addEventListener("mouseenter", () => clearInterval(rotationTimer));
+  section.addEventListener("mouseleave", startRotation);
+  section.addEventListener("focusin", () => clearInterval(rotationTimer));
+  section.addEventListener("focusout", startRotation);
+  renderBook(0, false);
+  startRotation();
+}
+
+function setupCalendarCountdown() {
+  const copy = document.querySelector(".calendar-detail .detail-hero-section .detail-copy");
+  if (!copy || copy.querySelector(".event-countdown")) return;
+  const countdown = document.createElement("div");
+  countdown.className = "event-countdown";
+  countdown.innerHTML = `<small>EVRENİ ANLAYAN MAYMUN BULUŞMASINA</small><strong data-event-countdown>hesaplanıyor…</strong><span data-turkey-time></span>`;
+  copy.querySelector(".detail-down-cue").before(countdown);
+  const target = Date.parse("2026-09-03T20:30:00+03:00");
+  const turkeyClock = new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  const update = () => {
+    const now = Date.now();
+    const difference = target - now;
+    const output = countdown.querySelector("[data-event-countdown]");
+    countdown.querySelector("[data-turkey-time]").textContent = `Türkiye saati · ${turkeyClock.format(now)}`;
+    if (difference <= 0) {
+      output.textContent = difference > -14400000 ? "Buluşma başladı" : "Bu buluşma tamamlandı";
+      return;
+    }
+    const days = Math.floor(difference / 86400000);
+    const hours = Math.floor((difference % 86400000) / 3600000);
+    const minutes = Math.floor((difference % 3600000) / 60000);
+    const seconds = Math.floor((difference % 60000) / 1000);
+    output.textContent = `${days} gün · ${hours} sa · ${minutes} dk · ${seconds} sn`;
+  };
+  update();
+  setInterval(update, 1000);
 }
 
 document.querySelectorAll("[data-card-month-switcher='book'] button").forEach((button) => {
@@ -377,6 +618,14 @@ detailButtons.forEach((button) => {
 });
 
 backToCards.addEventListener("click", closeDetail);
+
+setupSeptemberBookProfiles();
+setupCalendarCountdown();
+const automaticFilmProgram = currentScheduledFilm();
+currentMonths.film = filmPrograms[automaticFilmProgram].month;
+setFilmCard(automaticFilmProgram);
+setDetailMonth("film", filmPrograms[automaticFilmProgram].month, false);
+setDetailFilm(automaticFilmProgram);
 
 const revealObserver = new IntersectionObserver(
   (entries) => {

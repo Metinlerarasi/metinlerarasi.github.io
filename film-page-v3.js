@@ -43,6 +43,33 @@ const filmProgram = {
   }
 };
 
+Object.assign(filmProgram['in-time'], {
+  start:'2026-08-17T00:00:00+03:00', end:'2026-08-23T23:59:59+03:00', imdb:'6.7', runtime:'1 sa 49 dk', cast:'Justin Timberlake · Amanda Seyfried · Cillian Murphy',
+  synopsis:'25 yaşından sonra insanların yaşlanmadığı, fakat kalan ömürlerini çalışarak kazanmak zorunda olduğu bir gelecekte Will Salas, kendisine bırakılan büyük zaman mirasıyla sistemin hedefi olur. Kaçışı sırasında Sylvia ile kurduğu ortaklık, zamanı kimin biriktirdiği ve kimin yarınından vazgeçtiği sorusunu açar.',
+  scenes:[['assets/in-time-01.jpg','Geri sayan hayat','Herkes ne kadar yaşayacağını kolunda taşır.'],['assets/in-time-04.jpg','Zamanı riske atmak','Will masaya doğrudan yaşamını koyar.'],['assets/in-time-05.jpg','Ölümsüzlerin bölgesi','Zenginlik, tükenmeyen yarınlar demektir.'],['assets/in-time-06.jpg','Konforun dışı','Sylvia zamanın gerçek bedelini görür.'],['assets/in-time-08.jpg','Sistemin peşinde','Zaman muhafızları düzenin değişmesini istemez.'],['assets/in-time-10.jpg','Birlikte kaçmak','Özgürlük, zamanı yeniden paylaşmaktır.']]
+});
+Object.assign(filmProgram.interstellar, {
+  start:'2026-08-24T00:00:00+03:00', end:'2026-08-30T23:59:59+03:00', imdb:'8.7', runtime:'2 sa 49 dk', cast:'Matthew McConaughey · Anne Hathaway · Jessica Chastain',
+  synopsis:'Dünya yaşanamaz hâle gelirken eski pilot Cooper, insanlığa yeni bir yuva bulmayı amaçlayan göreve katılır. Solucan deliğinin ötesindeki her karar, Dünya’da yıllara dönüşen zaman kaybı ve geride bıraktığı kızı Murph’le arasındaki bağ anlamına gelir.',
+  scenes:[['assets/interstellar-earth.jpg','Geride kalan dünya','Toz ve kıtlık insanlığı gökyüzüne bakmaya zorlar.'],['assets/interstellar-water.jpg','Bir saat, yıllar','Miller gezegenindeki dakikalar Dünya’da yıllara dönüşür.'],['assets/interstellar-gargantua.jpg','Gargantua','Bilinmeyenin eşiği bilimsel ve insani bir karardır.'],['assets/interstellar-tesseract.jpg','Mesafenin ötesi','Cooper zamanın içinde Murph’e ulaşmaya çalışır.'],['assets/interstellar-06.jpg','Endurance','Kırılgan bir araç insanlığın son umudunu taşır.'],['assets/interstellar-09.jpg','Eve dönüş','Her keşfin merkezinde geride bırakılan bir ev vardır.']]
+});
+Object.assign(filmProgram.truman, {start:'2026-08-31T00:00:00+03:00',end:'2026-09-06T23:59:59+03:00',imdb:'8.2',runtime:'1 sa 43 dk',cast:'Jim Carrey · Ed Harris · Laura Linney',synopsis:'Truman Burbank, doğumundan beri dev bir televizyon stüdyosunda yaşadığını bilmez. Çevresindeki küçük hatalar çoğaldıkça güvenli görünen hayatıyla gerçek özgürlük arasında seçim yapmak zorunda kalır.',scenes:[1,2,3,4,5,6].map(n=>[`assets/truman-0${n}.jpg`,`Seahaven · 0${n}`,'Kusursuz görünen dünyanın içindeki küçük çatlaklar büyüyor.'])});
+Object.assign(filmProgram.marty, {start:'2026-09-07T00:00:00+03:00',end:'2026-09-13T23:59:59+03:00',imdb:'7.6',runtime:'2 sa 29 dk',cast:'Timothée Chalamet · Gwyneth Paltrow · Odessa A’zion',synopsis:'Marty Mauser, kimsenin önemsemediği masa tenisi tutkusunu büyüklük arzusuna dönüştürür. Başarıya giden yolda enerjisi ve gözü karalığı kadar geride bıraktığı ilişkiler de belirleyici olur.',scenes:[1,2,3,4,5,6].map(n=>[`assets/marty-0${n}.${n===6?'png':'jpg'}`,`Marty · 0${n}`,'Oyunun hızıyla hayatın bedeli aynı karede buluşuyor.'])});
+Object.assign(filmProgram.father, {start:'2026-09-14T00:00:00+03:00',end:'2026-09-20T23:59:59+03:00',imdb:'8.2',runtime:'1 sa 37 dk',cast:'Anthony Hopkins · Olivia Colman · Mark Gatiss',synopsis:'Anthony yaşlandıkça tanıdığı yüzler, yaşadığı ev ve güvendiği anılar yer değiştirir. Film seyirciyi dışarıdan gözlemleyen konumdan çıkarıp parçalanan hafızanın içine yerleştirir.',scenes:[1,2,3,4,5,6].map(n=>[`assets/father-0${n}.jpg`,`Hafıza · 0${n}`,'Tanıdık ayrıntılar değiştikçe Anthony’nin dayandığı zemin çözülüyor.'])});
+Object.assign(filmProgram.banshees, {start:'2026-09-21T00:00:00+03:00',end:'2026-09-27T23:59:59+03:00',imdb:'7.6',runtime:'1 sa 54 dk',cast:'Colin Farrell · Brendan Gleeson · Kerry Condon',synopsis:'Pádraic’in en yakın dostu Colm hiçbir açıklama yapmadan arkadaşlıklarını bitirir. Küçük bir adada başlayan kişisel kırgınlık, inat ve yalnızlığın beslediği geri dönüşsüz bir çatışmaya dönüşür.',scenes:[1,2,3,4,5,6].map(n=>[`assets/banshees-0${n}.jpg`,`Inisherin · 0${n}`,'Adanın sessizliği dostluğun içindeki kırılmayı büyütüyor.'])});
+filmProgram.duvar = {
+  index:'07', title:'Duvar', date:'28 Eylül–4 Ekim 2026', genre:'Dram', year:'1983', director:'Yılmaz Güney', theme:'İsyan, adalet ve özgürlük', accent:'#d97965', rgb:'217, 121, 101', hero:'https://img.youtube.com/vi/upCZb3xLUl4/maxresdefault.jpg',
+  logline:'Bir cezaevinin çocuklar koğuşundaki baskı ve şiddet, genç mahkûmların dayanışmasını açık bir başkaldırıya dönüştürür.', reading:'Duvar, kapatılmayı yalnızca fiziksel mekânla değil; kurumların, korkunun ve sessizliğin kurduğu düzenle anlatır. Sert gerçekçiliğinin içinde dayanışma ve özgürlük arzusu büyür.', trailer:'https://www.youtube.com/watch?v=upCZb3xLUl4',
+  start:'2026-09-28T00:00:00+03:00', end:'2026-10-04T23:59:59+03:00', imdb:'7.9', runtime:'1 sa 57 dk', cast:'Tuncel Kurtiz · Ayşe Emel Mesçi · Malik Berrichi', synopsis:'Bir cezaevinin çocuklar koğuşundaki ağır koşullar, şiddet ve baskı karşısında genç mahkûmların dayanışması giderek açık bir başkaldırıya dönüşür.', scenes:['maxresdefault','0','1','2','3','hqdefault'].map((frame,index)=>[`https://img.youtube.com/vi/upCZb3xLUl4/${frame}.jpg`,`Duvar · 0${index+1}`,'Baskının içindeki dayanışma ve özgürlük arzusu büyüyor.'])
+};
+
+function currentScheduledFilm(now = Date.now()) {
+  const schedule = Object.entries(filmProgram).sort((a,b)=>Date.parse(a[1].start)-Date.parse(b[1].start));
+  const active = schedule.find(([,film])=>now>=Date.parse(film.start)&&now<=Date.parse(film.end));
+  if (active) return active[0];
+  return schedule.filter(([,film])=>now>Date.parse(film.end)).at(-1)?.[0] || schedule[0][0];
+}
+
 const filmHero = document.querySelector('.film-cinema-hero');
 const filmWeekTrack = document.querySelector('.film-week-track');
 const filmSceneElements = [...document.querySelectorAll('.film-scene')];
@@ -67,8 +94,14 @@ function selectFilm(id, updateHistory = true) {
     setFilmText('[data-film-logline]', film.logline);
     setFilmText('[data-film-director]', film.director);
     setFilmText('[data-film-year]', film.year);
+    setFilmText('[data-film-imdb]', `${film.imdb} / 10`);
     setFilmText('[data-film-theme]', film.theme);
     setFilmText('[data-film-reading]', film.reading);
+    setFilmText('[data-film-info-title]', film.title);
+    setFilmText('[data-film-synopsis]', film.synopsis);
+    setFilmText('[data-film-info-imdb]', `${film.imdb} / 10`);
+    setFilmText('[data-film-runtime]', film.runtime);
+    setFilmText('[data-film-cast]', film.cast);
     document.querySelectorAll('[data-film-trailer]').forEach(link => { link.href = film.trailer; link.setAttribute('aria-label', `${film.title} resmî fragmanını aç`); });
     filmSceneElements.forEach((scene, index) => {
       const sceneData = film.scenes[index];
@@ -104,4 +137,4 @@ const sceneObserver = new IntersectionObserver(entries => {
 filmSceneElements.forEach(scene => sceneObserver.observe(scene));
 
 const requestedFilm = new URLSearchParams(location.search).get('film');
-selectFilm(filmProgram[requestedFilm] ? requestedFilm : 'in-time', false);
+selectFilm(filmProgram[requestedFilm] ? requestedFilm : currentScheduledFilm(), false);

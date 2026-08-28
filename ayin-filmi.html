@@ -7,7 +7,7 @@
     <title>Filmler — Metinlerarası</title>
     <link rel="stylesheet" href="site.css?v=20260814-3" />
     <link rel="stylesheet" href="icon-nav.css?v=20260816-2" />
-    <link rel="stylesheet" href="film-page-v3.css?v=20260816-3" />
+    <link rel="stylesheet" href="film-page-v3.css?v=20260828-4" />
   </head>
   <body class="film-cinema-page">
     <header class="topbar film-cinema-header">
@@ -37,6 +37,9 @@
         <button class="film-week" type="button" data-film="banshees" aria-pressed="false">
           <small>21–27 EYLÜL</small><strong>The Banshees of Inisherin</strong>
         </button>
+        <button class="film-week" type="button" data-film="duvar" aria-pressed="false">
+          <small>28 EYL–4 EKİ</small><strong>Duvar</strong>
+        </button>
       </div>
     </nav>
 
@@ -45,7 +48,7 @@
         <img class="film-cinema-hero-image" data-film-hero src="assets/in-time-01.jpg" alt="Zamana Karşı filminden bir sahne" />
         <div class="film-cinema-shade" aria-hidden="true"></div>
         <div class="film-cinema-grain" aria-hidden="true"></div>
-        <div class="film-cinema-index" aria-hidden="true"><span data-film-index>01</span><i>/06</i></div>
+        <div class="film-cinema-index" aria-hidden="true"><span data-film-index>01</span><i>/07</i></div>
         <div class="film-cinema-copy">
           <div class="film-cinema-kicker"><span data-film-date>17–23 Ağustos 2026</span><i></i><span data-film-genre>Bilimkurgu · Gerilim</span></div>
           <h1 id="film-title" data-film-title>Zamana Karşı</h1>
@@ -57,6 +60,7 @@
             <div class="film-cinema-facts">
               <span><small>YÖNETMEN</small><b data-film-director>Andrew Niccol</b></span>
               <span><small>YIL</small><b data-film-year>2011</b></span>
+              <span><small>IMDb</small><b data-film-imdb>6.7 / 10</b></span>
               <span><small>KULÜP TEMASI</small><b data-film-theme>Zaman ve eşitsizlik</b></span>
             </div>
           </div>
@@ -69,6 +73,16 @@
           <span>KULÜBÜN OKUMASI</span>
           <p data-film-reading>Film, zamanı bir metafor olmaktan çıkarıp doğrudan ekonomik güce dönüştürür. Birinin sonsuzluğu başkasının yarınından çalındığında özgürlük mümkün müdür?</p>
         </div>
+      </section>
+
+      <section class="film-info-panel" aria-label="Film hakkında ayrıntılı bilgi">
+        <div class="film-info-heading"><small>FİLM DOSYASI</small><h2 data-film-info-title>Zamana Karşı</h2></div>
+        <div class="film-info-copy"><h3>Filmin konusu</h3><p data-film-synopsis>25 yaşından sonra insanların kalan ömürlerini çalışarak kazandığı bir gelecekte Will Salas, kendisine bırakılan zaman mirasıyla sistemin hedefi olur.</p></div>
+        <dl class="film-info-grid">
+          <div><dt>IMDb</dt><dd data-film-info-imdb>6.7 / 10</dd></div>
+          <div><dt>Süre</dt><dd data-film-runtime>1 sa 49 dk</dd></div>
+          <div><dt>Oyuncular</dt><dd data-film-cast>Justin Timberlake · Amanda Seyfried · Cillian Murphy</dd></div>
+        </dl>
       </section>
 
       <section class="film-scenes" aria-label="Filmden sahneler">
@@ -87,13 +101,16 @@
           <div class="film-scene-shade"></div>
           <figcaption><small data-scene-number>SAHNE 03</small><h2 data-scene-title>Konforun dışına bakmak</h2><p data-scene-copy>Sylvia, sahip olduğu zamanın başkalarının kaybı olduğunu görür.</p></figcaption>
         </figure>
+        <figure class="film-scene" data-scene="3"><img src="assets/in-time-07.jpg" alt="Zamana Karşı filminden sahne" /><div class="film-scene-shade"></div><figcaption><small data-scene-number>SAHNE 04</small><h2 data-scene-title>Sınırı aşmak</h2><p data-scene-copy>İki bölge arasındaki geçiş, eşitsizliğin görünür çizgisidir.</p></figcaption></figure>
+        <figure class="film-scene" data-scene="4"><img src="assets/in-time-08.jpg" alt="Zamana Karşı filminden sahne" /><div class="film-scene-shade"></div><figcaption><small data-scene-number>SAHNE 05</small><h2 data-scene-title>Takip</h2><p data-scene-copy>Zaman muhafızları düzenin bozulmasını engellemeye çalışır.</p></figcaption></figure>
+        <figure class="film-scene" data-scene="5"><img src="assets/in-time-10.jpg" alt="Zamana Karşı filminden sahne" /><div class="film-scene-shade"></div><figcaption><small data-scene-number>SAHNE 06</small><h2 data-scene-title>Yeniden paylaşmak</h2><p data-scene-copy>Özgürlük, zamanı biriktirmek yerine dolaşıma sokmakla başlar.</p></figcaption></figure>
       </section>
 
     </main>
 
     <footer class="film-cinema-footer"><span>© 2026 METİNLERARASI</span><span>FİLM PROGRAMI · AĞUSTOS / EYLÜL</span></footer>
 
-    <script src="site.js?v=20260816-9"></script>
-    <script src="film-page-v3.js?v=20260816-2"></script>
+    <script src="site.js?v=20260828-10"></script>
+    <script src="film-page-v3.js?v=20260828-3"></script>
   </body>
 </html>
