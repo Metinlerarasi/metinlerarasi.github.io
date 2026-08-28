@@ -1,90 +1,323 @@
 <!doctype html>
-<html lang="tr" data-theme="dark">
+<html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Metinlerarası — Ağustos 2026</title>
-    <meta
-      name="description"
-      content="Metinlerarası kitap ve film kulübü. Ağustos 2026 programı."
-    />
-    <link rel="stylesheet" href="site.css" />
-    <link rel="stylesheet" href="web-update.css" />
-    <link rel="stylesheet" href="month-themes.css" />
-    <link rel="stylesheet" href="year-view.css" />
-    <link rel="stylesheet" href="final-polish.css" />
-    <link rel="stylesheet" href="flow-update.css" />
-    <link rel="stylesheet" href="film-stage.css" />
-    <link rel="stylesheet" href="home-wide.css" />
-    <link rel="stylesheet" href="feature-stage.css" />
-    <link rel="stylesheet" href="rectangle-wide.css" />
-    <link rel="stylesheet" href="mobile-stability.css?v=20260814-7" />
-    <link rel="stylesheet" href="v3-home.css?v=20260815-5" />
-    <link rel="stylesheet" href="icon-nav.css?v=20260816-2" />
-    <link rel="stylesheet" href="homepage-redesign.css?v=20260817-4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Metinlerarası</title>
+    <meta name="description" content="Metinlerarası kitap ve film kulübü." />
+    <link rel="stylesheet" href="homepage-redesign.css?v=20260828-6" />
   </head>
-  <body class="home v3-home">
-    <header class="shell topbar">
-      <a class="brand" href="index.html"
-        ><img class="logo" src="metinlerarasi-logo.png" alt="" /><span
-          >METİNLERARASI</span
-        ></a
-      >
+  <body>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Ana menü">
+        <a class="nav-link" href="#anasayfa" data-slide="0">Anasayfa</a>
+        <a class="nav-link active" href="#kitap" data-slide="1" aria-current="page">Kitap</a>
+        <a class="nav-link" href="#takvim" data-slide="2">Takvim</a>
+        <a class="nav-link" href="#film" data-slide="3">Film</a>
+        <span class="nav-link disabled" aria-disabled="true">Profil</span>
+      </nav>
     </header>
 
-    <div class="cosmos" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><span class="orbit o1"></span
-      ><span class="orbit o2"></span><b class="cosmos-word w1">MERAK</b
-      ><b class="cosmos-word w2">SAAT</b><b class="cosmos-word w3">SORU</b
-      ><b class="cosmos-word w4">KEŞİF</b><em class="comet c1"></em
-      ><em class="comet c2"></em><em class="comet c3"></em>
-    </div>
+    <main class="page-stage">
+      <div class="card-slider" aria-roledescription="yatay kart galerisi">
+        <div class="slides-track">
+          <section class="book-card home-card" id="anasayfa" data-panel="0" aria-labelledby="home-card-title" aria-hidden="true">
+            <span class="card-badge">METİNLERARASI</span>
+            <span class="card-spark spark-one" aria-hidden="true">✦</span>
+            <span class="card-spark spark-two" aria-hidden="true">✦</span>
+            <span class="card-orbit" aria-hidden="true"></span>
 
-    <div class="vertical-marquee" aria-hidden="true">
-      <span>EVRENİ ANLAYAN MAYMUN · AĞUSTOS 2026 · </span
-      ><span>EVRENİ ANLAYAN MAYMUN · AĞUSTOS 2026 · </span>
-    </div>
+            <div class="home-visual" aria-label="Kitap kulübü buluşması">
+              <span class="home-halo" aria-hidden="true"></span>
+              <div class="club-photo club-logo">
+                <img src="metinlerarasi-logo.png" alt="Metinlerarası kitap kulübü logosu" />
+              </div>
+              <span class="home-icon home-book-icon" aria-label="Kitap">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 6h7a4 4 0 0 1 4 4v16a5 5 0 0 0-5-5H5zM27 6h-7a4 4 0 0 0-4 4v16a5 5 0 0 1 5-5h6z"/></svg>
+              </span>
+              <span class="home-icon home-film-icon" aria-label="Film">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="8" width="24" height="18" rx="3"/><path d="m12 13 9 5-9 5z"/></svg>
+              </span>
+              <span class="home-icon home-calendar-icon" aria-label="Takvim">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="20" rx="3"/><path d="M10 4v6M22 4v6M5 13h22M10 18h3M16 18h3M22 18h1M10 23h3M16 23h3"/></svg>
+              </span>
+            </div>
 
-    <section class="home-opening" aria-labelledby="home-opening-title">
-      <div class="home-opening-media" aria-hidden="true">
-        <img
-          src="assets/home-hero-august-v1.png"
-          alt=""
-          width="1536"
-          height="1024"
-          fetchpriority="high"
-        />
-        <video
-          class="home-opening-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-          poster="assets/home-hero-august-v1.png"
-          aria-hidden="true"
-        >
-          <source src="assets/home-hero-august-loop.mp4" type="video/mp4" />
-        </video>
-        <i class="home-opening-glow"></i>
+            <div class="book-copy home-copy">
+              <p class="card-kicker">GÖKÇEN <i>✦</i> EREN <i>✦</i> BÜŞRA</p>
+              <h1 id="home-card-title">Metinler<br /><em>Arası</em></h1>
+              <p class="book-author">Merak edenlerin kulübü</p>
+              <p class="book-summary">
+                Bir kitap açılır, bir film başlar. Hikâyeler, sorular ve iyi
+                sohbet aynı masanın etrafında buluşur.
+              </p>
+              <button class="book-action" type="button" data-detail="anasayfa">Kitap Kulübümüzü Keşfet <span>→</span></button>
+            </div>
+
+            <svg class="home-chat-symbol" viewBox="0 0 110 84" aria-hidden="true">
+              <path d="M17 14h54a13 13 0 0 1 13 13v19a13 13 0 0 1-13 13H43L24 72l4-13H17A13 13 0 0 1 4 46V27a13 13 0 0 1 13-13Z" />
+              <path d="M67 34h25a12 12 0 0 1 12 12v12A12 12 0 0 1 92 70h-5l3 9-15-9h-8" />
+              <circle cx="30" cy="37" r="3" /><circle cx="43" cy="37" r="3" /><circle cx="56" cy="37" r="3" />
+            </svg>
+
+            <div class="question-sticker home-sticker">
+              <small>BU AY</small>
+              <b>08 · Ağustos<br />İnsan · Evrim · Anlam</b>
+            </div>
+          </section>
+
+          <section class="book-card" id="kitap" data-panel="1" aria-labelledby="book-card-title">
+            <span class="card-badge" data-book-badge>DOSYA 001</span>
+            <span class="card-spark spark-one" aria-hidden="true">✦</span>
+            <span class="card-spark spark-two" aria-hidden="true">✦</span>
+            <span class="card-orbit" aria-hidden="true"></span>
+
+            <div class="card-month-switcher" data-card-month-switcher="book" aria-label="Kitap ayını seç">
+              <button class="active" type="button" data-month="august">08 · Ağustos</button>
+              <button type="button" data-month="september">09 · Eylül</button>
+            </div>
+
+            <div class="book-visual" data-book-visual>
+              <span class="month-sticker"><b data-book-number>08</b><small data-book-month>AĞUSTOS</small></span>
+              <span class="cover-halo" aria-hidden="true"></span>
+              <img class="book-month-cover"
+                src="assets/evreni-anlayan-maymun-kapak.jpg"
+                alt="Evreni Anlayan Maymun kitap kapağı"
+              />
+              <div class="tragedy-stack" aria-label="Eylül ayının seçilen altı tragedyası" hidden>
+                <img src="assets/tragedy-oedipus.jpg" alt="Kral Oidipus kapağı" />
+                <img src="assets/tragedy-antigone.jpg" alt="Antigone kapağı" />
+                <img src="assets/tragedy-agamemnon-original.jpg" alt="Agamemnon kapağı" />
+                <img src="assets/tragedy-elektra.jpg" alt="Elektra kapağı" />
+              </div>
+              <span class="reading-note">birlikte<br />okuyoruz</span>
+            </div>
+
+            <div class="book-copy">
+              <p class="card-kicker" data-book-kicker>AĞUSTOS AYININ KİTABI</p>
+              <h1 id="book-card-title" data-book-title>Evreni Anlayan<br /><em>Maymun</em></h1>
+              <p class="book-author" data-book-author>Steve Stewart-Williams</p>
+              <p class="book-summary" data-book-summary>
+                İnsan zihni nasıl evrimleşti? Kültürümüz bizi doğadan ne kadar
+                uzaklaştırdı? Bu ay kendimize biraz dışarıdan bakıyoruz.
+              </p>
+              <div class="book-tags" data-book-tags aria-label="Kitabın temaları">
+                <span>İnsan</span>
+                <span>Evrim</span>
+                <span>Kültür</span>
+              </div>
+              <button class="book-action" type="button" data-detail="kitap">Kitabı Keşfet <span>→</span></button>
+            </div>
+
+            <svg class="card-corner-symbol book-corner-symbol" viewBox="0 0 100 82" aria-hidden="true"><path d="M8 15h32c8 0 14 6 14 14v43c-3-8-10-12-20-12H8zM92 15H60c-8 0-14 6-14 14v43c3-8 10-12 20-12h26z"/><path d="M26 27h15M26 36h15M59 27h15M59 36h15"/><path class="symbol-spark" d="m83 3 3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/></svg>
+
+            <div class="question-sticker" data-book-question>
+              <small>AYIN SORUSU</small>
+              <b>Bizi insan<br />yapan nedir?</b>
+            </div>
+          </section>
+
+          <section class="book-card calendar-card" id="takvim" data-panel="2" aria-labelledby="calendar-card-title" aria-hidden="true">
+            <span class="card-badge">AĞUSTOS 2026</span>
+            <span class="card-spark spark-one" aria-hidden="true">✦</span>
+            <span class="card-spark spark-two" aria-hidden="true">✦</span>
+            <span class="card-orbit" aria-hidden="true"></span>
+
+            <div class="calendar-visual" aria-label="Ağustos 2026 etkinlik takvimi">
+              <span class="calendar-sun" aria-hidden="true"></span>
+              <div class="mini-calendar">
+                <div class="mini-calendar-head"><b>Ağustos</b><span>2026</span></div>
+                <div class="calendar-days" aria-hidden="true">
+                  <small>P</small><small>S</small><small>Ç</small><small>P</small><small>C</small><small>C</small><small>P</small>
+                  <i>17</i><i>18</i><i>19</i><i>20</i><i>21</i><i>22</i><i class="event-day">23</i>
+                  <i>24</i><i>25</i><i>26</i><i>27</i><i>28</i><i>29</i><i>30</i>
+                </div>
+              </div>
+              <span class="calendar-note">ilk buluşma<br /><b>23 Ağustos</b></span>
+            </div>
+
+            <div class="book-copy calendar-copy">
+              <p class="card-kicker">AYLAR ARASINDA BİR YOLCULUK</p>
+              <h1 id="calendar-card-title">Ağustos<br /><em>Takvimi</em></h1>
+              <p class="book-author">Birlikte düşünmek için buluşuyoruz</p>
+              <p class="book-summary">
+                Okuma notlarından film gecesine, ayın bütün durakları burada.
+                İlk buluşmamız 23 Ağustos akşamı Kadıköy’de.
+              </p>
+              <div class="book-tags" aria-label="Takvim temaları">
+                <span>Okuma</span>
+                <span>Film</span>
+                <span>Buluşma</span>
+              </div>
+              <button class="book-action" type="button" data-detail="takvim">Takvimi Keşfet <span>→</span></button>
+            </div>
+
+            <div class="question-sticker calendar-sticker">
+              <small>SIRADAKİ DURAK</small>
+              <b>23 Ağustos<br />19.30 · Kadıköy</b>
+            </div>
+            <svg class="card-corner-symbol calendar-corner-symbol" viewBox="0 0 100 88" aria-hidden="true"><rect x="9" y="16" width="72" height="61" rx="15"/><path d="M24 7v18M65 7v18M9 34h72M25 48h10M45 48h10M25 62h10M45 62h10"/><path class="symbol-spark" d="m86 49 3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/></svg>
+          </section>
+
+          <section class="book-card film-card" id="film" data-panel="3" aria-labelledby="film-card-title" aria-hidden="true">
+            <span class="card-badge" data-film-badge>AYIN FİLMİ · 02</span>
+            <span class="card-spark spark-one" aria-hidden="true">✦</span>
+            <span class="card-spark spark-two" aria-hidden="true">✦</span>
+            <span class="card-orbit" aria-hidden="true"></span>
+
+            <div class="card-month-switcher" data-card-month-switcher="film" aria-label="Film ayını seç">
+              <button class="active" type="button" data-month="august">Ağustos</button>
+              <button type="button" data-month="september">Eylül</button>
+            </div>
+
+            <div class="film-visual" aria-label="Ayın filmi görseli">
+              <span class="film-halo" aria-hidden="true"></span>
+              <div class="film-frame">
+                <img data-film-card-image src="assets/interstellar-home-poster.jpg" alt="Yıldızlar Arasında filminden karlı dağlar" />
+                <span class="play-symbol" aria-hidden="true">▶</span>
+              </div>
+              <span class="clapper-note">ışıklar<br /><b>sönüyor</b></span>
+            </div>
+
+            <div class="book-copy film-copy">
+              <p class="card-kicker" data-film-kicker>24–30 AĞUSTOS 2026</p>
+              <h1 id="film-card-title" data-film-card-title>Yıldızlar<br /><em>Arasında</em></h1>
+              <p class="book-author" data-film-card-author>Christopher Nolan · 2014</p>
+              <p class="book-summary" data-film-card-summary>
+                Zamanın büküldüğü, sevginin mesafeleri aştığı ve insanın bilinmeyene
+                doğru yürüdüğü büyük bir yolculuk.
+              </p>
+              <div class="book-tags" data-film-card-tags aria-label="Filmin temaları">
+                <span>Zaman</span>
+                <span>Uzay</span>
+                <span>İnsan</span>
+              </div>
+              <button class="book-action" type="button" data-detail="film">Filimleri Keşfet <span>→</span></button>
+            </div>
+
+            <div class="question-sticker film-sticker">
+              <small>FİLM NOTU</small>
+              <b>Zaman geçer mi,<br />yoksa biz mi geçeriz?</b>
+            </div>
+            <svg class="card-corner-symbol film-corner-symbol" viewBox="0 0 104 84" aria-hidden="true"><path d="M10 28h82v47H10zM10 28 18 8h82l-8 20zM27 8l-8 20M49 8l-8 20M71 8l-8 20M93 8l-8 20"/><path d="m45 42 21 11-21 11z"/></svg>
+          </section>
+        </div>
       </div>
 
-      <div class="home-opening-meta">
-        <span>AĞUSTOS 2026</span>
-        <span>İSTANBUL · KİTAP VE FİLM KULÜBÜ</span>
-      </div>
+      <button class="scroll-cue" type="button" aria-label="Takvim kartına geç">
+        <span>Kaydır</span><i>→</i>
+      </button>
+    </main>
 
-      <div class="home-opening-copy">
-        <p class="home-opening-kicker">THE READING CLUB ©</p>
-        <h1 id="home-opening-title">Metinler<span>arası</span></h1>
-        <p class="home-opening-description">
-          Bir kitap açılır, bir film başlar. Merakın, hikâyelerin ve
-          konuşmanın aynı masada buluştuğu yer.
-        </p>
-      </div>
+    <section class="detail-shell" aria-hidden="true" aria-label="Keşfet sayfası">
+      <div class="detail-starfield" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <header class="detail-header">
+        <button class="back-to-cards" type="button"><span>←</span> Kartlara dön</button>
+      </header>
 
+      <div class="detail-pages">
+        <article class="detail-page home-detail" data-detail-page="anasayfa">
+          <section class="detail-scroll-section detail-hero-section">
+            <div class="detail-layout">
+              <div class="detail-media playful-photo detail-logo-media">
+                <span class="detail-blob blob-one" aria-hidden="true"></span>
+                <span class="detail-blob blob-two" aria-hidden="true"></span>
+                <img src="metinlerarasi-logo.png" alt="Metinlerarası kitap kulübü logosu" />
+              </div>
+              <div class="detail-copy">
+                <p class="detail-kicker">GÖKÇEN <i>✦</i> EREN <i>✦</i> BÜŞRA</p>
+                <h2>Kitap Kulübümüzü<br /><em>Keşfet</em></h2>
+                <p>Bir kitabın açtığı sorudan bir filmin bıraktığı duyguya uzanan, meraklı ve samimi bir masa. Her ay birlikte okuyor, izliyor ve konuşuyoruz.</p>
+                <div class="detail-pills"><span>Kitap</span><span>Film</span><span>Buluşma</span></div>
+                <span class="detail-down-cue">devamı için kaydır ↓</span>
+              </div>
+            </div>
+          </section>
+          <section class="detail-scroll-section detail-story-section">
+            <div class="detail-section-copy reveal-on-scroll">
+              <p class="detail-kicker">AYNI MASANIN ETRAFINDA</p>
+              <h3>Merak, iyi bir<br /><em>başlangıçtır.</em></h3>
+              <p>Metinler Arası; yalnızca kitap bitirmek için değil, bir fikrin peşinden birlikte gitmek için var. Her dosyada bir kitap, bir film ve masaya taşıdığımız yeni sorular bulunuyor.</p>
+            </div>
+            <div class="club-rhythm reveal-on-scroll">
+              <article><b>01</b><h4>Birlikte oku</h4><p>Altını çizdiğin cümleyi masaya getir.</p></article>
+              <article><b>02</b><h4>Başka türlü izle</h4><p>Filmin bıraktığı duyguyu konuşmaya aç.</p></article>
+              <article><b>03</b><h4>Sözü paylaş</h4><p>Kesin cevaplardan çok iyi sorular biriktir.</p></article>
+            </div>
+          </section>
+        </article>
+
+        <article class="detail-page book-detail" data-detail-page="kitap">
+          <nav class="detail-month-switcher" data-detail-month-switcher="book" aria-label="Kitap ayını seç">
+            <button class="active" type="button" data-month="august"><small>08</small>Ağustos</button>
+            <button type="button" data-month="september"><small>09</small>Eylül</button>
+          </nav>
+
+          <div class="detail-month-view active" data-detail-month-view="book-august">
+            <section class="detail-scroll-section detail-hero-section">
+              <div class="detail-layout">
+                <div class="detail-media book-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><img src="assets/evreni-anlayan-maymun-kapak.jpg" alt="Evreni Anlayan Maymun kitap kapağı" /></div>
+                <div class="detail-copy"><p class="detail-kicker">AĞUSTOS AYININ KİTABI</p><h2>Evreni Anlayan<br /><em>Maymun</em></h2><p>İnsan zihninin, kültürün ve davranışlarımızın evrimsel hikâyesini birlikte keşfediyoruz. Ayın sorusu: Bizi insan yapan nedir?</p><div class="detail-pills"><span>İnsan</span><span>Evrim</span><span>Kültür</span></div><span class="detail-down-cue">kitabın dünyasına in ↓</span></div>
+              </div>
+            </section>
+            <section class="detail-scroll-section detail-story-section book-back-section">
+              <div class="detail-section-number">01</div>
+              <div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">ARKA KAPAKTAN</p><h3>Dünyadaki en tuhaf<br /><em>hayvanın hikâyesi.</em></h3><p>Düşünen, konuşan, kültür kuran ve içinde yaşadığı evreni anlamaya çalışan insan. Bu kitap, bizi doğanın dışında değil; onun merak eden, soru soran ve kendi hikâyesini yeniden yazan bir parçası olarak düşünmeye çağırıyor.</p></div>
+            </section>
+            <section class="detail-scroll-section detail-author-section">
+              <div class="author-orbit reveal-on-scroll"><span>SSW</span><i>evrim</i><i>zihin</i><i>kültür</i></div>
+              <div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YAZAR HAKKINDA</p><h3>Steve<br /><em>Stewart-Williams</em></h3><p>Evrimsel psikoloji ve insan davranışları üzerine çalışan bir yazar ve akademisyendir. Biyoloji ile kültürü karşı karşıya koymak yerine, insan hikâyesinin birbirine karışan iki katmanı olarak ele alır.</p></div>
+            </section>
+            <section class="detail-scroll-section detail-notes-section">
+              <header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">OKUMA MASASINDAN</p><h3>Kitaba dair<br /><em>notlar</em></h3></header>
+              <div class="detail-note-rail reveal-on-scroll">
+                <article class="detail-note-card"><small>EDİTÖR NOTU · 01</small><blockquote>“İnsanı evrenin merkezinden indirirken merak etme yeteneğini hikâyenin tam merkezine yerleştiriyor.”</blockquote><p>Bizi özel yapan şey nedir?</p></article>
+                <article class="detail-note-card"><small>OKUR NOTU · 02</small><blockquote>“Biyoloji ve kültür, aynı uzun hikâyenin birbirine karışan katmanları gibi okunuyor.”</blockquote><p>Zihin, davranış ve ortak yaşam.</p></article>
+                <article class="detail-note-card"><small>TARTIŞMA · 03</small><blockquote>“Kitabın gücü, gündelik davranışlara yeniden bakmamızı sağlayan sorularından geliyor.”</blockquote><p>İnsan doğası gerçekten değişir mi?</p></article>
+                <article class="detail-note-card"><small>KAPANIŞ · 04</small><blockquote>“Evreni anlamaya çalışan maymun, sonunda kendisini ne kadar anlayabilir?”</blockquote><p>Bilmek, davranışlarımızı değiştirmeye yeter mi?</p></article>
+              </div>
+            </section>
+          </div>
+
+          <div class="detail-month-view" data-detail-month-view="book-september" hidden>
+            <section class="detail-scroll-section detail-hero-section">
+              <div class="detail-layout">
+                <div class="detail-media detail-tragedy-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-tragedy-collection"><img src="assets/tragedy-oedipus.jpg" alt="Kral Oidipus kapağı"/><img src="assets/tragedy-antigone.jpg" alt="Antigone kapağı"/><img src="assets/tragedy-agamemnon-original.jpg" alt="Agamemnon kapağı"/><img src="assets/tragedy-elektra.jpg" alt="Elektra kapağı"/></div></div>
+                <div class="detail-copy"><p class="detail-kicker">EYLÜL · DOSYA 002</p><h2>Seçilen Altı<br /><em>Tragedya</em></h2><p>İki lanetli hanedanın kuşaklara yayılan hikâyesinde kaderi, adaleti ve insanın kararlarını birlikte okuyacağız.</p><div class="detail-pills"><span>Tiyatro</span><span>Kader</span><span>Adalet</span></div><span class="detail-down-cue">seçkiye doğru kaydır ↓</span></div>
+              </div>
+            </section>
+            <section class="detail-scroll-section detail-story-section"><div class="detail-section-number">02</div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">SEÇKİNİN ARKASINDAKİ HİKÂYE</p><h3>Kader sahnede,<br /><em>insan eşikte.</em></h3><p>Kral Oidipus, Oidipus Kolonos’ta, Antigone, Agamemnon, Elektra ve Orestes; iktidar, aile, yas, intikam ve vicdanın değişen yüzlerini aynı sahnede buluşturuyor.</p></div></section>
+            <section class="detail-scroll-section detail-author-section"><div class="author-orbit reveal-on-scroll"><span>3</span><i>Aiskhylos</i><i>Sophokles</i><i>Euripides</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YAZARLAR</p><h3>Üç büyük<br /><em>tragedya sesi</em></h3><p>Aiskhylos, Sophokles ve Euripides; aynı mitleri farklı sorularla yeniden kurar. Tanrıların buyruğu, insanın iradesi ve toplumun yasası her oyunda başka bir ağırlık kazanır.</p></div></section>
+            <section class="detail-scroll-section detail-notes-section"><header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">SEÇKİ MASASINDAN</p><h3>Tragedyalara dair<br /><em>notlar</em></h3></header><div class="detail-note-rail reveal-on-scroll"><article class="detail-note-card"><small>SEÇKİ NOTU · 01</small><blockquote>“Altı oyun, kaderi insanın her kararıyla yeniden kurduğu bir sahneye dönüştürüyor.”</blockquote><p>Kehanet mi, seçim mi trajediyi başlatır?</p></article><article class="detail-note-card"><small>OKUR NOTU · 02</small><blockquote>“Hakikati aramak, onu öğrenmenin bedelini de kabul etmek anlamına geliyor.”</blockquote><p>Bilmek, görmek ve körlük.</p></article><article class="detail-note-card"><small>TARTIŞMA · 03</small><blockquote>“Yas tutmak kişisel olduğu kadar siyasal bir eylemdir.”</blockquote><p>Vicdan ile yasa çatıştığında hangisi konuşur?</p></article></div></section>
+          </div>
+        </article>
+
+        <article class="detail-page calendar-detail" data-detail-page="takvim">
+          <section class="detail-scroll-section detail-hero-section"><div class="detail-layout"><div class="detail-media calendar-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-date"><strong>23</strong><span>Ağustos<br />2026</span></div></div><div class="detail-copy"><p class="detail-kicker">AYLAR ARASINDA BİR YOLCULUK</p><h2>Takvimi<br /><em>Keşfet</em></h2><p>Okuma notlarından film gecesine kadar ayın bütün durakları burada. İlk buluşmamız 23 Ağustos, 19.30’da Kadıköy’de.</p><div class="detail-pills"><span>Okuma</span><span>Film gecesi</span><span>Kadıköy</span></div><span class="detail-down-cue">programa doğru kaydır ↓</span></div></div></section>
+          <section class="detail-scroll-section detail-story-section"><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">AYIN ROTASI</p><h3>Birlikte düşünmek<br /><em>için buluşuyoruz.</em></h3><p>23 Ağustos kitap buluşmasıyla başlayan rota, 30 Ağustos film sohbetiyle devam ediyor. Her durak yeni bir soruyu ve yeni bir karşılaşmayı masaya getiriyor.</p></div><div class="calendar-route reveal-on-scroll"><article><time>23.08</time><b>Kitap Buluşması</b><span>19.30 · Kadıköy</span></article><article><time>30.08</time><b>Film Sohbeti</b><span>20.00 · Çevrim içi</span></article></div></section>
+        </article>
+
+        <article class="detail-page film-detail" data-detail-page="film">
+          <nav class="detail-month-switcher" data-detail-month-switcher="film" aria-label="Film ayını seç"><button class="active" type="button" data-month="august"><small>08</small>Ağustos</button><button type="button" data-month="september"><small>09</small>Eylül</button></nav>
+          <div class="detail-month-view active" data-detail-month-view="film-august">
+            <nav class="film-program-tabs august-film-tabs" aria-label="Ağustos filmleri"><button type="button" data-film-program="in-time">Zamana Karşı</button><button class="active" type="button" data-film-program="interstellar">Yıldızlar Arasında</button></nav>
+            <section class="detail-scroll-section detail-hero-section"><div class="detail-layout"><div class="detail-media film-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-trailer-frame"><iframe data-program-trailer src="https://www.youtube-nocookie.com/embed/R8teZZ-loaI?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=R8teZZ-loaI&amp;controls=0&amp;rel=0&amp;playsinline=1" title="Yıldızlar Arasında fragmanı" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div><div class="detail-copy"><p class="detail-kicker" data-program-date>24–30 AĞUSTOS 2026</p><h2 data-program-title>Yıldızlar<br /><em>Arasında</em></h2><p data-program-copy>Zamanın büküldüğü, sevginin mesafeleri aştığı ve insanın bilinmeyene yürüdüğü büyük yolculuğu birlikte izliyoruz.</p><div class="detail-pills" data-program-tags><span>Zaman</span><span>Uzay</span><span>İnsan</span></div><span class="detail-down-cue">filmlerin karelerine doğru kaydır ↓</span></div></div></section>
+            <section class="detail-scroll-section detail-story-section"><div class="detail-section-number">01</div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">FİLMİN ARDINDAKİ FİKİR</p><h3>Zaman bir ölçü değil,<br /><em>bir bağdır.</em></h3><p>Yıldızlar Arasında, insanlığın geleceği için yapılan kozmik yolculuğu bir aile hikâyesinin kalbine yerleştiriyor. Bilim, fedakârlık ve eve dönme arzusu aynı yörüngede buluşuyor.</p></div></section>
+            <section class="detail-scroll-section detail-author-section"><div class="author-orbit reveal-on-scroll"><span>CN</span><i>zaman</i><i>sinema</i><i>uzay</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YÖNETMEN</p><h3>Christopher<br /><em>Nolan</em></h3><p>Zaman, hafıza ve algı üzerine kurduğu büyük ölçekli anlatılarıyla tanınan yönetmen; bu filmde kişisel bir ayrılığı evrensel bir hayatta kalma hikâyesine dönüştürüyor.</p></div></section>
+            <section class="detail-scroll-section detail-scenes-section"><header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">AĞUSTOS KARELERİ</p><h3>Kaydırdıkça<br /><em>filmin içinde</em></h3></header><div class="film-scene-rail reveal-on-scroll"><figure><img src="assets/in-time-04.jpg" alt="Zamana Karşı kumar sahnesi"/><figcaption><b>Zamanı riske atmak</b><span>Zamana Karşı · Yaşam doğrudan masadadır.</span></figcaption></figure><figure><img src="assets/in-time-05.jpg" alt="Zamana Karşı filminden sahne"/><figcaption><b>Ölümsüzlerin bölgesi</b><span>Zamana Karşı · Tükenmeyen yarınlar.</span></figcaption></figure><figure><img src="assets/in-time-06.jpg" alt="Zamana Karşı filminden sahne"/><figcaption><b>Konforun dışı</b><span>Zamana Karşı · Zamanın gerçek bedeli.</span></figcaption></figure><figure><img src="assets/interstellar-earth.jpg" alt="Yıldızlar Arasında yeryüzü sahnesi"/><figcaption><b>Geride kalan dünya</b><span>Yıldızlar Arasında · İlk kırılma.</span></figcaption></figure><figure><img src="assets/interstellar-water.jpg" alt="Yıldızlar Arasında su gezegeni"/><figcaption><b>Zamanın bedeli</b><span>Yıldızlar Arasında · Dakikalar ve yıllar.</span></figcaption></figure><figure><img src="assets/interstellar-tesseract.jpg" alt="Yıldızlar Arasında tesseract sahnesi"/><figcaption><b>Mesafenin ötesi</b><span>Yıldızlar Arasında · Zamanı aşan işaret.</span></figcaption></figure></div></section>
+          </div>
+
+          <div class="detail-month-view" data-detail-month-view="film-september" hidden>
+            <nav class="film-program-tabs" aria-label="Eylül ve Ekim filmleri"><button class="active" type="button" data-film-program="truman">Truman Show</button><button type="button" data-film-program="marty">Marty Supreme</button><button type="button" data-film-program="father">The Father</button><button type="button" data-film-program="banshees">Banshees</button><button type="button" data-film-program="duvar">Duvar</button></nav>
+            <section class="detail-scroll-section detail-hero-section"><div class="detail-layout"><div class="detail-media film-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-trailer-frame"><iframe data-program-trailer src="https://www.youtube-nocookie.com/embed/NkZM2oWcleM?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=NkZM2oWcleM&amp;controls=0&amp;rel=0&amp;playsinline=1" title="Truman Show fragmanı" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div><div class="detail-copy"><p class="detail-kicker" data-program-date>31 AĞUSTOS–6 EYLÜL</p><h2 data-program-title>Truman<br/><em>Show</em></h2><p data-program-copy>Hayatının kusursuz görünen bütün ayrıntılarının başkaları tarafından yazıldığını fark eden bir adamın gerçekliğe doğru yürüyüşü.</p><div class="detail-pills" data-program-tags><span>Gerçeklik</span><span>Gözetim</span><span>Özgürlük</span></div><span class="detail-down-cue">programa doğru kaydır ↓</span></div></div></section>
+            <section class="detail-scroll-section detail-story-section"><div class="detail-section-number">09</div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">EYLÜL FİLM PROGRAMI</p><h3>Dört film,<br/><em>dört başka dünya.</em></h3><p>Truman Show’dan The Father’a uzanan program; gerçeklik, hırs, hafıza, dostluk ve yalnızlık üzerine birbirinden farklı dört bakış sunuyor.</p></div></section>
+            <section class="detail-scroll-section detail-scenes-section"><header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">AYIN SEÇKİSİ</p><h3>Kaydırdıkça<br/><em>başka bir film</em></h3></header><div class="film-scene-rail film-program-rail reveal-on-scroll"><figure><img src="assets/truman-hero.jpg" alt="Truman Show"/><figcaption><b>Truman Show</b><span>31 Ağu–6 Eyl · Gerçeklik</span></figcaption></figure><figure><img src="assets/marty-hero.jpg" alt="Marty Supreme"/><figcaption><b>Marty Supreme</b><span>7–13 Eyl · Hırs</span></figcaption></figure><figure><img src="assets/father-hero.jpg" alt="The Father"/><figcaption><b>The Father</b><span>14–20 Eyl · Hafıza</span></figcaption></figure><figure><img src="assets/banshees-hero.jpg" alt="The Banshees of Inisherin"/><figcaption><b>The Banshees</b><span>21–27 Eyl · Yalnızlık</span></figcaption></figure><figure><img src="https://img.youtube.com/vi/upCZb3xLUl4/hqdefault.jpg" alt="Duvar filmi"/><figcaption><b>Duvar</b><span>28 Eyl–4 Eki · İsyan ve özgürlük</span></figcaption></figure></div></section>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <script src="site.js?v=20260816-9"></script>
+    <script src="home-slider.js?v=20260828-6"></script>
+    <script src="content-editor.js?v=20260827-2"></script>
   </body>
 </html>
