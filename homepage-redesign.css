@@ -2847,6 +2847,8 @@ a.nav-link:focus-visible,
 }
 
 .book-detail-media .reading-note,
+.september-detail-media .reading-note,
+.detail-tragedy-media .reading-note,
 .calendar-detail-media .calendar-note,
 .film-detail-media .clapper-note {
   right: auto;
