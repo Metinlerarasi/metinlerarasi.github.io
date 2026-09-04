@@ -166,7 +166,7 @@
       name: "AĞUSTOS",
       short: "Ağu",
       year: 2026,
-      state: "current",
+      state: "past",
       words: ["MERAK", "SAAT", "SORU", "KEŞİF"],
       book: {
         title: "Evreni Anlayan Maymun",
@@ -185,11 +185,37 @@
       name: "EYLÜL",
       short: "Eyl",
       year: 2026,
-      state: "future",
-      words: ["SAHNE", "KORO", "KADER", "UZAK"],
+      state: "current",
+      words: ["İNSAN", "KUŞKU", "GEÇİŞ", "SAHNE"],
       book: {
-        title: "Seçilen Altı Tragedya",
+        title: "Maymun'dan Hamlet'e",
+        author: "Steve Stewart-Williams / William Shakespeare",
+        collectionLabel: "EYLÜL 2026 · İKİ OKUMA",
+        collectionHeading: "1-15 / 15-30",
+        collection: [
+          ["Evreni Anlayan Maymun", "1-15 Eylül", "assets/evreni-anlayan-maymun-kapak.jpg"],
+          ["Hamlet", "15-30 Eylül", "assets/tragedy-hamlet.webp"],
+        ],
+        backCover:
+          "Evreni Anlayan Maymun 15 Eylül'de sona eriyor. Hamlet okuması aynı gün başlayıp ayın sonuna kadar devam ediyor.",
+        subject:
+          "Ayın ilk yarısında insanı evrim ve kültür üzerinden, ikinci yarısında Hamlet'in kuşkusu, eylemi ve yası üzerinden konuşuyoruz.",
+        theme: "İnsan · Kuşku · Eylem · Geçiş",
+      },
+      films: [trumanShow, martySupreme, theFather, banshees],
+    },
+    {
+      id: "10",
+      name: "EKİM",
+      short: "Eki",
+      year: 2026,
+      state: "future",
+      words: ["SAHNE", "KORO", "KADER", "SEÇİM"],
+      book: {
+        title: "Tragedya Ayı",
         author: "Aiskhylos · Sophokles · Euripides",
+        collectionLabel: "EKİM 2026 · TRAGEDYA AYI",
+        collectionHeading: "6 TRAGEDYA",
         collection: [
           ["Kral Oidipus", "Sophokles", "assets/tragedy-oedipus.jpg"],
           ["Oidipus Kolonos'ta", "Sophokles", "assets/tragedy-kolonos-original.jpg"],
@@ -198,16 +224,13 @@
           ["Elektra", "Sophokles", "assets/tragedy-elektra.jpg"],
           ["Orestes", "Euripides", "assets/tragedy-orestes-original.jpg"],
         ],
-        backCover:
-          "Bir hanedanın suçları, kehanetleri ve susmayan vicdanı altı ayrı sahnede birbirine bağlanıyor.",
-        subject:
-          "Oidipus ailesinden Atreus hanedanına uzanan seçki; kader, iktidar, yas, adalet ve intikamın kuşaklar boyunca nasıl tekrarlandığını izliyor.",
-        theme: "Antik Yunan · Tiyatro · Kader · Uzaklık",
+        backCover: "Antik sahneden bugüne uzanan tragedyalar kaderi, iktidarı, vicdanı ve seçimi aynı masaya taşıyor.",
+        subject: "İki lanetli hanedanın kuşaklara yayılan hikâyesinde adalet, yas, intikam ve insanın kararlarını birlikte okuyacağız.",
+        theme: "Tragedya · Kader · İktidar · Seçim",
       },
-      films: [trumanShow, martySupreme, theFather, banshees],
+      films: pendingFilms(),
     },
-    month("10", "EKİM", "Eki", "future", ["GÖLGE", "GECE", "SES", "EŞİK"], "Karanlık anlatılar"),
-    month("11", "KASIM", "Kas", "future", ["HAFIZA", "ODA", "İZ", "KAYIP"], "Hafıza odaları"),
+    month("11", "KASIM", "Kas", "future", ["GÖLGE", "ARKETİP", "RÜYA", "BÜTÜNLÜK"], "Jung ayı · Kitap seçimi bekleniyor"),
     month("12", "ARALIK", "Ara", "future", ["BİTİŞ", "ZAMAN", "KIŞ", "CÜMLE"], "Yılın son cümlesi"),
   ];
 
@@ -222,7 +245,7 @@
   const copy = document.querySelector(".feature-copy");
   const status = document.querySelector(".global-month-status");
   let activePeriod = 1;
-  let activeMonth = months[7];
+  let activeMonth = months[8];
   let activeContent = "book";
   let sceneObserver;
 
@@ -276,8 +299,8 @@
   function bookVisual(book) {
     if (book.pending) return pendingVisual("KİTAP", book.title);
     if (book.collection) {
-      return `<div class="collection-visual" aria-label="Eylül için seçilen altı tragedya">
-        <div class="collection-heading"><small>EYLÜL 2026 · SEÇKİ TAMAMLANDI</small><b>6 TRAGEDYA</b></div>
+      return `<div class="collection-visual" aria-label="${escapeText(activeMonth.name)} ayı kitap seçkisi">
+        <div class="collection-heading"><small>${escapeText(book.collectionLabel || `${activeMonth.name} ${activeMonth.year} · SEÇKİ`)}</small><b>${escapeText(book.collectionHeading || `${book.collection.length} KİTAP`)}</b></div>
         <div class="collection-grid">${book.collection
           .map(
             (item, index) => `<figure style="--order:${index}">

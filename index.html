@@ -8,7 +8,8 @@
     <meta http-equiv="Expires" content="0" />
     <title>Metinlerarası</title>
     <meta name="description" content="Metinlerarası kitap ve film kulübü." />
-    <link rel="stylesheet" href="homepage-redesign.css?v=20260828-11" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://img.youtube.com; style-src 'self'; script-src 'self'; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self';" />
+    <link rel="stylesheet" href="homepage-redesign.css?v=20260904-1" />
     <link rel="stylesheet" href="responsive-card-fix.css?v=20260828-3" />
   </head>
   <body>
@@ -66,7 +67,7 @@
 
             <div class="question-sticker home-sticker">
               <small>BU AY</small>
-              <b>08 · Ağustos<br />İnsan · Evrim · Anlam</b>
+              <b>09 · Eylül<br />İki okuma, bir geçiş</b>
             </div>
           </section>
 
@@ -77,18 +78,32 @@
             <span class="card-orbit" aria-hidden="true"></span>
 
             <div class="card-month-switcher" data-card-month-switcher="book" aria-label="Kitap ayını seç">
-              <button class="active" type="button" data-month="august">08 · Ağustos</button>
-              <button type="button" data-month="september">09 · Eylül</button>
+              <button type="button" data-month="august">08 · Ağustos</button>
+              <button class="active" type="button" data-month="september">09 · Eylül</button>
+              <button type="button" data-month="october">10 · Ekim</button>
+              <button type="button" data-month="november">11 · Kasım</button>
             </div>
 
             <div class="book-visual" data-book-visual>
-              <span class="month-sticker"><b data-book-number>08</b><small data-book-month>AĞUSTOS</small></span>
+              <span class="month-sticker"><b data-book-number>09</b><small data-book-month>EYLÜL</small></span>
               <span class="cover-halo" aria-hidden="true"></span>
               <img class="book-month-cover"
                 src="assets/evreni-anlayan-maymun-kapak.jpg"
                 alt="Evreni Anlayan Maymun kitap kapağı"
+                hidden
               />
-              <div class="tragedy-stack" aria-label="Eylül ayının seçilen altı tragedyası" hidden>
+              <div class="september-reading-stack" aria-label="Eylül ayı okuma takvimi">
+                <figure>
+                  <img src="assets/evreni-anlayan-maymun-kapak.jpg" alt="Evreni Anlayan Maymun kitap kapağı" />
+                  <figcaption><small>1-15 EYLÜL</small><b>Evreni Anlayan Maymun</b></figcaption>
+                </figure>
+                <span class="reading-handoff" aria-hidden="true">→</span>
+                <figure>
+                  <img src="assets/tragedy-hamlet.webp" alt="Hamlet kitap kapağı" />
+                  <figcaption><small>15-30 EYLÜL</small><b>Hamlet</b></figcaption>
+                </figure>
+              </div>
+              <div class="tragedy-stack" aria-label="Ekim ayının tragedya seçkisi" hidden>
                 <div class="tragedy-track">
                   <img src="assets/tragedy-oedipus.jpg" alt="Kral Oidipus kapağı" />
                   <img src="assets/tragedy-kolonos-original.jpg" alt="Oidipus Kolonos'ta kapağı" />
@@ -104,21 +119,27 @@
                   <img src="assets/tragedy-orestes-original.jpg" alt="" aria-hidden="true" />
                 </div>
               </div>
+              <div class="jung-mystery-card" aria-label="Kasım Jung ayı, kitap seçimi bekleniyor" hidden>
+                <span class="jung-orbit" aria-hidden="true"></span>
+                <small>KASIM 2026</small>
+                <strong>C. G.<br />JUNG</strong>
+                <p>Kitap seçimi yakında</p>
+              </div>
               <span class="reading-note">birlikte<br />okuyoruz</span>
             </div>
 
             <div class="book-copy">
-              <p class="card-kicker" data-book-kicker>AĞUSTOS AYININ KİTABI</p>
-              <h1 id="book-card-title" data-book-title>Evreni Anlayan<br /><em>Maymun</em></h1>
-              <p class="book-author" data-book-author>Steve Stewart-Williams</p>
+              <p class="card-kicker" data-book-kicker>EYLÜL OKUMA TAKVİMİ</p>
+              <h1 id="book-card-title" data-book-title>Maymun'dan<br /><em>Hamlet'e</em></h1>
+              <p class="book-author" data-book-author>Steve Stewart-Williams / William Shakespeare</p>
+              <div class="person-row" data-book-people aria-label="Kitabın yazarları"></div>
               <p class="book-summary" data-book-summary>
-                İnsan zihni nasıl evrimleşti? Kültürümüz bizi doğadan ne kadar
-                uzaklaştırdı? Bu ay kendimize biraz dışarıdan bakıyoruz.
+                Evreni Anlayan Maymun 15 Eylül'de tamamlanıyor. Aynı gün Hamlet'e geçiyor ve 30 Eylül'e kadar birlikte okuyoruz.
               </p>
               <div class="book-tags" data-book-tags aria-label="Kitabın temaları">
-                <span>İnsan</span>
-                <span>Evrim</span>
-                <span>Kültür</span>
+                <span>1-15 Eylül</span>
+                <span>15-30 Eylül</span>
+                <span>Geçiş</span>
               </div>
               <button class="book-action" type="button" data-detail="kitap">Kitabı Keşfet <span>→</span></button>
             </div>
@@ -127,7 +148,7 @@
 
             <div class="question-sticker" data-book-question>
               <small>AYIN SORUSU</small>
-              <b>Bizi insan<br />yapan nedir?</b>
+              <b>İnsan kendisini<br />hangi aynada görür?</b>
             </div>
           </section>
 
@@ -143,20 +164,22 @@
                 <div class="mini-calendar-head"><b>Eylül</b><span>2026</span></div>
                 <div class="calendar-days" aria-hidden="true">
                   <small>P</small><small>S</small><small>Ç</small><small>P</small><small>C</small><small>C</small><small>P</small>
-                  <i>31</i><i>1</i><i>2</i><i class="event-day">3</i><i>4</i><i>5</i><i>6</i>
+                  <i>31</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i>
                   <i>7</i><i>8</i><i>9</i><i>10</i><i>11</i><i>12</i><i>13</i>
+                  <i>14</i><i class="event-day">15</i><i>16</i><i>17</i><i>18</i><i>19</i><i>20</i>
+                  <i>21</i><i>22</i><i>23</i><i>24</i><i>25</i><i>26</i><i>27</i>
+                  <i>28</i><i>29</i><i class="event-day event-day-secondary">30</i><i class="other-month">1</i><i class="other-month">2</i><i class="other-month">3</i><i class="other-month">4</i>
                 </div>
               </div>
-              <span class="calendar-note">sıradaki buluşma<br /><b>3 Eylül</b></span>
+              <span class="calendar-note">okuma değişimi<br /><b>15 Eylül</b></span>
             </div>
 
             <div class="book-copy calendar-copy">
               <p class="card-kicker">AYLAR ARASINDA BİR YOLCULUK</p>
-              <h1 id="calendar-card-title">Eylül<br /><em>Takvimi</em></h1>
-              <p class="book-author">Birlikte düşünmek için buluşuyoruz</p>
+              <h1 id="calendar-card-title">Eylül<br /><em>Okumaları</em></h1>
+              <p class="book-author">Ay ortasında yeni bir metne geçiyoruz</p>
               <p class="book-summary">
-                Okuma notlarından film gecesine, ayın bütün durakları burada.
-                Sıradaki buluşmamız 3 Eylül saat 20.30’da; Evreni Anlayan Maymun’u yeniden konuşacağız.
+                Evreni Anlayan Maymun 15 Eylül'de sona eriyor. Hamlet okuması 15 Eylül'de başlayıp 30 Eylül'de tamamlanıyor.
               </p>
               <div class="book-tags" aria-label="Takvim temaları">
                 <span>Okuma</span>
@@ -167,8 +190,8 @@
             </div>
 
             <div class="question-sticker calendar-sticker">
-              <small>SIRADAKİ DURAK</small>
-              <b>3 Eylül<br />20.30 · Türkiye saati</b>
+              <small>EYLÜL ROTASI</small>
+              <b>15 Eylül<br />Hamlet başlıyor</b>
             </div>
             <svg class="card-corner-symbol calendar-corner-symbol" viewBox="0 0 100 88" aria-hidden="true"><rect x="9" y="16" width="72" height="61" rx="15"/><path d="M24 7v18M65 7v18M9 34h72M25 48h10M45 48h10M25 62h10M45 62h10"/><path class="symbol-spark" d="m86 49 3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/></svg>
           </section>
@@ -196,6 +219,7 @@
               <p class="card-kicker" data-film-kicker>24–30 AĞUSTOS 2026</p>
               <h1 id="film-card-title" data-film-card-title>Yıldızlar<br /><em>Arasında</em></h1>
               <p class="book-author" data-film-card-author>Christopher Nolan · 2014</p>
+              <div class="person-row" data-film-people aria-label="Filmin yönetmeni"></div>
               <p class="book-summary" data-film-card-summary>
                 Zamanın büküldüğü, sevginin mesafeleri aştığı ve insanın bilinmeyene
                 doğru yürüdüğü büyük bir yolculuk.
@@ -205,7 +229,11 @@
                 <span>Uzay</span>
                 <span>İnsan</span>
               </div>
-              <button class="book-action" type="button" data-detail="film">Filimleri Keşfet <span>→</span></button>
+              <div class="cast-section" data-film-cast-section>
+                <p class="cast-label">OYUNCULAR</p>
+                <div class="cast-row" data-film-cast aria-label="Filmin oyuncu kadrosu"></div>
+              </div>
+              <button class="book-action" type="button" data-detail="film">Filmleri Keşfet <span>→</span></button>
             </div>
 
             <div class="question-sticker film-sticker">
@@ -262,11 +290,13 @@
 
         <article class="detail-page book-detail" data-detail-page="kitap">
           <nav class="detail-month-switcher" data-detail-month-switcher="book" aria-label="Kitap ayını seç">
-            <button class="active" type="button" data-month="august"><small>08</small>Ağustos</button>
-            <button type="button" data-month="september"><small>09</small>Eylül</button>
+            <button type="button" data-month="august"><small>08</small>Ağustos</button>
+            <button class="active" type="button" data-month="september"><small>09</small>Eylül</button>
+            <button type="button" data-month="october"><small>10</small>Ekim</button>
+            <button type="button" data-month="november"><small>11</small>Kasım</button>
           </nav>
 
-          <div class="detail-month-view active" data-detail-month-view="book-august">
+          <div class="detail-month-view" data-detail-month-view="book-august" hidden>
             <section class="detail-scroll-section detail-hero-section">
               <div class="detail-layout">
                 <div class="detail-media book-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><img src="assets/evreni-anlayan-maymun-kapak.jpg" alt="Evreni Anlayan Maymun kitap kapağı" /><div class="question-sticker"><small>AYIN SORUSU</small><b>Bizi insan<br />yapan nedir?</b></div><span class="reading-note">birlikte<br />okuyoruz</span></div>
@@ -292,30 +322,53 @@
             </section>
           </div>
 
-          <div class="detail-month-view" data-detail-month-view="book-september" hidden>
+          <div class="detail-month-view active" data-detail-month-view="book-september">
+            <section class="detail-scroll-section detail-hero-section">
+              <div class="detail-layout">
+                <div class="detail-media september-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="september-detail-books"><figure><img src="assets/evreni-anlayan-maymun-kapak.jpg" alt="Evreni Anlayan Maymun kitap kapağı"/><figcaption>1-15 Eylül</figcaption></figure><figure><img src="assets/tragedy-hamlet.webp" alt="Hamlet kitap kapağı"/><figcaption>15-30 Eylül</figcaption></figure></div><div class="question-sticker"><small>AYIN SORUSU</small><b>İnsan kendisini<br />hangi aynada görür?</b></div><span class="reading-note">iki metin<br />bir ay</span></div>
+                <div class="detail-copy"><p class="detail-kicker">EYLÜL OKUMA TAKVİMİ</p><h2>Maymun'dan<br /><em>Hamlet'e</em></h2><p>Evreni Anlayan Maymun 15 Eylül'de tamamlanıyor. Aynı gün Hamlet'e geçiyor ve ayın sonuna kadar Shakespeare'in karanlık kahramanını izliyoruz.</p><div class="detail-pills"><span>1-15 Eylül</span><span>15-30 Eylül</span><span>Geçiş</span></div><span class="detail-down-cue">okuma rotasına doğru kaydır ↓</span></div>
+              </div>
+            </section>
+            <section class="detail-scroll-section detail-story-section"><div class="detail-section-number">09</div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">AYIN OKUMA ROTASI</p><h3>Bir soru kapanır,<br /><em>bir kuşku başlar.</em></h3><p>Ayın ilk yarısında insanı evrim ve kültür üzerinden düşünmeyi tamamlıyoruz. 15 Eylül'den sonra Hamlet'le eylem, tereddüt, yas ve intikamın içine giriyoruz.</p></div><div class="calendar-route reveal-on-scroll"><article><time>01-15</time><div><b>Evreni Anlayan Maymun</b><span>İnsan, evrim ve kültür</span></div></article><article class="is-next"><time>15-30</time><div><b>Hamlet</b><span>Kuşku, eylem ve yas</span></div></article></div></section>
+            <section class="detail-scroll-section detail-author-section"><div class="author-orbit reveal-on-scroll hamlet-orbit"><span>W.S.</span><i>kuşku</i><i>eylem</i><i>gölge</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">HAMLET'E YAKLAŞIRKEN</p><h3>William<br /><em>Shakespeare</em></h3><p>Shakespeare, Hamlet'te bir intikam hikâyesini düşünmenin ve karar verememenin sahnesine dönüştürür. Danimarka sarayındaki hayalet, yalnızca geçmişin değil, bastırılan hakikatin de sesidir.</p></div></section>
+            <section class="detail-scroll-section detail-notes-section"><header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">EYLÜL MASASINDAN</p><h3>İki metni bağlayan<br /><em>sorular</em></h3></header><div class="detail-note-rail reveal-on-scroll"><article class="detail-note-card"><small>GEÇİŞ NOTU 01</small><blockquote>“İnsanı açıklamakla insanın iç çatışmasını anlamak aynı şey mi?”</blockquote><p>Bilgi, davranışı değiştirmeye yeter mi?</p></article><article class="detail-note-card"><small>HAMLET NOTU 02</small><blockquote>“Düşünmek eylemi berraklaştırır mı, yoksa geciktirir mi?”</blockquote><p>Kuşku ile sorumluluk arasındaki eşik.</p></article><article class="detail-note-card"><small>AYIN SORUSU 03</small><blockquote>“Kendimizi dışarıdan görmek mümkün mü?”</blockquote><p>Biyolojik bakıştan tiyatro sahnesine.</p></article></div></section>
+          </div>
+
+          <div class="detail-month-view" data-detail-month-view="book-october" hidden>
             <section class="detail-scroll-section detail-hero-section">
               <div class="detail-layout">
                 <div class="detail-media detail-tragedy-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-tragedy-collection"><img src="assets/tragedy-oedipus.jpg" alt="Kral Oidipus kapağı"/><img src="assets/tragedy-kolonos-original.jpg" alt="Oidipus Kolonos'ta kapağı"/><img src="assets/tragedy-antigone.jpg" alt="Antigone kapağı"/><img src="assets/tragedy-agamemnon-original.jpg" alt="Agamemnon kapağı"/><img src="assets/tragedy-elektra.jpg" alt="Elektra kapağı"/><img src="assets/tragedy-orestes-original.jpg" alt="Orestes kapağı"/></div><div class="question-sticker"><small>AYIN SORUSU</small><b>Kader mi,<br />yoksa seçim mi?</b></div><span class="reading-note">birlikte<br />okuyoruz</span></div>
-                <div class="detail-copy"><p class="detail-kicker">EYLÜL · DOSYA 002</p><h2>Seçilen Altı<br /><em>Tragedya</em></h2><p>İki lanetli hanedanın kuşaklara yayılan hikâyesinde kaderi, adaleti ve insanın kararlarını birlikte okuyacağız.</p><div class="detail-pills"><span>Tiyatro</span><span>Kader</span><span>Adalet</span></div><span class="detail-down-cue">seçkiye doğru kaydır ↓</span></div>
+                <div class="detail-copy"><p class="detail-kicker">EKİM · DOSYA 003</p><h2>Tragedya<br /><em>Ayı</em></h2><p>Antik sahneden Shakespeare'e uzanan tragedyalarla kaderi, iktidarı, vicdanı ve insanın seçimlerini birlikte okuyacağız.</p><div class="detail-pills"><span>Tiyatro</span><span>Kader</span><span>Adalet</span></div><span class="detail-down-cue">seçkiye doğru kaydır ↓</span></div>
               </div>
             </section>
-            <section class="detail-scroll-section detail-story-section"><div class="detail-section-number">02</div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">SEÇKİNİN ARKASINDAKİ HİKÂYE</p><h3>Kader sahnede,<br /><em>insan eşikte.</em></h3><p>Kral Oidipus, Oidipus Kolonos’ta, Antigone, Agamemnon, Elektra ve Orestes; iktidar, aile, yas, intikam ve vicdanın değişen yüzlerini aynı sahnede buluşturuyor.</p></div></section>
+            <section class="detail-scroll-section detail-story-section"><div class="detail-section-number">10</div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">SEÇKİNİN ARKASINDAKİ HİKÂYE</p><h3>Kader sahnede,<br /><em>insan eşikte.</em></h3><p>Kral Oidipus, Oidipus Kolonos'ta, Antigone, Agamemnon, Elektra ve Orestes; iktidar, aile, yas, intikam ve vicdanın değişen yüzlerini aynı sahnede buluşturuyor.</p></div></section>
             <section class="detail-scroll-section detail-author-section"><div class="author-orbit reveal-on-scroll"><span>3</span><i>Aiskhylos</i><i>Sophokles</i><i>Euripides</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YAZARLAR</p><h3>Üç büyük<br /><em>tragedya sesi</em></h3><p>Aiskhylos, Sophokles ve Euripides; aynı mitleri farklı sorularla yeniden kurar. Tanrıların buyruğu, insanın iradesi ve toplumun yasası her oyunda başka bir ağırlık kazanır.</p></div></section>
             <section class="detail-scroll-section detail-notes-section"><header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">SEÇKİ MASASINDAN</p><h3>Tragedyalara dair<br /><em>notlar</em></h3></header><div class="detail-note-rail reveal-on-scroll"><article class="detail-note-card"><small>SEÇKİ NOTU · 01</small><blockquote>“Altı oyun, kaderi insanın her kararıyla yeniden kurduğu bir sahneye dönüştürüyor.”</blockquote><p>Kehanet mi, seçim mi trajediyi başlatır?</p></article><article class="detail-note-card"><small>OKUR NOTU · 02</small><blockquote>“Hakikati aramak, onu öğrenmenin bedelini de kabul etmek anlamına geliyor.”</blockquote><p>Bilmek, görmek ve körlük.</p></article><article class="detail-note-card"><small>TARTIŞMA · 03</small><blockquote>“Yas tutmak kişisel olduğu kadar siyasal bir eylemdir.”</blockquote><p>Vicdan ile yasa çatıştığında hangisi konuşur?</p></article></div></section>
+          </div>
+
+          <div class="detail-month-view" data-detail-month-view="book-november" hidden>
+            <section class="detail-scroll-section detail-hero-section jung-detail-hero">
+              <div class="detail-layout">
+                <div class="detail-media jung-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="jung-mystery-card jung-mystery-card-large"><span class="jung-orbit" aria-hidden="true"></span><small>KASIM 2026</small><strong>C. G.<br />JUNG</strong><p>Kitap seçimi yakında</p></div><div class="question-sticker"><small>AYIN SORUSU</small><b>İçimizdeki gölge<br />bize ne söyler?</b></div></div>
+                <div class="detail-copy"><p class="detail-kicker">KASIM · DOSYA 004</p><h2>Jung'un<br /><em>Gölgesinde</em></h2><p>Kasım ayında Carl Gustav Jung'un düşünce dünyasına gireceğiz. Okunacak kitap henüz seçilmedi; dosya şimdilik yazarın temel kavramlarına açılan bir eşik.</p><div class="detail-pills"><span>Gölge</span><span>Arketip</span><span>Bilinçdışı</span></div><span class="detail-down-cue">Jung'a yaklaşmak için kaydır ↓</span></div>
+              </div>
+            </section>
+            <section class="detail-scroll-section detail-author-section"><div class="author-orbit reveal-on-scroll jung-orbit-mark"><span>CGJ</span><i>gölge</i><i>arketip</i><i>bütünlük</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YAZARA YAKLAŞIRKEN</p><h3>Carl Gustav<br /><em>Jung</em></h3><p>İsviçreli psikiyatrist Carl Gustav Jung, analitik psikolojinin kurucusudur. Kolektif bilinçdışı, arketip, gölge ve bireyleşme kavramlarıyla insanın yalnızca görünen benliğinden ibaret olmadığını savunur.</p></div></section>
+            <section class="detail-scroll-section detail-story-section"><div class="detail-section-number">11</div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">KASIM DOSYASI</p><h3>Kitap henüz<br /><em>seçilmedi.</em></h3><p>Seçim açıklandığında kapak, okuma tarihleri ve tartışma soruları bu alana eklenecek. Şimdilik Jung'un bilinç, gölge ve içsel bütünlük üzerine kurduğu düşünce haritasını tanıyoruz.</p></div></section>
           </div>
         </article>
 
         <article class="detail-page calendar-detail" data-detail-page="takvim">
-          <section class="detail-scroll-section detail-hero-section"><div class="detail-layout"><div class="detail-media calendar-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-date"><strong>03</strong><span>Eylül<br />2026</span></div><div class="question-sticker calendar-sticker"><small>AYIN SORUSU</small><b>Bu ay hangi soruyla<br />ayrılacağız?</b></div><span class="calendar-note">sıradaki buluşma<br /><b>3 Eylül</b></span></div><div class="detail-copy"><p class="detail-kicker">SIRADAKİ BULUŞMA</p><h2>Takvimi<br /><em>Keşfet</em></h2><p>Evreni Anlayan Maymun için yeniden aynı masada buluşuyoruz. Tarih 3 Eylül, saat 20.30; geri sayım Türkiye saatine göre çalışıyor.</p><div class="detail-pills"><span>Evreni Anlayan Maymun</span><span>Kitap buluşması</span><span>20.30</span></div><span class="detail-down-cue">programa doğru kaydır ↓</span></div></div></section>
-          <section class="detail-scroll-section detail-story-section"><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">AYIN ROTASI</p><h3>Birlikte düşünmek<br /><em>için buluşuyoruz.</em></h3><p>Ağustosun son film sohbetinden sonra 3 Eylül’de Evreni Anlayan Maymun buluşmasıyla yeni aya geçiyoruz. Her durak yeni bir soruyu masaya getiriyor.</p></div><div class="calendar-route reveal-on-scroll"><article><time>30.08</time><div><b>Film Sohbeti</b><span>20.00 · Çevrim içi</span></div></article><article class="is-next"><time>03.09</time><div><b>Evreni Anlayan Maymun</b><span>20.30 · Kitap buluşması</span></div></article></div></section>
-          <section class="detail-scroll-section detail-story-section detail-agenda-section"><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">BULUŞMA GÜNDEMİ</p><h3>Bu toplantıda<br /><em>neler konuşacağız?</em></h3><p>Evreni Anlayan Maymun’un ilk 250 sayfasında yer alan şu başlıklara birlikte bakacağız:</p></div><div class="club-rhythm reveal-on-scroll"><article><b>01</b><h4>Zihnin kökeni</h4><p>Zihnimiz doğuştan mı şekilleniyor, yoksa kültür mü baskın çıkıyor? Yazarın ilk bölümdeki örnekleri üzerinden tartışacağız.</p></article><article><b>02</b><h4>Doğa ile kültür arasında</h4><p>Bizi diğer hayvanlardan ayıran şey gerçekten ne? Kitabın erken bölümlerindeki karşılaştırmalara bakacağız.</p></article><article><b>03</b><h4>Evrimsel psikolojiye giriş</h4><p>Gündelik davranışlarımızın altında yatan evrimsel mantığı, ilk vaka örnekleri üzerinden konuşacağız.</p></article></div></section>
+          <section class="detail-scroll-section detail-hero-section"><div class="detail-layout"><div class="detail-media calendar-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-date"><strong>15</strong><span>Eylül<br />2026</span></div><div class="question-sticker calendar-sticker"><small>OKUMA DEĞİŞİMİ</small><b>Bir metinden<br />ötekine</b></div><span class="calendar-note">Hamlet başlıyor<br /><b>15 Eylül</b></span></div><div class="detail-copy"><p class="detail-kicker">EYLÜL OKUMA TAKVİMİ</p><h2>Takvimi<br /><em>Keşfet</em></h2><p>Evreni Anlayan Maymun 15 Eylül'de tamamlanıyor. Hamlet okuması aynı gün başlayıp 30 Eylül'de sona eriyor.</p><div class="detail-pills"><span>1-15 Eylül</span><span>15-30 Eylül</span><span>İki okuma</span></div><span class="detail-down-cue">programa doğru kaydır ↓</span></div></div></section>
+          <section class="detail-scroll-section detail-story-section"><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">AYIN ROTASI</p><h3>Ay ortasında<br /><em>yeni bir metin.</em></h3><p>Eylül, bir kitabı kapatıp başka bir dünyanın kapısını açıyor. Ayın ilk yarısında insanın evrimsel hikâyesi, ikinci yarısında Hamlet'in kuşkusu masada.</p></div><div class="calendar-route reveal-on-scroll"><article><time>01-15</time><div><b>Evreni Anlayan Maymun</b><span>Okuma dönemi tamamlanıyor</span></div></article><article class="is-next"><time>15-30</time><div><b>Hamlet</b><span>Yeni okuma dönemi</span></div></article><article><time>01.10</time><div><b>Tragedya Ayı</b><span>Ekim dosyası açılıyor</span></div></article></div></section>
+          <section class="detail-scroll-section detail-story-section detail-agenda-section"><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">EYLÜLİN İKİ SORUSU</p><h3>Nereden geldik,<br /><em>nasıl karar veririz?</em></h3><p>İki metin insanı farklı ölçeklerden okuyor. Biri türün uzun hikâyesine, diğeri karar anındaki zihne yaklaşıyor.</p></div><div class="club-rhythm reveal-on-scroll"><article><b>01</b><h4>İnsan doğası</h4><p>Davranışlarımızda biyoloji ile kültürün payını yeniden düşünüyoruz.</p></article><article><b>02</b><h4>Kuşku ve eylem</h4><p>Hamlet'in düşüncesi neden kararın önüne geçiyor?</p></article><article><b>03</b><h4>Gölgeye geçiş</h4><p>Hamlet, Ekimdeki Tragedya Ayı için ilk karanlık eşiği kuruyor.</p></article></div></section>
         </article>
 
         <article class="detail-page film-detail" data-detail-page="film">
           <nav class="detail-month-switcher" data-detail-month-switcher="film" aria-label="Film ayını seç"><button class="active" type="button" data-month="august"><small>08</small>Ağustos</button><button type="button" data-month="september"><small>09</small>Eylül</button></nav>
           <div class="detail-month-view active" data-detail-month-view="film-august">
             <nav class="film-program-tabs august-film-tabs" aria-label="Ağustos filmleri"><button type="button" data-film-program="in-time">Zamana Karşı</button><button class="active" type="button" data-film-program="interstellar">Yıldızlar Arasında</button></nav>
-            <section class="detail-scroll-section detail-hero-section"><div class="detail-layout"><div class="detail-media film-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-trailer-frame"><iframe data-program-trailer src="https://www.youtube-nocookie.com/embed/R8teZZ-loaI?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=R8teZZ-loaI&amp;controls=0&amp;rel=0&amp;playsinline=1" title="Yıldızlar Arasında fragmanı" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="question-sticker film-sticker" data-program-question><small>FİLM NOTU</small><b>Zaman geçer mi,<br />yoksa biz mi geçeriz?</b></div><span class="clapper-note">ışıklar<br /><b>sönüyor</b></span></div><div class="detail-copy"><p class="detail-kicker" data-program-date>24–30 AĞUSTOS 2026</p><h2 data-program-title>Yıldızlar<br /><em>Arasında</em></h2><p data-program-copy>Zamanın büküldüğü, sevginin mesafeleri aştığı ve insanın bilinmeyene yürüdüğü büyük yolculuğu birlikte izliyoruz.</p><div class="detail-pills" data-program-tags><span>Zaman</span><span>Uzay</span><span>İnsan</span></div><span class="detail-down-cue">filmlerin karelerine doğru kaydır ↓</span></div></div></section>
+            <section class="detail-scroll-section detail-hero-section"><div class="detail-layout"><div class="detail-media film-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-trailer-frame"><iframe data-program-trailer title="Yıldızlar Arasında fragmanı" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="question-sticker film-sticker" data-program-question><small>FİLM NOTU</small><b>Zaman geçer mi,<br />yoksa biz mi geçeriz?</b></div><span class="clapper-note">ışıklar<br /><b>sönüyor</b></span></div><div class="detail-copy"><p class="detail-kicker" data-program-date>24–30 AĞUSTOS 2026</p><h2 data-program-title>Yıldızlar<br /><em>Arasında</em></h2><p data-program-copy>Zamanın büküldüğü, sevginin mesafeleri aştığı ve insanın bilinmeyene yürüdüğü büyük yolculuğu birlikte izliyoruz.</p><div class="detail-pills" data-program-tags><span>Zaman</span><span>Uzay</span><span>İnsan</span></div><span class="detail-down-cue">filmlerin karelerine doğru kaydır ↓</span></div></div></section>
             <section class="detail-scroll-section detail-story-section"><div class="detail-section-number">01</div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">FİLMİN ARDINDAKİ FİKİR</p><h3>Zaman bir ölçü değil,<br /><em>bir bağdır.</em></h3><p>Yıldızlar Arasında, insanlığın geleceği için yapılan kozmik yolculuğu bir aile hikâyesinin kalbine yerleştiriyor. Bilim, fedakârlık ve eve dönme arzusu aynı yörüngede buluşuyor.</p></div></section>
             <section class="detail-scroll-section detail-author-section"><div class="author-orbit reveal-on-scroll"><img src="assets/director-nolan.jpg" alt="Christopher Nolan portresi" /><i>zaman</i><i>sinema</i><i>uzay</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YÖNETMEN</p><h3>Christopher<br /><em>Nolan</em></h3><p>Zaman, hafıza ve algı üzerine kurduğu büyük ölçekli anlatılarıyla tanınan yönetmen; bu filmde kişisel bir ayrılığı evrensel bir hayatta kalma hikâyesine dönüştürüyor.</p></div></section>
             <section class="detail-scroll-section detail-scenes-section"><header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">AĞUSTOS KARELERİ</p><h3>Kaydırdıkça<br /><em>filmin içinde</em></h3></header><div class="film-scene-rail reveal-on-scroll"><figure><img src="assets/in-time-04.jpg" alt="Zamana Karşı kumar sahnesi"/><figcaption><b>Zamanı riske atmak</b><span>Zamana Karşı · Yaşam doğrudan masadadır.</span></figcaption></figure><figure><img src="assets/in-time-05.jpg" alt="Zamana Karşı filminden sahne"/><figcaption><b>Ölümsüzlerin bölgesi</b><span>Zamana Karşı · Tükenmeyen yarınlar.</span></figcaption></figure><figure><img src="assets/in-time-06.jpg" alt="Zamana Karşı filminden sahne"/><figcaption><b>Konforun dışı</b><span>Zamana Karşı · Zamanın gerçek bedeli.</span></figcaption></figure><figure><img src="assets/interstellar-earth.jpg" alt="Yıldızlar Arasında yeryüzü sahnesi"/><figcaption><b>Geride kalan dünya</b><span>Yıldızlar Arasında · İlk kırılma.</span></figcaption></figure><figure><img src="assets/interstellar-water.jpg" alt="Yıldızlar Arasında su gezegeni"/><figcaption><b>Zamanın bedeli</b><span>Yıldızlar Arasında · Dakikalar ve yıllar.</span></figcaption></figure><figure><img src="assets/interstellar-tesseract.jpg" alt="Yıldızlar Arasında tesseract sahnesi"/><figcaption><b>Mesafenin ötesi</b><span>Yıldızlar Arasında · Zamanı aşan işaret.</span></figcaption></figure></div></section>
@@ -323,7 +376,7 @@
 
           <div class="detail-month-view" data-detail-month-view="film-september" hidden>
             <nav class="film-program-tabs" aria-label="Eylül ve Ekim filmleri"><button class="active" type="button" data-film-program="truman">Truman Show</button><button type="button" data-film-program="marty">Marty Supreme</button><button type="button" data-film-program="father">The Father</button><button type="button" data-film-program="banshees">Banshees</button><button type="button" data-film-program="duvar">Duvar</button></nav>
-            <section class="detail-scroll-section detail-hero-section"><div class="detail-layout"><div class="detail-media film-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-trailer-frame"><iframe data-program-trailer src="https://www.youtube-nocookie.com/embed/NkZM2oWcleM?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=NkZM2oWcleM&amp;controls=0&amp;rel=0&amp;playsinline=1" title="Truman Show fragmanı" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="question-sticker film-sticker" data-program-question><small>FİLM NOTU</small><b>Gerçek olanı<br />kim belirler?</b></div><span class="clapper-note">ışıklar<br /><b>sönüyor</b></span></div><div class="detail-copy"><p class="detail-kicker" data-program-date>31 AĞUSTOS–6 EYLÜL</p><h2 data-program-title>Truman<br/><em>Show</em></h2><p data-program-copy>Hayatının kusursuz görünen bütün ayrıntılarının başkaları tarafından yazıldığını fark eden bir adamın gerçekliğe doğru yürüyüşü.</p><div class="detail-pills" data-program-tags><span>Gerçeklik</span><span>Gözetim</span><span>Özgürlük</span></div><span class="detail-down-cue">programa doğru kaydır ↓</span></div></div></section>
+            <section class="detail-scroll-section detail-hero-section"><div class="detail-layout"><div class="detail-media film-detail-media"><span class="detail-blob blob-one" aria-hidden="true"></span><div class="detail-trailer-frame"><iframe data-program-trailer title="Truman Show fragmanı" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="question-sticker film-sticker" data-program-question><small>FİLM NOTU</small><b>Gerçek olanı<br />kim belirler?</b></div><span class="clapper-note">ışıklar<br /><b>sönüyor</b></span></div><div class="detail-copy"><p class="detail-kicker" data-program-date>31 AĞUSTOS–6 EYLÜL</p><h2 data-program-title>Truman<br/><em>Show</em></h2><p data-program-copy>Hayatının kusursuz görünen bütün ayrıntılarının başkaları tarafından yazıldığını fark eden bir adamın gerçekliğe doğru yürüyüşü.</p><div class="detail-pills" data-program-tags><span>Gerçeklik</span><span>Gözetim</span><span>Özgürlük</span></div><span class="detail-down-cue">programa doğru kaydır ↓</span></div></div></section>
             <section class="detail-scroll-section detail-story-section"><div class="detail-section-number">09</div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">EYLÜL FİLM PROGRAMI</p><h3>Dört film,<br/><em>dört başka dünya.</em></h3><p>Truman Show’dan The Father’a uzanan program; gerçeklik, hırs, hafıza, dostluk ve yalnızlık üzerine birbirinden farklı dört bakış sunuyor.</p></div></section>
             <section class="detail-scroll-section detail-scenes-section"><header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">AYIN SEÇKİSİ</p><h3>Kaydırdıkça<br/><em>başka bir film</em></h3></header><div class="film-scene-rail film-program-rail reveal-on-scroll"><figure><img src="assets/truman-hero.jpg" alt="Truman Show"/><figcaption><b>Truman Show</b><span>31 Ağu–6 Eyl · Gerçeklik</span></figcaption></figure><figure><img src="assets/marty-hero.jpg" alt="Marty Supreme"/><figcaption><b>Marty Supreme</b><span>7–13 Eyl · Hırs</span></figcaption></figure><figure><img src="assets/father-hero.jpg" alt="The Father"/><figcaption><b>The Father</b><span>14–20 Eyl · Hafıza</span></figcaption></figure><figure><img src="assets/banshees-hero.jpg" alt="The Banshees of Inisherin"/><figcaption><b>The Banshees</b><span>21–27 Eyl · Yalnızlık</span></figcaption></figure><figure><img src="https://img.youtube.com/vi/upCZb3xLUl4/hqdefault.jpg" alt="Duvar filmi"/><figcaption><b>Duvar</b><span>28 Eyl–4 Eki · İsyan ve özgürlük</span></figcaption></figure></div></section>
           </div>
@@ -331,7 +384,6 @@
       </div>
     </section>
 
-    <script src="home-slider.js?v=20260828-7"></script>
-    <script src="content-editor.js?v=20260827-2"></script>
+    <script src="home-slider.js?v=20260904-1"></script>
   </body>
 </html>

@@ -138,8 +138,9 @@ a.nav-link:focus-visible {
   padding: clamp(48px, 6vw, 86px);
   overflow: hidden;
   display: grid;
-  grid-template-columns: 42% 58%;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: clamp(245px, 40vw, 390px) auto;
+  align-items: start;
   color: #f8f4e9;
   background:
     radial-gradient(circle at 15% 22%, rgba(71, 111, 128, 0.24), transparent 28%),
@@ -180,7 +181,9 @@ a.nav-link:focus-visible {
 .book-visual {
   position: relative;
   z-index: 3;
+  width: min(610px, 100%);
   height: min(470px, 60vh);
+  margin-inline: auto;
   display: grid;
   grid-template-rows: minmax(0, 1fr);
   align-items: stretch;
@@ -264,8 +267,11 @@ a.nav-link:focus-visible {
 .book-copy {
   position: relative;
   z-index: 4;
-  max-width: 500px;
-  padding-left: clamp(28px, 5vw, 74px);
+  width: min(610px, 100%);
+  max-width: none;
+  margin-inline: auto;
+  padding: clamp(8px, 2.2vw, 18px) 0 0;
+  text-align: center;
 }
 
 .card-kicker {
@@ -298,9 +304,135 @@ a.nav-link:focus-visible {
   font-style: italic;
 }
 
+.person-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+
+.person-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 4px 4px;
+  color: rgba(248, 244, 233, 0.92);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.person-chip:hover,
+.person-chip:focus-visible {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.person-avatar {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #092033;
+  background: linear-gradient(135deg, #e2c5a1, #c79a68);
+  border-radius: 50%;
+  font-family: "Arial Rounded MT Bold", "SF Pro Rounded", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.person-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.cast-section {
+  max-width: 450px;
+  margin: 22px auto 0;
+}
+
+.cast-label {
+  margin: 0 0 12px;
+  color: #b9d4d2;
+  font-family: "Arial Rounded MT Bold", "SF Pro Rounded", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-align: center;
+}
+
+.cast-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cast-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 76px;
+  padding: 0;
+  color: rgba(248, 244, 233, 0.9);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.cast-avatar {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #092033;
+  background: linear-gradient(135deg, #e2c5a1, #c79a68);
+  border: 2px solid rgba(255, 255, 255, 0.32);
+  border-radius: 50%;
+  font-family: "Arial Rounded MT Bold", "SF Pro Rounded", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.cast-chip:hover .cast-avatar,
+.cast-chip:focus-visible .cast-avatar {
+  border-color: #e2c5a1;
+  transform: translateY(-3px) scale(1.05);
+}
+
+.cast-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.cast-name {
+  margin-top: 7px;
+  font-size: 11px;
+  line-height: 1.25;
+  text-align: center;
+}
+
 .book-summary {
   max-width: 450px;
-  margin: 25px 0;
+  margin: 25px auto;
   color: rgba(248, 244, 233, 0.78);
   font-size: 15px;
   line-height: 1.6;
@@ -309,6 +441,7 @@ a.nav-link:focus-visible {
 .book-tags {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
 }
 
@@ -441,7 +574,9 @@ a.nav-link:focus-visible {
 .calendar-visual {
   position: relative;
   z-index: 3;
+  width: min(610px, 100%);
   height: min(470px, 60vh);
+  margin-inline: auto;
   display: grid;
   place-items: center;
 }
@@ -524,6 +659,10 @@ a.nav-link:focus-visible {
   font-weight: 700;
 }
 
+.calendar-days .other-month {
+  opacity: 0.4;
+}
+
 .calendar-note {
   position: absolute;
   z-index: 5;
@@ -589,7 +728,9 @@ a.nav-link:focus-visible {
 .home-visual {
   position: relative;
   z-index: 3;
+  width: min(610px, 100%);
   height: min(470px, 60vh);
+  margin-inline: auto;
   display: grid;
   place-items: center;
 }
@@ -742,7 +883,9 @@ a.nav-link:focus-visible {
 .film-visual {
   position: relative;
   z-index: 3;
+  width: min(610px, 100%);
   height: min(470px, 60vh);
+  margin-inline: auto;
   display: grid;
   grid-template-rows: minmax(0, 1fr);
   align-items: stretch;
@@ -887,11 +1030,11 @@ a.nav-link:focus-visible {
 }
 
 .detail-layout {
-  width: min(1120px, 100%);
+  width: min(720px, 100%);
   display: grid;
-  grid-template-columns: minmax(300px, 0.95fr) minmax(360px, 1.05fr);
-  align-items: center;
-  gap: clamp(48px, 8vw, 120px);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(24px, 5vw, 40px);
 }
 
 .detail-media {
@@ -971,6 +1114,12 @@ a.nav-link:focus-visible {
   position: relative;
   z-index: 3;
   max-width: 620px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.detail-copy > p:not(.detail-kicker) {
+  margin-inline: auto;
 }
 
 .detail-kicker {
@@ -1030,6 +1179,7 @@ a.nav-link:focus-visible {
 .detail-pills {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 9px;
 }
 
@@ -1534,6 +1684,44 @@ a.nav-link:focus-visible {
     font-size: 11px;
   }
 
+  .person-row {
+    margin-top: 10px;
+    gap: 6px;
+  }
+
+  .person-chip {
+    padding: 3px 10px 3px 3px;
+    font-size: 10px;
+  }
+
+  .person-avatar {
+    width: 22px;
+    height: 22px;
+    font-size: 8px;
+  }
+
+  .cast-section {
+    margin-top: 16px;
+  }
+
+  .cast-row {
+    gap: 10px;
+  }
+
+  .cast-chip {
+    width: 62px;
+  }
+
+  .cast-avatar {
+    width: 42px;
+    height: 42px;
+    font-size: 11px;
+  }
+
+  .cast-name {
+    font-size: 9.5px;
+  }
+
   .book-summary {
     margin: 16px 0;
     font-size: 10.5px;
@@ -1759,6 +1947,262 @@ a.nav-link:focus-visible {
   }
 }
 
+/* September-November 2026 reading program */
+.book-visual [hidden],
+.detail-month-view[hidden] {
+  display: none !important;
+}
+
+.september-reading-stack {
+  position: relative;
+  z-index: 4;
+  width: min(530px, 94%);
+  height: 92%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(10px, 2vw, 20px);
+}
+
+.september-reading-stack figure {
+  min-width: 0;
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.book-visual .september-reading-stack img {
+  position: static;
+  width: auto;
+  max-width: 100%;
+  height: min(300px, 36vh);
+  object-fit: contain;
+  border: 3px solid #f8f1e4;
+  border-radius: 4px 8px 8px 4px;
+  box-shadow: -9px 18px 32px rgba(0, 0, 0, 0.4);
+  animation: none;
+}
+
+.september-reading-stack figure:first-child img { transform: rotate(-5deg); }
+.september-reading-stack figure:last-child img { transform: rotate(5deg); }
+
+.september-reading-stack figcaption {
+  width: 100%;
+  text-align: center;
+}
+
+.september-reading-stack figcaption small,
+.september-reading-stack figcaption b {
+  display: block;
+}
+
+.september-reading-stack figcaption small {
+  color: #ffe0a8;
+  font-family: "Arial Rounded MT Bold", "SF Pro Rounded", sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.september-reading-stack figcaption b {
+  margin-top: 4px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(14px, 2vw, 20px);
+  font-weight: 400;
+}
+
+.reading-handoff {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: #17342f;
+  background: #ffe0a8;
+  border-radius: 50%;
+  font-size: 22px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.jung-mystery-card {
+  position: relative;
+  z-index: 4;
+  width: min(330px, 76%);
+  aspect-ratio: 0.72;
+  margin: auto;
+  padding: clamp(28px, 5vw, 48px);
+  overflow: hidden;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  color: #eee8da;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(186, 166, 214, 0.2), transparent 34%),
+    linear-gradient(145deg, #172331, #090d14 72%);
+  border: 1px solid rgba(238, 232, 218, 0.35);
+  border-radius: 8px;
+  box-shadow: -12px 24px 42px rgba(0, 0, 0, 0.48), inset 0 0 0 7px rgba(255, 255, 255, 0.025);
+  transform: rotate(-2deg);
+}
+
+.jung-mystery-card::before,
+.jung-mystery-card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  border: 1px solid rgba(238, 232, 218, 0.16);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.jung-mystery-card::before { width: 72%; aspect-ratio: 1; }
+.jung-mystery-card::after { width: 46%; aspect-ratio: 1; }
+
+.jung-mystery-card small,
+.jung-mystery-card strong,
+.jung-mystery-card p {
+  position: relative;
+  z-index: 2;
+}
+
+.jung-mystery-card small {
+  font-family: "Arial Rounded MT Bold", "SF Pro Rounded", sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+.jung-mystery-card strong {
+  margin: 20px 0 24px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 7vw, 76px);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+}
+
+.jung-mystery-card p {
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(238, 232, 218, 0.28);
+  font-family: "Arial Rounded MT Bold", "SF Pro Rounded", sans-serif;
+  font-size: 10px;
+}
+
+.jung-orbit {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgba(255, 224, 168, 0.28);
+  border-radius: 50%;
+  transform: rotate(24deg) scaleY(0.42);
+}
+
+.september-detail-books {
+  position: relative;
+  z-index: 2;
+  width: min(500px, 88%);
+  height: min(480px, 58vh);
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(14px, 3vw, 32px);
+}
+
+.september-detail-books figure {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.september-detail-books img {
+  width: auto;
+  max-width: 100%;
+  height: min(350px, 42vh);
+  object-fit: contain;
+  border: 3px solid #f8f1e4;
+  border-radius: 4px 8px 8px 4px;
+  box-shadow: -12px 24px 42px rgba(0, 0, 0, 0.42);
+}
+
+.september-detail-books figure:first-child { transform: translateY(24px) rotate(-4deg); }
+.september-detail-books figure:last-child { transform: translateY(-18px) rotate(4deg); }
+
+.september-detail-books figcaption {
+  padding: 7px 12px;
+  color: #17342f;
+  background: #ffe0a8;
+  border-radius: 999px;
+  font-family: "Arial Rounded MT Bold", "SF Pro Rounded", sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.jung-mystery-card-large {
+  width: min(390px, 78%);
+}
+
+.jung-orbit-mark {
+  background: radial-gradient(circle, rgba(185, 162, 210, 0.26), transparent 66%);
+}
+
+.calendar-days .event-day-secondary {
+  color: #fff4dc;
+  background: transparent;
+  border: 2px solid #fff4dc;
+  box-shadow: none;
+}
+
+@media (max-width: 700px) {
+  .card-month-switcher[data-card-month-switcher="book"] {
+    max-width: calc(100% - 34px);
+    overflow-x: auto;
+  }
+
+  .september-reading-stack {
+    width: 100%;
+    gap: 7px;
+  }
+
+  .book-visual .september-reading-stack img {
+    height: min(230px, 29vh);
+  }
+
+  .reading-handoff {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .september-reading-stack figcaption b { font-size: 12px; }
+  .september-reading-stack figcaption small { font-size: 7px; }
+
+  .detail-month-switcher[data-detail-month-switcher="book"] {
+    max-width: calc(100vw - 24px);
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  .detail-month-switcher[data-detail-month-switcher="book"] button {
+    min-width: 82px;
+  }
+
+  .september-detail-books {
+    height: 42svh;
+  }
+
+  .september-detail-books img {
+    height: min(260px, 31vh);
+  }
+
+  .jung-mystery-card,
+  .jung-mystery-card-large {
+    width: min(270px, 72%);
+  }
+}
+
 /* 2026 program details, rotating selections and narrow-screen stability */
 .detail-tragedy-collection img {
   left: 31%;
@@ -1827,12 +2271,12 @@ a.nav-link:focus-visible {
 .book-selection-tabs button.active small { color: #8b5c3d; }
 
 .book-selection-profile {
-  width: min(1120px, 100%);
+  width: min(720px, 100%);
   margin: 0 auto;
   padding: clamp(24px, 4vw, 56px);
   display: grid;
-  grid-template-columns: minmax(220px, .72fr) minmax(0, 1.28fr);
-  gap: clamp(28px, 5vw, 70px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 32px);
   color: #243b36;
   background: #fff4dc;
   border-radius: 42px 42px 12px 42px;
@@ -1841,7 +2285,7 @@ a.nav-link:focus-visible {
 
 .book-profile-cover { display: grid; place-items: center; min-width: 0; }
 .book-profile-cover img { width: min(280px, 90%); max-height: 460px; object-fit: cover; border-radius: 5px 12px 12px 5px; box-shadow: -17px 25px 45px rgba(32,45,42,.25); transform: rotate(-3deg); }
-.book-profile-copy { min-width: 0; align-self: center; }
+.book-profile-copy { min-width: 0; align-self: center; text-align: center; }
 .book-profile-copy .detail-kicker { color: #8a5f42; }
 .book-profile-copy h4 { margin: 0; font: 400 clamp(45px, 5.5vw, 78px)/.94 Georgia, serif; letter-spacing: -.045em; }
 .book-profile-theme { margin: 15px 0 26px; color: #8a5f42; font: italic 16px Georgia, serif; }
@@ -2284,12 +2728,12 @@ a.nav-link:focus-visible,
 
 .detail-story-section,
 .detail-author-section {
-  grid-template-columns: minmax(160px, .55fr) minmax(420px, 1.45fr);
-  gap: clamp(40px, 8vw, 140px);
-}
-
-.detail-author-section {
-  grid-template-columns: minmax(320px, .9fr) minmax(420px, 1.1fr);
+  width: min(640px, 100%);
+  margin-inline: auto;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 40px);
+  justify-items: center;
+  text-align: center;
 }
 
 .detail-section-copy {

@@ -24,7 +24,7 @@ let activeIndex = 1;
 let pointerStartX = null;
 let detailCard = null;
 let transitionInProgress = false;
-const currentMonths = { book: "august", film: "august" };
+const currentMonths = { book: "september", film: "august" };
 let currentFilmProgram = "truman";
 let currentAugustFilm = "interstellar";
 
@@ -36,6 +36,7 @@ const bookMonths = {
     kicker: "AĞUSTOS AYININ KİTABI",
     title: "Evreni Anlayan<br><em>Maymun</em>",
     author: "Steve Stewart-Williams",
+    people: [{ name: "Steve Stewart-Williams", photo: null }],
     summary: "İnsan zihni nasıl evrimleşti? Kültürümüz bizi doğadan ne kadar uzaklaştırdı? Bu ay kendimize biraz dışarıdan bakıyoruz.",
     tags: ["İnsan", "Evrim", "Kültür"],
     question: "Bizi insan<br>yapan nedir?"
@@ -44,12 +45,48 @@ const bookMonths = {
     badge: "DOSYA 002",
     number: "09",
     month: "EYLÜL",
-    kicker: "EYLÜL AYININ SEÇKİSİ",
-    title: "Seçilen Altı<br><em>Tragedya</em>",
-    author: "Aiskhylos · Sophokles · Euripides",
-    summary: "İki lanetli hanedanın kuşaklara yayılan hikâyesinde kaderi, adaleti ve insanın kararlarını birlikte okuyacağız.",
+    kicker: "EYLÜL OKUMA TAKVİMİ",
+    title: "Maymun'dan<br><em>Hamlet'e</em>",
+    author: "Steve Stewart-Williams / William Shakespeare",
+    people: [
+      { name: "Steve Stewart-Williams", photo: null },
+      { name: "William Shakespeare", photo: "assets/author-shakespeare.jpg" }
+    ],
+    summary: "Evreni Anlayan Maymun 15 Eylül'de tamamlanıyor. Aynı gün Hamlet'e geçiyor ve 30 Eylül'e kadar birlikte okuyoruz.",
+    tags: ["1-15 Eylül", "15-30 Eylül", "Geçiş"],
+    question: "İnsan kendisini<br>hangi aynada görür?",
+    visual: "september"
+  },
+  october: {
+    badge: "DOSYA 003",
+    number: "10",
+    month: "EKİM",
+    kicker: "EKİM: TRAGEDYA AYI",
+    title: "Tragedya<br><em>Ayı</em>",
+    author: "Aiskhylos · Sophokles · Euripides · Shakespeare",
+    people: [
+      { name: "Aiskhylos", photo: "assets/author-aiskhylos.jpg" },
+      { name: "Sophokles", photo: "assets/author-sophokles.jpg" },
+      { name: "Euripides", photo: "assets/author-euripides.jpg" },
+      { name: "William Shakespeare", photo: "assets/author-shakespeare.jpg" }
+    ],
+    summary: "Antik sahneden Shakespeare'e uzanan metinlerle kaderi, iktidarı, vicdanı ve insanın seçimlerini birlikte okuyacağız.",
     tags: ["Tiyatro", "Kader", "Adalet"],
-    question: "Kader mi,<br>yoksa seçim mi?"
+    question: "Kader mi,<br>yoksa seçim mi?",
+    visual: "tragedy"
+  },
+  november: {
+    badge: "DOSYA 004",
+    number: "11",
+    month: "KASIM",
+    kicker: "KASIM: JUNG AYI",
+    title: "Jung'un<br><em>Gölgesinde</em>",
+    author: "Kitap seçimi yakında",
+    people: [{ name: "Carl Gustav Jung", photo: "assets/author-jung.jpg" }],
+    summary: "Carl Gustav Jung'un gölge, arketip, kolektif bilinçdışı ve bireyleşme kavramlarına yaklaşacağız. Okunacak kitap henüz seçilmedi.",
+    tags: ["Gölge", "Arketip", "Bilinçdışı"],
+    question: "İçimizdeki gölge<br>bize ne söyler?",
+    visual: "jung"
   }
 };
 
@@ -109,6 +146,11 @@ const filmProgramDetails = {
   "in-time": {
     start: "2026-08-17T00:00:00+03:00", end: "2026-08-23T23:59:59+03:00",
     imdb: "6.7", runtime: "1 sa 49 dk", cast: "Justin Timberlake · Amanda Seyfried · Cillian Murphy", director: "Andrew Niccol", directorInitials: "AN", directorPhoto: "assets/director-niccol.jpg",
+    castList: [
+      { name: "Justin Timberlake", photo: "assets/actor-timberlake.jpg" },
+      { name: "Amanda Seyfried", photo: "assets/actor-seyfried.jpg" },
+      { name: "Cillian Murphy", photo: "assets/actor-murphy.jpg" }
+    ],
     storyTitle: "Zaman para olduğunda,<br><em>hayat kimin olur?</em>",
     story: "İnsanların 25 yaşından sonra yaşlanmadığı, fakat kalan ömürlerini çalışarak kazanmak zorunda olduğu bir gelecekte Will Salas, kendisine bırakılan büyük zaman mirasıyla sistemin hedefi olur. Film; zamanı sınıf, emek ve iktidar üzerinden kuran hızlı bir distopyadır.",
     directorCopy: "Gattaca ve The Truman Show’un senaristi Andrew Niccol, yüksek kavramlı bilimkurguyu gündelik eşitsizliklerle buluşturur. Zamana Karşı’da görünmez ekonomik sınırları, insanların kollarında geri sayan somut bir saate dönüştürür.",
@@ -124,6 +166,11 @@ const filmProgramDetails = {
   interstellar: {
     start: "2026-08-24T00:00:00+03:00", end: "2026-08-30T23:59:59+03:00",
     imdb: "8.7", runtime: "2 sa 49 dk", cast: "Matthew McConaughey · Anne Hathaway · Jessica Chastain", director: "Christopher Nolan", directorInitials: "CN", directorPhoto: "assets/director-nolan.jpg",
+    castList: [
+      { name: "Matthew McConaughey", photo: "assets/actor-mcconaughey.jpg" },
+      { name: "Anne Hathaway", photo: "assets/actor-hathaway.jpg" },
+      { name: "Jessica Chastain", photo: "assets/actor-chastain.jpg" }
+    ],
     storyTitle: "Zaman bir ölçü değil,<br><em>bir bağdır.</em>",
     story: "Dünya yaşanamaz hâle gelirken eski pilot Cooper, insanlık için yeni bir yuva arayan göreve katılır. Solucan deliğinin ötesindeki yolculukta her karar, Dünya’da yıllara dönüşen bir zaman kaybı ve geride bıraktığı ailesiyle arasındaki bağ anlamına gelir.",
     directorCopy: "Christopher Nolan, bilimsel ölçeği kişisel bir ayrılık hikâyesinin kalbine yerleştirir. Görelilik, kara delikler ve gezegenler arası keşif; Cooper ile Murph arasındaki yarım kalmış konuşmanın duygusal yörüngesinde birleşir.",
@@ -139,6 +186,11 @@ const filmProgramDetails = {
   truman: {
     start: "2026-08-31T00:00:00+03:00", end: "2026-09-06T23:59:59+03:00",
     imdb: "8.2", runtime: "1 sa 43 dk", cast: "Jim Carrey · Ed Harris · Laura Linney", director: "Peter Weir", directorInitials: "PW", directorPhoto: "assets/director-weir.jpg",
+    castList: [
+      { name: "Jim Carrey", photo: "assets/actor-carrey.jpg" },
+      { name: "Ed Harris", photo: "assets/actor-harris.jpg" },
+      { name: "Laura Linney", photo: "assets/actor-linney.jpg" }
+    ],
     storyTitle: "Kusursuz hayatın<br><em>duvarları çatlıyor.</em>",
     story: "Truman Burbank, doğumundan beri dev bir televizyon stüdyosunda yaşadığını bilmez. Çevresindeki küçük hatalar çoğaldıkça güvenli görünen hayatıyla gerçek özgürlük arasında seçim yapmak zorunda kalır.",
     directorCopy: "Peter Weir, hiciv ile duygusal dramı dengelerken seyircinin bakışını da hikâyenin parçası yapar. Film, gözetlenmenin yalnızca kameralarla değil, güvenli ve tanıdık olana duyulan bağımlılıkla da kurulduğunu gösterir.",
@@ -147,6 +199,11 @@ const filmProgramDetails = {
   marty: {
     start: "2026-09-07T00:00:00+03:00", end: "2026-09-13T23:59:59+03:00",
     imdb: "7.6", runtime: "2 sa 29 dk", cast: "Timothée Chalamet · Gwyneth Paltrow · Odessa A’zion", director: "Josh Safdie", directorInitials: "JS", directorPhoto: "assets/director-safdie.png",
+    castList: [
+      { name: "Timothée Chalamet", photo: "assets/actor-chalamet.jpg" },
+      { name: "Gwyneth Paltrow", photo: "assets/actor-paltrow.jpg" },
+      { name: "Odessa A’zion", photo: "assets/actor-azion.jpg" }
+    ],
     storyTitle: "Hayalini kimse ciddiye<br><em>almıyorsa ne yaparsın?</em>",
     story: "Marty Mauser, kimsenin önemsemediği masa tenisi tutkusunu büyüklük arzusuna dönüştürür. Başarıya giden yolda enerjisi, zekâsı ve gözü karalığı kadar geride bıraktığı ilişkiler de belirleyici olur.",
     directorCopy: "Josh Safdie, durmaksızın ileri fırlayan karakterleri ve baskı altında sıkışan şehir enerjisiyle tanınır. Burada spor filminin yükseliş anlatısını hırs, görünürlük ve kendini icat etme hikâyesiyle karıştırır.",
@@ -155,6 +212,11 @@ const filmProgramDetails = {
   father: {
     start: "2026-09-14T00:00:00+03:00", end: "2026-09-20T23:59:59+03:00",
     imdb: "8.2", runtime: "1 sa 37 dk", cast: "Anthony Hopkins · Olivia Colman · Mark Gatiss", director: "Florian Zeller", directorInitials: "FZ", directorPhoto: "assets/director-zeller.jpg",
+    castList: [
+      { name: "Anthony Hopkins", photo: "assets/actor-hopkins.jpg" },
+      { name: "Olivia Colman", photo: "assets/actor-colman.jpg" },
+      { name: "Mark Gatiss", photo: "assets/actor-gatiss.jpg" }
+    ],
     storyTitle: "Bir oda değişince<br><em>gerçeklik de değişir.</em>",
     story: "Anthony yaşlandıkça tanıdığı yüzler, yaşadığı ev ve güvendiği anılar yer değiştirir. Film seyirciyi dışarıdan gözlemleyen konumdan çıkarıp parçalanan hafızanın içine yerleştirir.",
     directorCopy: "Florian Zeller kendi oyununu sinemaya uyarlarken dekoru ve oyuncu değişimlerini anlatının dili hâline getirir. Böylece bellek kaybını açıklamak yerine, seyirciye mekânsal ve duygusal olarak yaşatır.",
@@ -163,6 +225,11 @@ const filmProgramDetails = {
   banshees: {
     start: "2026-09-21T00:00:00+03:00", end: "2026-09-27T23:59:59+03:00",
     imdb: "7.6", runtime: "1 sa 54 dk", cast: "Colin Farrell · Brendan Gleeson · Kerry Condon", director: "Martin McDonagh", directorInitials: "MM", directorPhoto: "assets/director-mcdonagh.jpg",
+    castList: [
+      { name: "Colin Farrell", photo: "assets/actor-farrell.jpg" },
+      { name: "Brendan Gleeson", photo: "assets/actor-gleeson.jpg" },
+      { name: "Kerry Condon", photo: "assets/actor-condon.jpg" }
+    ],
     storyTitle: "Bir dostluk biterse<br><em>adada ne kalır?</em>",
     story: "Pádraic’in en yakın dostu Colm hiçbir açıklama yapmadan arkadaşlıklarını bitirir. Küçük bir adada başlayan kişisel kırgınlık, inat ve yalnızlığın beslediği geri dönüşsüz bir çatışmaya dönüşür.",
     directorCopy: "Martin McDonagh kara mizahı, keskin diyalogları ve trajediye yaklaşan gündelik çatışmalarıyla kurar. Inisherin’in dar dünyası, anlamlı bir hayat bırakma arzusu ile iyi bir insan olma isteğini karşı karşıya getirir.",
@@ -171,6 +238,11 @@ const filmProgramDetails = {
   duvar: {
     start: "2026-09-28T00:00:00+03:00", end: "2026-10-04T23:59:59+03:00",
     imdb: "7.9", runtime: "1 sa 57 dk", cast: "Tuncel Kurtiz · Ayşe Emel Mesçi · Malik Berrichi", director: "Yılmaz Güney", directorInitials: "YG", directorPhoto: "assets/director-guney.jpg",
+    castList: [
+      { name: "Tuncel Kurtiz", photo: null },
+      { name: "Ayşe Emel Mesçi", photo: null },
+      { name: "Malik Berrichi", photo: null }
+    ],
     storyTitle: "Duvar yalnızca<br><em>neyi içeride tutar?</em>",
     story: "Bir cezaevinin çocuklar koğuşundaki ağır koşullar, şiddet ve baskı karşısında genç mahkûmların dayanışması giderek açık bir başkaldırıya dönüşür.",
     directorCopy: "Yılmaz Güney, sürgünde çektiği Duvar’da kapatılmayı yalnızca fiziksel mekânla değil, kurumların ve korkunun kurduğu bir düzen olarak anlatır. Film sert gerçekçiliğini dayanışma ve özgürlük arzusuyla yan yana taşır.",
@@ -198,6 +270,56 @@ function replaceTags(container, tags) {
   existing.slice(tags.length).forEach((span) => span.remove());
 }
 
+function initials(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word[0])
+    .slice(0, 2)
+    .join("")
+    .toLocaleUpperCase("tr-TR");
+}
+
+function personAvatarHtml(person) {
+  return person.photo
+    ? `<img src="${person.photo}" alt="${person.name}" loading="lazy" />`
+    : initials(person.name);
+}
+
+function renderPersonRow(container, people) {
+  if (!container) return;
+  container.innerHTML = (people || [])
+    .map(
+      (person) => `
+    <button type="button" class="person-chip" data-person="${person.name}">
+      <span class="person-avatar">${personAvatarHtml(person)}</span>
+      <span class="person-name">${person.name}</span>
+    </button>`
+    )
+    .join("");
+}
+
+function renderCast(container, cast) {
+  if (!container) return;
+  container.innerHTML = (cast || [])
+    .map(
+      (person) => `
+    <button type="button" class="cast-chip" data-person="${person.name}">
+      <span class="cast-avatar">${personAvatarHtml(person)}</span>
+      <span class="cast-name">${person.name}</span>
+    </button>`
+    )
+    .join("");
+}
+
+document.addEventListener("click", (event) => {
+  const chip = event.target.closest(".person-chip, .cast-chip");
+  if (!chip) return;
+  const name = chip.dataset.person;
+  if (!name) return;
+  window.open(`https://www.google.com/search?q=${encodeURIComponent(name)}`, "_blank", "noopener");
+});
+
 function setBookCardMonth(month) {
   const data = bookMonths[month];
   const card = document.querySelector("#kitap");
@@ -210,11 +332,14 @@ function setBookCardMonth(month) {
   card.querySelector("[data-book-kicker]").textContent = data.kicker;
   card.querySelector("[data-book-title]").innerHTML = data.title;
   card.querySelector("[data-book-author]").textContent = data.author;
+  renderPersonRow(card.querySelector("[data-book-people]"), data.people);
   card.querySelector("[data-book-summary]").textContent = data.summary;
   replaceTags(card.querySelector("[data-book-tags]"), data.tags);
   card.querySelector("[data-book-question] b").innerHTML = data.question;
   card.querySelector(".book-month-cover").hidden = month !== "august";
-  card.querySelector(".tragedy-stack").hidden = month !== "september";
+  card.querySelector(".september-reading-stack").hidden = month !== "september";
+  card.querySelector(".tragedy-stack").hidden = month !== "october";
+  card.querySelector(".jung-mystery-card").hidden = month !== "november";
   card.querySelectorAll("[data-card-month-switcher='book'] button").forEach((button) => {
     button.classList.toggle("active", button.dataset.month === month);
   });
@@ -233,6 +358,8 @@ function setFilmCard(programId) {
   card.querySelector("[data-film-kicker]").textContent = data.date;
   card.querySelector("[data-film-card-title]").innerHTML = data.title;
   card.querySelector("[data-film-card-author]").textContent = data.author;
+  renderPersonRow(card.querySelector("[data-film-people]"), [{ name: data.director, photo: data.directorPhoto }]);
+  renderCast(card.querySelector("[data-film-cast]"), data.castList);
   card.querySelector("[data-film-card-summary]").textContent = data.summary;
   replaceTags(card.querySelector("[data-film-card-tags]"), data.tags);
   card.querySelector("[data-film-card-image]").src = data.image;
@@ -263,14 +390,14 @@ function trailerUrl(videoId) {
   return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&rel=0&playsinline=1`;
 }
 
-function setDetailFilm(programId) {
+function setDetailFilm(programId, loadTrailer = true) {
   const data = filmPrograms[programId];
   const view = document.querySelector(`[data-detail-month-view='film-${data?.month}']`);
   if (!data || !view) return;
   if (data.month === "september") currentFilmProgram = programId;
   if (data.month === "august") currentAugustFilm = programId;
   const iframe = view.querySelector("[data-program-trailer]");
-  iframe.src = trailerUrl(data.trailer);
+  if (loadTrailer) iframe.src = trailerUrl(data.trailer);
   iframe.title = `${data.plainTitle} fragmanı`;
   view.querySelector("[data-program-date]").textContent = data.date;
   view.querySelector("[data-program-title]").innerHTML = data.title;
@@ -335,7 +462,7 @@ function setDetailFilm(programId) {
   );
 }
 
-const septemberBooks = [
+const tragedyBooks = [
   {
     id: "oedipus", title: "Kral Oidipus", author: "Sophokles", image: "assets/tragedy-oedipus.jpg", period: "MÖ 429 civarı", theme: "Hakikat · Kehanet · Körlük",
     synopsis: "Thebai’yi saran salgının nedenini araştıran Kral Oidipus, şehrin eski kralının katilini bulmaya çalışırken kendi geçmişine yaklaşır. Hakikati öğrenme kararlılığı, onu kaçtığı kehanetin tam merkezine götürür.",
@@ -374,14 +501,14 @@ const septemberBooks = [
   }
 ];
 
-function setupSeptemberBookProfiles() {
-  const view = document.querySelector("[data-detail-month-view='book-september']");
+function setupTragedyBookProfiles() {
+  const view = document.querySelector("[data-detail-month-view='book-october']");
   if (!view || view.querySelector(".book-selection-section")) return;
   const section = document.createElement("section");
   section.className = "detail-scroll-section book-selection-section";
   section.innerHTML = `
-    <header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">ALTI KİTAP · ALTI AYRI DOSYA</p><h3>Bir kitabı seç,<br><em>ayrıntısına gir.</em></h3><p>Kapaklar arasında gezerek her oyunun konusunu, yazarını ve masaya getirdiği soruyu ayrı ayrı görebilirsin.</p></header>
-    <nav class="book-selection-tabs" aria-label="Eylül kitapları"></nav>
+    <header class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">EKİM SEÇKİSİ</p><h3>Bir tragedyayı seç,<br><em>ayrıntısına gir.</em></h3><p>Kapaklar arasında gezerek her oyunun konusunu, yazarını ve masaya getirdiği soruyu ayrı ayrı görebilirsin.</p></header>
+    <nav class="book-selection-tabs" aria-label="Ekim tragedyaları"></nav>
     <article class="book-selection-profile reveal-on-scroll" aria-live="polite">
       <div class="book-profile-cover"><img data-selected-book-image alt=""></div>
       <div class="book-profile-copy"><p class="detail-kicker" data-selected-book-meta></p><h4 data-selected-book-title></h4><p class="book-profile-theme" data-selected-book-theme></p><h5>KİTABIN KONUSU</h5><p data-selected-book-synopsis></p><h5>YAZAR HAKKINDA</h5><p data-selected-book-author></p><blockquote data-selected-book-question></blockquote></div>
@@ -389,12 +516,12 @@ function setupSeptemberBookProfiles() {
   const notes = view.querySelector(".detail-notes-section");
   notes.before(section);
   const tabs = section.querySelector(".book-selection-tabs");
-  tabs.innerHTML = septemberBooks.map((book, index) => `<button type="button" data-selected-book="${book.id}" class="${index === 0 ? "active" : ""}"><img src="${book.image}" alt=""><span><small>${book.author}</small>${book.title}</span></button>`).join("");
+  tabs.innerHTML = tragedyBooks.map((book, index) => `<button type="button" data-selected-book="${book.id}" class="${index === 0 ? "active" : ""}"><img src="${book.image}" alt=""><span><small>${book.author}</small>${book.title}</span></button>`).join("");
   let activeBookIndex = 0;
   let rotationTimer;
   const renderBook = (index, animate = true) => {
-    activeBookIndex = (index + septemberBooks.length) % septemberBooks.length;
-    const book = septemberBooks[activeBookIndex];
+    activeBookIndex = (index + tragedyBooks.length) % tragedyBooks.length;
+    const book = tragedyBooks[activeBookIndex];
     section.querySelector("[data-selected-book-image]").src = book.image;
     section.querySelector("[data-selected-book-image]").alt = `${book.title} kapağı`;
     section.querySelector("[data-selected-book-meta]").textContent = `${book.author.toLocaleUpperCase("tr-TR")} · ${book.period}`;
@@ -413,7 +540,7 @@ function setupSeptemberBookProfiles() {
   tabs.addEventListener("click", (event) => {
     const button = event.target.closest("[data-selected-book]");
     if (!button) return;
-    renderBook(septemberBooks.findIndex((book) => book.id === button.dataset.selectedBook));
+    renderBook(tragedyBooks.findIndex((book) => book.id === button.dataset.selectedBook));
     startRotation();
   });
   section.addEventListener("mouseenter", () => clearInterval(rotationTimer));
@@ -429,9 +556,10 @@ function setupCalendarCountdown() {
   if (!copy || copy.querySelector(".event-countdown")) return;
   const countdown = document.createElement("div");
   countdown.className = "event-countdown";
-  countdown.innerHTML = `<small>EVRENİ ANLAYAN MAYMUN BULUŞMASINA</small><strong data-event-countdown>hesaplanıyor…</strong><span data-turkey-time></span>`;
+  countdown.innerHTML = `<small>HAMLET OKUMASINA</small><strong data-event-countdown>hesaplanıyor…</strong><span data-turkey-time></span>`;
   copy.querySelector(".detail-down-cue").before(countdown);
-  const target = Date.parse("2026-09-03T20:30:00+03:00");
+  const target = Date.parse("2026-09-15T00:00:00+03:00");
+  const hamletEnd = Date.parse("2026-09-30T23:59:59+03:00");
   const turkeyClock = new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", second: "2-digit" });
   const update = () => {
     const now = Date.now();
@@ -439,7 +567,7 @@ function setupCalendarCountdown() {
     const output = countdown.querySelector("[data-event-countdown]");
     countdown.querySelector("[data-turkey-time]").textContent = `Türkiye saati · ${turkeyClock.format(now)}`;
     if (difference <= 0) {
-      output.textContent = difference > -14400000 ? "Buluşma başladı" : "Bu buluşma tamamlandı";
+      output.textContent = now <= hamletEnd ? "Hamlet okuması başladı" : "Hamlet okuması tamamlandı";
       return;
     }
     const days = Math.floor(difference / 86400000);
@@ -638,13 +766,14 @@ detailButtons.forEach((button) => {
 
 backToCards.addEventListener("click", closeDetail);
 
-setupSeptemberBookProfiles();
+setupTragedyBookProfiles();
 setupCalendarCountdown();
+setBookCardMonth(currentMonths.book);
 const automaticFilmProgram = currentScheduledFilm();
 currentMonths.film = filmPrograms[automaticFilmProgram].month;
 setFilmCard(automaticFilmProgram);
 setDetailMonth("film", filmPrograms[automaticFilmProgram].month, false);
-setDetailFilm(automaticFilmProgram);
+setDetailFilm(automaticFilmProgram, false);
 
 observeReveals(document);
 
