@@ -3298,3 +3298,47 @@ a.nav-link:focus-visible,
 @media (prefers-reduced-motion: reduce) {
   .detail-tragedy-collection img { animation: none; }
 }
+
+/* Keep the expanded October hero consistent with the compact card: the same
+   six covers, in the same order, moving as one continuous horizontal shelf. */
+.detail-tragedy-media .detail-tragedy-collection.tragedy-stack {
+  width: min(760px, 94%);
+  height: min(500px, 58vh);
+  overflow: hidden;
+}
+
+.detail-tragedy-media .tragedy-track {
+  height: 100%;
+  align-items: center;
+  animation: tragedySlide 26s linear infinite;
+}
+
+.detail-tragedy-media .tragedy-track img {
+  position: static;
+  inset: auto;
+  flex: 0 0 auto;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  border: 5px solid #fff4dc;
+  border-radius: 4px 10px 10px 4px;
+  box-shadow: -15px 25px 45px rgba(0, 0, 0, .35);
+  animation: none;
+  transform: none;
+  opacity: 1;
+  will-change: auto;
+}
+
+@media (max-width: 720px) {
+  .detail-tragedy-media .detail-tragedy-collection.tragedy-stack {
+    width: 94%;
+    height: min(360px, 42svh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-tragedy-media .tragedy-track {
+    animation: none;
+  }
+}

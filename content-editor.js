@@ -1,6 +1,54 @@
 (() => {
   const STORAGE_KEY = "metinlerarasi-content-v2";
+  const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
+  const MAX_CONTENT_IMPORT_BYTES = 1024 * 1024;
+  const MAX_IMAGE_PIXELS = 24_000_000;
   const editMode = new URLSearchParams(location.search).get("duzenle") === "1";
+
+  function hasBytes(bytes, offset, signature) {
+    return signature.every((byte, index) => bytes[offset + index] === byte);
+  }
+
+  async function detectImageType(file) {
+    if (file.size > MAX_IMAGE_BYTES) throw new Error("image_too_large");
+
+    // Only read the signature first. The extension and caller-supplied MIME
+    // type are intentionally ignored because both are attacker-controlled.
+    const bytes = new Uint8Array(await file.slice(0, 12).arrayBuffer());
+    if (hasBytes(bytes, 0, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) {
+      return "image/png";
+    }
+    if (hasBytes(bytes, 0, [0xff, 0xd8, 0xff])) return "image/jpeg";
+    if (hasBytes(bytes, 0, [0x52, 0x49, 0x46, 0x46])
+        && hasBytes(bytes, 8, [0x57, 0x45, 0x42, 0x50])) {
+      return "image/webp";
+    }
+    throw new Error("unsupported_image_signature");
+  }
+
+  async function readTextWithLimit(file, maxBytes) {
+    if (file.size > maxBytes) throw new Error("content_too_large");
+
+    const reader = file.stream().getReader();
+    const decoder = new TextDecoder("utf-8", { fatal: true });
+    let total = 0;
+    let text = "";
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        total += value.byteLength;
+        if (total > maxBytes) {
+          await reader.cancel("size limit exceeded");
+          throw new Error("content_too_large");
+        }
+        text += decoder.decode(value, { stream: true });
+      }
+      return text + decoder.decode();
+    } finally {
+      reader.releaseLock();
+    }
+  }
 
   const textSelectors = [
     ".card-badge",
@@ -175,14 +223,21 @@
     });
   });
 
-  function resizeImage(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onerror = reject;
-      reader.onload = () => {
+  async function resizeImage(file) {
+    await detectImageType(file);
+
+    // Decode through a temporary blob URL, then re-encode into a fresh WebP.
+    // This strips filenames, metadata, trailing payloads and polyglot content.
+    const objectUrl = URL.createObjectURL(file);
+    try {
+      return await new Promise((resolve, reject) => {
         const image = new Image();
         image.onerror = reject;
         image.onload = () => {
+          if (image.width * image.height > MAX_IMAGE_PIXELS) {
+            reject(new Error("image_dimensions_too_large"));
+            return;
+          }
           const maxSide = 1600;
           const scale = Math.min(1, maxSide / Math.max(image.width, image.height));
           const canvas = document.createElement("canvas");
@@ -191,10 +246,11 @@
           canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
           resolve(canvas.toDataURL("image/webp", 0.86));
         };
-        image.src = reader.result;
-      };
-      reader.readAsDataURL(file);
-    });
+        image.src = objectUrl;
+      });
+    } finally {
+      URL.revokeObjectURL(objectUrl);
+    }
   }
 
   imageInput.addEventListener("change", async () => {
@@ -204,8 +260,13 @@
     try {
       selectedImage.src = await resizeImage(file);
       markDirty();
-    } catch {
-      setStatus("Görsel açılamadı", true);
+    } catch (error) {
+      const message = error.message === "image_too_large"
+        ? "Görsel en fazla 8 MB olabilir"
+        : error.message === "image_dimensions_too_large"
+          ? "Görsel çözünürlüğü çok yüksek"
+          : "Geçersiz görsel: yalnızca gerçek PNG, JPEG veya WebP kabul edilir";
+      setStatus(message, true);
     }
     imageInput.value = "";
   });
@@ -236,12 +297,21 @@
     const file = fileInput.files?.[0];
     if (!file) return;
     try {
-      const content = JSON.parse(await file.text());
+      // JSON has no magic-byte signature. Strict UTF-8 decoding, JSON parsing
+      // and the expected schema therefore form the content-level validation.
+      const content = JSON.parse(await readTextWithLimit(file, MAX_CONTENT_IMPORT_BYTES));
       if (content.version !== 2 || !content.texts || !content.images) throw new Error();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
       location.reload();
-    } catch {
-      setStatus("İçerik dosyası geçersiz", true);
+    } catch (error) {
+      setStatus(
+        error.message === "content_too_large"
+          ? "İçerik dosyası en fazla 1 MB olabilir"
+          : "İçerik dosyası geçersiz",
+        true
+      );
+    } finally {
+      fileInput.value = "";
     }
   });
 

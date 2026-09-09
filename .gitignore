@@ -1,6 +1,5 @@
 dist/
 .sites-build/
-.openai/
 .impeccable/
 
 # Local Netlify folder
