@@ -3088,7 +3088,8 @@ a.nav-link:focus-visible,
 
 .film-detail[data-film-stage="detail"] .film-gallery,
 .film-detail[data-film-stage="detail"] .film-gallery-intro,
-.film-detail[data-film-stage="detail"] .film-stack-dots {
+.film-detail[data-film-stage="detail"] .film-stack-dots,
+.film-detail[data-film-stage="detail"] .film-stack-arrows {
   display: none;
 }
 
@@ -3193,6 +3194,53 @@ a.nav-link:focus-visible,
 .film-stack-dot.active {
   background: #e2c5a1;
   transform: scale(1.35);
+}
+
+.film-stack-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 14px 0 0;
+}
+
+.film-stack-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(255,255,255,.32), rgba(255,255,255,.08));
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 999px;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 6px rgba(255,255,255,.08);
+  cursor: pointer;
+  transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.film-stack-arrow svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.film-stack-arrow:hover,
+.film-stack-arrow:focus-visible {
+  background: linear-gradient(135deg, rgba(255,255,255,.44), rgba(255,255,255,.16));
+  box-shadow: 0 10px 28px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.6), inset 0 -1px 6px rgba(255,255,255,.1);
+  transform: translateY(-2px) scale(1.04);
+  outline: 0;
+}
+
+.film-stack-arrow:active {
+  transform: scale(0.94);
 }
 
 .film-gallery-copy {

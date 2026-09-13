@@ -23,8 +23,6 @@ function observeReveals(root) {
 
 let activeIndex = 1;
 let pointerStartX = null;
-let detailPointerStartX = null;
-let detailPointerStartY = null;
 let detailCard = null;
 let transitionInProgress = false;
 let activeDetailIndex = 0;
@@ -626,7 +624,7 @@ function updateFilmStackTransforms() {
 function goToFilmStackIndex(index) {
   if (!filmStackContainer) return;
   const total = filmStackContainer.querySelectorAll(".film-gallery-card").length;
-  filmStackIndex = Math.min(Math.max(index, 0), total - 1);
+  filmStackIndex = ((index % total) + total) % total;
   updateFilmStackTransforms();
 }
 
@@ -667,6 +665,9 @@ function renderFilmGallery() {
     });
   }
 
+  document.querySelector("[data-stack-prev]")?.addEventListener("click", () => goToFilmStackIndex(filmStackIndex - 1));
+  document.querySelector("[data-stack-next]")?.addEventListener("click", () => goToFilmStackIndex(filmStackIndex + 1));
+
   updateFilmStackTransforms();
 
   let wheelLock = false;
@@ -702,10 +703,12 @@ function renderFilmGallery() {
   container.addEventListener("keydown", (event) => {
     if (event.key === "ArrowDown" || event.key === "ArrowRight") {
       event.preventDefault();
+      event.stopPropagation();
       goToFilmStackIndex(filmStackIndex + 1);
     }
     if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
       event.preventDefault();
+      event.stopPropagation();
       goToFilmStackIndex(filmStackIndex - 1);
     }
   });
@@ -1101,30 +1104,6 @@ detailNavItems.forEach((button) => {
     if (nextIndex === -1) return;
     showDetailByIndex(nextIndex, true, nextIndex > activeDetailIndex ? 1 : -1);
   });
-});
-
-detailShell.addEventListener("pointerdown", (event) => {
-  if (event.target.closest("a, button, iframe, [contenteditable='true']")) return;
-  detailPointerStartX = event.clientX;
-  detailPointerStartY = event.clientY;
-  detailShell.setPointerCapture?.(event.pointerId);
-});
-
-detailShell.addEventListener("pointerup", (event) => {
-  if (detailPointerStartX === null || detailPointerStartY === null) return;
-  const distance = event.clientX - detailPointerStartX;
-  const verticalDistance = event.clientY - detailPointerStartY;
-  detailPointerStartX = null;
-  detailPointerStartY = null;
-  detailShell.releasePointerCapture?.(event.pointerId);
-  if (Math.abs(distance) > 54 && Math.abs(distance) > Math.abs(verticalDistance)) {
-    showDetailByIndex(activeDetailIndex + (distance < 0 ? 1 : -1), true, distance < 0 ? 1 : -1);
-  }
-});
-
-detailShell.addEventListener("pointercancel", () => {
-  detailPointerStartX = null;
-  detailPointerStartY = null;
 });
 
 setupTragedyBookProfiles();
