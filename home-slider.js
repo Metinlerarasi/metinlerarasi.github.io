@@ -820,30 +820,54 @@ function setupTragedyBookProfiles() {
   startRotation();
 }
 
+const CALENDAR_UPCOMING_EVENTS = [
+  { at: "2026-09-04T20:00:00+03:00", label: "Kitap Toplantısı" },
+  { at: "2026-09-10T12:00:00+03:00", label: "Kitap Kulübü Toplantısı" },
+  { at: "2026-09-15T00:00:00+03:00", label: "Hamlet başlıyor" },
+  { at: "2026-10-01T00:00:00+03:00", label: "Tragedya Ayı başlıyor" }
+];
+const CALENDAR_MONTH_NAMES = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+
 function setupCalendarCountdown() {
-  const copy = document.querySelector(".calendar-detail .detail-hero-section .detail-copy");
-  if (!copy || copy.querySelector(".event-countdown")) return;
-  const countdown = document.createElement("div");
-  countdown.className = "event-countdown";
-  countdown.innerHTML = `<small>HAMLET OKUMASINA</small><strong data-event-countdown>hesaplanıyor…</strong><span data-turkey-time></span>`;
-  copy.querySelector(".detail-down-cue").before(countdown);
-  const target = Date.parse("2026-09-15T00:00:00+03:00");
-  const hamletEnd = Date.parse("2026-09-30T23:59:59+03:00");
-  const turkeyClock = new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  const media = document.querySelector(".calendar-detail .detail-hero-section .calendar-detail-media");
+  const dateCircle = media?.querySelector(".detail-date");
+  const dayEl = dateCircle?.querySelector("strong");
+  const monthYearEl = dateCircle?.querySelector("span");
+  const noteEl = media?.querySelector(".calendar-note");
+  if (!dateCircle || !dayEl || !monthYearEl) return;
+
+  let countdownEl = dateCircle.querySelector("[data-event-countdown]");
+  if (!countdownEl) {
+    countdownEl = document.createElement("small");
+    countdownEl.className = "detail-date-countdown";
+    countdownEl.setAttribute("data-event-countdown", "");
+    dateCircle.append(countdownEl);
+  }
+
   const update = () => {
     const now = Date.now();
-    const difference = target - now;
-    const output = countdown.querySelector("[data-event-countdown]");
-    countdown.querySelector("[data-turkey-time]").textContent = `Türkiye saati · ${turkeyClock.format(now)}`;
+    const next =
+      CALENDAR_UPCOMING_EVENTS.find((event) => Date.parse(event.at) > now) ||
+      CALENDAR_UPCOMING_EVENTS[CALENDAR_UPCOMING_EVENTS.length - 1];
+    const targetTime = Date.parse(next.at);
+    const targetDate = new Date(targetTime);
+    const monthName = CALENDAR_MONTH_NAMES[targetDate.getMonth()];
+
+    dayEl.textContent = String(targetDate.getDate());
+    monthYearEl.innerHTML = `${monthName}<br>${targetDate.getFullYear()}`;
+    if (noteEl) noteEl.innerHTML = `${next.label}<br><b>${targetDate.getDate()} ${monthName}</b>`;
+
+    const difference = targetTime - now;
     if (difference <= 0) {
-      output.textContent = now <= hamletEnd ? "Hamlet okuması başladı" : "Hamlet okuması tamamlandı";
+      countdownEl.textContent = "şimdi";
       return;
     }
     const days = Math.floor(difference / 86400000);
     const hours = Math.floor((difference % 86400000) / 3600000);
     const minutes = Math.floor((difference % 3600000) / 60000);
     const seconds = Math.floor((difference % 60000) / 1000);
-    output.textContent = `${days} gün · ${hours} sa · ${minutes} dk · ${seconds} sn`;
+    countdownEl.textContent =
+      days > 0 ? `${days} gün ${hours} sa sonra` : `${hours} sa ${minutes} dk ${seconds} sn sonra`;
   };
   update();
   setInterval(update, 1000);
