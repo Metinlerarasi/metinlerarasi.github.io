@@ -3668,7 +3668,7 @@ body.direct-detail-mode .detail-scroll-section {
   border-radius: 999px;
   font-family: "Arial Rounded MT Bold", "SF Pro Rounded", "Trebuchet MS", sans-serif;
   cursor: pointer;
-  transition: background 200ms ease, color 200ms ease, padding 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background 200ms ease, color 200ms ease;
 }
 
 .detail-bottom-nav button:active {
