@@ -565,7 +565,7 @@ function setDetailFilm(programId, loadTrailer = true) {
   view.querySelectorAll("[data-film-program]").forEach((button) => {
     button.classList.toggle("active", button.dataset.filmProgram === programId);
   });
-  document.querySelector(`.film-gallery [data-film-program="${programId}"]`)?.scrollIntoView({ block: "center", behavior: "instant" });
+  setFilmStackByProgram(programId);
   setFilmCard(programId);
   view.querySelector(".detail-hero-section")?.animate(
     [{ opacity: 0.35, transform: "translateY(12px)" }, { opacity: 1, transform: "none" }],
@@ -590,9 +590,56 @@ function filmGalleryCardHtml(programId) {
     </article>`;
 }
 
+const FILM_STACK_FRAME_OFFSET = -30;
+const FILM_STACK_FRAMES_VISIBLE = 3;
+const FILM_STACK_SCALE_STEP = 0.08;
+
+let filmStackIndex = 0;
+let filmStackContainer = null;
+
+function updateFilmStackTransforms() {
+  if (!filmStackContainer) return;
+  const cards = [...filmStackContainer.querySelectorAll(".film-gallery-card")];
+  const total = cards.length;
+  const reducedMotion = prefersReducedMotion();
+  cards.forEach((card, i) => {
+    const offset = i - filmStackIndex;
+    const isActive = i === filmStackIndex;
+    const isPast = i < filmStackIndex;
+    card.classList.toggle("is-active", isActive);
+    card.style.zIndex = String(total - i);
+    card.style.opacity = isPast ? "0" : "1";
+    card.style.pointerEvents = isActive ? "auto" : "none";
+    if (reducedMotion) {
+      card.style.transform = "translate(-50%, -50%)";
+    } else {
+      const scale = Math.min(Math.max(1 - offset * FILM_STACK_SCALE_STEP, 0.08), 2);
+      const y = Math.max(offset * FILM_STACK_FRAME_OFFSET, FILM_STACK_FRAME_OFFSET * FILM_STACK_FRAMES_VISIBLE);
+      card.style.transform = `translate(-50%, calc(-50% + ${y}px)) scale(${scale})`;
+    }
+  });
+  filmStackContainer.parentElement.querySelectorAll("[data-stack-dot]").forEach((dot, i) => {
+    dot.classList.toggle("active", i === filmStackIndex);
+  });
+}
+
+function goToFilmStackIndex(index) {
+  if (!filmStackContainer) return;
+  const total = filmStackContainer.querySelectorAll(".film-gallery-card").length;
+  filmStackIndex = Math.min(Math.max(index, 0), total - 1);
+  updateFilmStackTransforms();
+}
+
+function setFilmStackByProgram(programId) {
+  const index = filmGalleryOrder.indexOf(programId);
+  if (index !== -1) goToFilmStackIndex(index);
+}
+
 function renderFilmGallery() {
   const container = document.querySelector("[data-film-gallery]");
+  const dotsContainer = document.querySelector("[data-film-stack-dots]");
   if (!container) return;
+  filmStackContainer = container;
   container.innerHTML = filmGalleryOrder.map((id) => filmGalleryCardHtml(id)).join("");
   const cards = [...container.querySelectorAll(".film-gallery-card")];
   cards.forEach((card) => {
@@ -610,11 +657,58 @@ function renderFilmGallery() {
       syncFilmExitButton();
     });
   });
-  const observer = new IntersectionObserver(
-    (entries) => entries.forEach((entry) => entry.target.classList.toggle("is-active", entry.isIntersecting)),
-    { root: container, rootMargin: "-30% 0px -30% 0px", threshold: 0.01 }
+
+  if (dotsContainer) {
+    dotsContainer.innerHTML = cards
+      .map((_, i) => `<button type="button" class="film-stack-dot" data-stack-dot="${i}" aria-label="${i + 1}. filme git" role="tab"></button>`)
+      .join("");
+    dotsContainer.querySelectorAll("[data-stack-dot]").forEach((dot) => {
+      dot.addEventListener("click", () => goToFilmStackIndex(Number(dot.dataset.stackDot)));
+    });
+  }
+
+  updateFilmStackTransforms();
+
+  let wheelLock = false;
+  container.addEventListener(
+    "wheel",
+    (event) => {
+      event.preventDefault();
+      if (wheelLock || Math.abs(event.deltaY) < 12) return;
+      wheelLock = true;
+      goToFilmStackIndex(filmStackIndex + (event.deltaY > 0 ? 1 : -1));
+      window.setTimeout(() => {
+        wheelLock = false;
+      }, 320);
+    },
+    { passive: false }
   );
-  cards.forEach((card) => observer.observe(card));
+
+  let touchStartY = null;
+  container.addEventListener("pointerdown", (event) => {
+    touchStartY = event.clientY;
+  });
+  container.addEventListener("pointerup", (event) => {
+    if (touchStartY === null) return;
+    const delta = touchStartY - event.clientY;
+    touchStartY = null;
+    if (Math.abs(delta) < 40) return;
+    goToFilmStackIndex(filmStackIndex + (delta > 0 ? 1 : -1));
+  });
+  container.addEventListener("pointercancel", () => {
+    touchStartY = null;
+  });
+
+  container.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      event.preventDefault();
+      goToFilmStackIndex(filmStackIndex + 1);
+    }
+    if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToFilmStackIndex(filmStackIndex - 1);
+    }
+  });
 }
 
 renderFilmGallery();
