@@ -831,18 +831,11 @@ const CALENDAR_MONTH_NAMES = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Hazi
 function setupCalendarCountdown() {
   const media = document.querySelector(".calendar-detail .detail-hero-section .calendar-detail-media");
   const dateCircle = media?.querySelector(".detail-date");
-  const dayEl = dateCircle?.querySelector("strong");
-  const monthYearEl = dateCircle?.querySelector("span");
+  const countdownEl = dateCircle?.querySelector("[data-event-countdown]");
+  const units = countdownEl ? [...countdownEl.querySelectorAll(".detail-countdown-unit strong")] : [];
+  const labelEl = dateCircle?.querySelector("[data-event-label]");
   const noteEl = media?.querySelector(".calendar-note");
-  if (!dateCircle || !dayEl || !monthYearEl) return;
-
-  let countdownEl = dateCircle.querySelector("[data-event-countdown]");
-  if (!countdownEl) {
-    countdownEl = document.createElement("small");
-    countdownEl.className = "detail-date-countdown";
-    countdownEl.setAttribute("data-event-countdown", "");
-    dateCircle.append(countdownEl);
-  }
+  if (!dateCircle || !countdownEl || units.length < 4) return;
 
   const update = () => {
     const now = Date.now();
@@ -853,21 +846,18 @@ function setupCalendarCountdown() {
     const targetDate = new Date(targetTime);
     const monthName = CALENDAR_MONTH_NAMES[targetDate.getMonth()];
 
-    dayEl.textContent = String(targetDate.getDate());
-    monthYearEl.innerHTML = `${monthName}<br>${targetDate.getFullYear()}`;
+    if (labelEl) labelEl.textContent = next.label;
     if (noteEl) noteEl.innerHTML = `${next.label}<br><b>${targetDate.getDate()} ${monthName}</b>`;
 
-    const difference = targetTime - now;
-    if (difference <= 0) {
-      countdownEl.textContent = "şimdi";
-      return;
-    }
+    const difference = Math.max(targetTime - now, 0);
     const days = Math.floor(difference / 86400000);
     const hours = Math.floor((difference % 86400000) / 3600000);
     const minutes = Math.floor((difference % 3600000) / 60000);
     const seconds = Math.floor((difference % 60000) / 1000);
-    countdownEl.textContent =
-      days > 0 ? `${days} gün ${hours} sa sonra` : `${hours} sa ${minutes} dk ${seconds} sn sonra`;
+    units[0].textContent = String(days);
+    units[1].textContent = String(hours).padStart(2, "0");
+    units[2].textContent = String(minutes).padStart(2, "0");
+    units[3].textContent = String(seconds).padStart(2, "0");
   };
   update();
   setInterval(update, 1000);
