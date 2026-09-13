@@ -607,6 +607,7 @@ function renderFilmGallery() {
       const filmDetail = card.closest(".film-detail");
       if (filmDetail) filmDetail.dataset.filmStage = "detail";
       detailShell.scrollTo({ top: 0, behavior: "instant" });
+      syncFilmExitButton();
     });
   });
   const observer = new IntersectionObserver(
@@ -618,11 +619,18 @@ function renderFilmGallery() {
 
 renderFilmGallery();
 
+function syncFilmExitButton() {
+  const filmDetail = document.querySelector(".film-detail");
+  const show = document.body.dataset.activeDetail === "film" && filmDetail?.dataset.filmStage === "detail";
+  detailShell.classList.toggle("film-detail-open", !!show);
+}
+
 document.querySelectorAll("[data-film-back]").forEach((button) => {
   button.addEventListener("click", () => {
-    const filmDetail = button.closest(".film-detail");
+    const filmDetail = document.querySelector(".film-detail");
     if (filmDetail) filmDetail.dataset.filmStage = "gallery";
     detailShell.scrollTo({ top: 0, behavior: "instant" });
+    syncFilmExitButton();
   });
 });
 
@@ -871,6 +879,7 @@ function setDetailPage(name, color = detailColors[name] || "#315f58", scrollToTo
     setDetailFilm(currentMonths.film === "september" ? currentFilmProgram : currentAugustFilm);
   }
   if (scrollToTop) detailShell.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "instant" : "smooth" });
+  syncFilmExitButton();
 }
 
 function showDetailByIndex(nextIndex, animate = true, direction = 0) {

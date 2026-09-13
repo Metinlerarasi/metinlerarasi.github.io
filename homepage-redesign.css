@@ -3082,8 +3082,7 @@ a.nav-link:focus-visible,
   font-size: 11px;
 }
 
-.film-detail[data-film-stage="gallery"] .detail-month-view,
-.film-detail[data-film-stage="gallery"] .film-back-link {
+.film-detail[data-film-stage="gallery"] .detail-month-view {
   display: none;
 }
 
@@ -3118,26 +3117,6 @@ a.nav-link:focus-visible,
   line-height: 1.5;
 }
 
-.film-back-link {
-  width: fit-content;
-  margin: 0 auto 18px;
-  padding: 9px 15px;
-  display: block;
-  color: #fff8ea;
-  background: rgba(255, 255, 255, 0.11);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 999px;
-  font-family: "Arial Rounded MT Bold", "SF Pro Rounded", sans-serif;
-  font-size: 12px;
-  cursor: pointer;
-  transition: background 180ms ease, border-color 180ms ease;
-}
-
-.film-back-link:hover,
-.film-back-link:focus-visible {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.44);
-}
 
 .film-gallery {
   width: min(1240px, 100%);
@@ -3731,6 +3710,32 @@ body.direct-detail-mode .detail-scroll-section {
   line-height: 1;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.detail-bottom-nav .nav-exit-btn {
+  --nav-color: #a3493f;
+  display: none;
+  margin-left: 3px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.detail-shell.film-detail-open .nav-exit-btn {
+  display: inline-flex;
+}
+
+.nav-label-static {
+  margin-left: 6px;
+  font-family: "Arial Rounded MT Bold", "SF Pro Rounded", "Trebuchet MS", sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .nav-exit-btn {
+    padding-left: 9px;
+  }
 }
 
 @media (max-width: 720px) {
