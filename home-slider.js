@@ -8,6 +8,7 @@ const detailShell = document.querySelector(".detail-shell");
 const detailPages = [...document.querySelectorAll("[data-detail-page]")];
 const detailButtons = [...document.querySelectorAll("[data-detail]")];
 const backToCards = document.querySelector(".back-to-cards");
+const detailNavItems = [...document.querySelectorAll("[data-detail-nav]")];
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
@@ -22,8 +23,19 @@ function observeReveals(root) {
 
 let activeIndex = 1;
 let pointerStartX = null;
+let detailPointerStartX = null;
+let detailPointerStartY = null;
 let detailCard = null;
 let transitionInProgress = false;
+let activeDetailIndex = 0;
+let pageTransitionLock = false;
+const detailOrder = ["anasayfa", "kitap", "takvim", "film"];
+const detailColors = {
+  anasayfa: "#315f58",
+  kitap: "#071827",
+  takvim: "#9d4f43",
+  film: "#20284f"
+};
 const currentMonths = { book: "september", film: "august" };
 let currentFilmProgram = "truman";
 let currentAugustFilm = "interstellar";
@@ -145,6 +157,7 @@ const filmPrograms = {
 const filmProgramDetails = {
   "in-time": {
     start: "2026-08-17T00:00:00+03:00", end: "2026-08-23T23:59:59+03:00",
+    genre: "Bilim Kurgu", accent: "#3E6B8A", accent2: "#B08D3D", heroImage: "assets/in-time-horizontal-poster.jpg",
     imdb: "6.7", runtime: "1 sa 49 dk", cast: "Justin Timberlake · Amanda Seyfried · Cillian Murphy", director: "Andrew Niccol", directorInitials: "AN", directorPhoto: "assets/director-niccol.jpg",
     castList: [
       { name: "Justin Timberlake", photo: "assets/actor-timberlake.jpg" },
@@ -165,6 +178,7 @@ const filmProgramDetails = {
   },
   interstellar: {
     start: "2026-08-24T00:00:00+03:00", end: "2026-08-30T23:59:59+03:00",
+    genre: "Bilim Kurgu", accent: "#3B5B8C", accent2: "#C9A227", heroImage: "assets/interstellar-horizontal-poster.jpg",
     imdb: "8.7", runtime: "2 sa 49 dk", cast: "Matthew McConaughey · Anne Hathaway · Jessica Chastain", director: "Christopher Nolan", directorInitials: "CN", directorPhoto: "assets/director-nolan.jpg",
     castList: [
       { name: "Matthew McConaughey", photo: "assets/actor-mcconaughey.jpg" },
@@ -185,6 +199,7 @@ const filmProgramDetails = {
   },
   truman: {
     start: "2026-08-31T00:00:00+03:00", end: "2026-09-06T23:59:59+03:00",
+    genre: "Dram", accent: "#65BCE8", accent2: "#F4D35E", heroImage: "assets/truman-hero.jpg",
     imdb: "8.2", runtime: "1 sa 43 dk", cast: "Jim Carrey · Ed Harris · Laura Linney", director: "Peter Weir", directorInitials: "PW", directorPhoto: "assets/director-weir.jpg",
     castList: [
       { name: "Jim Carrey", photo: "assets/actor-carrey.jpg" },
@@ -198,7 +213,8 @@ const filmProgramDetails = {
   },
   marty: {
     start: "2026-09-07T00:00:00+03:00", end: "2026-09-13T23:59:59+03:00",
-    imdb: "7.6", runtime: "2 sa 29 dk", cast: "Timothée Chalamet · Gwyneth Paltrow · Odessa A’zion", director: "Josh Safdie", directorInitials: "JS", directorPhoto: "assets/director-safdie.png",
+    genre: "Dram", accent: "#D83A2E", accent2: "#F0A830", heroImage: "assets/marty-hero.jpg",
+    imdb: "7.6", runtime: "2 sa 29 dk", cast: "Timothée Chalamet · Gwyneth Paltrow · Odessa A’zion", director: "Josh Safdie", directorInitials: "JS", directorPhoto: "assets/director-safdie.jpg",
     castList: [
       { name: "Timothée Chalamet", photo: "assets/actor-chalamet.jpg" },
       { name: "Gwyneth Paltrow", photo: "assets/actor-paltrow.jpg" },
@@ -211,6 +227,7 @@ const filmProgramDetails = {
   },
   father: {
     start: "2026-09-14T00:00:00+03:00", end: "2026-09-20T23:59:59+03:00",
+    genre: "Dram", accent: "#264653", accent2: "#8FA8A3", heroImage: "assets/father-hero.jpg",
     imdb: "8.2", runtime: "1 sa 37 dk", cast: "Anthony Hopkins · Olivia Colman · Mark Gatiss", director: "Florian Zeller", directorInitials: "FZ", directorPhoto: "assets/director-zeller.jpg",
     castList: [
       { name: "Anthony Hopkins", photo: "assets/actor-hopkins.jpg" },
@@ -224,6 +241,7 @@ const filmProgramDetails = {
   },
   banshees: {
     start: "2026-09-21T00:00:00+03:00", end: "2026-09-27T23:59:59+03:00",
+    genre: "Dram · Kara Komedi", accent: "#607744", accent2: "#C18C46", heroImage: "assets/banshees-hero.jpg",
     imdb: "7.6", runtime: "1 sa 54 dk", cast: "Colin Farrell · Brendan Gleeson · Kerry Condon", director: "Martin McDonagh", directorInitials: "MM", directorPhoto: "assets/director-mcdonagh.jpg",
     castList: [
       { name: "Colin Farrell", photo: "assets/actor-farrell.jpg" },
@@ -237,6 +255,7 @@ const filmProgramDetails = {
   },
   duvar: {
     start: "2026-09-28T00:00:00+03:00", end: "2026-10-04T23:59:59+03:00",
+    genre: "Dram", accent: "#7A2525", accent2: "#292929", heroImage: "https://img.youtube.com/vi/upCZb3xLUl4/hqdefault.jpg",
     imdb: "7.9", runtime: "1 sa 57 dk", cast: "Tuncel Kurtiz · Ayşe Emel Mesçi · Malik Berrichi", director: "Yılmaz Güney", directorInitials: "YG", directorPhoto: "assets/director-guney.jpg",
     castList: [
       { name: "Tuncel Kurtiz", photo: null },
@@ -268,6 +287,95 @@ function replaceTags(container, tags) {
     if (!span.parentElement) container.append(span);
   });
   existing.slice(tags.length).forEach((span) => span.remove());
+}
+
+function plainTitle(html) {
+  const template = document.createElement("template");
+  template.innerHTML = html;
+  return template.content.textContent.replace(/\s+/g, " ").trim();
+}
+
+function personRowMarkup(people) {
+  if (!people || !people.length) return "";
+  return `<div class="person-row" aria-label="Yazar">${people
+    .map(
+      (person) => `
+    <button type="button" class="person-chip" data-person="${person.name}">
+      <span class="person-avatar">${personAvatarHtml(person)}</span>
+      <span class="person-name">${person.name}</span>
+    </button>`
+    )
+    .join("")}</div>`;
+}
+
+function castSectionMarkup(cast) {
+  if (!cast || !cast.length) return "";
+  return `<div class="cast-section" aria-label="Oyuncular">
+    <p class="cast-label">OYUNCULAR</p>
+    <div class="cast-row">${cast
+      .map(
+        (person) => `
+      <button type="button" class="cast-chip" data-person="${person.name}">
+        <span class="cast-avatar">${personAvatarHtml(person)}</span>
+        <span class="cast-name">${person.name}</span>
+      </button>`
+      )
+      .join("")}</div>
+  </div>`;
+}
+
+function briefMarkup({ kicker, title, author, summary, tags, people, cast }) {
+  return `
+    <div class="detail-card-brief">
+      <small>${kicker}</small>
+      <b>${title}</b>
+      <em>${author}</em>
+      ${personRowMarkup(people)}
+      <p>${summary}</p>
+      <span>${tags.map((tag) => `<i>${tag}</i>`).join("")}</span>
+      ${castSectionMarkup(cast)}
+    </div>`;
+}
+
+function replaceHeroBrief(copy, data) {
+  if (!copy) return;
+  copy.querySelector(".detail-card-summary")?.remove();
+  const existing = copy.querySelector(".detail-card-brief");
+  const html = briefMarkup(data);
+  if (existing) existing.outerHTML = html;
+  else copy.insertAdjacentHTML("afterbegin", html);
+}
+
+function setupStaticHeroBriefs() {
+  replaceHeroBrief(document.querySelector(".home-detail .detail-hero-section .detail-copy"), {
+    kicker: "GÖKÇEN · EREN · BÜŞRA",
+    title: "Metinler Arası",
+    author: "Merak edenlerin kulübü",
+    summary: "Bir kitap açılır, bir film başlar. Hikâyeler, sorular ve iyi sohbet aynı masanın etrafında buluşur.",
+    tags: ["Kitap", "Film", "Buluşma"]
+  });
+
+  replaceHeroBrief(document.querySelector(".calendar-detail .detail-hero-section .detail-copy"), {
+    kicker: "AYLAR ARASINDA BİR YOLCULUK",
+    title: "Eylül Okumaları",
+    author: "Ay ortasında yeni bir metne geçiyoruz",
+    summary: "Evreni Anlayan Maymun 15 Eylül'de sona eriyor. Hamlet okuması 15 Eylül'de başlayıp 30 Eylül'de tamamlanıyor.",
+    tags: ["Okuma", "Film", "Buluşma"]
+  });
+}
+
+function updateBookDetailBrief(month) {
+  const data = bookMonths[month];
+  const copy = document.querySelector(`[data-detail-month-view='book-${month}'] .detail-hero-section .detail-copy`);
+  if (!data || !copy) return;
+  replaceHeroBrief(copy, {
+    kicker: data.kicker,
+    title: plainTitle(data.title),
+    author: data.author,
+    summary: data.summary,
+    tags: data.tags,
+    people: data.people
+  });
 }
 
 function initials(name) {
@@ -344,6 +452,7 @@ function setBookCardMonth(month) {
     button.classList.toggle("active", button.dataset.month === month);
   });
   window.setTimeout(() => card.classList.remove("is-month-changing"), 430);
+  updateBookDetailBrief(month);
 }
 
 function setFilmCard(programId) {
@@ -371,6 +480,10 @@ function setFilmCard(programId) {
   window.setTimeout(() => card.classList.remove("is-month-changing"), 430);
 }
 
+function prefersReducedMotion() {
+  return matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 function setDetailMonth(kind, month, scrollToTop = true) {
   currentMonths[kind] = month;
   document.querySelectorAll(`[data-detail-month-switcher='${kind}'] button`).forEach((button) => {
@@ -382,7 +495,7 @@ function setDetailMonth(kind, month, scrollToTop = true) {
     view.classList.toggle("active", active);
   });
   if (scrollToTop && detailShell.classList.contains("is-open")) {
-    detailShell.scrollTo({ top: 0, behavior: "smooth" });
+    detailShell.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "instant" : "smooth" });
   }
 }
 
@@ -397,26 +510,26 @@ function setDetailFilm(programId, loadTrailer = true) {
   if (data.month === "september") currentFilmProgram = programId;
   if (data.month === "august") currentAugustFilm = programId;
   const iframe = view.querySelector("[data-program-trailer]");
-  if (loadTrailer) iframe.src = trailerUrl(data.trailer);
+  const nextTrailerUrl = trailerUrl(data.trailer);
+  if (loadTrailer && iframe.src !== nextTrailerUrl) iframe.src = nextTrailerUrl;
   iframe.title = `${data.plainTitle} fragmanı`;
   view.querySelector("[data-program-date]").textContent = data.date;
   view.querySelector("[data-program-title]").innerHTML = data.title;
+  const summary = view.querySelector("[data-program-summary]");
+  if (summary) summary.textContent = data.summary;
+  replaceHeroBrief(view.querySelector(".detail-hero-section .detail-copy"), {
+    kicker: data.date,
+    title: data.plainTitle,
+    author: data.author,
+    summary: data.summary,
+    tags: data.tags,
+    people: [{ name: data.director, photo: data.directorPhoto }],
+    cast: data.castList
+  });
   view.querySelector("[data-program-copy]").textContent = data.summary;
   replaceTags(view.querySelector("[data-program-tags]"), data.tags);
   const questionSticker = view.querySelector("[data-program-question]");
   if (questionSticker) questionSticker.querySelector("b").innerHTML = data.question;
-
-  let facts = view.querySelector(".film-detail-facts");
-  if (!facts) {
-    facts = document.createElement("div");
-    facts.className = "film-detail-facts";
-    view.querySelector("[data-program-tags]").after(facts);
-  }
-  facts.innerHTML = `
-    <span><small>IMDb</small><b>${data.imdb}<i>/10</i></b></span>
-    <span><small>SÜRE</small><b>${data.runtime}</b></span>
-    <span><small>YÖNETMEN</small><b>${data.director}</b></span>
-    <span><small>OYUNCULAR</small><b>${data.cast}</b></span>`;
 
   const storySection = view.querySelector(".detail-story-section");
   if (storySection) {
@@ -429,7 +542,7 @@ function setDetailFilm(programId, loadTrailer = true) {
   if (!authorSection) {
     authorSection = document.createElement("section");
     authorSection.className = "detail-scroll-section detail-author-section";
-    authorSection.innerHTML = `<div class="author-orbit reveal-on-scroll"><img alt="" /><i>sinema</i><i>anlatı</i><i>tema</i></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YÖNETMEN</p><h3></h3><p></p></div>`;
+    authorSection.innerHTML = `<div class="author-orbit reveal-on-scroll"><img alt="" /></div><div class="detail-section-copy reveal-on-scroll"><p class="detail-kicker">YÖNETMEN</p><h3></h3><p></p></div>`;
     storySection.after(authorSection);
     observeReveals(authorSection);
   }
@@ -438,9 +551,6 @@ function setDetailFilm(programId, loadTrailer = true) {
   directorPhoto.alt = `${data.director} portresi`;
   authorSection.querySelector("h3").innerHTML = data.director.replace(/\s+(?=[^\s]+$)/, "<br><em>") + "</em>";
   authorSection.querySelector(".detail-section-copy > p:last-child").textContent = data.directorCopy;
-  authorSection.querySelectorAll(".author-orbit i").forEach((chip, index) => {
-    if (data.tags[index]) chip.textContent = data.tags[index].toLocaleLowerCase("tr-TR");
-  });
 
   const sceneSection = view.querySelector(".detail-scenes-section");
   const sceneRail = sceneSection?.querySelector(".film-scene-rail");
@@ -455,12 +565,66 @@ function setDetailFilm(programId, loadTrailer = true) {
   view.querySelectorAll("[data-film-program]").forEach((button) => {
     button.classList.toggle("active", button.dataset.filmProgram === programId);
   });
+  document.querySelector(`.film-gallery [data-film-program="${programId}"]`)?.scrollIntoView({ block: "center", behavior: "instant" });
   setFilmCard(programId);
   view.querySelector(".detail-hero-section")?.animate(
     [{ opacity: 0.35, transform: "translateY(12px)" }, { opacity: 1, transform: "none" }],
     { duration: 520, easing: "ease-out" }
   );
 }
+
+const filmGalleryOrder = Object.keys(filmPrograms).sort((a, b) => Date.parse(filmPrograms[a].start) - Date.parse(filmPrograms[b].start));
+
+function filmGalleryCardHtml(programId) {
+  const data = filmPrograms[programId];
+  return `
+    <article class="film-gallery-card" data-film-program="${programId}">
+      <img class="film-gallery-image" src="${data.heroImage}" alt="${data.plainTitle} filminden bir görsel" loading="lazy" />
+      <div class="film-gallery-scrim" aria-hidden="true"></div>
+      <div class="film-gallery-copy">
+        <p class="film-gallery-date">${data.date}</p>
+        <h3 class="film-gallery-title">${data.plainTitle}</h3>
+        <p class="film-gallery-meta">${data.genre} · IMDb ${data.imdb}</p>
+        <button type="button" class="film-gallery-cta" data-film-explore="${programId}"><span class="film-gallery-cta-label">Filmi keşfet</span><span>→</span></button>
+      </div>
+    </article>`;
+}
+
+function renderFilmGallery() {
+  const container = document.querySelector("[data-film-gallery]");
+  if (!container) return;
+  container.innerHTML = filmGalleryOrder.map((id) => filmGalleryCardHtml(id)).join("");
+  const cards = [...container.querySelectorAll(".film-gallery-card")];
+  cards.forEach((card) => {
+    const data = filmPrograms[card.dataset.filmProgram];
+    card.style.setProperty("--film-accent", data.accent);
+    card.style.setProperty("--film-accent-2", data.accent2);
+    card.querySelector("[data-film-explore]")?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const programId = card.dataset.filmProgram;
+      setDetailMonth("film", filmPrograms[programId].month, false);
+      setDetailFilm(programId);
+      const filmDetail = card.closest(".film-detail");
+      if (filmDetail) filmDetail.dataset.filmStage = "detail";
+      detailShell.scrollTo({ top: 0, behavior: "instant" });
+    });
+  });
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((entry) => entry.target.classList.toggle("is-active", entry.isIntersecting)),
+    { root: container, rootMargin: "-30% 0px -30% 0px", threshold: 0.01 }
+  );
+  cards.forEach((card) => observer.observe(card));
+}
+
+renderFilmGallery();
+
+document.querySelectorAll("[data-film-back]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const filmDetail = button.closest(".film-detail");
+    if (filmDetail) filmDetail.dataset.filmStage = "gallery";
+    detailShell.scrollTo({ top: 0, behavior: "instant" });
+  });
+});
 
 const tragedyBooks = [
   {
@@ -685,19 +849,81 @@ function createWipe(color, clipPath) {
   return wipe;
 }
 
-function setDetailPage(name, color) {
+function setDetailPage(name, color = detailColors[name] || "#315f58", scrollToTop = true) {
+  activeDetailIndex = Math.max(0, detailOrder.indexOf(name));
   detailPages.forEach((page) => {
     const isActive = page.dataset.detailPage === name;
     page.classList.toggle("is-active", isActive);
     page.setAttribute("aria-hidden", String(!isActive));
     page.inert = !isActive;
   });
+  detailNavItems.forEach((item) => {
+    const active = item.dataset.detailNav === name;
+    item.classList.toggle("active", active);
+    if (active) item.setAttribute("aria-current", "page");
+    else item.removeAttribute("aria-current");
+  });
   detailShell.style.setProperty("--detail-color", color);
+  document.body.dataset.activeDetail = name;
   if (name === "kitap") setDetailMonth("book", currentMonths.book, false);
   if (name === "film") {
     setDetailMonth("film", currentMonths.film, false);
     setDetailFilm(currentMonths.film === "september" ? currentFilmProgram : currentAugustFilm);
   }
+  if (scrollToTop) detailShell.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "instant" : "smooth" });
+}
+
+function showDetailByIndex(nextIndex, animate = true, direction = 0) {
+  if (nextIndex < 0 || nextIndex >= detailOrder.length) return;
+  if (animate) {
+    transitionDetailPage(nextIndex, direction || Math.sign(nextIndex - activeDetailIndex) || 1);
+    return;
+  }
+  setDetailPage(detailOrder[nextIndex], detailColors[detailOrder[nextIndex]]);
+}
+
+async function transitionDetailPage(nextIndex, direction) {
+  if (pageTransitionLock || nextIndex === activeDetailIndex) return;
+  pageTransitionLock = true;
+  const reducedMotion = prefersReducedMotion();
+  const currentPage = detailPages[activeDetailIndex];
+  const nextName = detailOrder[nextIndex];
+  const travel = direction > 0 ? "-5%" : "5%";
+  const enterTravel = direction > 0 ? "6%" : "-6%";
+
+  detailShell.classList.add("is-page-turning");
+  if (currentPage && !reducedMotion) {
+    await currentPage.animate(
+      [
+        { opacity: 1, transform: "translate3d(0, 0, 0)" },
+        { opacity: 0.28, transform: `translate3d(0, ${travel}, 0)` }
+      ],
+      { duration: 240, easing: "cubic-bezier(0.23, 1, 0.32, 1)", fill: "forwards" }
+    ).finished.catch(() => {});
+  }
+
+  detailShell.scrollTo({ top: 0, behavior: "instant" });
+  setDetailPage(nextName, detailColors[nextName], false);
+  detailShell.scrollTo({ top: 0, behavior: "instant" });
+  detailNavItems.find((item) => item.dataset.detailNav === nextName)?.focus({ preventScroll: true });
+  const nextPage = detailPages[nextIndex];
+
+  if (nextPage && !reducedMotion) {
+    await nextPage.animate(
+      [
+        { opacity: 0, transform: `translate3d(0, ${enterTravel}, 0)` },
+        { opacity: 1, transform: "translate3d(0, 0, 0)" }
+      ],
+      { duration: 500, easing: "cubic-bezier(0.32, 0.72, 0, 1)", fill: "both" }
+    ).finished.catch(() => {});
+  }
+
+  currentPage?.getAnimations().forEach((animation) => animation.cancel());
+  nextPage?.getAnimations().forEach((animation) => animation.cancel());
+  detailShell.classList.remove("is-page-turning");
+  window.setTimeout(() => {
+    pageTransitionLock = false;
+  }, 80);
 }
 
 async function openDetail(name, trigger) {
@@ -706,12 +932,12 @@ async function openDetail(name, trigger) {
   detailCard = trigger.closest(".book-card");
   const color = getCardColor(detailCard);
   const startClip = cardClip(detailCard);
-  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reducedMotion = prefersReducedMotion();
   const wipe = createWipe(color, startClip);
 
   document.body.classList.add("detail-open");
-  setDetailPage(name, color);
-  detailShell.scrollTop = 0;
+  setDetailPage(name, color, false);
+  detailShell.scrollTo({ top: 0, behavior: "instant" });
 
   if (!reducedMotion) {
     const animation = wipe.animate(
@@ -737,7 +963,7 @@ async function closeDetail() {
   const color = getCardColor(detailCard || panels[activeIndex]);
   const endClip = cardClip(detailCard || panels[activeIndex]);
   const fullClip = "inset(0 0 0 0 round 0px)";
-  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reducedMotion = prefersReducedMotion();
   const wipe = createWipe(color, fullClip);
 
   detailShell.classList.remove("is-open");
@@ -764,10 +990,44 @@ detailButtons.forEach((button) => {
   button.addEventListener("click", () => openDetail(button.dataset.detail, button));
 });
 
-backToCards.addEventListener("click", closeDetail);
+backToCards?.addEventListener("click", closeDetail);
+
+detailNavItems.forEach((button) => {
+  button.addEventListener("click", () => {
+    const nextIndex = detailOrder.indexOf(button.dataset.detailNav);
+    if (nextIndex === -1) return;
+    showDetailByIndex(nextIndex, true, nextIndex > activeDetailIndex ? 1 : -1);
+  });
+});
+
+detailShell.addEventListener("pointerdown", (event) => {
+  if (event.target.closest("a, button, iframe, [contenteditable='true']")) return;
+  detailPointerStartX = event.clientX;
+  detailPointerStartY = event.clientY;
+  detailShell.setPointerCapture?.(event.pointerId);
+});
+
+detailShell.addEventListener("pointerup", (event) => {
+  if (detailPointerStartX === null || detailPointerStartY === null) return;
+  const distance = event.clientX - detailPointerStartX;
+  const verticalDistance = event.clientY - detailPointerStartY;
+  detailPointerStartX = null;
+  detailPointerStartY = null;
+  detailShell.releasePointerCapture?.(event.pointerId);
+  if (Math.abs(distance) > 54 && Math.abs(distance) > Math.abs(verticalDistance)) {
+    showDetailByIndex(activeDetailIndex + (distance < 0 ? 1 : -1), true, distance < 0 ? 1 : -1);
+  }
+});
+
+detailShell.addEventListener("pointercancel", () => {
+  detailPointerStartX = null;
+  detailPointerStartY = null;
+});
 
 setupTragedyBookProfiles();
 setupCalendarCountdown();
+setupStaticHeroBriefs();
+Object.keys(bookMonths).forEach(updateBookDetailBrief);
 setBookCardMonth(currentMonths.book);
 const automaticFilmProgram = currentScheduledFilm();
 currentMonths.film = filmPrograms[automaticFilmProgram].month;
@@ -778,13 +1038,12 @@ setDetailFilm(automaticFilmProgram, false);
 observeReveals(document);
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && detailShell.classList.contains("is-open")) {
-    closeDetail();
-    return;
-  }
-  if (detailShell.classList.contains("is-open")) return;
-  if (event.key === "ArrowRight") showSlide(activeIndex + 1);
-  if (event.key === "ArrowLeft") showSlide(activeIndex - 1);
+  if (event.key === "ArrowRight") showDetailByIndex(activeDetailIndex + 1);
+  if (event.key === "ArrowLeft") showDetailByIndex(activeDetailIndex - 1);
 });
 
 showSlide(1);
+document.body.classList.add("detail-open", "direct-detail-mode");
+detailShell.classList.add("is-open");
+detailShell.setAttribute("aria-hidden", "false");
+setDetailPage("anasayfa", detailColors.anasayfa, false);
