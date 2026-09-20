@@ -821,10 +821,8 @@ function setupTragedyBookProfiles() {
 }
 
 const CALENDAR_UPCOMING_EVENTS = [
-  { at: "2026-09-04T20:00:00+03:00", label: "Kitap Toplantısı" },
-  { at: "2026-09-10T12:00:00+03:00", label: "Kitap Kulübü Toplantısı" },
-  { at: "2026-09-15T00:00:00+03:00", label: "Hamlet başlıyor" },
-  { at: "2026-10-01T00:00:00+03:00", label: "Tragedya Ayı başlıyor" }
+  { at: "2026-09-15T00:00:00+03:00", ending: "Evreni Anlayan Maymun okuma döneminin bitişine", label: "Ardından Hamlet okuması başlıyor", note: "Hamlet başlıyor" },
+  { at: "2026-10-01T00:00:00+03:00", ending: "Hamlet okumasının bitişine", label: "Ardından Tragedya Ayı başlıyor", note: "Tragedya Ayı başlıyor" }
 ];
 const CALENDAR_MONTH_NAMES = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
 
@@ -834,6 +832,7 @@ function setupCalendarCountdown() {
   const countdownEl = dateCircle?.querySelector("[data-event-countdown]");
   const units = countdownEl ? [...countdownEl.querySelectorAll(".detail-countdown-unit strong")] : [];
   const labelEl = dateCircle?.querySelector("[data-event-label]");
+  const endingEl = dateCircle?.querySelector("[data-event-ending]");
   const noteEl = media?.querySelector(".calendar-note");
   if (!dateCircle || !countdownEl || units.length < 4) return;
 
@@ -846,8 +845,10 @@ function setupCalendarCountdown() {
     const targetDate = new Date(targetTime);
     const monthName = CALENDAR_MONTH_NAMES[targetDate.getMonth()];
 
-    if (labelEl) labelEl.textContent = next.label;
-    if (noteEl) noteEl.innerHTML = `${next.label}<br><b>${targetDate.getDate()} ${monthName}</b>`;
+    const finished = now >= targetTime;
+    if (endingEl) endingEl.textContent = finished ? "Hamlet okuması tamamlandı" : next.ending;
+    if (labelEl) labelEl.textContent = finished ? "Tragedya Ayı başladı" : next.label;
+    if (noteEl) noteEl.innerHTML = `${finished ? "Tragedya Ayı başladı" : next.note}<br><b>${targetDate.getDate()} ${monthName}</b>`;
 
     const difference = Math.max(targetTime - now, 0);
     const days = Math.floor(difference / 86400000);
@@ -1143,3 +1144,18 @@ document.body.classList.add("detail-open", "direct-detail-mode");
 detailShell.classList.add("is-open");
 detailShell.setAttribute("aria-hidden", "false");
 setDetailPage("anasayfa", detailColors.anasayfa, false);
+
+// Switch the existing meeting copy between summary and detail.
+document.querySelectorAll(".meeting-toggle").forEach((button) => {
+  const copy = document.getElementById(button.getAttribute("aria-controls"));
+  const summary = copy.textContent;
+  const date = button.getAttribute("aria-label").split(":")[0];
+  let showingDetail = false;
+  button.addEventListener("click", () => {
+    showingDetail = !showingDetail;
+    copy.textContent = showingDetail ? copy.dataset.meetingDetail : summary;
+    button.textContent = showingDetail ? "Özet" : "Detay";
+    button.classList.toggle("is-detail", showingDetail);
+    button.setAttribute("aria-label", `${date}: ${button.textContent} göster`);
+  });
+});
