@@ -286,6 +286,12 @@ function setBookCardMonth(month) {
   updateBookDetailBrief(month);
 }
 
+function filmForMonth(month) {
+  if (month === "august") return currentAugustFilm;
+  if (month === "september") return currentFilmProgram;
+  return Object.keys(filmPrograms).find(id => filmPrograms[id].month === month);
+}
+
 function setFilmCard(programId) {
   const data = filmPrograms[programId];
   const card = document.querySelector("#film");
@@ -702,7 +708,7 @@ document.querySelectorAll("[data-card-month-switcher='book'] button").forEach((b
 });
 
 document.querySelectorAll("[data-card-month-switcher='film'] button").forEach((button) => {
-  button.addEventListener("click", () => setFilmCard(button.dataset.month === "august" ? currentAugustFilm : button.dataset.month === "november" ? Object.keys(filmPrograms).find((id) => filmPrograms[id].month === "november") : currentFilmProgram));
+  button.addEventListener("click", () => setFilmCard(filmForMonth(button.dataset.month)));
 });
 
 document.querySelectorAll("[data-detail-month-switcher] button").forEach((button) => {
@@ -711,7 +717,7 @@ document.querySelectorAll("[data-detail-month-switcher] button").forEach((button
     setDetailMonth(kind, button.dataset.month);
     if (kind === "book") setBookCardMonth(button.dataset.month);
     if (kind === "film") {
-      const programId = button.dataset.month === "august" ? currentAugustFilm : currentFilmProgram;
+      const programId = filmForMonth(button.dataset.month);
       setFilmCard(programId);
       setDetailFilm(programId);
     }
@@ -821,7 +827,7 @@ function setDetailPage(name, color = detailColors[name] || "#315f58", scrollToTo
   if (name === "kitap") setDetailMonth("book", currentMonths.book, false);
   if (name === "film") {
     setDetailMonth("film", currentMonths.film, false);
-    setDetailFilm(currentMonths.film === "september" ? currentFilmProgram : currentAugustFilm);
+    setDetailFilm(filmForMonth(currentMonths.film));
   }
   if (scrollToTop) detailShell.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "instant" : "smooth" });
   syncFilmExitButton();

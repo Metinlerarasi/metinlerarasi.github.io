@@ -167,23 +167,25 @@ const filmProgramDetails = {
   }
 };
 
-// Kasım filmi: Klaus (2019). Eksik alanlar (IMDb, süre, fotoğraflar) sonradan doldurulabilir.
+// Kasım filmi: Klaus (2019).
 filmPrograms.klaus = {
   month: "november", badge: "KASIM FİLMİ · 01", date: "9–15 KASIM 2026",
   title: "<em>Klaus</em>", plainTitle: "Klaus",
-  author: "Sergio Pablos · 2019", image: "assets/klaus-hero.svg", trailer: "",
+  author: "Sergio Pablos · 2019", image: "assets/klaus-poster.jpg", trailer: "taE3PwurhYM",
   summary: "Ücra bir kutupta posta teşkilatına yollanan genç Jesper ile yalnız bir oyuncak yapımcısı Klaus’un hikâyesi; bir dostluk ve umut masalı.",
   tags: ["Dostluk", "Umut", "Masal"], question: "Bir kötülük, bir iyilikle<br>nasıl değişir?"
 };
 filmProgramDetails.klaus = {
   start: "2026-11-09T00:00:00+03:00", end: "2026-11-15T23:59:59+03:00",
-  genre: "Animasyon", accent: "#B8323A", accent2: "#E2C28A", heroImage: "assets/klaus-hero.svg",
-  imdb: "—", runtime: "—", cast: "Jason Schwartzman · J.K. Simmons · Rashida Jones", director: "Sergio Pablos", directorInitials: "SP", directorPhoto: "",
-  castList: [{ name: "Jason Schwartzman" }, { name: "J.K. Simmons" }, { name: "Rashida Jones" }],
+  genre: "Animasyon", accent: "#B8323A", accent2: "#E2C28A", heroImage: "assets/klaus-scene-1.jpg",
+  imdb: "8.2", runtime: "1 sa 37 dk", cast: "Jason Schwartzman · J.K. Simmons · Rashida Jones", director: "Sergio Pablos", directorInitials: "SP", directorPhoto: "assets/director-pablos.jpg",
+  castList: [{ name: "Jason Schwartzman", photo: "assets/actor-schwartzman.jpg" }, { name: "J.K. Simmons", photo: "assets/actor-simmons.jpg" }, { name: "Rashida Jones", photo: "assets/actor-jones.jpg" }],
   storyTitle: "Bir mektup,<br><em>bir dostluk.</em>",
-  story: "Kutupta bir posta teşkilatına gönderilen Jesper, kimsenin yaşamadığı bir kasabada tek başına kalır. Kasabanın tek oyuncak yapımcısı Klaus ile kurduğu bağ, kasabanın kaderini değiştirir.",
+  story: "Jesper, eve dönebilmek için altı bin mektup göndermek zorundadır. Oysa Smeerensburg’da komşular birbirleriyle konuşmayı bile bırakmıştır. Ormanda yaşayan Klaus’un yaptığı bir oyuncağı bir çocuğa ulaştırınca Jesper’in postanesine mektuplar gelmeye başlar.",
   directorCopy: "Sergio Pablos, klasik el çizimi animasyonun sıcaklığını modern bir masalla birleştirir.",
-  scenes: [["assets/klaus-hero.svg", "Kutup kasabası", "Kar, sessizlik ve yalnız bir gelen kutusu."]]
+  scenes: [1, 2, 3, 4, 5, 6].map(n => [
+    `assets/klaus-scene-${n}.jpg`, `Klaus · 0${n}`, "Smeerensburg’da bir mektupla başlayan dostluğun hikâyesi."
+  ])
 };
 
 Object.entries(filmProgramDetails).forEach(([id, details]) => Object.assign(filmPrograms[id], details));
