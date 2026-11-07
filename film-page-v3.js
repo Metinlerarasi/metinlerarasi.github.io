@@ -63,14 +63,24 @@ filmProgram.duvar = {
   start:'2026-09-28T00:00:00+03:00', end:'2026-10-04T23:59:59+03:00', imdb:'7.9', runtime:'1 sa 57 dk', cast:'Tuncel Kurtiz · Ayşe Emel Mesçi · Malik Berrichi', synopsis:'Bir cezaevinin çocuklar koğuşundaki ağır koşullar, şiddet ve baskı karşısında genç mahkûmların dayanışması giderek açık bir başkaldırıya dönüşür.', scenes:['maxresdefault','0','1','2','3','hqdefault'].map((frame,index)=>[`https://img.youtube.com/vi/upCZb3xLUl4/${frame}.jpg`,`Duvar · 0${index+1}`,'Baskının içindeki dayanışma ve özgürlük arzusu büyüyor.'])
 };
 
-const klaus = filmPrograms.klaus;
-filmProgram.klaus = {
-  ...klaus,
-  index: '08', title: klaus.plainTitle, year: '2019', theme: klaus.tags.join(' · '),
-  rgb: '184, 50, 58', hero: klaus.heroImage, logline: klaus.summary,
-  reading: 'Jesper’in görevi mektupları saymaktır. Peki bir oyuncağın kasabada başlattığı değişimi nasıl ölçebilir?',
-  trailer: `https://www.youtube.com/watch?v=${klaus.trailer}`, synopsis: klaus.story
-};
+Object.entries(filmPrograms).forEach(([id, data], index) => {
+  if (filmProgram[id]) return;
+  const accent = data.accent.replace("#", "");
+  const rgb = [0, 2, 4].map(offset => Number.parseInt(accent.slice(offset, offset + 2), 16)).join(", ");
+  filmProgram[id] = {
+    ...data,
+    index: String(index + 1).padStart(2, "0"),
+    title: data.plainTitle,
+    year: data.author.split(" · ").at(-1),
+    theme: data.tags.join(" · "),
+    rgb,
+    hero: data.heroImage,
+    logline: data.summary,
+    reading: data.story,
+    trailer: `https://www.youtube.com/watch?v=${data.trailer}`,
+    synopsis: data.story
+  };
+});
 
 function currentScheduledFilm(now = Date.now()) {
   const schedule = Object.entries(filmProgram).sort((a,b)=>Date.parse(a[1].start)-Date.parse(b[1].start));

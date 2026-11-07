@@ -37,6 +37,7 @@ const detailColors = {
 const currentMonths = { book: "september", film: "august" };
 let currentFilmProgram = "truman";
 let currentAugustFilm = "interstellar";
+let currentOctoberFilm = "kevin";
 
 const bookMonths = {
   august: {
@@ -289,6 +290,7 @@ function setBookCardMonth(month) {
 function filmForMonth(month) {
   if (month === "august") return currentAugustFilm;
   if (month === "september") return currentFilmProgram;
+  if (month === "october") return currentOctoberFilm;
   return Object.keys(filmPrograms).find(id => filmPrograms[id].month === month);
 }
 
@@ -299,6 +301,7 @@ function setFilmCard(programId) {
   currentMonths.film = data.month;
   if (data.month === "september") currentFilmProgram = programId;
   if (data.month === "august") currentAugustFilm = programId;
+  if (data.month === "october") currentOctoberFilm = programId;
   card.classList.add("is-month-changing");
   card.querySelector("[data-film-badge]").textContent = data.badge;
   card.querySelector("[data-film-kicker]").textContent = data.date;
@@ -340,12 +343,28 @@ function trailerUrl(videoId) {
   return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&rel=0&playsinline=1`;
 }
 
+function ensureFilmMonthView(month) {
+  let view = document.querySelector(`[data-detail-month-view='film-${month}']`);
+  if (view) return view;
+  const template = document.querySelector("[data-detail-month-view='film-november']");
+  if (!template) return null;
+  view = template.cloneNode(true);
+  view.dataset.detailMonthView = `film-${month}`;
+  view.hidden = true;
+  view.classList.remove("active");
+  template.before(view);
+  observeReveals(view);
+  return view;
+}
+
 function setDetailFilm(programId, loadTrailer = true) {
   const data = filmPrograms[programId];
-  const view = document.querySelector(`[data-detail-month-view='film-${data?.month}']`);
+  const view = data ? ensureFilmMonthView(data.month) : null;
   if (!data || !view) return;
+  setDetailMonth("film", data.month, false);
   if (data.month === "september") currentFilmProgram = programId;
   if (data.month === "august") currentAugustFilm = programId;
+  if (data.month === "october") currentOctoberFilm = programId;
   const iframe = view.querySelector("[data-program-trailer]");
   const nextTrailerUrl = trailerUrl(data.trailer);
   if (loadTrailer && iframe.src !== nextTrailerUrl) iframe.src = nextTrailerUrl;

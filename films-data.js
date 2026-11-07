@@ -49,6 +49,27 @@ const filmPrograms = {
     author: "Yılmaz Güney · 1983", image: "assets/duvar-official-poster.png", trailer: "upCZb3xLUl4",
     summary: "Bir cezaevinin çocuklar koğuşunda büyüyen baskının, dayanışmanın ve özgürlük arzusunun sert hikâyesi.",
     tags: ["İsyan", "Adalet", "Özgürlük"], question: "Bir duvar yalnızca<br>neyi içeride tutar?"
+  },
+  kevin: {
+    month: "october", badge: "EKİM FİLMİ · 08", date: "5–11 EKİM 2026",
+    title: "Kevin Hakkında<br><em>Konuşmalıyız</em>", plainTitle: "Kevin Hakkında Konuşmalıyız",
+    author: "Lynne Ramsay · 2011", image: "assets/kevin-poster.jpg", trailer: "bV7Y5cylhNc",
+    summary: "Bir anne, oğluyla kuramadığı bağın ve yıllar sonra yaşanan trajedinin izleriyle yüzleşiyor.",
+    tags: ["Annelik", "Suçluluk", "Yabancılaşma"], question: "Bir çocuğu<br>ne şekillendirir?"
+  },
+  help: {
+    month: "october", badge: "EKİM FİLMİ · 09", date: "12–18 EKİM 2026",
+    title: "The<br><em>Help</em>", plainTitle: "The Help",
+    author: "Tate Taylor · 2011", image: "assets/help-poster.jpg", trailer: "aT9eWGjLv6s",
+    summary: "1960’ların Mississippi’sinde üç kadın, duyulmayan hayatları yazıya dökerek sessizliği birlikte bozuyor.",
+    tags: ["Irkçılık", "Dayanışma", "Cesaret"], question: "Bir hikâyeyi anlatmak<br>neyi değiştirebilir?"
+  },
+  "sixth-sense": {
+    month: "october", badge: "EKİM FİLMİ · 10", date: "19–25 EKİM 2026",
+    title: "Altıncı<br><em>His</em>", plainTitle: "Altıncı His",
+    author: "M. Night Shyamalan · 1999", image: "assets/sixth-sense-poster.jpg", trailer: "7Abvklqq-pE",
+    summary: "Ölüleri görebildiğini söyleyen bir çocuk ile ona yardım etmeye çalışan psikoloğun sessiz ve ürpertici yakınlaşması.",
+    tags: ["Korku", "Yas", "İletişim"], question: "Gördüğümüz gerçek,<br>bildiğimizden büyük mü?"
   }
 };
 
@@ -164,6 +185,48 @@ const filmProgramDetails = {
     story: "Bir cezaevinin çocuklar koğuşundaki ağır koşullar, şiddet ve baskı karşısında genç mahkûmların dayanışması giderek açık bir başkaldırıya dönüşür.",
     directorCopy: "Yılmaz Güney, sürgünde çektiği Duvar’da kapatılmayı yalnızca fiziksel mekânla değil, kurumların ve korkunun kurduğu bir düzen olarak anlatır. Film sert gerçekçiliğini dayanışma ve özgürlük arzusuyla yan yana taşır.",
     scenes: ["maxresdefault","0","1","2","3","hqdefault"].map((frame, index) => [`https://img.youtube.com/vi/upCZb3xLUl4/${frame}.jpg`, `Duvar · 0${index + 1}`, "Baskının içindeki dayanışma ve özgürlük arzusu büyüyor."])
+  },
+  kevin: {
+    start: "2026-10-05T00:00:00+03:00", end: "2026-10-11T23:59:59+03:00",
+    genre: "Dram · Gerilim", accent: "#A3262A", accent2: "#D6A25E", heroImage: "assets/kevin-scene-1.jpg",
+    imdb: "7.5", runtime: "1 sa 52 dk", cast: "Tilda Swinton · John C. Reilly · Ezra Miller", director: "Lynne Ramsay", directorInitials: "LR", directorPhoto: "assets/director-ramsay.jpg",
+    castList: [
+      { name: "Tilda Swinton", photo: "assets/actor-swinton.jpg" },
+      { name: "John C. Reilly", photo: "assets/actor-reilly.jpg" },
+      { name: "Ezra Miller", photo: "assets/actor-miller.jpg" }
+    ],
+    storyTitle: "Bir anne geçmişine<br><em>nasıl bakar?</em>",
+    story: "Eva, oğlu Kevin’ın doğumundan itibaren aralarında büyüyen mesafeyi ve yıllar sonra bütün hayatlarını değiştiren şiddet olayını parçalı anılar içinde yeniden kurar. Film annelik, doğuştan gelen eğilimler ve sorumluluk üzerine rahatsız edici sorular bırakır.",
+    directorCopy: "Lynne Ramsay, açıklama vermek yerine renkleri, sesleri ve kesintili anıları kullanır. Eva’nın zihnindeki suçluluk ile geçmişin gerçekleri birbirine karışırken seyirciyi kolay bir hükümden uzak tutar.",
+    scenes: [1, 2, 3, 4, 5, 6].map(n => [`assets/kevin-scene-${n}.jpg`, `Kevin · 0${n}`, "Anne ile oğul arasındaki sessizlik, geçmişin parçaları arasında büyüyor."])
+  },
+  help: {
+    start: "2026-10-12T00:00:00+03:00", end: "2026-10-18T23:59:59+03:00",
+    genre: "Dram", accent: "#7B8E5B", accent2: "#E3B85B", heroImage: "assets/help-scene-1.jpg",
+    imdb: "8.1", runtime: "2 sa 26 dk", cast: "Emma Stone · Viola Davis · Octavia Spencer", director: "Tate Taylor", directorInitials: "TT", directorPhoto: "assets/director-taylor.jpg",
+    castList: [
+      { name: "Emma Stone", photo: "assets/actor-stone.jpg" },
+      { name: "Viola Davis", photo: "assets/actor-davis.jpg" },
+      { name: "Bryce Dallas Howard", photo: "assets/actor-howard.jpg" }
+    ],
+    storyTitle: "Sessiz kalanlar<br><em>konuşmaya başlarsa?</em>",
+    story: "Genç yazar Skeeter, Jackson’da beyaz ailelerin evlerinde çalışan siyah kadınların deneyimlerini kayda geçirmek ister. Aibileen ve Minny’nin anlatıları, gündelik ırkçılığın görünmeyen yüzünü açarken üç kadını da ciddi bir riskin içine çeker.",
+    directorCopy: "Tate Taylor, Kathryn Stockett’ın romanını kişisel tanıklıklar ve güçlü oyunculuklar üzerinden sinemaya taşır. Hikâye, sözü elinden alınmış insanların kendi deneyimlerini anlatmasının dönüştürücü gücüne odaklanır.",
+    scenes: [1, 2, 3, 4, 5, 6].map(n => [`assets/help-scene-${n}.jpg`, `The Help · 0${n}`, "Anlatılan her hikâye, yerleşik sessizliğin içinde yeni bir çatlak açıyor."])
+  },
+  "sixth-sense": {
+    start: "2026-10-19T00:00:00+03:00", end: "2026-10-25T23:59:59+03:00",
+    genre: "Gizem · Gerilim", accent: "#40586E", accent2: "#B4A382", heroImage: "assets/sixth-sense-scene-1.jpg",
+    imdb: "8.2", runtime: "1 sa 47 dk", cast: "Bruce Willis · Haley Joel Osment · Toni Collette", director: "M. Night Shyamalan", directorInitials: "MNS", directorPhoto: "assets/director-shyamalan.jpg",
+    castList: [
+      { name: "Bruce Willis", photo: "assets/actor-willis.jpg" },
+      { name: "Haley Joel Osment", photo: "assets/actor-osment.jpg" },
+      { name: "Toni Collette", photo: "assets/actor-collette.jpg" }
+    ],
+    storyTitle: "Görülmeyen şeyler<br><em>bizimle konuşursa?</em>",
+    story: "Çocuk psikoloğu Malcolm Crowe, ölü insanları gördüğünü söyleyen Cole’a yardım etmeye çalışır. İkili arasındaki güven güçlendikçe korkunun arkasında dinlenmeyi bekleyen hikâyeler ve ikisinin de kabullenmesi gereken bir gerçek belirir.",
+    directorCopy: "M. Night Shyamalan, doğaüstü gerilimi yas ve iletişim üzerine sakin bir drama dönüştürür. Kadrajın içindeki boşluklar, renkler ve suskunluklar anlatının görünmeyen katmanlarını taşır.",
+    scenes: [1, 2, 3, 4, 5, 6].map(n => [`assets/sixth-sense-scene-${n}.jpg`, `Altıncı His · 0${n}`, "Cole’un korkusu, dinlenmeye başladıkça başka bir anlam kazanıyor."])
   }
 };
 
