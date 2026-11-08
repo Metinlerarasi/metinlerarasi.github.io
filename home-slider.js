@@ -50,7 +50,9 @@ const bookMonths = {
     people: [{ name: "Steve Stewart-Williams", photo: null }],
     summary: "İnsan zihni nasıl evrimleşti? Kültürümüz bizi doğadan ne kadar uzaklaştırdı? Bu ay kendimize biraz dışarıdan bakıyoruz.",
     tags: ["İnsan", "Evrim", "Kültür"],
-    question: "Bizi insan<br>yapan nedir?"
+    question: "Bizi insan<br>yapan nedir?",
+    image: "assets/evreni-anlayan-maymun-kapak.jpg",
+    imageAlt: "Evreni Anlayan Maymun kitap kapağı"
   },
   september: {
     badge: "DOSYA 002",
@@ -90,14 +92,33 @@ const bookMonths = {
     badge: "DOSYA 004",
     number: "11",
     month: "KASIM",
-    kicker: "KASIM: JUNG AYI",
-    title: "Jung'un<br><em>Gölgesinde</em>",
-    author: "Kitap seçimi yakında",
-    people: [{ name: "Carl Gustav Jung", photo: "assets/author-jung.jpg" }],
-    summary: "Carl Gustav Jung'un gölge, arketip, kolektif bilinçdışı ve bireyleşme kavramlarına yaklaşacağız. Okunacak kitap henüz seçilmedi.",
-    tags: ["Gölge", "Arketip", "Bilinçdışı"],
-    question: "İçimizdeki gölge<br>bize ne söyler?",
-    visual: "jung"
+    kicker: "KASIM: TRAGEDYALAR DEVAM EDİYOR",
+    title: "Tragedyalar<br><em>Devam Ediyor</em>",
+    author: "Aiskhylos · Sophokles · Euripides · Shakespeare",
+    people: [
+      { name: "Aiskhylos", photo: "assets/author-aiskhylos.jpg" },
+      { name: "Sophokles", photo: "assets/author-sophokles.jpg" },
+      { name: "Euripides", photo: "assets/author-euripides.jpg" },
+      { name: "William Shakespeare", photo: "assets/author-shakespeare.jpg" }
+    ],
+    summary: "Ekim ayında başladığımız tragedya seçkisini Kasım boyunca okumaya ve aynı soruların peşinden gitmeye devam ediyoruz.",
+    tags: ["Tragedya", "İktidar", "Vicdan"],
+    question: "Bir tragedya<br>ne zaman biter?",
+    visual: "tragedy"
+  },
+  december: {
+    badge: "DOSYA 005",
+    number: "12",
+    month: "ARALIK",
+    kicker: "ARALIK AYININ KİTABI",
+    title: "Malma<br><em>İstasyonu</em>",
+    author: "Alex Schulman",
+    people: [{ name: "Alex Schulman", photo: null }],
+    summary: "Üç yolcu, geçmişlerini yanlarında taşıyarak Malma İstasyonu'na doğru ilerliyor. Bir ailenin üç kuşağı aynı yolculukta birbirine bağlanıyor.",
+    tags: ["Aile", "Hafıza", "Yolculuk"],
+    question: "Geçmiş bizi<br>nereye taşır?",
+    image: "assets/malma-istasyonu-cover.jpg",
+    imageAlt: "Malma İstasyonu kitap kapağı"
   }
 };
 
@@ -105,7 +126,7 @@ function currentBookMonth(now = new Date()) {
   const monthNumber = Number(
     new Intl.DateTimeFormat("en-US", { month: "numeric", timeZone: "Europe/Istanbul" }).format(now)
   );
-  const scheduledMonths = ["august", "september", "october", "november"];
+  const scheduledMonths = ["august", "september", "october", "november", "december"];
   const scheduledIndex = Math.min(Math.max(monthNumber - 8, 0), scheduledMonths.length - 1);
   return scheduledMonths[scheduledIndex];
 }
@@ -287,10 +308,15 @@ function setBookCardMonth(month) {
   card.querySelector("[data-book-summary]").textContent = data.summary;
   replaceTags(card.querySelector("[data-book-tags]"), data.tags);
   card.querySelector("[data-book-question] b").innerHTML = data.question;
-  card.querySelector(".book-month-cover").hidden = month !== "august";
-  card.querySelector(".september-reading-stack").hidden = month !== "september";
-  card.querySelector(".tragedy-stack").hidden = month !== "october";
-  card.querySelector(".jung-mystery-card").hidden = month !== "november";
+  const cover = card.querySelector(".book-month-cover");
+  cover.hidden = !data.image;
+  if (data.image) {
+    cover.src = data.image;
+    cover.alt = data.imageAlt;
+  }
+  card.querySelector(".september-reading-stack").hidden = data.visual !== "september";
+  card.querySelector(".tragedy-stack").hidden = data.visual !== "tragedy";
+  card.querySelector(".jung-mystery-card").hidden = true;
   card.querySelectorAll("[data-card-month-switcher='book'] button").forEach((button) => {
     button.classList.toggle("active", button.dataset.month === month);
   });
