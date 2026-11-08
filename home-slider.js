@@ -34,7 +34,7 @@ const detailColors = {
   takvim: "#9d4f43",
   film: "#20284f"
 };
-const currentMonths = { book: "september", film: "august" };
+const currentMonths = { book: null, film: "august" };
 let currentFilmProgram = "truman";
 let currentAugustFilm = "interstellar";
 let currentOctoberFilm = "kevin";
@@ -100,6 +100,17 @@ const bookMonths = {
     visual: "jung"
   }
 };
+
+function currentBookMonth(now = new Date()) {
+  const monthNumber = Number(
+    new Intl.DateTimeFormat("en-US", { month: "numeric", timeZone: "Europe/Istanbul" }).format(now)
+  );
+  const scheduledMonths = ["august", "september", "october", "november"];
+  const scheduledIndex = Math.min(Math.max(monthNumber - 8, 0), scheduledMonths.length - 1);
+  return scheduledMonths[scheduledIndex];
+}
+
+currentMonths.book = currentBookMonth();
 
 // Film verisi films-data.js dosyasında.
 
